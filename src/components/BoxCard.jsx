@@ -1,5 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const BoxCard = ({ selectedStore }) => {
-  // ✅ Mockup ข้อมูลสินค้า
+  const navigate = useNavigate();
+
+  // Mockup ข้อมูลสินค้า
   const mockProducts = [
     {
       id: 1,
@@ -30,7 +34,7 @@ const BoxCard = ({ selectedStore }) => {
     },
   ];
 
-  // ✅ กรองสินค้าเฉพาะร้านที่เลือก
+  // กรองสินค้าเฉพาะร้านที่เลือก
   const filteredProducts = selectedStore
     ? mockProducts.filter((product) => product.store === selectedStore.label)
     : [];
@@ -52,7 +56,11 @@ const BoxCard = ({ selectedStore }) => {
               <img src={product.image} alt={product.title} className="h-28 object-contain" />
             </div>
 
-            <div className="flex-[65%] pl-4">
+            {/* ✅ คลิกแล้วไปหน้า Privilege พร้อมส่งข้อมูลสินค้า */}
+            <div
+              className="flex-[65%] pl-4 cursor-pointer"
+              onClick={() => navigate(`/privilege/${product.id}`, { state: { product } })}
+            >
               <h2 className="text-lg font-bold text-black">{product.title}</h2>
               <p className="text-black text-sm">{product.description}</p>
               <p className="text-black text-sm">เหลือราคา {product.price} บาท</p>

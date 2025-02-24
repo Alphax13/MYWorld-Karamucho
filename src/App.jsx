@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import BoxsetPage from "./pages/BoxsetPage"; // หน้า Boxset
-import MymapPage from "./pages/MymapPage"; // หน้า Mymap
+import BoxsetPage from "./pages/BoxsetPage";
+import PrivilegePage from "./pages/PrivilegePage"; // ✅ เพิ่มหน้า Privilege
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/boxset" element={<BoxsetPage />} />
-        <Route path="/mymap" element={<MymapPage />} />
+        <Route path="/privilege/:id" element={<PrivilegePage />} /> {/* ✅ เพิ่ม Route */}
       </Routes>
     </Router>
   );
