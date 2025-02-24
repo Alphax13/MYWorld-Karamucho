@@ -3,10 +3,12 @@ import Navbar from "../components/Navbar";
 import ProfileCard from "../components/ProfileCard";
 import MenuTabs from "../components/MenuTabs";
 import Tabs from "../components/Tabs";
-import OrderHistory from "../components/OrderHistory";
-import TradingHistory from "../components/TradingHistory";
+import Redeem from "../components/Redeem";
 import Banner from "../components/Banner";
 import ProductCard from "../components/ProductCard";
+import RedeemHistory from "../components/RedeemHistory";
+import TradingHistory from "../components/TradingHistory";
+import OrderHistory from "../components/OrderHistory";
 
 const Home = () => {
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
@@ -23,8 +25,8 @@ const Home = () => {
         <div className="w-full max-w-5xl mt-1">
           {/* MenuTabs */}
           {activeMenuTab === "checkin" && <Banner />}
-          {activeMenuTab === "redeem" && <OrderHistory />}
-          {activeMenuTab === "history" && <TradingHistory />}
+          {activeMenuTab === "redeem" && <Redeem />}
+          {activeMenuTab === "history" && <RedeemHistory />}
         </div>
 
         {/* Tabs */}
