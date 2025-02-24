@@ -16,7 +16,7 @@ const redeem = () => {
       logo: "/images/logo.png",
       image: "/images/iconboxset.png",
       title: "แลก 15,000 COIN",
-      description: "รับ My Box Set หมูกะทะ ฟรี 1 ชิ้น",
+      description: "รับ My Box Set ฟรี 1 ชิ้น",
     },
   ]);
 
@@ -58,7 +58,7 @@ const redeem = () => {
             <div
               key={coupon.id}
               className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
+                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
             >
               {/* Overlay สีเทา เมื่อคูปองถูกใช้ หรือ หมดอายุ */}
               {coupon.status !== "active" && (
@@ -67,18 +67,18 @@ const redeem = () => {
                 </div>
               )}
 
-              <div className="flex justify-center items-center flex-[20%]">
+              <div className="flex justify-center items-center flex-[30%]">
                 <img src={coupon.logo} alt="Logo" className="h-10 w-10 object-contain" />
               </div>
-              <div className="flex justify-center items-center flex-[20%]">
+              <div className="flex justify-center items-center flex-[40%]">
                 <img src={coupon.image} alt={coupon.title} className="h-28 object-contain" />
               </div>
 
-              <div className="flex-[80%] pl-4 leading-[1.5]">
-                <h2 className="text-base font-bold text-black">{coupon.title}</h2>
+              <div className="flex-[80%] pl-4">
+                <h2 className="text-base font-simibold text-black">{coupon.title}</h2>
                 <p className="text-black text-sm">{coupon.description}</p>
-                <p className="text-black text-sm">ร้าน: {coupon.store}</p>
-                <p className="text-gray-500 text-sm">แลกเมื่อ: {coupon.date}</p>
+                <p className="text-black text-xs">ร้าน: {coupon.store}</p>
+                <p className="text-gray-500 text-xs">แลกเมื่อ: {coupon.date}</p>
                 <span className="text-black font-bold text-sm">
                     {coupon.status === "used" ? `ใช้สิทธิ์แล้ว ${coupon.code}` : coupon.status === "expired" ? "หมดอายุ" : ""}
                 </span>
