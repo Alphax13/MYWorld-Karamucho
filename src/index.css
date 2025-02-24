@@ -5,5 +5,6 @@ body{
   font-family: 'Kanit', sans-serif;
   margin: 0;
   background-image: url(../images/paper.png);
+  line-height: 1.5;
   z-index: -20;
 }

@@ -24,12 +24,12 @@ const Navbar = () => {
         {/* ✅ ปุ่ม "คูปองของฉัน" (ไปหน้าประวัติคูปอง) */}
         <div className="flex flex-col items-center">
           <button
-            className="w-[60px] h-[60px] border border-[#28B7E1] rounded-lg shadow-lg bg-white text-gray-600 flex items-center justify-center"
+            className="w-[60px] h-[60px] border border-[#28B7E1] rounded-lg shadow-lg bg-white text-gray-900 flex items-center justify-center"
             onClick={() => navigate("/coupon-history")} // 🔹 ไปหน้าคูปอง
           >
             <IoGiftSharp className="text-3xl" />
           </button>
-          <span className="text-sm font-semibold mt-2 text-gray-600">คูปองของฉัน</span>
+          <span className="text-sm font-semibold mt-2 text-black">คูปองของฉัน</span>
         </div>
       </div>
     </div>
