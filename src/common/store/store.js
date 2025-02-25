@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userSlice from '../features/common/userSlice'
+import userSlice from '../userSlice.js/userSlice'
 
 const combinedReducer = {
   user : userSlice

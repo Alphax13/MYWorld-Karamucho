@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import liff from "@line/liff";
-export const { resetState } = userSlice.actions;
 
 //for Dev
 //const liffID =``;
@@ -128,12 +127,6 @@ const userSlice = createSlice({
         isLoading: false,
         error: null,
         response: null,
-        //   getscroesDatas: { data: [] },
-        //   gethistorysData: { data: [], meta: {} },
-        //   gethistoryrewards: { data: [], meta: {} },
-        //   getClouds: { data: [], meta: {} },
-        //   getspecialEvents: { data: [], meta: {} },
-        //   getrewardslist: { data: [], meta: {} },
     },
     reducers: {
         resetState: (state) => {
@@ -162,15 +155,13 @@ const userSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
-
-            // Handle getuser Thunk
             .addCase(getuser.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
             })
             .addCase(getuser.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.customerinfo = action.payload.user; // Assuming response structure
+                state.customerinfo = action.payload.user;
                 console.log("Customer Info:", action.payload.user);
             })
             .addCase(getuser.rejected, (state, action) => {
@@ -209,3 +200,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+export const { resetState } = userSlice.actions;
