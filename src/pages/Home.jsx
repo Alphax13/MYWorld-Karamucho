@@ -31,7 +31,7 @@ const Home = () => {
 
         {/* Tabs */}
         <div className="w-full max-w-5xl mt-1">
-          <Tabs activeTab={activeSubTab} setActiveTab={setActiveSubTab} />
+          {/* <Tabs activeTab={activeSubTab} setActiveTab={setActiveSubTab} /> */}
           <div className="mt-4">
             {activeSubTab === "trading" && <ProductCard />}
             {activeSubTab === "tradingHistory" && <TradingHistory />}

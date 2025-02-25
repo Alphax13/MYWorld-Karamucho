@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className="w-full relative">
       {/* ✅ Effect Background */}
-      <div className="absolute top-0 w-full max-h-[100px] md:max-h-[100px] lg:max-h-[150px] overflow-hidden">
+      <div className="absolute top-0 w-full max-h-[100%] md:max-h-[100px] lg:max-h-[150px] overflow-hidden">
         <img src="/images/ripped.png" alt="Effect" className="w-full object-bottom" />
       </div>
 

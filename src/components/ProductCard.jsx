@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const ProductCard = () => {
+  const navigate = useNavigate();
     // ✅ Mockup ข้อมูลสินค้า
     const mockProducts = [
       {
@@ -34,6 +37,7 @@ const ProductCard = () => {
             key={product.id}
             className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
                        bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       onClick={() => navigate("/boxset")}
           >
          
             <div className="flex justify-center items-center flex-[20%]">
