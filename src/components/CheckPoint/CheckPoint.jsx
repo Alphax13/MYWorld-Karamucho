@@ -2,12 +2,16 @@ import { useState } from "react";
 import "./CheckPoint.css";
 
 const allLocations = [
-  { id: 1, store: "ร้านติดมันส์", branch: "สาขาลาดพร้าว", checkedIn: true, img: "/images/logo.png" },
-  { id: 2, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/logo.png" },
-  { id: 3, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/logo.png" },
-  { id: 4, store: "ร้านหมูย่าง", branch: "สาขาพระราม 3", checkedIn: false, img: "/images/logo.png" },
-  { id: 5, store: "ร้านหมูย่าง", branch: "สาขาสาทร", checkedIn: false, img: "/images/logo.png" },
-  { id: 6, store: "ร้านไก่ทอด", branch: "สาขาธารี", checkedIn: false, img: "/images/logo.png" },
+  { id: 1, store: "ร้านติดมันส์", branch: "สาขาลาดพร้าว", checkedIn: true, img: "/images/store.png" },
+  { id: 2, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/store.png" },
+  { id: 3, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
+  { id: 4, store: "ร้านติดมันส์", branch: "สาขาพระราม 3", checkedIn: false, img: "/images/store.png" },
+  { id: 5, store: "ร้านติดมันส์", branch: "สาขาสาทร", checkedIn: false, img: "/images/store.png" },
+  { id: 6, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/store.png" },
+  { id: 7, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 8, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
+  { id: 9, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 10, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
 ];
 
 const storeList = [...new Set(allLocations.map((loc) => loc.store))]; // ดึงชื่อร้านทั้งหมด
@@ -64,16 +68,13 @@ export default function CheckPoint() {
         />
     </div>
         {/* เส้นถนน */}
-        <div className="relative w-full mb-0">
-          <div className="absolute w-full h-full">
-            <img src="/images/Road.png" alt="Road" className="w-full h-auto" />
-          </div>
-          <div className="px-12">
+        <div className="road relative w-[95%] mb-0 ml-6 mr-6">
+          <div className="px-10 mb-20">
           {/* จุดเช็คอิน */}
           {filteredLocations.map((loc, index) => (
             <div
               key={loc.id}
-              className={`relative flex items-center w-50 h-13 my-4 rounded-full border-2 shadow-md transition-all cursor-pointer 
+              className={`relative flex items-center w-50 h-13 my-5.5 rounded-full border-2 shadow-md transition-all cursor-pointer 
                 ${loc.checkedIn ? "bg-green-200 border-green-500" : "bg-white border-gray-300"} 
                 ${index % 2 === 0 ? "ml-0 flex-row" : "ml-auto flex-row-reverse"}`}
               onClick={() => handleCheckin(loc.id)}
@@ -84,9 +85,9 @@ export default function CheckPoint() {
               </div>
 
               {/* ข้อมูลร้าน */}
-              <div className="mx-3 text-left">
-                <div className="text-lg font-bold">{loc.store}</div>
-                <div className="text-gray-600">{loc.branch}</div>
+              <div className="mx-2 text-left">
+                <div className="text-lg font-bold -mb-1.5">{loc.store}</div>
+                <div className="text-base text-gray-600">{loc.branch}</div>
               </div>
             </div>
           ))}
@@ -95,7 +96,7 @@ export default function CheckPoint() {
             <div className="text-gray-500 text-center mt-6">ไม่พบสาขา</div>
           )}
         </div>
-          <img src="/images/bottom.png" alt="Bottom Banner" className="fixed-bottom" />
+          <img src="/images/bottom.png" alt="Bottom Banner" className="fixed-bottom2" />
         </div>
       </div>
   );

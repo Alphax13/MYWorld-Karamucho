@@ -5,6 +5,8 @@ import PrivilegePage from "./pages/PrivilegePage";
 import CouponHistory from "./pages/CouponHistory";
 import CheckInPage from "./pages/CheckInPage";
 import CheckinPhoto from "./components/CheckIn/CheckinPhoto";
+import CheckPoint from "./components/CheckPoint/CheckPoint"; // เพิ่ม import CheckPoint
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path="/coupon-history" element={<CouponHistory />} />
         <Route path="/checkin" element={<CheckInPage />} />
         <Route path="/checkin-photo" element={<CheckinPhoto />} /> {/* เพิ่มเส้นทางสำหรับ CheckinPhoto */}
+        <Route path="/checkpoint" element={<CheckPoint />} />
       </Routes>
     </Router>
   );
