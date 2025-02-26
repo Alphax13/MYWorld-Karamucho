@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import BoxsetPage from "./pages/BoxsetPage";
 import PrivilegePage from "./pages/PrivilegePage"; 
 import CouponHistory from "./pages/CouponHistory";
+import CheckInPage from "./pages/CheckInPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/boxset" element={<BoxsetPage />} />
         <Route path="/privilege/:id" element={<PrivilegePage />} /> 
         <Route path="/coupon-history" element={<CouponHistory />} />
+        <Route path="/checkin" element={<CheckInPage />} />
       </Routes>
     </Router>
   );

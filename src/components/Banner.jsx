@@ -16,7 +16,7 @@ const Banner = () => {
       {/* ✅ คลิกแล้วไป /mymap */}
       <div
         className="w-full flex justify-center cursor-pointer"
-        onClick={() => navigate("/mymap")}
+        onClick={() => navigate("/checkin")}
       >
         <img src="/images/Mymap.png" alt="Mymap Banner" className="w-full max-w-5xl rounded-lg shadow-md" />
       </div>
