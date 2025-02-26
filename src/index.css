@@ -1,8 +1,8 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500;600&display=swap');
 
 body{
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Anuphan', sans-serif;
   margin: 0;
   background-image: url(../images/paper.png);
   line-height: 1.5;
