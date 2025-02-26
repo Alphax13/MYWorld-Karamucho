@@ -22,7 +22,7 @@ const Home = () => {
         <ProfileCard />
         <MenuTabs activeTab={activeMenuTab} setActiveTab={setActiveMenuTab} />
 
-        <div className="w-full max-w-5xl mt-1">
+        <div className="w-full max-w-5xl">
           {/* MenuTabs */}
           {activeMenuTab === "checkin" && <Banner />}
           {activeMenuTab === "redeem" && <Redeem />}
@@ -30,9 +30,9 @@ const Home = () => {
         </div>
 
         {/* Tabs */}
-        <div className="w-full max-w-5xl mt-1">
+        <div className="w-full max-w-5xl">
           {/* <Tabs activeTab={activeSubTab} setActiveTab={setActiveSubTab} /> */}
-          <div className="mt-4">
+          <div>
             {activeSubTab === "trading" && <ProductCard />}
             {activeSubTab === "tradingHistory" && <TradingHistory />}
             {activeSubTab === "orderHistory" && <OrderHistory />}
