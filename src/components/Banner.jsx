@@ -13,12 +13,12 @@ const Banner = () => {
         <img src="/images/Boxset.png" alt="Boxset Banner" className="w-full max-w-5xl rounded-lg shadow-md" />
       </div> */}
 
-      {/* ✅ คลิกแล้วไป /mymap */}
+      {/* ✅ คลิกแล้วไป /checkin */}
       <div
         className="w-full flex justify-center cursor-pointer"
         onClick={() => navigate("/checkin")}
       >
-        <img src="/images/Mymap.png" alt="Mymap Banner" className="w-full max-w-5xl rounded-lg shadow-md" />
+        <img src="/images/Checkin.png" alt="Checkin Banner" className="w-full max-w-5xl rounded-lg shadow-md" />
       </div>
     </div>
   );
