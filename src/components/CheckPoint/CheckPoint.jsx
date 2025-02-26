@@ -8,10 +8,11 @@ const allLocations = [
   { id: 4, store: "ร้านติดมันส์", branch: "สาขาพระราม 3", checkedIn: false, img: "/images/store.png" },
   { id: 5, store: "ร้านติดมันส์", branch: "สาขาสาทร", checkedIn: false, img: "/images/store.png" },
   { id: 6, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/store.png" },
-  { id: 7, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
-  { id: 8, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
-  { id: 9, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 7, store: "ร้านติดมันส์", branch: "สาขาธารี2", checkedIn: false, img: "/images/store.png" },
+  { id: 8, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 9, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
   { id: 10, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 11, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
 ];
 
 const storeList = [...new Set(allLocations.map((loc) => loc.store))]; // ดึงชื่อร้านทั้งหมด
@@ -69,7 +70,7 @@ export default function CheckPoint() {
     </div>
         {/* เส้นถนน */}
         <div className="road relative w-[95%] mb-0 ml-6 mr-6">
-          <div className="px-10 mb-20">
+          <div className="px-10 mb-18">
           {/* จุดเช็คอิน */}
           {filteredLocations.map((loc, index) => (
             <div
