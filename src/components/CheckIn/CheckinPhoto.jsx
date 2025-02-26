@@ -72,7 +72,7 @@ const CheckinPhoto = () => {
               </div>
             )}
             {selectedImage && (
-              <img src={selectedImage} alt="Selected Preview" className="w-[100%] object-cover rounded-md" />
+              <img src={selectedImage} alt="Selected Preview" className="w-[100%] h-50 object-cover rounded-md" />
             )}
             <input 
               type="file" 
