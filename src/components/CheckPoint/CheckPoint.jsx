@@ -9,10 +9,10 @@ const allLocations = [
   { id: 5, store: "ร้านติดมันส์", branch: "สาขาสาทร", checkedIn: false, img: "/images/store.png" },
   { id: 6, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/store.png" },
   { id: 7, store: "ร้านติดมันส์", branch: "สาขาธารี2", checkedIn: false, img: "/images/store.png" },
-  { id: 8, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
-  { id: 9, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
-  { id: 10, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
-  { id: 11, store: "จ่าอู หมูกระทะ", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 8, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 9, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
+  { id: 10, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 11, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
 ];
 
 const storeList = [...new Set(allLocations.map((loc) => loc.store))]; // ดึงชื่อร้านทั้งหมด
@@ -40,12 +40,12 @@ export default function CheckPoint() {
   return (
       <div className="checkin-page flex flex-col items-center">
         <img src="/images/top.png" alt="Top Banner" className="fixed-top" />
-        <div className="flex flex-col items-center p-6">
+        <div className="flex flex-col items-center p-6 pb-0">
         {/* โลโก้ */}
         <div className="mb-4">
           <img src="/images/LogoMymap.png" alt="Logo" className="w-50 h-auto pt-5" />
         </div>
-
+    <div className="flex flex-col items-center z-10">
         {/* Dropdown เลือกร้าน */}
         <select
           className="w-80 p-2 border border-[#24B6E0] rounded-sm mb-3 bg-white "
@@ -68,14 +68,15 @@ export default function CheckPoint() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
     </div>
+    </div>
         {/* เส้นถนน */}
-        <div className="road relative w-[95%] mb-0 ml-6 mr-6">
-          <div className="px-10 mb-18">
+        <div className="road relative w-[96%] mb-0 ml-6 mr-6">
+          <div className="px-10 mb-25 -mt-6">
           {/* จุดเช็คอิน */}
           {filteredLocations.map((loc, index) => (
             <div
               key={loc.id}
-              className={`relative flex items-center w-50 h-13 my-5.5 rounded-full border-2 shadow-md transition-all cursor-pointer 
+              className={`relative flex items-center w-50 h-12.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
                 ${loc.checkedIn ? "bg-green-200 border-green-500" : "bg-white border-gray-300"} 
                 ${index % 2 === 0 ? "ml-0 flex-row" : "ml-auto flex-row-reverse"}`}
               onClick={() => handleCheckin(loc.id)}
