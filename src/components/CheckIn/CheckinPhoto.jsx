@@ -35,7 +35,7 @@ const CheckinPhoto = () => {
   const handleCloseModal = () => {
     setModalConfirm(false); 
     setModalSuccess(false);
-    navigate('/'); 
+    navigate('/checkpoint'); 
   };
   
 
