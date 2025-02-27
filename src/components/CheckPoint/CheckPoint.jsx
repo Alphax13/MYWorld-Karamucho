@@ -71,7 +71,7 @@ export default function CheckPoint() {
     </div>
         {/* เส้นถนน */}
         <div className="road relative w-[96%] mb-0 ml-6 mr-6">
-          <div className="px-10 mb-25 -mt-6">
+          <div className="px-10 mb-25 -mt-4">
           {/* จุดเช็คอิน */}
           {filteredLocations.map((loc, index) => (
             <div
