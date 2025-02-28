@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fullscreen-nav {
+  position: relative;
+}
+
+.nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nav img{
+    width: 70px;
+    position: fixed;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.wrapper {
+  position: fixed;   
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000000dc;
+  clip-path: circle(25px at calc(100% - -30px) 10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.wrapper.active {
+  clip-path: circle(75%);
+}
+
+.menu-btn {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #000;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn:hover {
+  color: #fff;
+}
+
+.wrapper ul{
+    position: absolute;
+    top: 20%;
+    list-style: none;
+    text-align: right;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .wrapper ul li{
+    margin: 15px 0;
+  }
+  .wrapper .nav-link{
+    right: 10%;
+  }
+
+  .wrapper ul li a{
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+.wrapper ul li a:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 50px;
+  left: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.wrapper ul li a:hover:after {
+  transform: scaleY(1);
+}
+
+.wrapper ul li a:hover {
+  color: #24B6E0;
+}
+.wrapper .social-wrap-header{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  .wrapper .social-wrap {
+    border-bottom: none;
+    color: #fff;
+    display: block;
+    justify-content: center;
+    
+}
+.wrapper .socials{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+.ripper{
+  width: 100%;
+  margin-top: -2rem;
+  padding-bottom: 10px;
+  
+  @media screen and (max-width: 768px){
+    margin-top: -0.5rem;
+  }
+}
+
+.event-button {
+  padding: 5px 15px; 
+  font-size: 18px; 
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(to right, #004A5D, #009BC3);
+  border: 2px solid #28B7E1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ทำให้ปุ่มใหญ่ขึ้นในจอ Tablet */
+@media (min-width: 768px) {
+  .event-button {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+}
+
+/* ทำให้ปุ่มใหญ่ขึ้นในจอ Desktop */
+@media (min-width: 1024px) {
+  .event-button {
+    padding: 14px 28px;
+    font-size: 22px;
+    border-radius: 12px;
+  }
+}
+
+/* เพิ่มเอฟเฟกต์ hover */
+.event-button:hover {
+  background: linear-gradient(to right, #003D4C, #008BB0);
+  transform: scale(1.05);
+}
+
+/* ปุ่มไอคอน Add Line */
+.event-button.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+/* ปรับขนาดไอคอนใน Tablet */
+@media (min-width: 768px) {
+  .event-button img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ปรับขนาดไอคอนใน Desktop */
+@media (min-width: 1024px) {
+  .event-button img {
+    width: 32px;
+    height: 32px;
+  }
+}

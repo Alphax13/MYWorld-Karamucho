@@ -81,7 +81,7 @@ export default function CheckPoint() {
                 ${index % 2 === 0 ? "ml-0 flex-row" : "ml-auto flex-row-reverse"}`}
               onClick={() => handleCheckin(loc.id)}
             >
-              {/* รูปภาพร้าน (ใหญ่ขึ้น) */}
+              {/* รูปภาพร้าน */}
               <div className={`w-14 h-14 rounded-full border-4 overflow-hidden flex-shrink-0 ${loc.checkedIn ? "border-green-500" : "border-gray-300"}`}>
                 <img src={loc.img} alt="ร้าน" className="w-full h-full object-cover" />
               </div>

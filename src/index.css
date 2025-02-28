@@ -8,3 +8,9 @@ body{
   line-height: 1.4;
   z-index: -20;
 }
+
+.landing{
+  background-image: url(../images/paper2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
