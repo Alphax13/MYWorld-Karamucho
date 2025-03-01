@@ -367,7 +367,7 @@
   align-items: center;
   grid-template-columns: 1fr;
   gap: 20px;
-  width: 90%;
+  width: 80%;
   margin: auto;
 }
 
@@ -418,8 +418,8 @@
 }
 @media (min-width: 1024px) { 
   .card {
-      flex: 0 0 280px; /* เพิ่มขนาดการ์ด */
-      height: 400px; /* เพิ่มความสูง */
+      flex: 0 0 380px; /* เพิ่มขนาดการ์ด */
+      height: 500px; /* เพิ่มความสูง */
   }
 
   .card img {
@@ -458,6 +458,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  justify-content: space-between;
   padding: 10px;
   min-height: 80px;
 }
@@ -478,7 +479,7 @@
 }
 
 .card-bottom img {
-  width: 35px; /* ปรับขนาดปุ่มรถเข็น */
+  width: 25px; /* ปรับขนาดปุ่มรถเข็น */
   display: block; /* แสดงปุ่ม */
 }
 

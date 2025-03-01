@@ -8,6 +8,7 @@ import Location from "../components/Landing/Location";
 import Scoreboard from "../components/Landing/Scorebroad";
 import ProductSlider from "../components/Landing/ProductSlider";
 import { loginWithLine } from "../common/userSlice.js/userSlice";
+import MobileMenu from "../components/Landing/MobileMenu";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Home = () => {
       <Location onCheckin={handleCheckin}  />
       <Scoreboard />
       <ProductSlider />
+      <MobileMenu />
     </div>
   );
 };

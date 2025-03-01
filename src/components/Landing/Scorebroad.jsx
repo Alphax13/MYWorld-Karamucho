@@ -77,7 +77,7 @@ const Scoreboard = () => {
                   <img
                     src="/images/king.png"
                     alt="King Crown"
-                    className="absolute -top-2 -right-2 w-4 h-4"
+                    className="absolute -top-6 -right-5 w-10 h-10"
                   />
                 )}
               </div>
