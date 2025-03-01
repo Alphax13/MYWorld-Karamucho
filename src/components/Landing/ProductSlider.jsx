@@ -36,7 +36,7 @@ const ProductSlider = () => {
   return (
     <section className="product" id="Items">
       <div className="rules2">
-        <div className="product-img w-[70%]">
+        <div className="product-img">
           <a href="https://www.myworld-store.com/" target="_blank" rel="noopener noreferrer">
             <img src="images/presenter.png" alt="Presenter" />
           </a>
@@ -44,14 +44,17 @@ const ProductSlider = () => {
         <div className="intro-text">
           <div className="main-text">
             <img src="images/Collection.png" alt="Collection" />
-            <h2>
+            <h2 className="text-left text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl">
               วัยรุ่น MY เป็นได้ง่ายๆ แค่ช้อปสินค้า My World Collection สุดคูล
               <br /> มีสไตล์แบบไม่เหมือนใคร ไอเทมใหม่ที่สายสร้างสรรค์
               <br /> และนักสะสมไม่ควรพลาด
             </h2>
           </div>
+          <div className="w-full h-[2px] bg-gray-300 mt-20" ></div>
         </div>
+        
       </div>
+      
       <div className="all-product">
         <button className="slide-btn left" onClick={slideLeft}>
           &#8592;
