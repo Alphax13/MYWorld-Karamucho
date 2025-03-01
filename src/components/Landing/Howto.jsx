@@ -11,7 +11,7 @@ const Howto = () => {
   const images = [
     { src: "w1.png", text: "เลือกเมนู \n“MY Map ปิ้ง”" },
     { src: "w2.png", text: "ค้นหาร้านหมูกะทะ\nที่ต้องการ" },
-    { src: "w3.png", text: "กดรับสิทธิ์" },
+    { src: "w3.png", text: "กด\nรับสิทธิ์" },
     { src: "w4.png", text: "แสดงคูปองให้พนักงาน" }
   ];
 
@@ -85,7 +85,7 @@ const Howto = () => {
                   <div className="cards flex flex-col items-center gap-5" key={index}>
                     <img src={`images/${img.src}`} alt={`Coin Collect ${index + 1}`} className="w-full h-auto" />
                     <div className="text-content text-black text-center">
-                      <p className="text-3xl font-bold">{img.text}</p>
+                      <p className="text-2xl font-bold">{img.text}</p>
                     </div>
                   </div>
                 ))}

@@ -40,7 +40,7 @@ const ProductSlider = () => {
         </div>
         <div className="intro-text">
           <img src="images/Collection.png" alt="Collection" className="collection-img" />
-          <h2 className="text-left text-base sm:text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="text-left text-base sm:text-xl md:text-xl lg:text-xl">
             วัยรุ่น MY เป็นได้ง่ายๆ แค่ช้อปสินค้า My World Collection สุดคูล<br />
             มีสไตล์แบบไม่เหมือนใคร ไอเทมใหม่ที่สายสร้างสรรค์<br />
             และนักสะสมไม่ควรพลาด

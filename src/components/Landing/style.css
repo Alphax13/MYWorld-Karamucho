@@ -339,7 +339,7 @@
   }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 40px) {
   .rules .container-content .mobileReponses img {
       max-width: 95%;
       max-height: 350px;
@@ -418,8 +418,8 @@
 }
 @media (min-width: 1024px) { 
   .card {
-      flex: 0 0 350px; /* เพิ่มขนาดการ์ด */
-      height: 450px; /* เพิ่มความสูง */
+      flex: 0 0 280px; /* เพิ่มขนาดการ์ด */
+      height: 400px; /* เพิ่มความสูง */
   }
 
   .card img {
