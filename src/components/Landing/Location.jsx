@@ -49,7 +49,7 @@ const locations = [
     id: 7, 
     name: "อาริยา หมูกระทะ", 
     top: { pc: "35%", mobile: "38%" }, 
-    left: { pc: "65%", mobile: "80%" }, 
+    left: { pc: "65%", mobile: "85%" }, 
     image: "/images/pin7.png" 
   },
   { 
