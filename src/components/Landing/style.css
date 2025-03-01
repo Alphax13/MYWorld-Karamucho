@@ -544,3 +544,11 @@
   margin-top: 20px;
   font-size: 1rem;
 }
+
+.text-outline {
+  text-shadow: 
+    -1px -1px 0 #AFEDFF,  
+     1px -1px 0 #AFEDFF,
+    -1px  1px 0 #AFEDFF,
+     1px  1px 0 #AFEDFF;
+}

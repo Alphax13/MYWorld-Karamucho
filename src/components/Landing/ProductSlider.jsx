@@ -34,7 +34,7 @@ const ProductSlider = () => {
     <section className="product">
       <div className="rules2">
         <div className="product-img">
-          <a href="https://www.myworld-store.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.myworld-store.com/" target="_blank" rel="myworld">
             <img src="images/presenter.png" alt="Presenter" />
           </a>
         </div>
