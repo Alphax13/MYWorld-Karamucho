@@ -91,7 +91,7 @@ const Location = ({ onCheckin }) => {
     <img
       src="/images/btncheckin.png"
       onClick={onCheckin}
-      className="cursor-pointer mt-auto pb-0 w-50 lg:w-[200px] xl:w-[250px] z-20"
+      className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
       alt="Go to Check-in"
     />
   </section>
