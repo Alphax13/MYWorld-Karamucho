@@ -2,15 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import liff from "@line/liff";
 
-//for Dev
-//const liffID =``;
 //for use
-const liffID = ``;
+//const liffID = ``;
+//for Dev
+const liffID =`2002643017-R1nmr6gV`;
 
 //BaseUrl Api use
-//const baseUrl =``;
+//const baseUrl =`https://games.myworld-store.com/api`;
 //BaseUrl Api dev
-const baseUrl = ``;
+const baseUrl = `https://games.myworld-store.com/api-dev`;
 
 //Api Store 
 const getprofile = ``;

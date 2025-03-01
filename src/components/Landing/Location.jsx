@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
@@ -67,9 +68,14 @@ const locations = [
     image: "/images/pin9.png" 
   },
 ];
-const Location = () => {
+const Location = ({ onCheckin }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
+
+  const hadlecheckmap = () => {
+    onCheckin(true); 
+  };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,7 +87,6 @@ const Location = () => {
 
   const handleClick = (location) => {
     alert(`คุณกดที่: ${location.name}`);
-    // สามารถเปลี่ยนให้ส่งค่าไปยัง API หรือไปหน้าอื่นได้
   };
 
   return (
@@ -138,8 +143,8 @@ const Location = () => {
     {/* Check-in Button */}
     <img
       src="/images/btncheckin.png"
-      onClick={() => navigate("/checkin")}
-      className="cursor-pointer mt-auto pb-0 w-50 lg:w-[200px] xl:w-[250px]"
+      onClick={onCheckin}
+      className="cursor-pointer mt-auto pb-0 w-50 lg:w-[200px] xl:w-[250px] z-20"
       alt="Go to Check-in"
     />
   </section>
