@@ -9,7 +9,7 @@ const MenuTabs = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <div className="flex justify-center gap-6 mb-6">
+    <div className="flex justify-center gap-6 mb-3">
       {menuItems.map((item) => (
         <div key={item.id} className="flex flex-col items-center">
           <button

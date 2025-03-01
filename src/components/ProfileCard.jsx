@@ -11,7 +11,7 @@ const ProfileCard = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-xl p-2 w-[90%] md:w-[80%] max-w-5xl  m-5 z-10">
+    <div className="bg-white rounded-lg shadow-xl p-2 w-[90%] md:w-[80%] max-w-5xl  m-5 mt-1 z-10">
         <div className="bg-white flex items-center">
 
           <div className="flex-[30%] flex justify-center">

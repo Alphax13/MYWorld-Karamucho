@@ -12,7 +12,7 @@ const Navbar = () => {
       </div>
 
       {/* ✅ Navbar Content */}
-      <div className="relative flex justify-between items-center px-6 py-5 pt-15">
+      <div className="relative flex justify-between items-center px-6 py-5 pt-10">
         {/* ✅ LOGO (คลิกเพื่อกลับ Home) */}
         <img
           src="/images/logo.png"

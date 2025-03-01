@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import ProfileCard from "../components/ProfileCard";
 import MenuTabs from "../components/MenuTabs";
-import Tabs from "../components/Tabs";
 import Redeem from "../components/Redeem";
 import Banner from "../components/Banner";
 import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
-import TradingHistory from "../components/TradingHistory";
-import OrderHistory from "../components/OrderHistory";
 
 const PonitPage = () => {
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
-  const [activeSubTab, setActiveSubTab] = useState("trading"); // ใช้กับ Tabs
+  useEffect(() => {
+    window.scrollTo(0, 0); // ทำให้หน้าอยู่บนสุดเสมอเมื่อเข้า
+  }, []);
 
   return (
     <div className="min-h-screen m-0">
@@ -28,19 +27,11 @@ const PonitPage = () => {
           {activeMenuTab === "redeem" && <Redeem />}
           {activeMenuTab === "history" && <RedeemHistory />}
         </div>
-
-        {/* Tabs */}
-        <div className="w-full max-w-5xl">
-          {/* <Tabs activeTab={activeSubTab} setActiveTab={setActiveSubTab} /> */}
-          <div>
-            {activeSubTab === "trading" && <ProductCard />}
-            {activeSubTab === "tradingHistory" && <TradingHistory />}
-            {activeSubTab === "orderHistory" && <OrderHistory />}
-          </div>
-        </div>
+        <ProductCard />
       </div>
     </div>
   );
 };
 
 export default PonitPage;
+``

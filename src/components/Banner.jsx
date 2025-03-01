@@ -4,7 +4,7 @@ const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full p-4 pt-0">
       {/* ✅ คลิกแล้วไป /boxset */}
       {/* <div
         className="w-full flex justify-center mb-2 cursor-pointer"
