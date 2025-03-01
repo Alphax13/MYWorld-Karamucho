@@ -2,6 +2,10 @@ import { useState } from "react";
 import FullscreenNav from "../components/Landing/FullscreenNav";
 import BannerKV from "../components/Landing/BannerKV";
 import Event from "../components/Landing/Event";
+import Howto from "../components/Landing/Howto";
+import Location from "../components/Landing/Location";
+import Scoreboard from "../components/Landing/Scorebroad";
+import ProductSlider from "../components/Landing/ProductSlider";
 
 const Home = () => {
 
@@ -10,6 +14,10 @@ const Home = () => {
       <FullscreenNav />
       <BannerKV />
       <Event />
+      <Howto />
+      <Location />
+      <Scoreboard />
+      <ProductSlider />
     </div>
   );
 };
