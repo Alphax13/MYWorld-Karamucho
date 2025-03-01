@@ -3,16 +3,44 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./Checkin.css";
 
 const mockBranches = {
-  "Your Camp": ["เขต ลาดพร้าว", "เขต พระนคร", "เขต บางนา"],
-  "Everyday Mokata": ["เขต ปทุมวัน", "เขต ดินแดง"],
-  "อุดมสุข หมูกระทะ": ["เขต ห้วยขวาง", "เขต วัฒนา"],
-  "หมูกระทะ มหานคร": ["เขต บางกะปิ", "เขต จตุจักร"],
-  "ทวีโชค หมูกระทะ": ["เขต สาทร", "เขต บางรัก"],
-  "ม้วนไจ๋ หมูกระทะ": ["เขต ธนบุรี", "เขต บางแค"],
-  "อาริยา หมูกระทะ": ["เขต ดอนเมือง", "เขต หลักสี่"],
-  "71 หมูกระทะ": ["เขต บางซื่อ", "เขต คลองสาน"],
-  "Y.O.U หมูกระทะ": ["เขต พระโขนง", "เขต ราชเทวี"],
+  "Your Camp": { 
+    branches: ["เขต ลาดพร้าว", "เขต พระนคร", "เขต บางนา"],
+    img: "/images/store.png"
+  },
+  "Everyday Mokata": { 
+    branches: ["เขต ปทุมวัน", "เขต ดินแดง"],
+    img: "/images/store.png"
+  },
+  "อุดมสุข หมูกระทะ": { 
+    branches: ["เขต ห้วยขวาง", "เขต วัฒนา"],
+    img: "/images/store.png"
+  },
+  "หมูกระทะ มหานคร": { 
+    branches: ["เขต บางกะปิ", "เขต จตุจักร"],
+    img: "/images/store.png"
+  },
+  "ทวีโชค หมูกระทะ": { 
+    branches: ["เขต สาทร", "เขต บางรัก"],
+    img: "/images/store.png"
+  },
+  "ม้วนไจ๋ หมูกระทะ": { 
+    branches: ["เขต ธนบุรี", "เขต บางแค"],
+    img: "/images/store.png"
+  },
+  "อาริยา หมูกระทะ": { 
+    branches: ["เขต ดอนเมือง", "เขต หลักสี่"],
+    img: "/images/store.png"
+  },
+  "71 หมูกระทะ": { 
+    branches: ["เขต บางซื่อ", "เขต คลองสาน"],
+    img: "/images/store.png"
+  },
+  "Y.O.U หมูกระทะ": { 
+    branches: ["เขต พระโขนง", "เขต ราชเทวี"],
+    img: "/images/store.png"
+  },
 };
+
 
 
 export default function CheckInPage() {
@@ -21,17 +49,19 @@ export default function CheckInPage() {
   const [selectedStore, setSelectedStore] = useState("");
   const [branches, setBranches] = useState([]);
   const [selectedBranch, setSelectedBranch] = useState("");
+  const [storeImg, setStoreImg] = useState("");
 
   useEffect(() => {
     if (location.state?.store) {
       setSelectedStore(location.state.store);
-      setBranches(mockBranches[location.state.store] || []);
+      setBranches(mockBranches[location.state.store]?.branches || []);
+      setStoreImg(mockBranches[location.state.store]?.img || "");
     }
   }, [location.state]);
 
   const handleCheckin = () => {
     navigate("/checkin-photo", { 
-      state: { store: selectedStore, branch: selectedBranch } 
+      state: { store: selectedStore, branch: selectedBranch, img: storeImg } 
     });
   };
 
@@ -44,13 +74,15 @@ export default function CheckInPage() {
           <img src="/images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
 
+
         {/* Dropdown เลือกร้าน */}
         <select
           className="w-60 p-2 border border-[#24B6E0] rounded-sm mb-3 bg-white"
           value={selectedStore}
           onChange={(e) => {
             setSelectedStore(e.target.value);
-            setBranches(mockBranches[e.target.value] || []);
+            setBranches(mockBranches[e.target.value]?.branches || []);
+            setStoreImg(mockBranches[e.target.value]?.img || "");
           }}
         >
           <option value="">เลือกชื่อร้าน</option>
@@ -66,7 +98,7 @@ export default function CheckInPage() {
             value={selectedBranch}
             onChange={(e) => setSelectedBranch(e.target.value)}
           >
-            <option value="">เลือกสาขา</option>
+            <option value="">เลือกเขต</option>
             {branches.map((branch, index) => (
               <option key={index} value={branch}>{branch}</option>
             ))}
