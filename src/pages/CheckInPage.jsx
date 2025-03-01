@@ -1,62 +1,65 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Checkin.css";
 
-const branches = [
-  { id: 1, store: "ร้านติดมันส์", branch: "สาขาลาดพร้าว", checkedIn: true, img: "https://img2.pic.in.th/pic/352320731_561705366169527_3023594235131633488_n.jpg" },
-  { id: 2, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "https://img2.pic.in.th/pic/352320731_561705366169527_3023594235131633488_n.jpg" },
-  { id: 3, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "https://img2.pic.in.th/pic/352320731_561705366169527_3023594235131633488_n.jpg" },
-  { id: 4, store: "ร้านหมูย่าง", branch: "สาขาพระราม 3", checkedIn: false, img: "https://img2.pic.in.th/pic/352320731_561705366169527_3023594235131633488_n.jpg" },
-  { id: 5, store: "ร้านหมูย่าง", branch: "สาขาสาทร", checkedIn: false, img: "https://img2.pic.in.th/pic/352320731_561705366169527_3023594235131633488_n.jpg" },
-  { id: 6, store: "ร้านไก่ทอด", branch: "สาขาธารี", checkedIn: false, img: "https://img2.pic.in.th/pic/352320731_561705366169527_3023594235131633488_n.jpg" },
-];
-
-const stores = [...new Set(branches.map(branch => branch.store))];
-
-export default function CheckInPage() {
-  const [selectedStore, setSelectedStore] = useState("");
-  const [selectedBranch, setSelectedBranch] = useState("");
-  const navigate = useNavigate();
-
-  const filteredBranches = branches.filter(branch => branch.store === selectedStore);
-
-  const handleCheckin = () => {
-  const selectedBranchData = branches.find(branch => branch.store === selectedStore && branch.branch === selectedBranch);
-  
-  // ส่งข้อมูลทั้งหมดรวมถึง img ไปยังหน้า checkin-photo
-  navigate("/checkin-photo", { 
-    state: { 
-      store: selectedStore, 
-      branch: selectedBranch, 
-      img: selectedBranchData ? selectedBranchData.img : "" // เพิ่มการส่งค่าภาพ
-    }
-  });
+const mockBranches = {
+  "Your Camp": ["เขต ลาดพร้าว", "เขต พระนคร", "เขต บางนา"],
+  "Everyday Mokata": ["เขต ปทุมวัน", "เขต ดินแดง"],
+  "อุดมสุข หมูกระทะ": ["เขต ห้วยขวาง", "เขต วัฒนา"],
+  "หมูกระทะ มหานคร": ["เขต บางกะปิ", "เขต จตุจักร"],
+  "ทวีโชค หมูกระทะ": ["เขต สาทร", "เขต บางรัก"],
+  "ม้วนไจ๋ หมูกระทะ": ["เขต ธนบุรี", "เขต บางแค"],
+  "อาริยา หมูกระทะ": ["เขต ดอนเมือง", "เขต หลักสี่"],
+  "71 หมูกระทะ": ["เขต บางซื่อ", "เขต คลองสาน"],
+  "Y.O.U หมูกระทะ": ["เขต พระโขนง", "เขต ราชเทวี"],
 };
 
+
+export default function CheckInPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [selectedStore, setSelectedStore] = useState("");
+  const [branches, setBranches] = useState([]);
+  const [selectedBranch, setSelectedBranch] = useState("");
+
+  useEffect(() => {
+    if (location.state?.store) {
+      setSelectedStore(location.state.store);
+      setBranches(mockBranches[location.state.store] || []);
+    }
+  }, [location.state]);
+
+  const handleCheckin = () => {
+    navigate("/checkin-photo", { 
+      state: { store: selectedStore, branch: selectedBranch } 
+    });
+  };
 
   return (
     <div className="checkin-container p-5 flex flex-col items-center">
       <img src="/images/top.png" alt="Top Banner" className="fixed-top" />
 
-      <div className="branch-box p-6 mt-15">
+      <div className="branch-box p-6 mt-10 z-100">
         <div className="logo-container">
           <img src="/images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
 
+        {/* Dropdown เลือกร้าน */}
         <select
           className="w-60 p-2 border border-[#24B6E0] rounded-sm mb-3 bg-white"
           value={selectedStore}
           onChange={(e) => {
             setSelectedStore(e.target.value);
-            setSelectedBranch("");
+            setBranches(mockBranches[e.target.value] || []);
           }}
         >
           <option value="">เลือกชื่อร้าน</option>
-          {stores.map((store, index) => (
+          {Object.keys(mockBranches).map((store, index) => (
             <option key={index} value={store}>{store}</option>
           ))}
         </select>
 
+        {/* Dropdown เลือกสาขา */}
         {selectedStore && (
           <select
             className="w-60 p-2 border border-[#24B6E0] rounded-sm mb-3 bg-white"
@@ -64,16 +67,15 @@ export default function CheckInPage() {
             onChange={(e) => setSelectedBranch(e.target.value)}
           >
             <option value="">เลือกสาขา</option>
-            {filteredBranches.map((branch) => (
-              <option key={branch.id} value={branch.branch}>
-                {branch.branch}
-              </option>
+            {branches.map((branch, index) => (
+              <option key={index} value={branch}>{branch}</option>
             ))}
           </select>
         )}
 
+        {/* ปุ่ม Check-in */}
         <button 
-          className="checkin-button w-full bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-4 py-2 rounded-lg border border-[#28B7E1] shadow-md hover:from-[#003D4C] hover:to-[#008BB0] transition duration-300" 
+          className="checkin-button w-full bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-4 py-2 rounded-lg border border-[#28B7E1] shadow-md"
           disabled={!selectedBranch}
           onClick={handleCheckin}
         >

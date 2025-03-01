@@ -6,6 +6,7 @@ import Howto from "../components/Landing/Howto";
 import Location from "../components/Landing/Location";
 import Scoreboard from "../components/Landing/Scorebroad";
 import ProductSlider from "../components/Landing/ProductSlider";
+import MobileMenu from "../components/Landing/MobileMenu";
 
 const Home = () => {
 
@@ -18,6 +19,7 @@ const Home = () => {
       <Location />
       <Scoreboard />
       <ProductSlider />
+      <MobileMenu />
     </div>
   );
 };
