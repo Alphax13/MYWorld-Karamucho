@@ -98,7 +98,7 @@ export default function CheckPoint() {
             <div className="text-gray-500 text-center mt-6">ไม่พบสาขา</div>
           )}
         </div>
-          <img src="/images/bottom.png" alt="Bottom Banner" className="fixed-bottom2" />
+        {/*  <img src="/images/bottom.png" alt="Bottom Banner" className="fixed-bottom2" /> */}
         </div>
       </div>
   );

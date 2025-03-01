@@ -58,12 +58,12 @@ const CheckinPhoto = () => {
         </div>
 
         {/* แสดงภาพที่ได้รับจาก state */}
-        {img && <img src={img} alt={`${store} ${branch}`} className="w-[80%]" />}
+        {img && <img src={img} alt={`${store} ${branch}`} className="w-[50%]" />}
 
         <p className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">{store} {branch}</p>
 
         {/* ส่วนสำหรับการอัปโหลดรูปภาพ */}
-        <div className="flex flex-col items-center m-4 bg-[#28B7E1]/10 w-[90%]">
+        <div className="flex flex-col items-center m-4 bg-[#28B7E1]/10 w-[85%]">
           <label htmlFor="doc" className="flex items-center rounded-lg border border-[#28B7E1] border-dashed cursor-pointer w-full">
             {!selectedImage && (
               <div className="space-y-2 w-full flex flex-col items-center justify-center p-5">

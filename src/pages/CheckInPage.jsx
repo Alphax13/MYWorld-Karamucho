@@ -38,7 +38,7 @@ export default function CheckInPage() {
     <div className="checkin-container p-5 flex flex-col items-center">
       <img src="/images/top.png" alt="Top Banner" className="fixed-top" />
 
-      <div className="branch-box p-6">
+      <div className="branch-box p-6 mt-15">
         <div className="logo-container">
           <img src="/images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
