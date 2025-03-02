@@ -52,7 +52,7 @@ const BoxsetPage = () => {
         {/* Banner */}
         <div className="w-full flex justify-center mb-2 cursor-pointer p-4">
           <img
-            src="/images/Boxset.png"
+            src="images/Boxset.png"
             alt="Boxset Banner"
             className="w-full max-w-5xl rounded-lg shadow-md"
           />

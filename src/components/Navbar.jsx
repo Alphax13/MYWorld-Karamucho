@@ -8,14 +8,14 @@ const Navbar = () => {
     <div className="w-full relative">
       {/* ✅ Effect Background */}
       <div className="absolute top-0 w-full max-h-[100%] md:max-h-[100px] lg:max-h-[150px] overflow-hidden">
-        <img src="/images/ripped.png" alt="Effect" className="w-full object-bottom" />
+        <img src="images/ripped.png" alt="Effect" className="w-full object-bottom" />
       </div>
 
       {/* ✅ Navbar Content */}
       <div className="relative flex justify-between items-center px-6 py-5 pt-10">
         {/* ✅ LOGO (คลิกเพื่อกลับ Home) */}
         <img
-          src="/images/logo.png"
+          src="images/logo.png"
           alt="Left Logo"
           className="h-12 w-auto cursor-pointer"
           onClick={() => navigate("/")} // 🔹 กลับไปหน้า Home

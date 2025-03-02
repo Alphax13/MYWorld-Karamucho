@@ -16,7 +16,7 @@ const ProductCard = () => {
     const mockProducts = [
       {
         id: 1,
-        logo: "/images/logo.png",
+        logo: "images/logo.png",
         image: "https://pub-db43af8979b24c69b0cd012deea952fd.r2.dev/1706633807",
         title: "แลก 39,000 COINS",
         description: "รับ MY FROSTY TUMBLER ฟรี 1 ชิ้น",
@@ -30,7 +30,7 @@ const ProductCard = () => {
           <div
             key={product.id}
             className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
-                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
                        onClick={() => navigate("/boxset")}
           >
          
@@ -56,12 +56,12 @@ const ProductCard = () => {
           <div
             key={product.id}
             className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
-                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
                        onClick={() => navigate("/boxset",{ state: { coupon_id: product.coupon_id } })}
           >
          
             <div className="flex justify-center items-center flex-[20%]">
-              <img src='/images/logo.png' alt="Logo" className="h-10 w-10 object-contain" />
+              <img src='images/logo.png' alt="Logo" className="h-10 w-10 object-contain" />
             </div>
   
 

@@ -18,8 +18,8 @@ const BoxCard = ({ selectedStore }) => {
   const mockProducts = [
     {
       id: 1,
-      logo: "/images/logo.png",
-      image: "/images/iconboxset.png",
+      logo: "images/logo.png",
+      image: "images/iconboxset.png",
       title: "แลก 15,000 COIN",
       description: "รับ My Box Set หมูกะทะ ฟรี 1 ชิ้น",
       price: "100",
@@ -27,8 +27,8 @@ const BoxCard = ({ selectedStore }) => {
     },
     {
       id: 2,
-      logo: "/images/logo.png",
-      image: "/images/iconboxset.png",
+      logo: "images/logo.png",
+      image: "images/iconboxset.png",
       title: "แลก 20,000 COIN",
       description: "รับ My Box Set พิเศษ ฟรี 1 ชิ้น",
       price: "150",
@@ -36,8 +36,8 @@ const BoxCard = ({ selectedStore }) => {
     },
     {
       id: 3,
-      logo: "/images/logo.png",
-      image: "/images/iconboxset.png",
+      logo: "images/logo.png",
+      image: "images/iconboxset.png",
       title: "แลก 25,000 COIN",
       description: "รับ My Box Set VIP ฟรี 1 ชิ้น",
       price: "200",
@@ -57,7 +57,7 @@ const BoxCard = ({ selectedStore }) => {
           <div
             key={product.id}
             className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
-                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
           >
             <div className="flex justify-center items-center flex-[20%]">
               <img src={product.logo} alt="Logo" className="h-10 w-10 object-contain" />
