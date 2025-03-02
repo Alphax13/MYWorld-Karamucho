@@ -53,7 +53,7 @@ const Howto = () => {
 
       {/* rulesTitle */}
       <div id="rulesTitle" className="w-full flex justify-center relative">
-        <img src="images/how.png" alt="Coin Icon" className="w-[70%] xl:w-[650px] pb-10" />
+        <img src="images/how.png" alt="Coin Icon" className="w-[65%] xl:w-[650px] pt-5 pb-10" />
         <img
           src="/images/lo-left.png"
           className="absolute -left-5 bottom-[-50px] w-[100px] sm:w-[50px] md:w-[120px] lg:w-[200px] xl:w-[350px]"
