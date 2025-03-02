@@ -38,28 +38,19 @@ function App() {
       }
     }
 
-    // if (storedCustomerInfo && !customerinfo) {
-    //   try {
-    //     const parsedCustomerInfo = JSON.parse(storedCustomerInfo);
-    //     dispatch(setCustomerInfo(parsedCustomerInfo));
-    //   } catch (error) {
-    //     console.error("Failed to parse customerinfo from localStorage:", error);
-    //   }
-    // }
-
-    if (isCheckinActive || !profile) {
+    if (isCheckinActive && !profile) {
       dispatch(loginWithLine());
     }
+  }, [dispatch, isCheckinActive, customerinfo]);
 
-    if (profile && !customerinfo) {
+  useEffect(()=>{
+    if (profile) {
       dispatch(getuser({ profile }));
-      console.log('customerinfo')
     }
-
-  }, [dispatch, profile, isCheckinActive, customerinfo]);
+  },[dispatch , profile])
 
   return (
-    <Router>
+    <Router basename="/testLanding">
       <Routes>
         <Route path="/" element={<Home onCheckin={handleCheckin} />} />
         <Route path="/point" element={<PonitPage />} />
