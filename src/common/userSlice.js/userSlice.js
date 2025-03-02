@@ -111,6 +111,22 @@ export const getbranchrestaurant = createAsyncThunk(
     }
 );
 
+export const getrestaurant = createAsyncThunk(
+    'user/getrestaurants',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(restaurantUrl,
+                {
+                    headers: {},
+                }
+            );
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data : error.message);
+        }
+    }
+);
+
 export const checkin = createAsyncThunk(
     'user/checkins',
     async (formdata, { rejectWithValue }) => {
@@ -214,6 +230,7 @@ const userSlice = createSlice({
         leaderboardsData: [],
         checkinHisesData: [],
         allCouponshowsData: [],
+        getrestaurantData: [],
         getbranchrestaurantData: [],
     },
     reducers: {
@@ -263,6 +280,9 @@ const userSlice = createSlice({
             })
             .addCase(getbranchrestaurant.fulfilled, (state, action) => {
                 state.getbranchrestaurantData = action.payload;
+            })
+            .addCase(getrestaurant.fulfilled, (state, action) => {
+                state.getrestaurantData = action.payload;
             })
             .addCase(allCouponshow.fulfilled, (state, action) => {
                 state.allCouponshowsData = action.payload;

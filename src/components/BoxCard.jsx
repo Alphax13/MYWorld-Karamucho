@@ -1,9 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation  } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getrestaurant, checkin } from "../common/userSlice.js/userSlice";
 
 const BoxCard = ({ selectedStore }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const restaurantData = useSelector((state)=> state.user.getrestaurantData)
 
-  // Mockup ข้อมูลสินค้า
+  useEffect(()=>{
+    dispatch(getrestaurant())
+  },[dispatch])
+
+  console.log(restaurantData)
+
   const mockProducts = [
     {
       id: 1,
