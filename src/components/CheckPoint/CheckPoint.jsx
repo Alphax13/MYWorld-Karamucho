@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
+import { useDispatch , useSelector } from "react-redux";
+import { checkinHis } from "../../common/userSlice.js/userSlice";
 import "./CheckPoint.css";
 
 const allLocations = [
@@ -18,9 +20,18 @@ const allLocations = [
 const storeList = [...new Set(allLocations.map((loc) => loc.store))]; // ดึงชื่อร้านทั้งหมด
 
 export default function CheckPoint() {
+  const dispatch = useDispatch();
+  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
+  const pointData = useSelector((state)=> state.user.checkinHisesData)
   const [selectedStore, setSelectedStore] = useState(storeList[0]); // ร้านเริ่มต้น
   const [searchTerm, setSearchTerm] = useState("");
   const [checkins, setCheckins] = useState(allLocations);
+
+  useEffect(()=>{
+    dispatch(checkinHis({customerid:customerinfo?.customer_id}))
+  },[dispatch,customerinfo])
+
+  console.log(customerinfo?.customer_id)
 
   // กรองร้านที่ถูกเลือก + ค้นหาสาขา
   const filteredLocations = checkins.filter(
@@ -73,28 +84,26 @@ export default function CheckPoint() {
         <div className="road relative w-[96%] mb-0 ml-6 mr-6">
           <div className="px-10 mb-25 -mt-4">
           {/* จุดเช็คอิน */}
-          {filteredLocations.map((loc, index) => (
+          {pointData.map((loc, index) => (
             <div
               key={loc.id}
               className={`relative flex items-center w-50 h-12.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
-                ${loc.checkedIn ? "bg-green-200 border-green-500" : "bg-white border-gray-300"} 
+                ${loc.status === 'approved' ? "bg-green-200 border-green-500" : "bg-white border-gray-300"} 
                 ${index % 2 === 0 ? "ml-0 flex-row" : "ml-auto flex-row-reverse"}`}
               onClick={() => handleCheckin(loc.id)}
             >
               {/* รูปภาพร้าน */}
-              <div className={`w-14 h-14 rounded-full border-4 overflow-hidden flex-shrink-0 ${loc.checkedIn ? "border-green-500" : "border-gray-300"}`}>
-                <img src={loc.img} alt="ร้าน" className="w-full h-full object-cover" />
+              <div className={`w-14 h-14 rounded-full border-4 overflow-hidden flex-shrink-0 ${loc.status === 'approved' ? "border-green-500" : "border-gray-300"}`}>
+                <img src={loc.restaurant.image_url} alt="ร้าน" className="w-full h-full object-cover" />
               </div>
-
-              {/* ข้อมูลร้าน */}
               <div className="mx-2 text-left">
-                <div className="text-lg font-bold -mb-1.5">{loc.store}</div>
-                <div className="text-base text-gray-600">{loc.branch}</div>
+                <div className="text-lg font-bold -mb-1.5">{loc.restaurant.name}</div>
+                <div className="text-base text-gray-600">สาขา {loc.restaurant_branch.name}</div>
               </div>
             </div>
           ))}
 
-          {filteredLocations.length === 0 && (
+          {pointData.length === 0 && (
             <div className="text-gray-500 text-center mt-6">ไม่พบสาขา</div>
           )}
         </div>

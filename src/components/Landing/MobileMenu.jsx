@@ -3,9 +3,11 @@ import { LuUserPen } from "react-icons/lu";
 import { GrMapLocation } from "react-icons/gr";
 import { RiCoupon3Line } from "react-icons/ri";
 import { PiCoinsDuotone } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const MobileMenu = () => {
   const [active, setActive] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg rounded-lg flex md:hidden z-100">
@@ -23,7 +25,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 2 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => setActive(2)}
+        onClick={() => navigate("/checkin")}
       >
         <span className="text-lg"><GrMapLocation /></span>
         <span className="text-sm text-black font-bold">Check-in</span>
@@ -43,7 +45,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 4 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => setActive(4)}
+        onClick={() => navigate("/Banner")}
       >
         <span className="text-lg"><PiCoinsDuotone /></span>
         <span className="text-sm text-black font-bold">ล่า COINS</span>

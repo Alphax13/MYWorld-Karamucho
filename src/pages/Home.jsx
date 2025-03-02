@@ -7,34 +7,26 @@ import Howto from "../components/Landing/Howto";
 import Location from "../components/Landing/Location";
 import Scoreboard from "../components/Landing/Scorebroad";
 import ProductSlider from "../components/Landing/ProductSlider";
-import { loginWithLine } from "../common/userSlice.js/userSlice";
 import MobileMenu from "../components/Landing/MobileMenu";
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
-  const [isCheckinActive, setIsCheckinActive] = useState(false);
+const Home = ({onCheckin}) => {
+  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
 
-  const handleCheckin = () => {
-    setIsCheckinActive(!isCheckinActive);
-  };
-
-  // useEffect(()=>{
-  //   if(isCheckinActive = true && !profile){
-  //     dispatch(loginWithLine())
-  //   }
-  // },[dispatch , isCheckinActive ,profile])
+  console.log('profile :',profile)
+  console.log('customerinfo :',customerinfo)
 
   return (
     <div className="landing min-h-screen m-0">
-      <FullscreenNav />
+      {!customerinfo &&
+      <><FullscreenNav />
       <BannerKV />
       <Event />
-      <Howto />
-      <Location onCheckin={handleCheckin}  />
+      <Howto /></>}
+      <Location onCheckin={onCheckin}  />
       <Scoreboard />
-      <ProductSlider />
-      <MobileMenu />
+      {!customerinfo &&
+      <><ProductSlider /></>}
+      {customerinfo && <MobileMenu />}
     </div>
   );
 };

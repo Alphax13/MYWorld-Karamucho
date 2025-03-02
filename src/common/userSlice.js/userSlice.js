@@ -5,15 +5,22 @@ import liff from "@line/liff";
 //for use
 //const liffID = ``;
 //for Dev
-const liffID =`2002643017-R1nmr6gV`;
+const liffID = `2002643017-R1nmr6gV`;
 
 //BaseUrl Api use
 //const baseUrl =`https://games.myworld-store.com/api`;
 //BaseUrl Api dev
 const baseUrl = `https://games.myworld-store.com/api-dev`;
 
+const leaderboardUrl = `https://games.myworld-store.com/mymap/leaderboard.json`
+
 //Api Store 
-const getprofile = ``;
+const getprofile = `${baseUrl}/customers/customerInfo`;
+const restaurantUrl = `${baseUrl}/mymap/restaurantOptions`
+const restaurantOptionUrl = (restaurant_id) => `${baseUrl}/mymap/restaurantBranchOptions?restaurant_id=${restaurant_id}`
+const checkinUrl = `${baseUrl}/mymap/checkInMyMap`
+const uploadUrl = `${baseUrl}/mymap/uploadfile`
+const checkinHisUrl = (customerid) => `${baseUrl}/mymap/checkInHistory/${customerid}`
 
 function mobileCheck() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -35,7 +42,6 @@ export const loginWithLine = createAsyncThunk(
         try {
             const urlParams = new URLSearchParams(window.location.search);
             const redirected = urlParams.get("redirected");
-            const referral = urlParams.get("referral");
 
             if (mobileCheck() && !redirected) {
                 let redirectUrl = `line://app/${liffID}?redirected=true`;
@@ -44,7 +50,6 @@ export const loginWithLine = createAsyncThunk(
             }
 
             await liff.init({ liffId: `${liffID}` });
-
             if (!liff.isLoggedIn()) {
                 liff.login();
                 return;
@@ -53,7 +58,7 @@ export const loginWithLine = createAsyncThunk(
             const profile = await liff.getProfile();
             console.log("Profile retrieved:", profile);
 
-            dispatch(getuser({ profile, referral }));
+            dispatch(getuser({ profile }))
 
             return profile;
 
@@ -70,8 +75,8 @@ export const getuser = createAsyncThunk(
         try {
             const response = await axios.post(getprofile,
                 {
-                    name: profile.displayName,
                     customer_id: profile.userId,
+                    name: profile.displayName,
                     picture: profile.pictureUrl,
                 },
                 {
@@ -87,36 +92,76 @@ export const getuser = createAsyncThunk(
     }
 );
 
-// สำรอง
-// export const loginWithLine = createAsyncThunk(
-//   "user/loginWithLine",
-//   async (_, { rejectWithValue, dispatch }) => {
-//     try {
-//       // เริ่มต้น LIFF ด้วย liffId ของคุณ
-//       await liff.init({ liffId: `${lineid}` });
+export const getbranchrestaurant = createAsyncThunk(
+    'user/getbranchrestaurants',
+    async ({ restaurant_id }, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(restaurantOptionUrl(restaurant_id),
+                {
+                    headers: {},
+                }
+            );
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data : error.message);
+        }
+    }
+);
 
-//       // ตรวจสอบว่าผู้ใช้ได้เข้าสู่ระบบแล้วหรือไม่
-//       if (!liff.isLoggedIn()) {
-//         liff.login();
-//         return;
-//       }
+export const checkin = createAsyncThunk(
+    'user/checkins',
+    async (formdata, { rejectWithValue }) => {
+        try {
+            const response = await axios.post(checkinUrl, formdata,
+                {
+                    headers: {},
+                }
+            );
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data : error.message);
+        }
+    }
+);
 
-//       // ดึงข้อมูลโปรไฟล์ของผู้ใช้
-//       const profile = await liff.getProfile();
-//       console.log("Profile retrieved:", profile);
+export const upload = createAsyncThunk(
+    'user/uploads',
+    async (formData, { rejectWithValue }) => {
+        try {
+            const response = await axios.post(uploadUrl, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data', // ใช้ Content-Type สำหรับการอัปโหลดไฟล์
+                },
+            });
+            return response.data; // ส่งข้อมูลที่ได้กลับมา
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data : error.message);
+        }
+    }
+);
 
-//       // ส่งข้อมูลโปรไฟล์ไปยัง Redux store
-//       dispatch(getuser({ profile }));
 
-//       return profile;
+export const leaderboard = createAsyncThunk('user/leaderboards', async (_, { rejectWithValue }) => {
+    try {
+        const response = await axios.get(leaderboardUrl, {
+            headers: {}
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data : error.message);
+    }
+});
 
-//     } catch (error) {
-//       console.error("Login error:", error);
-//       return rejectWithValue(error.message || "Failed to login with LINE");
-//     }
-//   }
-// );
-
+export const checkinHis = createAsyncThunk('user/checkinHises', async ({customerid}, { rejectWithValue }) => {
+    try {
+        const response = await axios.get(checkinHisUrl(customerid), {
+            headers: {}
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data : error.message);
+    }
+});
 
 const userSlice = createSlice({
     name: 'user',
@@ -127,12 +172,18 @@ const userSlice = createSlice({
         isLoading: false,
         error: null,
         response: null,
+        leaderboardsData: [],
+        checkinHisesData: [],
+        getbranchrestaurantData: [],
     },
     reducers: {
         resetState: (state) => {
             state.isLoading = false;
             state.error = null;
             state.response = null;
+        },
+        setCustomerInfo: (state, action) => {
+            state.profile = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -142,7 +193,8 @@ const userSlice = createSlice({
                 state.error = null;
             })
             .addCase(loginWithLine.fulfilled, (state, action) => {
-                console.log("Action payload on success:", action.payload);
+                console.log("profile Info:", action.payload);
+                localStorage.setItem('profile', JSON.stringify(action.payload));
                 if (action.payload) {
                     state.isLoading = false;
                     state.profile = action.payload;
@@ -161,43 +213,30 @@ const userSlice = createSlice({
             })
             .addCase(getuser.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.customerinfo = action.payload.user;
-                console.log("Customer Info:", action.payload.user);
+                state.customerinfo = action.payload;
+                console.log("Customer Info:", action.payload);
+                localStorage.setItem('customerinfo', JSON.stringify(action.payload));
             })
             .addCase(getuser.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             })
-        // .addCase(gethistory.fulfilled, (state, action) => {
-        //   state.isLoading = false;
-        //   state.gethistorysData = action.payload; // Debug payload structure
-        //   console.log("Fetched history data:", action.payload);
-        // })
-        // .addCase(gethistory.rejected, (state, action) => {
-        //   state.isLoading = false;
-        //   state.error = action.payload;
-        //   console.error("Error fetching history:", action.payload);
-        // })
-        // .addMatcher(
-        //   (action) => action.type.endsWith("/fulfilled"),
-        //   (state, action) => {
-        //     if (action.type.includes("gethistorys")) {
-        //       state.gethistorysData = action.payload;
-        //     } else if (action.type.includes("gethistoryrewards")) {
-        //       state.gethistoryrewards = action.payload;
-        //     } else if (action.type.includes("getscroesDatas")) {
-        //       state.getscroesDatas = action.payload;
-        //     } else if (action.type.includes("getClouds")) {
-        //       state.getClouds = action.payload;
-        //     } else if (action.type.includes("getspecialEvents")) {
-        //       state.getspecialEvents = action.payload;
-        //     } else if (action.type.includes("getrewards")) {
-        //       state.getrewardslist = action.payload;
-        //     }
-        //   }
-        // )
+            .addCase(getbranchrestaurant.fulfilled, (state, action) => {
+                state.getbranchrestaurantData = action.payload;  // เก็บข้อมูลที่ได้รับจาก API
+            })
+            .addMatcher(
+                (action) => action.type.endsWith("/fulfilled"),
+                (state, action) => {
+                    if (action.type.includes("leaderboards")) {
+                        state.leaderboardsData = action.payload;
+                    } else if (action.type.includes("checkinHises")) {
+                        state.checkinHisesData = action.payload;
+                    }
+                }
+            )
     },
 });
 
+export const { setCustomerInfo, resetState } = userSlice.actions;
+
 export default userSlice.reducer;
-export const { resetState } = userSlice.actions;

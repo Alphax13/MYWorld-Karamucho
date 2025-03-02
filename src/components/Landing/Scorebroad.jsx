@@ -1,21 +1,6 @@
 import React, { useState, useEffect } from "react";
-
-const rawScores = [
-  { name: "Name1", score: 17, profile: "/images/profile1.png", timestamp: 1 },
-  { name: "Name2", score: 22, profile: "/images/profile1.png", timestamp: 2 },
-  { name: "Name3", score: 17, profile: "/images/profile1.png", timestamp: 3 },
-  { name: "Name4", score: 18, profile: "/images/profile1.png", timestamp: 4 },
-  { name: "Name5", score: 16, profile: "/images/profile1.png", timestamp: 5 },
-  { name: "Name6", score: 15, profile: "/images/profile1.png", timestamp: 6 },
-  { name: "Name7", score: 15, profile: "/images/profile1.png", timestamp: 7 },
-  { name: "Name8", score: 55, profile: "/images/profile1.png", timestamp: 8 },
-  { name: "Name9", score: 50, profile: "/images/profile1.png", timestamp: 9 },
-  { name: "Name10", score: 13, profile: "/images/profile1.png", timestamp: 10 },
-  { name: "Name11", score: 13, profile: "/images/profile1.png", timestamp: 10 },
-  { name: "Name12", score: 3, profile: "/images/profile1.png", timestamp: 10 },
-  { name: "Name13", score: 13, profile: "/images/profile1.png", timestamp: 10 },
-  { name: "Name14", score: 10, profile: "/images/profile1.png", timestamp: 10 },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { leaderboard } from "../../common/userSlice.js/userSlice";
 
 const icons = {
   1: "/images/r1.png",
@@ -23,32 +8,42 @@ const icons = {
   3: "/images/r3.png",
 };
 
-const sortedScores = rawScores
-  .sort((a, b) => b.score - a.score || a.timestamp - b.timestamp)
-  .map((player, index) => ({
-    ...player,
-    rank: index + 1,
-    icon: icons[index + 1] || null,
-    king: index === 0,
-  }));
-
 const Scoreboard = () => {
+  const dispatch = useDispatch();
+  const leaderData = useSelector((state) => state.user.leaderboardsData);
   const [visibleScores, setVisibleScores] = useState(window.innerWidth < 768 ? 5 : 10);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    dispatch(leaderboard());
+  }, [dispatch]);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
       setVisibleScores(window.innerWidth < 768 ? 5 : 10);
     };
-    
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const showMore = () => {
-    setVisibleScores((prev) => Math.min(prev + 5, sortedScores.length));
+    setVisibleScores((prev) => Math.min(prev + 5, leaderData.length));
   };
+
+  const sortedLeaderData = leaderData
+    ? [...leaderData]
+        .sort((a, b) => b.total - a.total || b.diff_seconds - a.diff_seconds)
+        .map((player, index) => ({
+          name: player.customer.name,
+          score: player.total,
+          profile: player.customer.picture,
+          rank: index + 1,
+          icon: icons[index + 1] || null,
+          king: index === 0,
+        }))
+    : [];
 
   return (
     <div className="p-5 pb-10 flex flex-col items-center bg-[url(/images/bgbroad.png)] bg-left-top bg-no-repeat bg-cover">
@@ -57,7 +52,7 @@ const Scoreboard = () => {
       </div>
 
       <div className="w-full max-w-2xl p-4 flex flex-col gap-4 overflow-hidden transition-all duration-300">
-        {sortedScores.slice(0, visibleScores).map((player) => (
+        {sortedLeaderData.slice(0, visibleScores).map((player) => (
           <div
             key={player.name}
             className="flex justify-between items-center bg-white px-2 py-2 border-b last:border-none shadow-md shadow-black"
@@ -89,8 +84,11 @@ const Scoreboard = () => {
           </div>
         ))}
       </div>
-      {visibleScores < sortedScores.length && (
-        <button className="mt-4 text-white underline" onClick={showMore}>ดูรายชื่อเพิ่มเติม</button>
+
+      {visibleScores < sortedLeaderData.length && (
+        <button className="mt-4 text-white underline" onClick={showMore}>
+          ดูรายชื่อเพิ่มเติม
+        </button>
       )}
     </div>
   );

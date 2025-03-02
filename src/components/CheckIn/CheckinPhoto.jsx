@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; 
+import { useDispatch , useSelector } from 'react-redux';
+import { upload } from '../../common/userSlice.js/userSlice';
 import { IoChevronBack } from "react-icons/io5";
 import { HiOutlinePhoto } from "react-icons/hi2";
 import { FaLocationDot } from "react-icons/fa6";
@@ -7,10 +9,12 @@ import moment from "moment"; // วันที่และเวลา
 
 const CheckinPhoto = () => {
   const location = useLocation(); 
+  const dispatch = useDispatch()
   const navigate = useNavigate(); 
   const { store, branch, img } = location.state || {}; 
 
   const [selectedImage, setSelectedImage] = useState(null); 
+  const [selectedImage2, setSelectedImage2] = useState(null); 
   const [modalConfirm, setModalConfirm] = useState(false); // Modal ยืนยัน
   const [modalSuccess, setModalSuccess] = useState(false); // Modal แสดงผล Check-in
 
@@ -18,16 +22,28 @@ const CheckinPhoto = () => {
     const file = e.target.files[0]; 
     if (file && file.type.startsWith('image/')) { 
       setSelectedImage(URL.createObjectURL(file)); 
+      setSelectedImage2(file); 
     } else {
       alert("กรุณาเลือกไฟล์ภาพเท่านั้น");
     }
   };
 
+  console.log(selectedImage2)
+
   const handleCheckin = () => {
     setModalConfirm(true); // เปิด Modal ยืนยัน Check-in
+    
   };
 
   const handleConfirmCheckin = () => {
+    const formData = new FormData();
+    formData.append('file', selectedImage2); // ไฟล์รูปภาพ
+    // formData.append('customer_id', 'Ue4e4d43f756e05e22ee71f09d5ff65cd');
+    // formData.append('restaurant_id', mockBranches[selectedStore]?.id);
+    // formData.append('branch_id', branchdata.find((branch) => branch.name === selectedBranch)?.branch_id);
+
+    // เรียก dispatch ของ action upload
+    dispatch(upload(formData));
     setModalConfirm(false); // ปิด Modal ยืนยัน
     setModalSuccess(true); // เปิด Modal แสดงผล Check-in
   };
