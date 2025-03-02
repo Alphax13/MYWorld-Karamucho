@@ -44,10 +44,10 @@ function App() {
   }, [dispatch, isCheckinActive, customerinfo]);
 
   useEffect(()=>{
-    if (profile) {
+    if (profile && !customerinfo) {
       dispatch(getuser({ profile }));
     }
-  },[dispatch , profile])
+  },[dispatch , profile ,customerinfo])
 
   return (
     <Router basename="/testLanding">

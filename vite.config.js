@@ -9,5 +9,5 @@ export default defineConfig(({ command }) => ({
     react(),
     basicSsl()
   ],
-  base: command === 'serve' ? '/' : '/testLanding/', // '/' ตอน dev, '/testLanding/' ตอน build
+  base: '/testLanding/', // '/' ตอน dev, '/testLanding/' ตอน build
 }))
