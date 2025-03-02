@@ -35,11 +35,11 @@ const ProductSlider = () => {
       <div className="rules2">
         <div className="product-img">
           <a href="https://www.myworld-store.com/" target="_blank" rel="myworld">
-            <img src="images/presenter.png" alt="Presenter" />
+            <img src="/images/resenter.png" alt="Presenter" />
           </a>
         </div>
         <div className="intro-text">
-          <img src="images/Collection.png" alt="Collection" className="collection-img" />
+          <img src="/images/ollection.png" alt="Collection" className="collection-img" />
           <h2 className="text-left text-base sm:text-xl md:text-xl lg:text-xl">
             วัยรุ่น MY เป็นได้ง่ายๆ แค่ช้อปสินค้า My World Collection สุดคูล<br />
             มีสไตล์แบบไม่เหมือนใคร ไอเทมใหม่ที่สายสร้างสรรค์<br />
@@ -62,7 +62,7 @@ const ProductSlider = () => {
                 </div>
                 <div className="card-bottom">
                     <div className="cart-icon">
-                    <img src="images/cart-button.png" alt="Cart" />
+                    <img src="/images/art-button.png" alt="Cart" />
                     </div>
                 </div>
                 </div>
