@@ -54,7 +54,6 @@ const CheckinPhoto = () => {
     navigate('/checkpoint'); 
   };
   
-
   const currentDate = moment().format("DD MMM YYYY เวลา HH:mm น."); 
 
   return (

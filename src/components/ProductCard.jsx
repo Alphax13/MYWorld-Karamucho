@@ -1,7 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import React,{useState , useEffect} from "react";
+import { useDispatch , useSelector } from "react-redux";
+import { allCouponshow } from "../common/userSlice.js/userSlice";
 
 const ProductCard = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
+  const CouponData = useSelector((state)=> state.user.allCouponshowsData)
+
+  useEffect(()=>{
+    dispatch(allCouponshow())
+  },[dispatch])
+
     // ✅ Mockup ข้อมูลสินค้า
     const mockProducts = [
       {
@@ -11,23 +21,7 @@ const ProductCard = () => {
         title: "แลก 39,000 COINS",
         description: "รับ MY FROSTY TUMBLER ฟรี 1 ชิ้น",
         price: "390",
-      },
-      {
-        id: 2,
-        logo: "/images/logo.png",
-        image: "https://pub-db43af8979b24c69b0cd012deea952fd.r2.dev/1706633807",
-        title: "แลก 29,000 COINS",
-        description: "รับ MY WORLD CUP ฟรี 1 ชิ้น",
-        price: "290",
-      },
-      {
-        id: 3,
-        logo: "/images/logo.png",
-        image: "https://pub-db43af8979b24c69b0cd012deea952fd.r2.dev/1706633807",
-        title: "แลก 19,000 COINS",
-        description: "รับ MY EXCLUSIVE KEYCHAIN ฟรี 1 ชิ้น",
-        price: "190",
-      },
+      }
     ];
   
     return (
@@ -54,6 +48,31 @@ const ProductCard = () => {
               <h2 className="text-lg font-bold text-black">{product.title}</h2>
               <p className="text-black text-sm">{product.description}</p>
               <p className="text-black text-sm">{product.price} บาท</p>
+            </div>
+          </div>
+        ))}
+
+        {CouponData.map((product) => (
+          <div
+            key={product.id}
+            className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
+                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       onClick={() => navigate("/boxset",{ state: { coupon_id: product.coupon_id } })}
+          >
+         
+            <div className="flex justify-center items-center flex-[20%]">
+              <img src='/images/logo.png' alt="Logo" className="h-10 w-10 object-contain" />
+            </div>
+  
+
+            <div className="flex justify-center items-center flex-[20%]">
+              <img src={!product.image_url ? product.image_url : 'https://placehold.co/400' } alt={product.name} className="h-28 object-contain" />
+            </div>
+  
+
+            <div className="flex-[65%] pl-4">
+              <h2 className="text-lg font-bold text-black">{product.name}</h2>
+              <p className="text-black text-sm">{product.detail}</p>
             </div>
           </div>
         ))}

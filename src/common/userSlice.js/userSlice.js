@@ -21,6 +21,9 @@ const restaurantOptionUrl = (restaurant_id) => `${baseUrl}/mymap/restaurantBranc
 const checkinUrl = `${baseUrl}/mymap/checkInMyMap`
 const uploadUrl = `${baseUrl}/mymap/uploadfile`
 const checkinHisUrl = (customerid) => `${baseUrl}/mymap/checkInHistory/${customerid}`
+const allCouponUrl = (customerid) => `${baseUrl}/mymap/allCoupon/${customerid}`
+const updateinfoURL = `${baseUrl}/customers/customerInfo/updatePhone`
+const couponUrl = `${baseUrl}/mymap/couponOptions`
 
 function mobileCheck() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -152,10 +155,45 @@ export const leaderboard = createAsyncThunk('user/leaderboards', async (_, { rej
     }
 });
 
-export const checkinHis = createAsyncThunk('user/checkinHises', async ({customerid}, { rejectWithValue }) => {
+export const checkinHis = createAsyncThunk('user/checkinHises', async ({ customerid }, { rejectWithValue }) => {
     try {
         const response = await axios.get(checkinHisUrl(customerid), {
             headers: {}
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data : error.message);
+    }
+});
+
+export const allCoupon = createAsyncThunk('user/allCoupons', async ({ customerid }, { rejectWithValue }) => {
+    try {
+        const response = await axios.get(allCouponUrl(customerid), {
+            headers: {}
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data : error.message);
+    }
+});
+
+export const allCouponshow = createAsyncThunk('user/allCouponshows', async (_, { rejectWithValue }) => {
+    try {
+        const response = await axios.get(couponUrl, {
+            headers: {}
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data : error.message);
+    }
+});
+
+export const updateinfo = createAsyncThunk('user/updateinfos', async (formData, { rejectWithValue }) => {
+    try {
+        const response = await axios.put(updateinfoURL, formData, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
         });
         return response.data;
     } catch (error) {
@@ -172,8 +210,10 @@ const userSlice = createSlice({
         isLoading: false,
         error: null,
         response: null,
+        allCouponsData: [],
         leaderboardsData: [],
         checkinHisesData: [],
+        allCouponshowsData: [],
         getbranchrestaurantData: [],
     },
     reducers: {
@@ -222,7 +262,21 @@ const userSlice = createSlice({
                 state.error = action.payload;
             })
             .addCase(getbranchrestaurant.fulfilled, (state, action) => {
-                state.getbranchrestaurantData = action.payload;  // เก็บข้อมูลที่ได้รับจาก API
+                state.getbranchrestaurantData = action.payload;
+            })
+            .addCase(allCouponshow.fulfilled, (state, action) => {
+                state.allCouponshowsData = action.payload;
+            })
+            .addCase(updateinfo.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateinfo.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.customerinfo = action.payload;
+            })
+            .addCase(updateinfo.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
             })
             .addMatcher(
                 (action) => action.type.endsWith("/fulfilled"),
@@ -231,6 +285,8 @@ const userSlice = createSlice({
                         state.leaderboardsData = action.payload;
                     } else if (action.type.includes("checkinHises")) {
                         state.checkinHisesData = action.payload;
+                    } else if (action.type.includes("allCoupons")) {
+                        state.allCouponsData = action.payload;
                     }
                 }
             )

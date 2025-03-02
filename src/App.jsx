@@ -58,7 +58,6 @@ function App() {
 
   }, [dispatch, profile, isCheckinActive, customerinfo]);
 
-
   return (
     <Router>
       <Routes>

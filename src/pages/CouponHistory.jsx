@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch , useSelector } from "react-redux";
+import { allCoupon } from "../common/userSlice.js/userSlice";
 import Navbar from "../components/Navbar";
 import { IoChevronBack } from "react-icons/io5";
 
 const CouponHistory = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
+  const allCouponData =useSelector((state)=> state.user.allCouponsData)
+
+  useEffect(()=>{
+    if(customerinfo){
+      dispatch(allCoupon({customerid:customerinfo?.customer_id}))
+    }
+  },[dispatch , customerinfo])
 
   // ✅ Mockup ข้อมูลคูปอง
   const [coupons, setCoupons] = useState([
@@ -85,8 +96,8 @@ const CouponHistory = () => {
       </div>
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {coupons.length > 0 ? (
-          coupons.map((coupon) => (
+        {allCouponData.length > 0 ? (
+          allCouponData.map((coupon) => (
             <div
               key={coupon.id}
               className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
