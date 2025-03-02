@@ -9,7 +9,7 @@ const Banner = () => {
         className="w-full flex justify-center cursor-pointer"
         onClick={() => navigate("/checkin")}
       >
-        <img src="/images/Checkin.png" alt="Checkin Banner" className="w-full max-w-5xl rounded-lg shadow-md" />
+        <img src="images/Checkin.png" alt="Checkin Banner" className="w-full max-w-5xl rounded-lg shadow-md" />
       </div>
     </div>
   );

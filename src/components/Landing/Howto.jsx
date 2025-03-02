@@ -36,7 +36,7 @@ const Howto = () => {
       id="rules"
       className="mx-auto flex flex-col items-center"
       style={{
-        backgroundImage: isMobile ? "url('/images/rulesmb.png')" : "url('/images/rules.png')",
+        backgroundImage: isMobile ? "url('images/rulesmb.png')" : "url('images/rules.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -44,9 +44,9 @@ const Howto = () => {
     >
       {/* รูปหลัก + รูปตกแต่งข้างขวา */}
       <div className="relative w-full flex justify-center items-center -mb-5 p-0">
-        <img src="/images/ripmap.png" className="ripper w-full" />
+        <img src="images/ripmap.png" className="ripper w-full" />
         <img
-          src="/images/lo-right.png"
+          src="images/lo-right.png"
           className="absolute right-0 w-[140px] sm:w-[200px] md:w-[240px] lg:w-[320px] xl:w-[420px]"
         />
       </div>
@@ -55,7 +55,7 @@ const Howto = () => {
       <div id="rulesTitle" className="w-full flex justify-center relative">
         <img src="images/how.png" alt="Coin Icon" className="w-[65%] xl:w-[650px] pt-5 pb-10" />
         <img
-          src="/images/lo-left.png"
+          src="images/lo-left.png"
           className="absolute -left-5 bottom-[-50px] w-[100px] sm:w-[50px] md:w-[120px] lg:w-[200px] xl:w-[350px]"
         />
       </div>
@@ -95,7 +95,7 @@ const Howto = () => {
 
           {/* ปุ่ม Check ไปหน้า /point */}
           <img
-            src="/images/check.png"
+            src="images/check.png"
             onClick={() => navigate("/point")}
             className="cursor-pointer mx-auto pb-10 flex flex-col items-center w-60 lg:w-[200px] xl:w-[350px]"
             alt="Go to Point"

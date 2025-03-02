@@ -13,8 +13,8 @@ const redeem = () => {
       date: "2024-02-24 12:30",
       expireTime: new Date().getTime() + 48 * 60 * 60 * 1000, // 48 ชม. นับจากตอนที่แลก
       status: "active",
-      logo: "/images/logo.png",
-      image: "/images/iconboxset.png",
+      logo: "images/logo.png",
+      image: "images/iconboxset.png",
       title: "แลก 15,000 COIN",
       description: "รับ My Box Set ฟรี 1 ชิ้น",
     },
@@ -58,7 +58,7 @@ const redeem = () => {
             <div
               key={coupon.id}
               className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                         bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
             >
               {/* Overlay สีเทา เมื่อคูปองถูกใช้ หรือ หมดอายุ */}
               {coupon.status !== "active" && (

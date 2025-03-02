@@ -12,8 +12,8 @@ const RedeemHistory = () => {
       store: "ชาบูชิ รัชดา",
       date: "2024-02-22 15:45",
       status: "used",
-      logo: "/images/logo.png",
-      image: "/images/iconboxset.png",
+      logo: "images/logo.png",
+      image: "images/iconboxset.png",
       title: "แลก 20,000 COIN",
       description: "รับ My Box Set พิเศษ ฟรี 1 ชิ้น",
     },
@@ -23,8 +23,8 @@ const RedeemHistory = () => {
       store: "BBQ Plaza รัชดา",
       date: "2024-02-20 18:00",
       status: "expired",
-      logo: "/images/logo.png",
-      image: "/images/iconboxset.png",
+      logo: "images/logo.png",
+      image: "images/iconboxset.png",
       title: "แลก 25,000 COIN",
       description: "รับ My Box Set VIP ฟรี 1 ชิ้น",
     },
@@ -68,7 +68,7 @@ const RedeemHistory = () => {
             <div
             key={coupon.id}
             className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
           >
             {/* Overlay สีเทา เมื่อคูปองถูกใช้ หรือ หมดอายุ */}
             {coupon.status !== "active" && (

@@ -1,5 +1,5 @@
 .checkin-page {
-  background-image: url(/images/bg.png);
+  background-image: url(images/bg.png);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -10,7 +10,7 @@
 }
 
 .road {
-  background-image: url(/images/Road.png);
+  background-image: url(images/Road.png);
   background-position: top center;
   background-size: contain;
   background-repeat: repeat-y;

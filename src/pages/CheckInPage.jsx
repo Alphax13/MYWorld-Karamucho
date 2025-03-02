@@ -7,47 +7,47 @@ import "./Checkin.css";
 const mockBranches = {
   "Y.O.U หมูกระทะ": {
     branches: ["เขต พระโขนง", "เขต ราชเทวี"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 1
   },
   "Your Camp": {
     branches: ["เขต ลาดพร้าว", "เขต พระนคร", "เขต บางนา"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 2
   },
   "Everyday Mokata": {
     branches: ["เขต ปทุมวัน", "เขต ดินแดง"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 3
   },
   "อุดมสุข หมูกระทะ": {
     branches: ["เขต ห้วยขวาง", "เขต วัฒนา"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 4
   },
   "หมูกระทะ มหานคร": {
     branches: ["เขต บางกะปิ", "เขต จตุจักร"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 5
   },
   "ทวีโชค หมูกระทะ": {
     branches: ["เขต สาทร", "เขต บางรัก"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 6
   },
   "ม้วนไจ๋ หมูกระทะ": {
     branches: ["เขต ธนบุรี", "เขต บางแค"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 7
   },
   "อาริยา หมูกระทะ": {
     branches: ["เขต ดอนเมือง", "เขต หลักสี่"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 8
   },
   "71 หมูกระทะ": {
     branches: ["เขต บางซื่อ", "เขต คลองสาน"],
-    img: "/images/store.png",
+    img: "images/store.png",
     id: 9
   },
 };
@@ -102,11 +102,11 @@ export default function CheckInPage() {
 
   return (
     <div className="checkin-container p-5 flex flex-col items-center">
-      <img src="/images/top.png" alt="Top Banner" className="fixed-top" />
+      <img src="images/top.png" alt="Top Banner" className="fixed-top" />
 
       <div className="branch-box p-6 mt-10 z-100">
         <div className="logo-container">
-          <img src="/images/LogoMymap.png" alt="Logo" className="logo" />
+          <img src="images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
 
         {/* Dropdown เลือกร้าน */}
@@ -166,10 +166,10 @@ export default function CheckInPage() {
       </div>
 
       <div className="absolute bottom-0 -translate-x-1/3 -translate-y-10 flex flex-col items-center">
-        <img src="/images/element.png" alt="Extra Element" className="w-60 z-0" />
+        <img src="images/element.png" alt="Extra Element" className="w-60 z-0" />
       </div>
       <div className="fixed-bottom w-full">
-        <img src="/images/bottom.png" alt="Bottom" className="w-full z-50" />
+        <img src="images/bottom.png" alt="Bottom" className="w-full z-50" />
       </div>
     </div>
   );
