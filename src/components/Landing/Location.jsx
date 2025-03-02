@@ -53,7 +53,7 @@ const Location = ({ onCheckin }) => {
       </div>
 
       {/* Text Section - แสดงเฉพาะ Mobile */}
-      <div className="text-center mt-4 px-4 max-w-[900px] block lg:hidden">
+      <div className="text-center mt-2 px-6 max-w-[900px] block lg:hidden">
         <h2 className="text-white font-bold text-lg lg:text-xl pb-2">
           ผู้ร่วมแคมเปญที่ เชคพ้อยท์ร้าน
         </h2>
@@ -62,7 +62,7 @@ const Location = ({ onCheckin }) => {
         </h1>
 
         {/* Influencer Image */}
-        <img src="/images/infu.png" className="w-full max-w-[600px] mx-auto mt-4 lg:mt-6" />
+        <img src="/images/infu.png" className="w-full max-w-[600px]" />
       </div>
 
       {/* Map Pins */}
