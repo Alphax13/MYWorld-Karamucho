@@ -67,7 +67,7 @@ const ProfileCard = () => {
   useEffect(() => {
     if (customerinfo?.first_name && customerinfo?.last_name && customerinfo?.email && customerinfo?.birthdate) {
       setIsModalVisible(false);
-    }else {
+    } else {
       setIsModalVisible(true);
     }
 
@@ -128,11 +128,11 @@ const ProfileCard = () => {
         <div className="flex-[70%]">
           <h1 className="text-xl font-semibold">{userName}</h1>
           <div className="flex items-center text-lg my-2">
-            <img src="/images/icon/coin.svg" alt="Coins" className="w-6 h-6 mr-2" />
+            <img src="images/icon/coin.svg" alt="Coins" className="w-6 h-6 mr-2" />
             <span className="text-gray-700">Point: {points}</span>
           </div>
           <div className="flex items-center text-lg my-2">
-            <img src="/images/icon/game.svg" alt="Coins" className="w-6 h-6 mr-2" />
+            <img src="images/icon/game.svg" alt="Coins" className="w-6 h-6 mr-2" />
             <span className="text-gray-700">Game point: {gamePoints}</span>
           </div>
         </div>

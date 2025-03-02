@@ -15,7 +15,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 1 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => setActive(1)}
+        onClick={() => navigate("/point")}
       >
         <span className="text-lg"><LuUserPen /></span>
         <span className="text-sm text-black font-bold">สมัครสมาชิก</span>
@@ -35,7 +35,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 3 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => setActive(3)}
+        onClick={() => navigate("/coupon-history")}
       >
         <span className="text-lg"><RiCoupon3Line /></span>
         <span className="text-sm text-black font-bold">คูปอง</span>
@@ -45,7 +45,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 4 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => navigate("/point")}
+        onClick={() => window.open("https://myworld-virtual-store.com/", "_blank", "noopener noreferrer")}
       >
         <span className="text-lg"><PiCoinsDuotone /></span>
         <span className="text-sm text-black font-bold">ล่า COINS</span>

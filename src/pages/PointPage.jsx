@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useDispatch , useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import ProfileCard from "../components/ProfileCard";
 import MenuTabs from "../components/MenuTabs";
@@ -8,10 +9,17 @@ import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
 
 const PonitPage = () => {
+  const dispatch = useDispatch();
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
+
   useEffect(() => {
     window.scrollTo(0, 0); // ทำให้หน้าอยู่บนสุดเสมอเมื่อเข้า
   }, []);
+
+  useEffect(()=>{
+    console.log(customerinfo);
+  },[customerinfo])
 
   return (
     <div className="min-h-screen m-0">

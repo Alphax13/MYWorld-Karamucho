@@ -3,9 +3,9 @@ import axios from "axios";
 import liff from "@line/liff";
 
 //for use
-//const liffID = ``;
+//const liffID = `2002643017-R1nmr6gV`;
 //for Dev
-const liffID = `2002643017-R1nmr6gV`;
+const liffID = `2002643017-BVvlLdjG`;
 
 //BaseUrl Api use
 //const baseUrl =`https://games.myworld-store.com/api`;
@@ -24,6 +24,7 @@ const checkinHisUrl = (customerid) => `${baseUrl}/mymap/checkInHistory/${custome
 const allCouponUrl = (customerid) => `${baseUrl}/mymap/allCoupon/${customerid}`
 const updateinfoURL = `${baseUrl}/customers/customerInfo/updatePhone`
 const couponUrl = `${baseUrl}/mymap/couponOptions`
+const usecouponUrl = `${baseUrl}/mymap/useCoupon`
 
 function mobileCheck() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;

@@ -16,7 +16,7 @@ const ProductCard = () => {
     const mockProducts = [
       {
         id: 1,
-        logo: "/images/logo.png",
+        logo: "images/logo.png",
         image: "https://pub-db43af8979b24c69b0cd012deea952fd.r2.dev/1706633807",
         title: "แลก 39,000 COINS",
         description: "รับ MY FROSTY TUMBLER ฟรี 1 ชิ้น",
@@ -26,11 +26,11 @@ const ProductCard = () => {
   
     return (
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-0">
-        {mockProducts.map((product) => (
+        {/* {mockProducts.map((product) => (
           <div
             key={product.id}
             className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
-                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
                        onClick={() => navigate("/boxset")}
           >
          
@@ -50,18 +50,18 @@ const ProductCard = () => {
               <p className="text-black text-sm">{product.price} บาท</p>
             </div>
           </div>
-        ))}
+        ))} */}
 
         {CouponData.map((product) => (
           <div
             key={product.id}
             className="flex items-center rounded-lg shadow-lg relative overflow-hidden 
-                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center"
+                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
                        onClick={() => navigate("/boxset",{ state: { coupon_id: product.coupon_id } })}
           >
          
             <div className="flex justify-center items-center flex-[20%]">
-              <img src='/images/logo.png' alt="Logo" className="h-10 w-10 object-contain" />
+              <img src='images/logo.png' alt="Logo" className="h-10 w-10 object-contain" />
             </div>
   
 
