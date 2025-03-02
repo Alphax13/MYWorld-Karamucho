@@ -80,9 +80,9 @@ export default function CheckPoint() {
         />
     </div>
     </div>
-        {/* เส้นถนน */}
-        <div className="road relative w-[96%] mb-0 ml-6 mr-6">
-          <div className="px-10 mb-25 -mt-4">
+      {/* เส้นถนน */}
+      <div className="road relative ">
+        <div className="px-10 mb-25 -mt-4">
           {/* จุดเช็คอิน */}
           {pointData.map((loc, index) => (
             <div
@@ -107,8 +107,7 @@ export default function CheckPoint() {
             <div className="text-gray-500 text-center mt-6">ไม่พบสาขา</div>
           )}
         </div>
-        {/*  <img src="/images/bottom.png" alt="Bottom Banner" className="fixed-bottom2" /> */}
-        </div>
+      </div>
       </div>
   );
 }

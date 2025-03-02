@@ -9,13 +9,18 @@
   width: 100%;
 }
 
-.road{
+.road {
   background-image: url(/images/Road.png);
-  background-position: top;
+  background-position: top center;
   background-size: contain;
   background-repeat: repeat-y;
-
+  width: 98%;
+  min-height: 75vh;
+  height: auto;
+  
 }
+
+
 
 .fixed-top,
 .fixed-bottom2 {
