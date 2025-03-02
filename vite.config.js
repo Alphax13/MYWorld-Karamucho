@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import basicSsl from '@vitejs/plugin-basic-ssl' 
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     tailwindcss(),
     react(),
     basicSsl()
   ],
-  base: '/testLanding/',
-})
+  base: command === 'serve' ? '/' : '/testLanding/', // '/' ตอน dev, '/testLanding/' ตอน build
+}))

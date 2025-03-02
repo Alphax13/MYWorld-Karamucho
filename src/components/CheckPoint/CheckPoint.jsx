@@ -4,17 +4,17 @@ import { checkinHis } from "../../common/userSlice.js/userSlice";
 import "./CheckPoint.css";
 
 const allLocations = [
-  { id: 1, store: "ร้านติดมันส์", branch: "สาขาลาดพร้าว", checkedIn: true, img: "images/store.png" },
-  { id: 2, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "images/store.png" },
-  { id: 3, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: true, img: "images/store.png" },
-  { id: 4, store: "ร้านติดมันส์", branch: "สาขาพระราม 3", checkedIn: false, img: "images/store.png" },
-  { id: 5, store: "ร้านติดมันส์", branch: "สาขาสาทร", checkedIn: false, img: "images/store.png" },
-  { id: 6, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "images/store.png" },
-  { id: 7, store: "ร้านติดมันส์", branch: "สาขาธารี2", checkedIn: false, img: "images/store.png" },
-  { id: 8, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "images/store.png" },
-  { id: 9, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: true, img: "images/store.png" },
-  { id: 10, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "images/store.png" },
-  { id: 11, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "images/store.png" },
+  { id: 1, store: "ร้านติดมันส์", branch: "สาขาลาดพร้าว", checkedIn: true, img: "/images/store.png" },
+  { id: 2, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/store.png" },
+  { id: 3, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
+  { id: 4, store: "ร้านติดมันส์", branch: "สาขาพระราม 3", checkedIn: false, img: "/images/store.png" },
+  { id: 5, store: "ร้านติดมันส์", branch: "สาขาสาทร", checkedIn: false, img: "/images/store.png" },
+  { id: 6, store: "ร้านติดมันส์", branch: "สาขาธารี", checkedIn: false, img: "/images/store.png" },
+  { id: 7, store: "ร้านติดมันส์", branch: "สาขาธารี2", checkedIn: false, img: "/images/store.png" },
+  { id: 8, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 9, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: true, img: "/images/store.png" },
+  { id: 10, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
+  { id: 11, store: "ร้านติดมันส์", branch: "สาขาสุขุมวิท", checkedIn: false, img: "/images/store.png" },
 ];
 
 const storeList = [...new Set(allLocations.map((loc) => loc.store))]; // ดึงชื่อร้านทั้งหมด
@@ -50,11 +50,11 @@ export default function CheckPoint() {
 
   return (
       <div className="checkin-page flex flex-col items-center">
-        <img src="images/top.png" alt="Top Banner" className="fixed-top" />
+        <img src="/images/top.png" alt="Top Banner" className="fixed-top" />
         <div className="flex flex-col items-center p-6 pb-0">
         {/* โลโก้ */}
         <div className="mb-4">
-          <img src="images/LogoMymap.png" alt="Logo" className="w-50 h-auto pt-5" />
+          <img src="/images/LogoMymap.png" alt="Logo" className="w-50 h-auto pt-5" />
         </div>
     <div className="flex flex-col items-center z-10">
         {/* Dropdown เลือกร้าน */}

@@ -56,7 +56,7 @@ const PrivilegePage = () => {
         <h2 className="text-center text-base font-semibold flex-1">รายละเอียดคูปอง</h2>
       </div>
 
-      <div className="bg-[url('images/paper2.png')] bg-cover bg-no-repeat p-6 flex justify-center items-center">
+      <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-6 flex justify-center items-center">
   {/* ✅ กล่องแสดงรายละเอียดสินค้า */}
   <div className="shadow-md w-50 text-center border border-black m-4">
     <img src={product.image} alt={product.title} className="w-48 mx-auto" />

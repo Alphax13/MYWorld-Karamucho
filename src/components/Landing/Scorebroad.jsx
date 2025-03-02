@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { leaderboard } from "../../common/userSlice.js/userSlice";
 
 const icons = {
-  1: "images/r1.png",
-  2: "images/r2.png",
-  3: "images/r3.png",
+  1: "/images/r1.png",
+  2: "/images/r2.png",
+  3: "/images/r3.png",
 };
 
 const Scoreboard = () => {
@@ -46,9 +46,9 @@ const Scoreboard = () => {
     : [];
 
   return (
-    <div className="p-5 pb-10 flex flex-col items-center bg-[url(images/bgbroad.png)] bg-left-top bg-no-repeat bg-cover">
+    <div className="p-5 pb-10 flex flex-col items-center bg-[url(/images/bgbroad.png)] bg-left-top bg-no-repeat bg-cover">
       <div className="text-center text-white font-bold text-2xl mb-4">
-        <img src="images/score.png" alt="Logo" className="mx-auto w-40" />
+        <img src="/images/score.png" alt="Logo" className="mx-auto w-40" />
       </div>
 
       <div className="w-full max-w-2xl p-4 flex flex-col gap-4 overflow-hidden transition-all duration-300">
@@ -70,7 +70,7 @@ const Scoreboard = () => {
                 <img src={player.profile} alt="Profile" className="w-8 h-8 rounded-full" />
                 {player.king && (
                   <img
-                    src="images/king.png"
+                    src="/images/king.png"
                     alt="King Crown"
                     className="absolute -top-6 -right-5 w-10 h-10"
                   />

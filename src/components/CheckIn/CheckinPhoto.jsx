@@ -58,11 +58,11 @@ const CheckinPhoto = () => {
 
   return (
     <div className="checkin-container p-6 flex flex-col items-center">
-      <img src="images/top.png" alt="Top Banner" className="fixed-top" />
+      <img src="/images/top.png" alt="Top Banner" className="fixed-top" />
 
       <div className="branch-box z-10">
         <div className="logo-container">
-          <img src="images/LogoMymap.png" alt="Logo" className="logo" />
+          <img src="/images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
         
         <div className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">
@@ -155,10 +155,10 @@ const CheckinPhoto = () => {
       )}
 
       <div className="absolute bottom-0 -translate-x-1/3 -translate-y-10 flex flex-col items-center">
-        <img src="images/element.png" alt="Extra Element" className="w-60 z-0" />
+        <img src="/images/element.png" alt="Extra Element" className="w-60 z-0" />
       </div>
       <div className="fixed-bottom w-full">
-        <img src="images/bottom.png" alt="Bottom" className="w-full z-50" />
+        <img src="/images/bottom.png" alt="Bottom" className="w-full z-50" />
       </div>
     </div>
   );
