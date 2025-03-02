@@ -59,23 +59,25 @@ const Location = ({ onCheckin }) => {
       {/* Ripper Image - แสดงเฉพาะ Mobile */}
       <img src="images/ripper2.png" className="w-full mx-auto block lg:hidden" />
 
-      {/* Logo Section - แสดงเฉพาะ Mobile */}
-      <div className="logo-container mt-15 justify-center block lg:hidden">
-        <img src="images/LogoMymap.png" alt="Logo" className="w-40 lg:w-48" />
-      </div>
+{/* Logo Section - แสดงเฉพาะ Mobile */}
+<div className="logo-container w-full flex flex-col items-center justify-center mt-15 block lg:hidden">
+  <img src="images/LogoMymap.png" alt="Logo" className="w-40 lg:w-48" />
+  
+  {/* Text Section - แสดงเฉพาะ Mobile */}
+  <div className="text-center px-6 max-w-[900px]">
+    <h2 className="text-white font-bold text-lg lg:text-xl pb-2">
+      ผู้ร่วมแคมเปญที่ เชคพ้อยท์ร้าน
+    </h2>
+    <h1 className="text-black font-bold text-2xl lg:text-3xl text-outline">
+      ครบ 10 ร้านก่อน 100 คนแรก
+    </h1>
+  
+    {/* Influencer Image */}
+    <img src="images/infu.png" className="w-full max-w-[600px] mt-3" />
+  </div>
+</div>
 
-      {/* Text Section - แสดงเฉพาะ Mobile */}
-      <div className="text-center mt-2 px-6 max-w-[900px] block lg:hidden">
-        <h2 className="text-white font-bold text-lg lg:text-xl pb-2">
-          ผู้ร่วมแคมเปญที่ เชคพ้อยท์ร้าน
-        </h2>
-        <h1 className="text-black font-bold text-2xl lg:text-3xl text-outline">
-          ครบ 10 ร้านก่อน 100 คนแรก
-        </h1>
 
-        {/* Influencer Image */}
-        <img src="images/infu.png" className="w-full max-w-[600px]" />
-      </div>
 
       {/* Map Pins */}
       <div className="absolute top-30 left-0 w-full h-full z-20">
