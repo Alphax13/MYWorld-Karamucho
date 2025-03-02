@@ -8,9 +8,9 @@ import liff from "@line/liff";
 const liffID = `2002643017-R1nmr6gV`;
 
 //BaseUrl Api use
-//const baseUrl =`https://games.myworld-store.com/api`;
+const baseUrl =`https://games.myworld-store.com/api`;
 //BaseUrl Api dev
-const baseUrl = `https://games.myworld-store.com/api-dev`;
+//const baseUrl = `https://games.myworld-store.com/api-dev`;
 
 const leaderboardUrl = `https://games.myworld-store.com/mymap/leaderboard.json`
 
