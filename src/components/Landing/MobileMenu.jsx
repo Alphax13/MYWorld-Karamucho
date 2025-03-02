@@ -35,7 +35,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 3 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => setActive(3)}
+        onClick={() => navigate("/coupon-history")}
       >
         <span className="text-lg"><RiCoupon3Line /></span>
         <span className="text-sm text-black font-bold">คูปอง</span>

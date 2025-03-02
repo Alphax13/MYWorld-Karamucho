@@ -24,6 +24,7 @@ const checkinHisUrl = (customerid) => `${baseUrl}/mymap/checkInHistory/${custome
 const allCouponUrl = (customerid) => `${baseUrl}/mymap/allCoupon/${customerid}`
 const updateinfoURL = `${baseUrl}/customers/customerInfo/updatePhone`
 const couponUrl = `${baseUrl}/mymap/couponOptions`
+const usecouponUrl = `${baseUrl}/mymap/useCoupon`
 
 function mobileCheck() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
