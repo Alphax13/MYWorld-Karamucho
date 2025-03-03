@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 const Event = () => {
   const navigate = useNavigate();
-
+  
   return (
     <div className="w-full relative mb-10">
       <img src="images/rip.png" className="ripper w-full" />

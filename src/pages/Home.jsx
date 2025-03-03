@@ -26,7 +26,7 @@ const Home = ({onCheckin}) => {
       <Scoreboard />
       {!customerinfo &&
       <><ProductSlider /></>}
-      <MobileMenu />
+      {customerinfo && <MobileMenu />}
     </div>
   );
 };
