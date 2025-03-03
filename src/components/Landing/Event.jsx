@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import "./style.css";
 
 const Event = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full relative mb-10">
       <img src="images/rip.png" className="ripper w-full" />
@@ -22,6 +24,7 @@ const Event = () => {
           initial={{ y: 0 }}
           animate={{ y: [0, -20, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          onClick={() => navigate("/point")}
         >
           คลิกเลย
         </motion.button>
