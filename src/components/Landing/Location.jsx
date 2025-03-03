@@ -17,19 +17,11 @@ const locations = [
 ];
 
 const Location = ({ onCheckin }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
 
-  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
-    useEffect(()=>{
-      console.log(customerinfo)
-    },[customerinfo])
-
-  const hadlecheckmap = () => {
-    onCheckin(true); 
-  };
-
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,44 +32,36 @@ const Location = ({ onCheckin }) => {
   }, []);
 
   const handleClick = (location) => {
-    navigate("/checkin", { state: { store: location.name ,id: location.id } });
+    navigate("/checkin", { state: { store: location.name, id: location.id } });
   };
 
   return (
     <section
       className="relative flex flex-col items-center justify-between w-full"
       style={{
-        backgroundImage: isMobile
-          ? "url('images/sectionMB.png')"
-          : "url('images/sectionPC.png')",
+        backgroundImage: isMobile ? "url('images/sectionMB.png')" : "url('images/sectionPC.png')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         minHeight: "100vh",
       }}
     >
-      {/* Ripper Image - แสดงเฉพาะ Mobile */}
       <img src="images/ripper2.png" className="w-full mx-auto block lg:hidden" />
 
-      {/* Logo Section - แสดงเฉพาะ Mobile */}
       <div className="logo-container mt-15 justify-center block lg:hidden">
         <img src="images/LogoMymap.png" alt="Logo" className="w-40 lg:w-48" />
       </div>
 
-      {/* Text Section - แสดงเฉพาะ Mobile */}
-      <div className="text-center mt-2 px-6 max-w-[900px] mb-auto block lg:hidden">
+      <div className="text-center mt-5 px-6 max-w-[900px] mb-auto block lg:hidden">
         <h2 className="text-white font-bold text-lg lg:text-xl pb-2">
-          ผู้ร่วมแคมเปญที่ เชคพ้อยท์ร้าน
+          {customerinfo ? "เลือกร้านที่คุณต้องการ " : "ผู้ร่วมแคมเปญที่ เชคพ้อยท์ร้าน"}
         </h2>
-        <h1 className="text-black font-bold text-2xl lg:text-3xl text-outline">
-          ครบ 10 ร้านก่อน 100 คนแรก
-        </h1>
-
-        {/* Influencer Image */}
-        <img src="images/infu.png" className="w-full max-w-[600px]" />
+        <div className="text-black font-bold text-2xl lg:text-3xl">
+          {customerinfo ? <span className="text-white text-3xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span>  : <h1 className="text-black font-bold text-2xl lg:text-3xl text-outline"> ครบ 10 ร้านก่อน 100 คนแรก </h1>}
+        </div>
+        {!customerinfo && <img src="images/infu.png" className="w-full max-w-[600px]" />}
       </div>
 
-      {/* Map Pins */}
       <div className="absolute top-30 left-0 w-full h-full z-20">
         {locations.map((loc) => (
           <div
@@ -87,24 +71,13 @@ const Location = ({ onCheckin }) => {
               top: isMobile ? loc.top.mobile : loc.top.pc,
               left: isMobile ? loc.left.mobile : loc.left.pc,
             }}
-            onClick={() => customerinfo ? handleClick(loc) : onCheckin(true)}
+            onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
           >
             <img src={loc.image} alt={loc.name} className="w-8 sm:w-12" />
           </div>
         ))}
       </div>
-  
-    {/* Check-in Button */}
-    {!customerinfo && <motion.img
-        src="images/btncheckin.png"
-        onClick={onCheckin}
-        className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
-        alt="Go to Check-in"
-        initial={{ y: 0 }}
-        animate={{ y: [0, -10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-      />}
-  </section>
+    </section>
   );
 };
 
