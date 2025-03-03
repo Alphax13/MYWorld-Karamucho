@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 const Event = () => {
-  const navigate = useNavigate();
   
   return (
     <div className="w-full relative mb-10">
@@ -25,7 +23,6 @@ const Event = () => {
           initial={{ y: 0 }}
           animate={{ y: [0, -20, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          onClick={() => navigate("/point")}
         >
           คลิกเลย
         </motion.button>

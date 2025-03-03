@@ -22,7 +22,7 @@ const Home = ({onCheckin}) => {
       <BannerKV />
       <Event />
       <Howto /></>}
-      <Location onCheckin={onCheckin}  />
+      <Location onCheckin={onCheckin} />
       <Scoreboard />
       {!customerinfo &&
       <><ProductSlider /></>}
