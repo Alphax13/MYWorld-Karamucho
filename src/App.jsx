@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
@@ -9,8 +9,8 @@ import CheckInPage from "./pages/CheckInPage";
 import CheckinPhoto from "./components/CheckIn/CheckinPhoto";
 import CheckPoint from "./components/CheckPoint/CheckPoint";
 import PonitPage from "./pages/PointPage";
-import { loginWithLine, getuser, resetState, setCustomerInfo } from "./common/userSlice.js/userSlice";
-
+import RegisterEvent from "./pages/RegisterEvent";
+import { loginWithLine, getuser, setCustomerInfo } from "./common/userSlice.js/userSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,21 +18,17 @@ function App() {
   const [isCheckinActive, setIsCheckinActive] = useState(false);
 
   const handleCheckin = () => {
-    setIsCheckinActive(!isCheckinActive);
+    dispatch(loginWithLine());
   };
 
-  console.log(customerinfo)
+  console.log(customerinfo);
 
   useEffect(() => {
-    // ตรวจสอบว่า profile และ customerinfo อยู่ใน localStorage หรือไม่
     const storedProfile = localStorage.getItem("profile");
-    const storedCustomerInfo = localStorage.getItem("customerinfo");
-
-    // ตรวจสอบว่า profile จาก localStorage มีค่าหรือไม่
-    if (storedProfile && !profile) { // ไม่ให้ overwrite ถ้ามี profile ใน Redux แล้ว
+    if (storedProfile && !profile) {
       try {
         const parsedProfile = JSON.parse(storedProfile);
-        dispatch(setCustomerInfo(parsedProfile)); // นำข้อมูลจาก localStorage มาใส่ใน Redux state
+        dispatch(setCustomerInfo(parsedProfile));
       } catch (error) {
         console.error("Failed to parse profile from localStorage:", error);
       }
@@ -43,16 +39,23 @@ function App() {
     }
   }, [dispatch, isCheckinActive, customerinfo]);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (profile && !customerinfo) {
       dispatch(getuser({ profile }));
     }
-  },[dispatch , profile ,customerinfo])
+  }, [dispatch, profile, customerinfo]);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("line")) {
+      dispatch(loginWithLine());
+    }
+  }, [dispatch]);
 
   return (
     <Router basename="/testLanding">
       <Routes>
-        <Route path="/" element={<Home onCheckin={handleCheckin} />} />
+        <Route path="/" element={customerinfo && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> : <Home onCheckin={handleCheckin} />} />
         <Route path="/point" element={<PonitPage />} />
         <Route path="/boxset" element={<BoxsetPage />} />
         <Route path="/privilege/:id" element={<PrivilegePage />} />
@@ -60,6 +63,7 @@ function App() {
         <Route path="/checkin" element={<CheckInPage />} />
         <Route path="/checkin-photo" element={<CheckinPhoto />} />
         <Route path="/checkpoint" element={<CheckPoint />} />
+        <Route path="/RegisterEvent" element={<RegisterEvent />} />
       </Routes>
     </Router>
   );

@@ -7,6 +7,7 @@ import Redeem from "../components/Redeem";
 import Banner from "../components/Banner";
 import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
+import { loginWithLine } from "../common/userSlice.js/userSlice";
 
 const PonitPage = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,12 @@ const PonitPage = () => {
   useEffect(()=>{
     console.log(customerinfo);
   },[customerinfo])
+
+  useEffect(() => {
+      if (!customerinfo) {
+        dispatch(loginWithLine());
+      }
+    }, [dispatch, customerinfo]);
 
   return (
     <div className="min-h-screen m-0">

@@ -1,104 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getbranchrestaurant, checkin } from "../common/userSlice.js/userSlice";
+import { getbranchrestaurant, checkin, getrestaurant } from "../common/userSlice.js/userSlice";
 import "./Checkin.css";
-
-const mockBranches = {
-  "Y.O.U หมูกระทะ": {
-    branches: ["เขต พระโขนง", "เขต ราชเทวี"],
-    img: "images/store.png",
-    id: 1
-  },
-  "Your Camp": {
-    branches: ["เขต ลาดพร้าว", "เขต พระนคร", "เขต บางนา"],
-    img: "images/store.png",
-    id: 2
-  },
-  "Everyday Mokata": {
-    branches: ["เขต ปทุมวัน", "เขต ดินแดง"],
-    img: "images/store.png",
-    id: 3
-  },
-  "อุดมสุข หมูกระทะ": {
-    branches: ["เขต ห้วยขวาง", "เขต วัฒนา"],
-    img: "images/store.png",
-    id: 4
-  },
-  "หมูกระทะ มหานคร": {
-    branches: ["เขต บางกะปิ", "เขต จตุจักร"],
-    img: "images/store.png",
-    id: 5
-  },
-  "ทวีโชค หมูกระทะ": {
-    branches: ["เขต สาทร", "เขต บางรัก"],
-    img: "images/store.png",
-    id: 6
-  },
-  "ม้วนไจ๋ หมูกระทะ": {
-    branches: ["เขต ธนบุรี", "เขต บางแค"],
-    img: "images/store.png",
-    id: 7
-  },
-  "อาริยา หมูกระทะ": {
-    branches: ["เขต ดอนเมือง", "เขต หลักสี่"],
-    img: "images/store.png",
-    id: 8
-  },
-  "71 หมูกระทะ": {
-    branches: ["เขต บางซื่อ", "เขต คลองสาน"],
-    img: "images/store.png",
-    id: 9
-  },
-};
 
 export default function CheckInPage() {
   const dispatch = useDispatch();
-  const branchdata = useSelector((state) => state.user.getbranchrestaurantData);
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const location = useLocation();
   const navigate = useNavigate();
-  const [selectedStore, setSelectedStore] = useState(location.state?.store || "");
+  const [selectedStore, setSelectedStore] = useState(""); // Default is empty string
   const [branches, setBranches] = useState([]);
   const [selectedBranch, setSelectedBranch] = useState("");
-  const [storeImg, setStoreImg] = useState("");
+  const [storeImg, setStoreImg] = useState("www.google.com");
   const [errorMessage, setErrorMessage] = useState("");
+  const branchdata = useSelector((state) => state.user.getbranchrestaurantData);
+  const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
 
   useEffect(() => {
-    if (selectedStore) {
-      setBranches(mockBranches[selectedStore]?.branches || []);
-      setStoreImg(mockBranches[selectedStore]?.img || "");
-      dispatch(getbranchrestaurant({ restaurant_id: mockBranches[selectedStore]?.id }));
+    dispatch(getrestaurant());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (location.state?.id) {
+      const selectedRestaurant = getrestaurantData.find(
+        (store) => store.restaurant_id === location.state.id
+      );
+      if (selectedRestaurant) {
+        setSelectedStore(selectedRestaurant.name);
+      }
     }
-  }, [selectedStore, dispatch]);
+  }, [location.state?.id, getrestaurantData]);
+
+
+  useEffect(() => {
+    if (selectedStore && getrestaurantData.length > 0) {
+      const selectedRestaurant = getrestaurantData.find(
+        (store) => store.name === selectedStore
+      );
+      if (selectedRestaurant) {
+        setStoreImg(selectedRestaurant?.image_url || "");
+        dispatch(getbranchrestaurant({ restaurant_id: selectedRestaurant?.restaurant_id }));
+      }
+    }
+  }, [selectedStore, dispatch, getrestaurantData]);
 
   const handleCheckin = async () => {
     const checkinData = {
       customer_id: customerinfo?.customer_id,
-      restaurant_id: mockBranches[selectedStore]?.id,
+      restaurant_id: getrestaurantData.find(store => store.name === selectedStore)?.restaurant_id,
       branch_id: branchdata.find((branch) => branch.name === selectedBranch)?.branch_id,
-      image_url: storeImg,
+      image_url: "www.google.com", //storeImg
     };
-    
+
     console.log(checkinData);
-    
+
     try {
-      // Dispatch action to perform check-in
       const response = await dispatch(checkin(checkinData));
-      
-      // ตรวจสอบว่า response มาจาก dispatch หรือไม่
-      if (response.payload && response.payload.success) {
-        // หากการ check-in สำเร็จให้ไปยังหน้าต่อไป
+      console.log(response);
+      if (response.payload === 'success') {
         navigate("/checkin-photo", { state: checkinData });
       } else {
-        // หากมีข้อผิดพลาดใน check-in
-        setErrorMessage('ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว'); // Set error message
+        setErrorMessage('ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว');
       }
     } catch (error) {
-      setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่อีกครั้ง"); // Set error message
+      setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่อีกครั้ง");
     }
   };
-
 
   return (
     <div className="checkin-container p-5 flex flex-col items-center">
@@ -111,19 +79,20 @@ export default function CheckInPage() {
 
         {/* Dropdown เลือกร้าน */}
         <select
+          key={selectedStore}
           className="w-60 p-2 border border-[#24B6E0] rounded-sm mb-3 bg-white"
           value={selectedStore}
           onChange={(e) => {
             const storeName = e.target.value;
             setSelectedStore(storeName);
-            setBranches(mockBranches[storeName]?.branches || []);
-            setStoreImg(mockBranches[storeName]?.img || "");
-            dispatch(getbranchrestaurant({ restaurant_id: mockBranches[storeName]?.id })); // Fetch branches from API
+            setErrorMessage('');
           }}
         >
           <option value="">เลือกชื่อร้าน</option>
-          {Object.keys(mockBranches).map((store, index) => (
-            <option key={index} value={store}>{store}</option>
+          {getrestaurantData.map((store, index) => (
+            <option key={index} value={store.name}>
+              {store.name}
+            </option>
           ))}
         </select>
 
@@ -132,17 +101,18 @@ export default function CheckInPage() {
           <select
             className="w-60 p-2 border border-[#24B6E0] rounded-sm mb-3 bg-white"
             value={selectedBranch}
-            onChange={(e) => setSelectedBranch(e.target.value)}
+            onChange={(e) => {
+              setSelectedBranch(e.target.value);
+              setErrorMessage('');
+            }}
           >
             <option value="">เลือกเขต</option>
             {branchdata.length > 0 ? (
-              <>
-                {branchdata.map((store, index) => (
-                  <option key={index} value={store.name}>
-                    {store.name}
-                  </option>
-                ))}
-              </>
+              branchdata.map((branch, index) => (
+                <option key={index} value={branch.name}>
+                  {branch.name}
+                </option>
+              ))
             ) : (
               <option disabled>ไม่มีข้อมูลสาขา</option>
             )}
@@ -151,7 +121,7 @@ export default function CheckInPage() {
 
         {errorMessage && (
           <div className="error-message text-red-600 mb-4">
-            {errorMessage} {/* Show the error message */}
+            {errorMessage}
           </div>
         )}
 

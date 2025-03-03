@@ -24,7 +24,11 @@ const checkinHisUrl = (customerid) => `${baseUrl}/mymap/checkInHistory/${custome
 const allCouponUrl = (customerid) => `${baseUrl}/mymap/allCoupon/${customerid}`
 const updateinfoURL = `${baseUrl}/customers/customerInfo/updatePhone`
 const couponUrl = `${baseUrl}/mymap/couponOptions`
+const RedeemcouponUrl = `${baseUrl}/mymap/redeemCoupon`
 const usecouponUrl = `${baseUrl}/mymap/useCoupon`
+
+// const api_key = ``
+const api_key = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDUzMzYzNDR9.g0VSsvTajlOr_FsNiQBTuCbIUM-O24R5jCwREc_9eP0`
 
 function mobileCheck() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -117,9 +121,7 @@ export const getrestaurant = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await axios.get(restaurantUrl,
-                {
-                    headers: {},
-                }
+                {}
             );
             return response.data;
         } catch (error) {
@@ -134,7 +136,7 @@ export const checkin = createAsyncThunk(
         try {
             const response = await axios.post(checkinUrl, formdata,
                 {
-                    headers: {},
+                    headers: {'Authorization':`${api_key}`},
                 }
             );
             return response.data;
@@ -151,6 +153,7 @@ export const upload = createAsyncThunk(
             const response = await axios.post(uploadUrl, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // ใช้ Content-Type สำหรับการอัปโหลดไฟล์
+                    'Authorization':`${api_key}`
                 },
             });
             return response.data; // ส่งข้อมูลที่ได้กลับมา
@@ -160,12 +163,43 @@ export const upload = createAsyncThunk(
     }
 );
 
+export const Redeemcoupon = createAsyncThunk(
+    'user/Redeemcoupons',
+    async (formData, { rejectWithValue }) => {
+        try {
+            const response = await axios.post(RedeemcouponUrl, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`${api_key}`
+                },
+            });
+            return response.data; // ส่งข้อมูลที่ได้กลับมา
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data : error.message);
+        }
+    }
+);
+
+export const usecoupon = createAsyncThunk(
+    'user/usecoupons',
+    async (id, { rejectWithValue }) => {
+        try {
+            const response = await axios.post(usecouponUrl, id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`${api_key}`
+                },
+            });
+            return response.data; // ส่งข้อมูลที่ได้กลับมา
+        } catch (error) {
+            return rejectWithValue(error.response ? error.response.data : error.message);
+        }
+    }
+);
 
 export const leaderboard = createAsyncThunk('user/leaderboards', async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get(leaderboardUrl, {
-            headers: {}
-        });
+        const response = await axios.get(leaderboardUrl, {});
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response ? error.response.data : error.message);
@@ -175,7 +209,7 @@ export const leaderboard = createAsyncThunk('user/leaderboards', async (_, { rej
 export const checkinHis = createAsyncThunk('user/checkinHises', async ({ customerid }, { rejectWithValue }) => {
     try {
         const response = await axios.get(checkinHisUrl(customerid), {
-            headers: {}
+            headers: {'Authorization':`${api_key}`}
         });
         return response.data;
     } catch (error) {
@@ -186,7 +220,7 @@ export const checkinHis = createAsyncThunk('user/checkinHises', async ({ custome
 export const allCoupon = createAsyncThunk('user/allCoupons', async ({ customerid }, { rejectWithValue }) => {
     try {
         const response = await axios.get(allCouponUrl(customerid), {
-            headers: {}
+            headers: {'Authorization':`${api_key}`}
         });
         return response.data;
     } catch (error) {
@@ -197,7 +231,7 @@ export const allCoupon = createAsyncThunk('user/allCoupons', async ({ customerid
 export const allCouponshow = createAsyncThunk('user/allCouponshows', async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get(couponUrl, {
-            headers: {}
+            headers: {'Authorization':`${api_key}`}
         });
         return response.data;
     } catch (error) {
@@ -210,6 +244,7 @@ export const updateinfo = createAsyncThunk('user/updateinfos', async (formData, 
         const response = await axios.put(updateinfoURL, formData, {
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization':`${api_key}`
             }
         });
         return response.data;

@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { getrestaurant } from "../../common/userSlice.js/userSlice";
 import "./style.css";
-
-const locations = [
-  { id: 1, name: "Y.O.U หมูกระทะ", top: { pc: "65%", mobile: "62%" }, left: { pc: "75%", mobile: "70%" }, image: "images/pin9.png" },
-  { id: 2, name: "Your Camp", top: { pc: "40%", mobile: "30%" }, left: { pc: "30%", mobile: "15%" }, image: "images/pin1.png" },
-  { id: 3, name: "Everyday Mokata", top: { pc: "45%", mobile: "40%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
-  { id: 4, name: "อุดมสุข หมูกระทะ", top: { pc: "33%", mobile: "33%" }, left: { pc: "45%", mobile: "42%" }, image: "images/pin3.png" },
-  { id: 5, name: "หมูกระทะ มหานคร", top: { pc: "53%", mobile: "50%" }, left: { pc: "45%", mobile: "48%" }, image: "images/pin4.png" },
-  { id: 6, name: "ทวีโชค หมูกระทะ", top: { pc: "55%", mobile: "52%" }, left: { pc: "30%", mobile: "28%" }, image: "images/pin5.png" },
-  { id: 7, name: "ม้วนไจ๋ หมูกระทะ", top: { pc: "65%", mobile: "63%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
-  { id: 8, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
-  { id: 9, name: "71 หมูกระทะ", top: { pc: "46%", mobile: "53%" }, left: { pc: "78%", mobile: "75%" }, image: "images/pin8.png" },
-];
 
 const Location = ({ onCheckin }) => {
   const dispatch = useDispatch()
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
+  const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
 
-  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
-    useEffect(()=>{
-      console.log(customerinfo)
-    },[customerinfo])
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    console.log(customerinfo)
+  }, [customerinfo])
+
+  useEffect(() => {
+    dispatch(getrestaurant())
+  }, [dispatch])
 
   const hadlecheckmap = () => {
-    onCheckin(true); 
+    onCheckin(true);
   };
 
 
@@ -40,8 +35,29 @@ const Location = ({ onCheckin }) => {
   }, []);
 
   const handleClick = (location) => {
-    navigate("/checkin", { state: { store: location.name ,id: location.id } });
+    navigate("/checkin", { state: { store: location.name, id: location.id } });
   };
+
+  const locations = [
+    { id: 1, name: "Y.O.U หมูกระทะ", top: { pc: "65%", mobile: "62%" }, left: { pc: "75%", mobile: "70%" }, image: "images/pin9.png" },
+    { id: 2, name: "Your Camp", top: { pc: "40%", mobile: "30%" }, left: { pc: "30%", mobile: "15%" }, image: "images/pin1.png" },
+    { id: 3, name: "Everyday Mokata", top: { pc: "45%", mobile: "40%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
+    { id: 4, name: "อุดมสุข หมูกระทะ", top: { pc: "33%", mobile: "33%" }, left: { pc: "45%", mobile: "42%" }, image: "images/pin3.png" },
+    { id: 5, name: "หมูกระทะ มหานคร", top: { pc: "53%", mobile: "50%" }, left: { pc: "45%", mobile: "48%" }, image: "images/pin4.png" },
+    { id: 6, name: "ทวีโชค หมูกระทะ", top: { pc: "55%", mobile: "52%" }, left: { pc: "30%", mobile: "28%" }, image: "images/pin5.png" },
+    { id: 7, name: "ม้วนไจ๋ หมูกระทะ", top: { pc: "65%", mobile: "63%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
+    { id: 8, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
+    { id: 9, name: "71 หมูกระทะ", top: { pc: "46%", mobile: "53%" }, left: { pc: "78%", mobile: "75%" }, image: "images/pin8.png" },
+  ];
+
+  // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
+  const mappedLocations = getrestaurantData.map((restaurant) => {
+    const location = locations.find((loc) => loc.id === restaurant.restaurant_id);
+    if (location) {
+      return { ...location, id: restaurant.restaurant_id };
+    }
+    return null;
+  }).filter(loc => loc !== null);
 
   return (
     <section
@@ -56,10 +72,8 @@ const Location = ({ onCheckin }) => {
         minHeight: "100vh",
       }}
     >
-      {/* Ripper Image - แสดงเฉพาะ Mobile */}
       <img src="images/ripper2.png" className="w-full mx-auto block lg:hidden" />
 
-      {/* Logo Section - แสดงเฉพาะ Mobile */}
       <div className="logo-container mt-15 justify-center block lg:hidden">
         <img src="images/LogoMymap.png" alt="Logo" className="w-40 lg:w-48" />
       </div>
@@ -79,7 +93,7 @@ const Location = ({ onCheckin }) => {
 
       {/* Map Pins */}
       <div className="absolute top-30 left-0 w-full h-full z-20">
-        {locations.map((loc) => (
+        {mappedLocations.map((loc) => (
           <div
             key={loc.id}
             className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2"
@@ -93,9 +107,9 @@ const Location = ({ onCheckin }) => {
           </div>
         ))}
       </div>
-  
-    {/* Check-in Button */}
-    {!customerinfo && <motion.img
+
+      {/* Check-in Button */}
+      {!customerinfo && <motion.img
         src="images/btncheckin.png"
         onClick={onCheckin}
         className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
@@ -104,7 +118,7 @@ const Location = ({ onCheckin }) => {
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
       />}
-  </section>
+    </section>
   );
 };
 

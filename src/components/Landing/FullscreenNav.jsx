@@ -9,7 +9,7 @@ const FullscreenNav = () => {
   return (
     <div className="nav">
         <div className="fullscreen-nav">
-            <img src="/images/logo.png" id="logo-img" alt="" />
+            <img src="images/logo.png" id="logo-img" alt="" />
             
         <div className={`wrapper ${isActive ? "active" : ""}`} onClick={() => setIsActive(false)}>
             <ul>

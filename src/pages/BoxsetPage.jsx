@@ -5,43 +5,44 @@ import Select from "react-select";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getrestaurant } from "../common/userSlice.js/userSlice";
+import { getrestaurant, getbranchrestaurant } from "../common/userSlice.js/userSlice";
 
 const BoxsetPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const couponId = useState(location?.state?.coupon_id)
   const dispatch = useDispatch();
-  const restaurantData = useSelector((state) => state.user.getrestaurantData); // Get restaurant data from Redux store
+  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
+  const restaurantData = useSelector((state) => state.user.getrestaurantData);
+  const branchdata = useSelector((state) => state.user.getbranchrestaurantData);
 
   useEffect(() => {
     dispatch(getrestaurant()); // Fetch restaurant data on component mount
   }, [dispatch]);
 
-  console.log(restaurantData); // Check the restaurant data in the console
-
+  
   const [selectedZone, setSelectedZone] = useState(null);
   const [selectedStore, setSelectedStore] = useState(null);
+  const [selectedBranch, setSelectedBranch] = useState(null);
+  console.log(selectedBranch?.value)
 
-  // ตัวเลือกโซน
-  const zoneOptions = [
-    { value: "ladprao", label: "ลาดพร้าว" },
-    { value: "ratchada", label: "รัชดา" },
-    { value: "silom", label: "สีลม" },
-  ];
-
-  // Function to filter restaurant stores by zone
+  // ฟังก์ชั่นกรองข้อมูลร้านจากโซน
   const getStoreOptionsByZone = (zone) => {
     if (!restaurantData || !restaurantData.length) return [];
-    
-    // Assuming that `restaurantData` doesn't include zone info, you could filter by restaurant name or any other property.
-    // As an example, I'm using `zone` for this placeholder, but you can adapt it as per your actual data structure.
     return restaurantData
       .map((restaurant) => ({
-        value: restaurant.restaurant_id, // Using `restaurant_id` as value
-        label: restaurant.name, // Display restaurant name in the dropdown
-        image_url: restaurant.image_url, // Storing the image URL
+        value: restaurant.restaurant_id,
+        label: restaurant.name,
+        image_url: restaurant.image_url,
       }));
   };
+
+  useEffect(() => {
+    if (selectedStore) {
+      // Dispatch action to get branches of the selected store
+      dispatch(getbranchrestaurant({ restaurant_id: selectedStore?.value }));
+    }
+  }, [selectedStore, dispatch]);
 
   return (
     <div className="min-h-screen m-0">
@@ -60,20 +61,17 @@ const BoxsetPage = () => {
 
         {/* Dropdown เลือกโซน */}
         <div className="w-full max-w-md mx-auto p-4">
+
           <Select
-            options={zoneOptions}
-            value={selectedZone}
-            onChange={(zone) => {
-              setSelectedZone(zone);
-              setSelectedStore(null); // รีเซ็ตร้านค้าเมื่อเปลี่ยนโซน
-            }}
-            placeholder="โซน/พื้นที่"
-            className="mb-4 text-black"
+            options={getStoreOptionsByZone(selectedZone?.value)} // Get store options based on selected zone
+            value={selectedStore}
+            onChange={setSelectedStore}
+            placeholder="เลือกร้าน"
+            className="text-black mb-4"
             styles={{
               control: (base) => ({
                 ...base,
-                backgroundColor: "#E5E5E5",
-                border: "none",
+                border: "1px solid #28B7E1",
                 borderRadius: "6px",
                 padding: "8px",
                 fontSize: "16px",
@@ -83,13 +81,16 @@ const BoxsetPage = () => {
             }}
           />
 
-          {/* Dropdown เลือกร้านค้า (แสดงเฉพาะเมื่อเลือกโซนแล้ว) */}
-          {selectedZone && (
+          {/* Dropdown เลือกสาขา (แสดงเฉพาะเมื่อเลือกร้านแล้ว) */}
+          {selectedStore && branchdata && branchdata.length > 0 && (
             <Select
-              options={getStoreOptionsByZone(selectedZone.value)} // Get store options based on selected zone
-              value={selectedStore}
-              onChange={setSelectedStore}
-              placeholder="เลือกร้านค้า..."
+              options={branchdata.map((branch) => ({
+                value: branch.branch_id, // ใช้ branch_id เป็น value
+                label: branch.name,      // ใช้ name เป็น label
+              }))}
+              value={selectedBranch}  // กำหนด value ให้ตรงกับ selectedBranch
+              onChange={(selectedOption) => setSelectedBranch(selectedOption)}  // เมื่อเลือก item ให้ตั้งค่า selectedBranch
+              placeholder="เลือกสาขา"
               className="text-black"
               styles={{
                 control: (base) => ({
@@ -103,11 +104,11 @@ const BoxsetPage = () => {
                 }),
               }}
             />
+
           )}
         </div>
 
-        {/* ส่งค่าร้านที่เลือกไปยัง BoxCard */}
-        <BoxCard selectedStore={selectedStore} />
+        <BoxCard selectedStore={selectedStore} selectedBranch={selectedBranch} couponId={couponId} />
       </div>
     </div>
   );

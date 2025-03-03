@@ -87,8 +87,8 @@ export default function CheckPoint() {
           {pointData.map((loc, index) => (
             <div
               key={loc.id}
-              className={`relative flex items-center w-50 h-12.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
-                ${loc.status === 'approved' ? "bg-green-200 border-green-500" : "bg-white border-gray-300"} 
+              className={`relative flex items-center w-60 h-14.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
+                ${loc.status === 'approved' ? "bg-green-200 border-green-500" :loc.status === 'rejected'? "bg-red-200 border-red-500" : "bg-white border-gray-300"} 
                 ${index % 2 === 0 ? "ml-0 flex-row" : "ml-auto flex-row-reverse"}`}
               onClick={() => handleCheckin(loc.id)}
             >

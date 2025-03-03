@@ -25,7 +25,7 @@ const MobileMenu = () => {
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${
           active === 2 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"
         }`}
-        onClick={() => navigate("/checkin")}
+        onClick={() => navigate("/CheckPoint")}
       >
         <span className="text-lg"><GrMapLocation /></span>
         <span className="text-sm text-black font-bold">Check-in</span>

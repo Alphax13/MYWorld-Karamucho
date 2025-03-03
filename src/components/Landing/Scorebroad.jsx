@@ -52,6 +52,8 @@ const Scoreboard = () => {
       </div>
 
       <div className="w-full max-w-2xl p-4 flex flex-col gap-4 overflow-hidden transition-all duration-300">
+        {sortedLeaderData.length > 0 ?
+        <>
         {sortedLeaderData.slice(0, visibleScores).map((player) => (
           <div
             key={player.name}
@@ -83,6 +85,11 @@ const Scoreboard = () => {
             </div>
           </div>
         ))}
+        </>:
+        <div className="flex justify-center items-center bg-white px-2 py-2 border-b last:border-none shadow-md shadow-black">
+          ยังไม่มีข้อมูล
+        </div>
+        }
       </div>
 
       {visibleScores < sortedLeaderData.length && (
