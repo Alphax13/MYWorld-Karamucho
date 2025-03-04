@@ -96,15 +96,17 @@ const Location = ({ onCheckin }) => {
         ))}
       </div>
         {/* Check-in Button */}
-    {!customerinfo && <motion.img
-        src="images/btncheckin.png"
-        onClick={onCheckin}
-        className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
-        alt="Go to Check-in"
-        initial={{ y: 0 }}
-        animate={{ y: [0, -10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-      />}
+        {!customerinfo && (
+        <motion.img
+          src="images/btncheckin.png"
+          onClick={() => navigate("/RegisterEvent")}
+          className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
+          alt="Go to Check-in"
+          initial={{ y: 0 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+        />
+      )}
     </section>
   );
 };

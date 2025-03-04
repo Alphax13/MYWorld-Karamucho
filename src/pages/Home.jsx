@@ -24,9 +24,9 @@ const Home = ({onCheckin}) => {
       <Howto /></>}
       <Location onCheckin={onCheckin} />
       <Scoreboard />
+      <MobileMenu />
       {!customerinfo &&
       <><ProductSlider /></>}
-      {customerinfo && <MobileMenu />}
     </div>
   );
 };
