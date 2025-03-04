@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; 
-import { useDispatch , useSelector } from 'react-redux';
-import { upload } from '../../common/userSlice.js/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { upload, checkin } from '../../common/userSlice.js/userSlice';
 import { IoChevronBack } from "react-icons/io5";
 import { HiOutlinePhoto } from "react-icons/hi2";
 import { FaLocationDot } from "react-icons/fa6";
@@ -9,14 +9,16 @@ import moment from "moment"; // วันที่และเวลา
 
 const CheckinPhoto = () => {
   const location = useLocation(); 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate(); 
   const { store, branch, img } = location.state || {}; 
-
   const [selectedImage, setSelectedImage] = useState(null); 
   const [selectedImage2, setSelectedImage2] = useState(null); 
   const [modalConfirm, setModalConfirm] = useState(false); // Modal ยืนยัน
   const [modalSuccess, setModalSuccess] = useState(false); // Modal แสดงผล Check-in
+  const [errorMessage, setErrorMessage] = useState(''); // Error message state
+
+
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]; 
@@ -28,24 +30,43 @@ const CheckinPhoto = () => {
     }
   };
 
-  console.log(selectedImage2)
-
   const handleCheckin = () => {
     setModalConfirm(true); // เปิด Modal ยืนยัน Check-in
-    
   };
 
-  const handleConfirmCheckin = () => {
+  const handleConfirmCheckin = async () => {
     const formData = new FormData();
-    formData.append('file', selectedImage2); // ไฟล์รูปภาพ
-    // formData.append('customer_id', 'Ue4e4d43f756e05e22ee71f09d5ff65cd');
-    // formData.append('restaurant_id', mockBranches[selectedStore]?.id);
-    // formData.append('branch_id', branchdata.find((branch) => branch.name === selectedBranch)?.branch_id);
+    formData.append('file', selectedImage2);
 
-    // เรียก dispatch ของ action upload
-    dispatch(upload(formData));
-    setModalConfirm(false); // ปิด Modal ยืนยัน
-    setModalSuccess(true); // เปิด Modal แสดงผล Check-in
+    try {
+      // Upload image
+      const uploadResponse = await dispatch(upload(formData));
+      if (uploadResponse && uploadResponse.payload.url) {
+        // Once the image is uploaded, update the state with the URL
+        const updatedLocationState = {
+          ...location.state,
+          image_url: uploadResponse.payload.url,
+        };
+
+        // Dispatch checkin action
+        console.log(updatedLocationState)
+        const checkinResponse = await dispatch(checkin(updatedLocationState));
+        
+        // Handle success or error from checkin
+        if (checkinResponse.error) {
+          if (checkinResponse.error.message === "You already check in") {
+            setErrorMessage("ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว");
+          } else {
+            setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่");
+          }
+        } else {
+          setModalConfirm(false);
+          setModalSuccess(true);
+        }
+      }
+    } catch (error) {
+      setErrorMessage("เกิดข้อผิดพลาดในการอัปโหลดหรือเช็คอิน");
+    }
   };
 
   const handleCloseModal = () => {
@@ -53,7 +74,7 @@ const CheckinPhoto = () => {
     setModalSuccess(false);
     navigate('/checkpoint'); 
   };
-  
+
   const currentDate = moment().format("DD MMM YYYY เวลา HH:mm น."); 
 
   return (
@@ -100,6 +121,10 @@ const CheckinPhoto = () => {
           </label>
         </div>
 
+        {errorMessage && (
+          <div className="text-red-500 text-sm mb-2">{errorMessage}</div>
+        )}
+
         <button 
           className="checkin-button w-full mb-5 bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-4 py-2 rounded-lg border border-[#28B7E1] shadow-md hover:from-[#003D4C] hover:to-[#008BB0] transition duration-300"
           onClick={handleCheckin} 
@@ -138,7 +163,6 @@ const CheckinPhoto = () => {
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 rounded-full bg-[#00F508] flex items-center justify-center">
                 <FaLocationDot className="text-5xl text-white" />
-                  
               </div>
             </div>
             <h2 className="text-center text-xl font-semibold mb-2">Check-in แล้ว</h2>

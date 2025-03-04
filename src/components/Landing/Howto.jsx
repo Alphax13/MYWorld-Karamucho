@@ -84,7 +84,7 @@ const Howto = () => {
               <div className="grid grid-cols-4 gap-2 w-full pb-5">
                 {images.map((img, index) => (
                   <div className="cards flex flex-col items-center gap-5" key={index}>
-                    <img src={`images/{img.src}`} alt={`Coin Collect ${index + 1}`} className="w-full h-auto" />
+                    <img src={`images/${img.src}`} alt={`Coin Collect ${index + 1}`} className="w-full h-auto" />
                     <div className="text-content text-black text-center">
                       <p className="text-2xl font-bold">{img.text}</p>
                     </div>

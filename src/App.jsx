@@ -45,12 +45,12 @@ function App() {
     }
   }, [dispatch, profile, customerinfo]);
 
-  useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes("line")) {
-      dispatch(loginWithLine());
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const userAgent = navigator.userAgent.toLowerCase();
+  //   if (userAgent.includes("line")) {
+  //     dispatch(loginWithLine());
+  //   }
+  // }, [dispatch]);
 
   return (
     <Router basename="/testLanding">

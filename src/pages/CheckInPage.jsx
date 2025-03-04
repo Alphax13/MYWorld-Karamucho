@@ -50,22 +50,22 @@ export default function CheckInPage() {
       customer_id: customerinfo?.customer_id,
       restaurant_id: getrestaurantData.find(store => store.name === selectedStore)?.restaurant_id,
       branch_id: branchdata.find((branch) => branch.name === selectedBranch)?.branch_id,
-      image_url: "www.google.com", //storeImg
+      image_url: "", //storeImg
     };
 
     console.log(checkinData);
 
-    try {
-      const response = await dispatch(checkin(checkinData));
-      console.log(response);
-      if (response.payload === 'success') {
+    // try {
+    //   const response = await dispatch(checkin(checkinData));
+    //   console.log(response);
+    //   if (response.payload === 'success') {
         navigate("/checkin-photo", { state: checkinData });
-      } else {
-        setErrorMessage('ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว');
-      }
-    } catch (error) {
-      setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่อีกครั้ง");
-    }
+    //   } else {
+    //     setErrorMessage('ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว');
+    //   }
+    // } catch (error) {
+    //   setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่อีกครั้ง");
+    // }
   };
 
   return (

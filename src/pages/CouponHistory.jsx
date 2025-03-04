@@ -106,7 +106,7 @@ const CouponHistory = () => {
                 key={coupon.id}
                 className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
                          bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
-                onClick={() => handleCouponClick(coupon)} // เมื่อคลิกคูปอง
+                onClick={() => coupon.is_used === true || isExpired ? '' : handleCouponClick(coupon)} // เมื่อคลิกคูปอง
               >
                 {(coupon.is_used === true || isExpired) && (
                   <div className="absolute inset-0 bg-gray-400/50 flex items-center justify-center">
