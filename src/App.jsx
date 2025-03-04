@@ -55,7 +55,7 @@ function App() {
   return (
     <Router basename="/testLanding">
       <Routes>
-        <Route path="/" element={customerinfo && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> : <Home onCheckin={handleCheckin} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/point" element={<PonitPage />} />
         <Route path="/boxset" element={<BoxsetPage />} />
         <Route path="/privilege/:id" element={<PrivilegePage />} />

@@ -115,13 +115,10 @@ const CouponHistory = () => {
                 )}
 
                 <div className="flex justify-center items-center flex-[20%]">
-                  <img src="images/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
-                </div>
-                <div className="flex justify-center items-center flex-[20%]">
                   <img src="images/mock.png" alt={coupon.title} className="h-28 object-contain" />
                 </div>
 
-                <div className="flex-[80%] pl-4 leading-[1.5]">
+                <div className="flex-[90%] pl-4 leading-[1.5]">
                   <h2 className="text-base font-bold text-black">{coupon.coupon?.name}</h2>
                   <p className="text-black text-sm">{coupon.coupon?.detail}</p>
                   <p className="text-black text-sm">ร้าน: {coupon.restaurant?.name}</p>
