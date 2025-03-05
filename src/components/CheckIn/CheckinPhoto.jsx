@@ -56,8 +56,12 @@ const CheckinPhoto = () => {
         if (checkinResponse.error) {
           if (checkinResponse.error.message === "You already check in") {
             setErrorMessage("ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว");
+            setModalConfirm(false); 
+            setModalSuccess(false);
           } else {
-            setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่");
+            setErrorMessage("ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว");
+            setModalConfirm(false); 
+            setModalSuccess(false);
           }
         } else {
           setModalConfirm(false);

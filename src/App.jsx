@@ -18,14 +18,17 @@ function App() {
   const [isCheckinActive, setIsCheckinActive] = useState(false);
 
   const handleCheckin = () => {
+    setIsCheckinActive(!isCheckinActive);
     dispatch(loginWithLine());
   };
 
-  console.log(customerinfo);
+  console.log(customerinfo)
 
   useEffect(() => {
     const storedProfile = localStorage.getItem("profile");
-    if (storedProfile && !profile) {
+    const storedCustomerInfo = localStorage.getItem("customerinfo");
+
+    if (storedProfile) {
       try {
         const parsedProfile = JSON.parse(storedProfile);
         dispatch(setCustomerInfo(parsedProfile));
@@ -34,16 +37,16 @@ function App() {
       }
     }
 
-    if (isCheckinActive && !profile) {
+    if (isCheckinActive) {
       dispatch(loginWithLine());
     }
   }, [dispatch, isCheckinActive, customerinfo]);
 
-  useEffect(() => {
-    if (profile && !customerinfo) {
-      dispatch(getuser({ profile }));
-    }
-  }, [dispatch, profile, customerinfo]);
+  // useEffect(()=>{
+  //   if (profile && !customerinfo) {
+  //     dispatch(getuser({ profile }));
+  //   }
+  // },[dispatch , profile ,customerinfo])
 
   // useEffect(() => {
   //   const userAgent = navigator.userAgent.toLowerCase();
@@ -53,9 +56,9 @@ function App() {
   // }, [dispatch]);
 
   return (
-    <Router basename="/testLanding">
+    <Router basename="/My-map">
       <Routes>
-        <Route path="/" element={<Home />} />
+       <Route path="/" element={(customerinfo) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :<Home onCheckin={handleCheckin} />} /> {/*(customerinfo ) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :  */}
         <Route path="/point" element={<PonitPage />} />
         <Route path="/boxset" element={<BoxsetPage />} />
         <Route path="/privilege/:id" element={<PrivilegePage />} />

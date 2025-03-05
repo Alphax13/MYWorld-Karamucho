@@ -99,7 +99,7 @@ const Location = ({ onCheckin }) => {
         {!customerinfo && (
         <motion.img
           src="images/btncheckin.png"
-          onClick={() => navigate("/RegisterEvent")}
+          onClick={() => onCheckin(true)} //navigate("/RegisterEvent")
           className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
           alt="Go to Check-in"
           initial={{ y: 0 }}

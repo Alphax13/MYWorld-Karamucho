@@ -88,7 +88,7 @@ const PrivilegePage = () => {
       <Navbar2 />
 
       <div className="bg-white w-full flex items-center justify-between px-4 py-2 shadow-md">
-        <button onClick={() => navigate(-1)} className="flex items-center text-black">
+        <button onClick={() => navigate(-2)} className="flex items-center text-black">
           <IoChevronBack className="text-xl" />
         </button>
         <h2 className="text-center text-base font-semibold flex-1">รายละเอียดคูปอง</h2>

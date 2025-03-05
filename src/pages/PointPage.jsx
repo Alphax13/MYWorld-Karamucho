@@ -35,14 +35,13 @@ const PonitPage = () => {
         {/* Profile + MenuTabs */}
         <ProfileCard />
         <MenuTabs activeTab={activeMenuTab} setActiveTab={setActiveMenuTab} />
-
         <div className="w-full max-w-5xl">
           {/* MenuTabs */}
           {activeMenuTab === "checkin" && <Banner />}
           {activeMenuTab === "redeem" && <Redeem />}
           {activeMenuTab === "history" && <RedeemHistory />}
         </div>
-        <ProductCard />
+        {!((activeMenuTab === "redeem") || (activeMenuTab === "history")) && <ProductCard />}
       </div>
     </div>
   );

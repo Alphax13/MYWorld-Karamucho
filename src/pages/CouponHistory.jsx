@@ -89,16 +89,17 @@ const CouponHistory = () => {
       <Navbar />
 
       <div className="bg-white w-full flex items-center justify-between px-4 py-2 shadow-md">
-        <button onClick={() => navigate(-1)} className="flex items-center text-black">
+        <button onClick={() => navigate('/point')} className="flex items-center text-black">
           <IoChevronBack className="text-xl" />
         </button>
         <h2 className="text-center text-base font-semibold flex-1">ประวัติคูปอง</h2>
       </div>
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {allCouponData.length > 0 ? (
-          allCouponData.map((coupon) => {
-            // เช็คว่า coupon หมดอายุหรือยัง
+      {allCouponData.length > 0 ? (
+        allCouponData
+          .filter((coupon) => coupon.is_used === true || isCouponExpired(coupon.expired_date)) // กรองเฉพาะคูปองที่ใช้แล้วหรือหมดอายุ
+          .map((coupon) => {
             const isExpired = isCouponExpired(coupon.expired_date);
 
             return (

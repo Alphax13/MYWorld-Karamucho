@@ -88,9 +88,10 @@ const RedeemHistory = () => {
     <div className=" bg-gray-100 overflow-auto h-[50vh]">
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 ">
-        {allCouponData.length > 0 ? (
-          allCouponData.map((coupon) => {
-            // เช็คว่า coupon หมดอายุหรือยัง
+      {allCouponData.length > 0 ? (
+        allCouponData
+          .filter((coupon) => coupon.is_used === false || !isCouponExpired(coupon.expired_date))
+          .map((coupon) => {
             const isExpired = isCouponExpired(coupon.expired_date);
 
             return (

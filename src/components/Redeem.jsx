@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { allCoupon } from "../common/userSlice.js/userSlice";
+import Navbar from "../components/Navbar";
+import { IoChevronBack } from "react-icons/io5";
 
 const redeem = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
+  const allCouponData = useSelector((state) => state.user.allCouponsData);
 
-  // ✅ Mockup ข้อมูลคูปอง
-  const [coupons, setCoupons] = useState([
-    {
-      id: 1,
-      code: "MYBOX001",
-      store: "ย่างเนย ลาดพร้าว",
-      date: "2024-02-24 12:30",
-      expireTime: new Date().getTime() + 48 * 60 * 60 * 1000, // 48 ชม. นับจากตอนที่แลก
-      status: "active",
-      logo: "images/logo.png",
-      image: "images/iconboxset.png",
-      title: "แลก 15,000 COIN",
-      description: "รับ My Box Set ฟรี 1 ชิ้น",
-    },
-  ]);
+  // สร้าง state สำหรับเก็บข้อมูลคูปอง
+  const [coupons, setCoupons] = useState([]);
 
+  useEffect(() => {
+    if (customerinfo) {
+      dispatch(allCoupon({ customerid: customerinfo?.customer_id }));
+    }
+  }, [dispatch, customerinfo]);
+
+  // ฟังก์ชันที่ใช้ในการนับถอยหลัง
   const countdownTimer = (expireTime) => {
     const now = new Date().getTime();
     const distance = expireTime - now;
@@ -28,7 +29,7 @@ const redeem = () => {
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      return `${hours} ชั่วโมง ${minutes} นาที`;
+      return `${hours}:${minutes}:${seconds}`;
     } else {
       return "หมดอายุแล้ว";
     }
@@ -36,61 +37,110 @@ const redeem = () => {
 
   // ✅ อัปเดตเวลาถอยหลังทุกๆ วินาที
   useEffect(() => {
+    if (allCouponData.length > 0) {
+      setCoupons(allCouponData);
+    }
+
     const interval = setInterval(() => {
       setCoupons((prevCoupons) =>
         prevCoupons.map((coupon) =>
-          coupon.status === "active"
-            ? { ...coupon, remainingTime: countdownTimer(coupon.expireTime) }
+          coupon.is_used === false
+            ? { ...coupon, remainingTime: countdownTimer(new Date(coupon.expired_date).getTime()) }
             : coupon
         )
       );
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [allCouponData]);
+
+  // ฟังก์ชันแปลงเวลาเป็นเวลาของไทย
+  const formatDateToThai = (dateString) => {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZone: "Asia/Bangkok", // ใช้เวลาในโซนกรุงเทพฯ (Asia/Bangkok)
+    };
+    const date = new Date(dateString);
+    return date.toLocaleString("th-TH", options);
+  };
+
+  // ฟังก์ชันตรวจสอบคูปองหมดอายุหรือไม่
+  const isCouponExpired = (expiredDate) => {
+    const now = new Date().getTime();
+    const expireTime = new Date(expiredDate).getTime();
+    return expireTime < now;
+  };
+
+  // ฟังก์ชันสำหรับการคลิกคูปองและนำข้อมูลไปยังหน้า Privilege
+  const handleCouponClick = (coupon) => {
+    const redeemData = {
+      redeem_code: coupon.redeem_code,
+      expired_date: coupon.expired_date,
+      id: coupon.id,
+      selectedStore: {
+        label: coupon.coupon?.name,
+      }
+    };
+
+    navigate(`/privilege/${coupon.id}`, { state: redeemData });
+  };
 
   return (
-    <div className=" bg-gray-100/25">
-
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className=" bg-gray-100 overflow-auto h-[50vh]">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 ">
         {coupons.length > 0 ? (
-          coupons.map((coupon) => (
-            <div
-              key={coupon.id}
-              className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                         bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
-            >
-              {/* Overlay สีเทา เมื่อคูปองถูกใช้ หรือ หมดอายุ */}
-              {coupon.status !== "active" && (
-                <div className="absolute inset-0 bg-gray-400/50 flex items-center justify-center">
-                  
+          coupons
+            .filter((coupon) => coupon.is_used === false && !isCouponExpired(coupon.expired_date))
+            .map((coupon) => {
+              const isExpired = isCouponExpired(coupon.expired_date);
+
+              return (
+                <div
+                  key={coupon.id}
+                  className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
+                         bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
+                  onClick={() => coupon.is_used === true || isExpired ? '' : handleCouponClick(coupon)} // เมื่อคลิกคูปอง
+                >
+                  {(coupon.is_used === true || isExpired) && (
+                    <div className="absolute inset-0 bg-gray-400/50 flex items-center justify-center">
+                      {/* <span className="text-white font-bold">หมดอายุหรือยังไม่ได้ใช้</span> */}
+                    </div>
+                  )}
+
+                  <div className="flex justify-center items-center flex-[20%]">
+                    <img src="images/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
+                  </div>
+                  <div className="flex justify-center items-center flex-[20%]">
+                    <img src="images/mock.png" alt={coupon.title} className="h-28 object-contain" />
+                  </div>
+
+                  <div className="flex-[80%] pl-4 leading-[1.5]">
+                    <h2 className="text-base font-bold text-black">{coupon.coupon?.name}</h2>
+                    <p className="text-black text-sm">{coupon.coupon?.detail}</p>
+                    <p className="text-black text-sm">ร้าน: {coupon.restaurant?.name}</p>
+                    <p className="text-gray-500 text-sm">แลกเมื่อ: {formatDateToThai(coupon.created_at)}</p> {/* แปลงเวลาเป็นเวลาของไทย */}
+                    <span className="text-black font-bold text-xs">
+                      {coupon.is_used === true
+                        ? `ใช้สิทธิ์แล้ว ${coupon.redeem_code}`
+                        : isExpired
+                          ? "หมดอายุ"
+                          : `หมดอายุใน: ${coupon.remainingTime}`}
+                    </span>
+
+                    {/* เวลาถอยหลังสำหรับคูปอง Active */}
+                    {coupon.status === "active" && (
+                      <p className="text-red-500 text-xs mt-2">หมดอายุใน: {coupon.remainingTime}</p>
+                    )}
+                  </div>
                 </div>
-              )}
-
-              <div className="flex justify-center items-center flex-[30%]">
-                <img src={coupon.logo} alt="Logo" className="h-10 w-10 object-contain" />
-              </div>
-              <div className="flex justify-center items-center flex-[40%]">
-                <img src={coupon.image} alt={coupon.title} className="h-28 object-contain" />
-              </div>
-
-              <div className="flex-[80%] pl-4">
-                <h2 className="text-base font-simibold text-black">{coupon.title}</h2>
-                <p className="text-black text-sm">{coupon.description}</p>
-                <p className="text-black text-xs">ร้าน: {coupon.store}</p>
-                <p className="text-gray-500 text-xs">แลกเมื่อ: {coupon.date}</p>
-                <span className="text-black font-bold text-sm">
-                    {coupon.status === "used" ? `ใช้สิทธิ์แล้ว ${coupon.code}` : coupon.status === "expired" ? "หมดอายุ" : ""}
-                </span>
-
-
-                {/* เวลาถอยหลังสำหรับคูปอง Active */}
-                {coupon.status === "active" && (
-                  <p className="text-red-500 text-xs mt-2">หมดอายุใน: {coupon.remainingTime}</p>
-                )}
-              </div>
-            </div>
-          ))
+              );
+            })
         ) : (
           <p className="text-center text-gray-500 mt-6">ไม่มีประวัติคูปอง</p>
         )}
