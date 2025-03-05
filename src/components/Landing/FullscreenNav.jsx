@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-const FullscreenNav = () => {
+const FullscreenNav = ({onCheckin}) => {
   const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="nav">
@@ -17,10 +19,10 @@ const FullscreenNav = () => {
                 <a href="https://myworld-virtual-store.com">Virtual</a>
             </li>
             <li>
-                <a href="#">สมัครสมาชิก</a>
+                <a href="#" onClick={() => onCheckin(true)}>สมัครสมาชิก</a>
             </li>
             <li>
-                <a href="#">COINS สะสม</a>
+                <a  onClick={()=>navigate("/point")}>COINS สะสม</a>
             </li>
             <li>
                 <a href="#">MY LIMITED ITEMS</a>

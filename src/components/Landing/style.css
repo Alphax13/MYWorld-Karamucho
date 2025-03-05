@@ -28,7 +28,7 @@
   background-color: #000000dc;
   clip-path: circle(25px at calc(100% - -30px) 10px);
   transition: all 0.3s ease-in-out;
-  z-index: 1;
+  z-index: 70;
 }
 
 .wrapper.active {
