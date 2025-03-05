@@ -28,7 +28,7 @@ const Event = () => {
         </motion.button>
 
         {/* ปุ่ม Add Line */}
-        <a href="https://line.me/ti/p/~@myworld" target="_blank" rel="noopener noreferrer">
+        <a href="https://line.me/ti/p/@myworld" target="_blank" rel="noopener noreferrer">
           <button className="event-button bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 rounded-lg border border-[#28B7E1] shadow-md hover:from-[#003D4C] hover:to-[#008BB0] transition duration-300 flex items-center text-lg md:text-xl lg:text-2xl">
             <img src="images/line-icon.png" alt="Line" className="w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 mr-2" />
             <span>Add Line</span>
