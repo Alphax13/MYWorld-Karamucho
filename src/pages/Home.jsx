@@ -19,6 +19,7 @@ const Home = ({onCheckin}) => {
     <div className="landing min-h-screen m-0">
       {!customerinfo &&
       <>
+      <FullscreenNav />
       <BannerKV />
       <Event />
       <Howto /></>}
