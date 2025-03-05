@@ -8,9 +8,11 @@ import Banner from "../components/Banner";
 import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
 import { loginWithLine } from "../common/userSlice.js/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const PonitPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
 
@@ -23,10 +25,13 @@ const PonitPage = () => {
   },[customerinfo])
 
   useEffect(() => {
-      if (!customerinfo) {
+      if (!profile) {
+        navigate("//")
+        dispatch(loginWithLine());
+      } else if(profile && !customerinfo) {
         dispatch(loginWithLine());
       }
-    }, [dispatch, customerinfo]);
+    }, [dispatch, customerinfo , profile]);
 
   return (
     <div className="min-h-screen m-0">

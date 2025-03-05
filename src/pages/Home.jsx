@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FullscreenNav from "../components/Landing/FullscreenNav";
 import BannerKV from "../components/Landing/BannerKV";
 import Event from "../components/Landing/Event";
@@ -9,25 +9,26 @@ import Scoreboard from "../components/Landing/Scorebroad";
 import ProductSlider from "../components/Landing/ProductSlider";
 import MobileMenu from "../components/Landing/MobileMenu";
 
-const Home = ({onCheckin}) => {
-  const { profile, customerinfo, isLoading, error} = useSelector((state) => state.user);
+const Home = ({ onCheckin }) => {
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
 
-  console.log('profile :',profile)
-  console.log('customerinfo :',customerinfo)
+  console.log('profile :', profile)
+  console.log('customerinfo :', customerinfo)
 
   return (
     <div className="landing min-h-screen m-0">
       {!customerinfo &&
-      <>
-      <FullscreenNav />
-      <BannerKV />
-      <Event />
-      <Howto /></>}
+        <>
+          <FullscreenNav onCheckin={onCheckin} />
+          <BannerKV />
+          <Event />
+          <Howto /></>}
       <Location onCheckin={onCheckin} />
       <Scoreboard />
       <MobileMenu />
-      {!customerinfo &&
-      <><ProductSlider /></>}
+      {!customerinfo && <>
+        <ProductSlider />
+      </>}
     </div>
   );
 };
