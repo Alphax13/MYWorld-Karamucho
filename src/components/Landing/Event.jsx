@@ -15,7 +15,7 @@ const Event = () => {
         <h1 className="text-sm lg:text-xl font-bold">ล่า COINS หมูกะทะ</h1>
       </div>
       {/* Container ปุ่ม ใช้ absolute กำหนดตำแหน่ง + responsive */}
-      <div className="absolute -10 top-[68%] right-[15%] md:right-[20%] lg:right-[20%] xl:right-[38%] flex flex-col items-center gap-30 md:gap-60 lg:gap-50 xl:gap-75 transform -translate-y-1/2">
+      <div className="absolute -10 top-[68%] right-[15%] md:right-[20%] lg:right-[20%] xl:right-[38%] flex flex-col items-center gap-30 md:gap-60 lg:gap-40 xl:gap-75 transform -translate-y-1/2">
         
       {/* ปุ่ม คลิกเลย พร้อมอนิเมชั่นลอยขึ้นลง */}
         <motion.button 
