@@ -78,6 +78,36 @@ const Location = ({ onCheckin }) => {
         position: 'relative',
       }}
     >
+
+      {customerinfo &&
+        <>
+          {/* แสดงข้อมูล Leaderboard ของลูกค้า */}
+          {leaderInfo ? (
+            <div className="sticky top-0 left-0 right-0 bg-white p-2 w-full shadow-md shadow-black z-10">
+              <div className="flex justify-between items-center">
+                <div className="flex gap-2 items-center">
+                  {/* เช็คและแสดงอันดับที่พร้อมไอคอน */}
+                  <div className="border-r-1 pr-2">
+                    {customerRank < 3 ? (<div className="flex gap-2">
+                      อันดับที่ : <img src={icons[customerRank + 1]} alt={`อันดับที่ ${customerRank + 1}`} className="w-6 h-6 mr-2" />
+                    </div>) : (
+                      <div className="flex gap-2">อันดับที่ : {customerRank + 1}</div>
+                    )}
+                  </div>
+                  <div className="bg-[#C2F1FF] text-black px-3 py-1 rounded-xl shadow-md">
+                    {leaderInfo?.total} แต้ม
+                  </div>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <img src={leaderInfo?.customer?.picture} alt={leaderInfo.customer.name} className="w-10 h-10 rounded-full mr-2" />
+                  <p className="font-bold">{leaderInfo?.customer?.name}</p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </>
+      }
+
       <img src="images/ripper2.png" className="w-full block lg:hidden" />
 
       <div className="logo-container mt-10 pb-2 justify-center block lg:hidden">
@@ -86,9 +116,9 @@ const Location = ({ onCheckin }) => {
 
       <div className="text-center px-2 w-[80%] mb-auto block gap-2 -mt-6 lg:mt-60">
         <h2 className="text-white font-bold text-lg lg:text-3kx">
-          {customerinfo ? 
-            <p>เลือกร้านที่คุณต้องการ</p> 
-            : 
+          {customerinfo ?
+            <p>เลือกร้านที่คุณต้องการ</p>
+            :
             <p className="lg:hidden">เชคพ้อยท์ร้านหมูกะทะ <span className="text-white italic text-3xl font-extrabold drop-shadow-[4px_2px_0px_black]">100 คนแรก</span>
             </p>}
         </h2>
@@ -104,7 +134,7 @@ const Location = ({ onCheckin }) => {
         )}
 
         <div className="text-black font-bold text-2xl lg:text-3xl">
-          {customerinfo ? <span className="text-white text-3xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span>  : <h1></h1>}
+          {customerinfo ? <span className="text-white text-3xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span> : <h1></h1>}
         </div>
       </div>
 

@@ -3,17 +3,17 @@ import axios from "axios";
 import liff from "@line/liff";
 
 //for use
-//const liffID = `2002643017-R1nmr6gV`;
+const liffID = `2002643017-R1nmr6gV`;
 //for Dev
-const liffID = `2002643017-BVvlLdjG`;
+//const liffID = `2002643017-BVvlLdjG`;
 
 //BaseUrl Api use
-//const baseUrl =`https://games.myworld-store.com/api`;
+const baseUrl =`https://games.myworld-store.com/api`;
 //BaseUrl Api dev
-const baseUrl = `https://games.myworld-store.com/api-dev`;
+//const baseUrl = `https://games.myworld-store.com/api-dev`;
 
-const leaderboardUrl = `https://games.myworld-store.com/api/mymap/leaderboardAdmin`
-// const leaderboardUrl = `https://games.myworld-store.com/mymap/leaderboard.json`
+// const leaderboardUrl = `https://games.myworld-store.com/api/mymap/leaderboardAdmin`
+const leaderboardUrl = `https://games.myworld-store.com/mymap/leaderboard.json`
 
 //Api Store 
 const getprofile = `${baseUrl}/customers/customerInfo`;

@@ -31,9 +31,9 @@ const PonitPage = () => {
   },[customerinfo])
 
   useEffect(() => {
-      if (!profile) {
-        navigate("//")
-        dispatch(loginWithLine());
+    if (!profile) {
+      dispatch(loginWithLine());
+      navigate("//");
       } else if(profile && !customerinfo) {
         dispatch(loginWithLine());
       }
