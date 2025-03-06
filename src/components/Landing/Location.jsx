@@ -38,7 +38,7 @@ const Location = ({ onCheckin }) => {
     { id: 6, name: "เอาถ่านหมูกะทะ", top: { pc: "33%", mobile: "33%" }, left: { pc: "45%", mobile: "42%" }, image: "images/pin3.png" },
     { id: 7, name: "ทวีโชค", top: { pc: "55%", mobile: "52%" }, left: { pc: "30%", mobile: "28%" }, image: "images/pin5.png" },
     { id: 8, name: "71 หมูกระทะ", top: { pc: "46%", mobile: "53%" }, left: { pc: "78%", mobile: "75%" }, image: "images/pin8.png" },
-    { id: 9, name: "Bar Mookrata", top: { pc: "50%", mobile: "57%" }, left: { pc: "66%", mobile: "61%" }, image: "images/pin2.png" },
+    { id: 9, name: "Bar Mookrata", top: { pc: "50%", mobile: "57%" }, left: { pc: "66%", mobile: "61%" }, image: "images/pin10.png" },
     { id: 10, name: "อารยาหมูกระทะ", top: { pc: "37%", mobile: "44%" }, left: { pc: "84%", mobile: "90%" }, image: "images/pin7.png" },
     { id: 11, name: "วาสนาหมูกะทะ", top: { pc: "38%", mobile: "30%" }, left: { pc: "50%", mobile: "70%" }, image: "images/pin11.png" },
     // { id: 10, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
