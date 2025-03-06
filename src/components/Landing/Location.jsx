@@ -34,7 +34,7 @@ const Location = ({ onCheckin }) => {
     { id: 2, name: "ม๋วนใจ๋ หมูกะทะ", top: { pc: "65%", mobile: "63%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
     { id: 3, name: "หมูกะทะ มหานคร", top: { pc: "53%", mobile: "50%" }, left: { pc: "45%", mobile: "48%" }, image: "images/pin4.png" },
     { id: 4, name: "Your Camp", top: { pc: "40%", mobile: "30%" }, left: { pc: "30%", mobile: "15%" }, image: "images/pin1.png" },
-    { id: 5, name: "Everyday Mokata", top: { pc: "45%", mobile: "40%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin10.png" },
+    { id: 5, name: "Everyday Mokata", top: { pc: "45%", mobile: "40%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
     { id: 6, name: "เอาถ่านหมูกะทะ", top: { pc: "33%", mobile: "33%" }, left: { pc: "45%", mobile: "42%" }, image: "images/pin3.png" },
     { id: 7, name: "ทวีโชค", top: { pc: "55%", mobile: "52%" }, left: { pc: "30%", mobile: "28%" }, image: "images/pin5.png" },
     { id: 8, name: "71 หมูกระทะ", top: { pc: "46%", mobile: "53%" }, left: { pc: "78%", mobile: "75%" }, image: "images/pin8.png" },
