@@ -9,7 +9,7 @@ const Howto = () => {
   const navigate = useNavigate();
 
   const images = [
-    { src: "w1.png", text: "เลือกเมนู \n“MY Map ปิ้ง”" },
+    { src: "w1.png", text: "เลือกเมนู\n“MY Map ปิ้ง”" },
     { src: "w2.png", text: "ค้นหาร้านหมูกะทะ\nที่ต้องการ" },
     { src: "w3.png", text: "กด\nรับสิทธิ์" },
     { src: "w4.png", text: "แสดงคูปองให้พนักงาน" }
