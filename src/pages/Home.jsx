@@ -12,6 +12,10 @@ import MobileMenu from "../components/Landing/MobileMenu";
 const Home = ({ onCheckin }) => {
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
 
+  useEffect(() => {
+    document.title = "Home - MyMap ปิ้ง";
+  }, []);
+
   console.log('profile :', profile)
   console.log('customerinfo :', customerinfo)
 

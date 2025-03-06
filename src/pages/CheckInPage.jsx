@@ -18,6 +18,10 @@ export default function CheckInPage() {
   const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
 
   useEffect(() => {
+    document.title = "Check in - MyMap ปิ้ง";
+  }, []);
+
+  useEffect(() => {
     dispatch(getrestaurant());
   }, [dispatch]);
 

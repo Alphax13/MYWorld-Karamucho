@@ -17,6 +17,10 @@ const PonitPage = () => {
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
 
   useEffect(() => {
+    document.title = "MyPoint - MyMap ปิ้ง";
+  }, []);
+
+  useEffect(() => {
     window.scrollTo(0, 0); // ทำให้หน้าอยู่บนสุดเสมอเมื่อเข้า
   }, []);
 

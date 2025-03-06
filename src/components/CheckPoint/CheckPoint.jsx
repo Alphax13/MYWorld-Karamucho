@@ -13,6 +13,10 @@ export default function CheckPoint() {
   const [selectedBranch, setselectedBranch] = useState("");
 
   useEffect(() => {
+    document.title = "MyCheckPoint- MyMap ปิ้ง";
+  }, []);
+
+  useEffect(() => {
     dispatch(getrestaurant());
   }, [dispatch]);
 

@@ -18,6 +18,10 @@ const PrivilegePage = () => {
     console.log(customerinfo);
   }, [customerinfo]);
 
+  useEffect(() => {
+    document.title = "MyPrivilege - MyMap ปิ้ง";
+  }, []);
+
   const [redeemed, setRedeemed] = useState(product?.redeem_code);
   const [redeemCode, setRedeemCode] = useState(product?.redeem_code);
   const [showModal, setShowModal] = useState(false);

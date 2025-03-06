@@ -18,7 +18,9 @@ const CheckinPhoto = () => {
   const [modalSuccess, setModalSuccess] = useState(false); // Modal แสดงผล Check-in
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
 
-
+  useEffect(() => {
+    document.title = "Check in - MyMap ปิ้ง";
+  }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]; 

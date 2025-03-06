@@ -103,6 +103,10 @@ function RegisterEvent() {
     });
   };
 
+  useEffect(() => {
+    document.title = "Register- MyMap ปิ้ง";
+  }, []);
+
   return (<>
 <div className="min-h-screen m-0">
     <div className="w-full relative">

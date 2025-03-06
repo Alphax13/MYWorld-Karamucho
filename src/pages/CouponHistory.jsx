@@ -17,6 +17,10 @@ const CouponHistory = () => {
     }
   }, [dispatch, customerinfo]);
 
+    useEffect(() => {
+      document.title = "MyCouponHistory - MyMap ปิ้ง";
+    }, []);
+
   // ฟังก์ชันที่ใช้ในการนับถอยหลัง
   const countdownTimer = (expireTime) => {
     const now = new Date().getTime();
