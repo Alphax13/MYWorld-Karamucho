@@ -27,18 +27,13 @@ const Home = ({ onCheckin }) => {
           <FullscreenNav onCheckin={onCheckin} />
           <BannerKV />
           <Event />
-          <Howto />
-        </>
-      }
+          <Howto /></>}
       <Location onCheckin={onCheckin} />
       <Scoreboard />
       <MobileMenu />
-
-      {!customerinfo &&
-        <>
-          <ProductSlider />
-        </>
-      }
+      {!customerinfo && <>
+        <ProductSlider />
+      </>}
     </div>
   );
 };
