@@ -42,6 +42,16 @@ function App() {
     }
   }, [dispatch, isCheckinActive, customerinfo]);
 
+  useEffect(() => {
+    // ตรวจสอบว่า GTM ถูกโหลดหรือยัง
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: "page_view",
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+
   // useEffect(()=>{
   //   if (profile && !customerinfo) {
   //     dispatch(getuser({ profile }));
@@ -58,7 +68,7 @@ function App() {
   return (
     <Router basename="/My-map">
       <Routes>
-       <Route path="/" element={(customerinfo) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :<Home onCheckin={handleCheckin} />} /> {/*(customerinfo ) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :  */}
+        <Route path="/" element={(customerinfo) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :<Home onCheckin={handleCheckin} />} /> {/*(customerinfo ) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :  */}
         <Route path="/point" element={<PonitPage />} />
         <Route path="/boxset" element={<BoxsetPage />} />
         <Route path="/privilege/:id" element={<PrivilegePage />} />
