@@ -10,6 +10,7 @@ const Event = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        height: "80vh",
       }}
     >
       {/* หัวข้อหลัก */}
