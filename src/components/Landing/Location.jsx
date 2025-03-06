@@ -43,6 +43,7 @@ const Location = ({ onCheckin }) => {
     { id: 9, name: "Bar Mookrata", top: { pc: "50%", mobile: "57%" }, left: { pc: "66%", mobile: "61%" }, image: "images/pin10.png" },
     { id: 10, name: "อารยาหมูกระทะ", top: { pc: "37%", mobile: "44%" }, left: { pc: "84%", mobile: "90%" }, image: "images/pin7.png" },
     { id: 11, name: "วาสนาหมูกะทะ", top: { pc: "38%", mobile: "30%" }, left: { pc: "50%", mobile: "70%" }, image: "images/pin11.png" },
+    // { id: 10, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
   ];
 
   // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
@@ -77,50 +78,34 @@ const Location = ({ onCheckin }) => {
         position: 'relative',
       }}
     >
-
-      {customerinfo &&
-        <>
-          {/* แสดงข้อมูล Leaderboard ของลูกค้า */}
-          {leaderInfo ? (
-            <div className="sticky top-0 left-0 right-0 bg-white p-2 w-full shadow-md shadow-black z-10">
-              <div className="flex justify-between items-center">
-                <div className="flex gap-2 items-center">
-                  {/* เช็คและแสดงอันดับที่พร้อมไอคอน */}
-                  <div className="border-r-1 pr-2">
-                    {customerRank < 3 ? (<div className="flex gap-2">
-                      อันดับที่ : <img src={icons[customerRank + 1]} alt={`อันดับที่ ${customerRank + 1}`} className="w-6 h-6 mr-2" />
-                    </div>) : (
-                      <div className="flex gap-2">อันดับที่ : {customerRank + 1}</div>
-                    )}
-                  </div>
-                  <div className="bg-[#C2F1FF] text-black px-3 py-1 rounded-xl shadow-md">
-                  {leaderInfo?.total} แต้ม
-                  </div>
-                </div>
-                <div className="flex gap-1 items-center">
-                  <img src={leaderInfo?.customer?.picture} alt={leaderInfo.customer.name} className="w-10 h-10 rounded-full mr-2" />
-                  <p className="font-bold">{leaderInfo?.customer?.name}</p>
-                </div>
-              </div>
-            </div>
-          ) : null}
-        </>
-      }
-
       <img src="images/ripper2.png" className="w-full mx-auto block lg:hidden" />
 
-      <div className="logo-container mt-25 justify-center block lg:hidden">
+      <div className="logo-container mt-15 justify-center block lg:hidden">
         <img src="images/LogoMymap.png" alt="Logo" className="w-40 lg:w-48" />
       </div>
 
-      <div className="text-center mt-5 px-6 max-w-[900px] mb-auto block lg:hidden">
-        <h2 className="text-white font-bold text-lg lg:text-xl pb-2">
-          {customerinfo ? "เลือกร้านที่คุณต้องการ " : "ผู้ร่วมแคมเปญที่ เชคพ้อยท์ร้าน"}
+      <div className="text-center px-2 w-[80%] mb-auto block gap-2 -mt-6 lg:mt-60">
+        <h2 className="text-white font-bold text-lg lg:text-3kx">
+          {customerinfo ? 
+            <p>เลือกร้านที่คุณต้องการ</p> 
+            : 
+            <p className="lg:hidden">เชคพ้อยท์ร้านหมูกะทะ <span className="text-white italic text-3xl font-extrabold drop-shadow-[4px_2px_0px_black]">100 คนแรก</span>
+            </p>}
         </h2>
+        {!customerinfo && (
+          <div className="flex justify-center">
+            <img src="images/infu.png" className="w-full max-w-[80%] lg:max-w-[20%] mx-auto lg:hidden" />
+          </div>
+        )}
+        {!customerinfo && (
+          <div className="flex justify-end lg:hidden">
+            <img src="images/100k.png" className="w-full max-w-[50%] lg:max-w-[20%]" />
+          </div>
+        )}
+
         <div className="text-black font-bold text-2xl lg:text-3xl">
-          {customerinfo ? <span className="text-white text-3xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span> : <h1 className="text-black font-bold text-2xl lg:text-3xl text-outline"> ครบ 10 ร้านก่อน 100 คนแรก </h1>}
+          {customerinfo ? <span className="text-white text-3xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span>  : <h1 className="text-black font-bold text-2xl lg:text-3xl text-outline"> ครบ 10 ร้านก่อน 100 คนแรก </h1>}
         </div>
-        {!customerinfo && <img src="images/infu.png" className="w-full max-w-[600px]" />}
       </div>
 
       <div className="absolute top-30 left-0 w-full h-full z-20">
@@ -134,7 +119,7 @@ const Location = ({ onCheckin }) => {
             }}
             onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
           >
-            <img src={loc.image} alt={loc.name} className="w-8 sm:w-12" />
+            <img src={loc.image} alt={loc.name} className="w-12 sm:w-12 xl:w-20" />
           </div>
         ))}
       </div>
@@ -143,7 +128,7 @@ const Location = ({ onCheckin }) => {
         <motion.img
           src="images/btncheckin.png"
           onClick={() => onCheckin(true)} //navigate("/RegisterEvent")
-          className="cursor-pointer mt-auto pb-0 w-50 lg:w-[400px] xl:w-[400px] z-20"
+          className="cursor-pointer mt-auto pb-0 w-50 lg:w-[200px] xl:w-[250px] z-20"
           alt="Go to Check-in"
           initial={{ y: 0 }}
           animate={{ y: [0, -10, 0] }}

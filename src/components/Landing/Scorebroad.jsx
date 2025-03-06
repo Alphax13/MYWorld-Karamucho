@@ -48,7 +48,7 @@ const Scoreboard = () => {
   return (
     <div className="p-5 pb-10 flex flex-col items-center bg-[url(images/bgbroad.png)] mb-10 bg-left-top bg-no-repeat bg-cover">
       <div className="text-center text-white font-bold text-2xl mb-4">
-        <img src="images/score.png" alt="Logo" className="mx-auto w-40" />
+        <img src="images/score.png" alt="Logo" className="mx-auto w-40 lg:w-80" />
       </div>
 
       <div className="w-full max-w-2xl p-4 flex flex-col gap-4 overflow-hidden transition-all duration-300">

@@ -3,43 +3,54 @@ import "./style.css";
 
 const Event = () => {
   return (
-    <div className="w-full relative mb-10">
-      <img src="images/rip.png" className="ripper w-full" />
-      
-      {/* ภาพ event text */}
-      <div className="w-full flex justify-center cursor-pointer">
-        <img src="images/textevent.png" alt="Checkin Banner" className="w-[50%] md:w-[45%] lg:w-[30%] xl:w-[35%] 2xl:w-[30%] max-sm:w-[70%]" />
+    <div 
+      className="event w-full flex flex-col items-center justify-center relative px-4 lg:px-8 py-8"
+      style={{
+        backgroundImage: "url('images/bg-paper.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* หัวข้อหลัก */}
+      <div className="w-full flex justify-center mb-4">
+        <img src="images/textevent.png" alt="Event" className="w-[80%] max-w-xs lg:w-[50%] max-w-lg" />
       </div>
-      
-      {/* Container สำหรับข้อความและปุ่ม */}
-      <div className="absolute top-[40%] lg:top-[45%] right-[18%] md:right-[35%] lg:right-[15%] xl:right-[39%] flex flex-col items-center gap-4 transform -translate-y-1/2">
-        <h1 className="text-sm lg:text-xl font-bold">ล่า COINS หมูกะทะ</h1>
+
+      {/* กล่องข้อมูล COINS */}
+      <div className="w-full flex flex-col lg:flex-row items-center justify-center text-center gap-2 lg:gap-6">
         
-        {/* ปุ่ม คลิกเลย พร้อมอนิเมชั่นลอยขึ้นลง */}
-        <motion.button 
-          className="event-button bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 rounded-lg border border-[#28B7E1] shadow-md hover:from-[#003D4C] hover:to-[#008BB0] transition duration-300 text-lg md:text-xl lg:text-2xl"
-          initial={{ y: 0 }}
-          animate={{ y: [0, -20, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          คลิกเลย
-        </motion.button>
+        {/* ข้อความ */}
+        <p className="text-black font-semibold text-lg lg:text-2xl whitespace-nowrap">
+          ตามล่า COINS หมูกะทะ
+        </p>
+
+        {/* จำนวน COINS */}
+        <div className="bg-white px-4 py-1 rounded-lg border-2 border-[#28B7E1] text-[#28B7E1] text-2xl lg:text-4xl font-bold shadow-md">
+          15,000 <span className="text-black text-sm">COINS</span>
+        </div>
+
       </div>
-      
-      {/* ปุ่ม Add Line */}
-      <div className="absolute bottom-[5%] right-[15%] md:right-[31%] lg:right-[20%] xl:right-[38%] flex flex-col items-center">
-        <a href="https://line.me/ti/p/@myworld" target="_blank" rel="noopener noreferrer">
-          <button className="event-button bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 rounded-lg border border-[#28B7E1] shadow-md hover:from-[#003D4C] hover:to-[#008BB0] transition duration-300 flex items-center text-lg md:text-xl lg:text-2xl">
-            <img src="images/line-icon.png" alt="Line" className="w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 mr-2" />
-            <span>Add Line</span>
-          </button>
-        </a>
-      </div>
-      
-      {/* ภาพ event หลัก */}
+
+      {/* รูป My Box Set */}
       <div className="w-full flex justify-center mt-6">
-        <img src="images/event.png" alt="Checkin Banner" className="w-[50%] md:w-[45%] lg:w-[40%] xl:w-[35%] 2xl:w-[30%] max-sm:w-[70%]" />
+        <img src="images/cupon.png" alt="MY BOX SET" className="w-[90%] max-w-sm lg:w-[50%] max-w-lg" />
       </div>
+
+      {/* ปุ่ม คลิกเลย */}
+      <motion.button 
+        className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 rounded-lg border border-[#28B7E1] shadow-md mt-6 text-lg lg:text-2xl font-bold w-[80%] max-w-xs lg:w-[40%] max-w-md"
+        initial={{ y: 0 }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+      >
+        คลิกเลย
+      </motion.button>
+
+      {/* รายการร้านหมูกระทะ */}
+      <p className="mt-6 text-gray-800 font-semibold text-center text-sm lg:text-xl pb-10">
+        สามารถแลกได้ที่ <span className="text-[#28B7E1] font-bold text-xl lg:text-3xl">11 ร้านหมูกะทะ</span> ที่ร่วมรายการ
+      </p>
     </div>
   );
 };
