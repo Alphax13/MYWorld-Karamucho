@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { upload, checkin } from '../../common/userSlice.js/userSlice';
@@ -8,8 +8,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import moment from "moment"; // วันที่และเวลา
 
 const CheckinPhoto = () => {
-  const location = useLocation(); 
   const dispatch = useDispatch();
+  const location = useLocation(); 
   const navigate = useNavigate(); 
   const { store, branch, img } = location.state || {}; 
   const [selectedImage, setSelectedImage] = useState(null); 

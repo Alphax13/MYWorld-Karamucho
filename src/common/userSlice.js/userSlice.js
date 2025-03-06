@@ -12,7 +12,8 @@ const baseUrl =`https://games.myworld-store.com/api`;
 //BaseUrl Api dev
 //const baseUrl = `https://games.myworld-store.com/api-dev`;
 
-const leaderboardUrl = `https://games.myworld-store.com/mymap/leaderboard.json`
+const leaderboardUrl = `https://games.myworld-store.com/api/mymap/leaderboardAdmin`
+// const leaderboardUrl = `https://games.myworld-store.com/mymap/leaderboard.json`
 
 //Api Store 
 const getprofile = `${baseUrl}/customers/customerInfo`;

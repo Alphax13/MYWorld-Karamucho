@@ -74,6 +74,7 @@ const FullscreenNav = ({onCheckin}) => {
             </li>
             </ul>
         </div>
+        
       </div>
       <button className="menu-btn" onClick={() => setIsActive(!isActive)}>
         <FontAwesomeIcon icon={isActive ? faTimes : faBars} />

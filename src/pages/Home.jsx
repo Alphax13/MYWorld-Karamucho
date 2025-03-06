@@ -21,18 +21,24 @@ const Home = ({ onCheckin }) => {
 
   return (
     <div className="landing min-h-screen m-0">
+
       {!customerinfo &&
         <>
           <FullscreenNav onCheckin={onCheckin} />
           <BannerKV />
           <Event />
-          <Howto /></>}
+          <Howto />
+        </>
+      }
       <Location onCheckin={onCheckin} />
       <Scoreboard />
       <MobileMenu />
-      {!customerinfo && <>
-        <ProductSlider />
-      </>}
+
+      {!customerinfo &&
+        <>
+          <ProductSlider />
+        </>
+      }
     </div>
   );
 };

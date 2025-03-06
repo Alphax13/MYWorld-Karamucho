@@ -67,13 +67,12 @@ function RegisterEvent() {
   const handleSubmit = async () => {
     if (validateForm()) {
       setLoading(true);
-
       try {
         const response = await dispatch(updateinfo(formData));
         if (response?.payload) {
-          setIsModalVisible(false);
+          setIsModalVisible(false); // ปิด modal
           setLoading(false);
-          navigate("//");
+          navigate("//"); // ไปยังหน้าแรกหรือหน้าถัดไป
         } else {
           setLoading(false);
           setErrorMessage("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
@@ -84,6 +83,7 @@ function RegisterEvent() {
       }
     }
   };
+  
 
   useEffect(() => {
     if (customerinfo?.phone === null || customerinfo?.phone === "") {

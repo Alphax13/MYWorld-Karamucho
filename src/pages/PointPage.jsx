@@ -9,12 +9,14 @@ import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
 import { loginWithLine } from "../common/userSlice.js/userSlice";
 import { useNavigate } from "react-router-dom";
+import RegisterEvent from "./RegisterEvent";
 
 const PonitPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
+  const [showregister , setshowregister] = useState(false)
 
   useEffect(() => {
     document.title = "MyPoint - MyMap ปิ้ง";
