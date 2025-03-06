@@ -14,7 +14,7 @@ const Event = () => {
     >
       {/* หัวข้อหลัก */}
       <div className="w-full flex justify-center mb-4">
-        <img src="images/textevent.png" alt="Event" className="w-[80%] max-w-xs lg:w-[50%] max-w-lg" />
+        <img src="images/textevent.png" alt="Event" className="w-[80%] max-w-xs lg:w-[50%]" />
       </div>
 
       {/* กล่องข้อมูล COINS */}
