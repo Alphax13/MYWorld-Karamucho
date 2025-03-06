@@ -9,10 +9,11 @@ const Howto = () => {
   const navigate = useNavigate();
 
   const images = [
-    { src: "w1.png", text: "เลือกเมนู\n“MY Map ปิ้ง”" },
-    { src: "w2.png", text: "ค้นหาร้านหมูกะทะ\nที่ต้องการ" },
-    { src: "w3.png", text: "กด\nรับสิทธิ์" },
-    { src: "w4.png", text: "แสดงคูปองให้พนักงาน" }
+    { src: "w1.png", text: "ไปที่ MY WORLD\nหรือ กดเช็คคูปอง" },
+    { src: "w2.png", text: "ริชเมนูบาร์เลือก\n“แลกคูปอง”" },
+    { src: "w3.png", text: "ค้นหาร้าน\nที่ต้องการแลก" },
+    { src: "w4.png", text: "กดรับสิทธิ์\nภายใน 10 นาที" },
+    { src: "w4.png", text: "แสดงโค้ดคูปอง\nให้พนักงานหน้าร้าน" }
   ];
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const Howto = () => {
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-4 gap-2 w-full pb-5">
+              <div className="grid grid-cols-5 gap-2 w-full pb-5">
                 {images.map((img, index) => (
                   <div className="cards flex flex-col items-center gap-5" key={index}>
                     <img src={`images/${img.src}`} alt={`Coin Collect ${index + 1}`} className="w-full h-auto" />

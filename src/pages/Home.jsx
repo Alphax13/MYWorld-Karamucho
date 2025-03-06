@@ -8,6 +8,7 @@ import Location from "../components/Landing/Location";
 import Scoreboard from "../components/Landing/Scorebroad";
 import ProductSlider from "../components/Landing/ProductSlider";
 import MobileMenu from "../components/Landing/MobileMenu";
+import JoinStore from "../components/Landing/joinstore";
 
 const Home = ({ onCheckin }) => {
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
@@ -27,6 +28,7 @@ const Home = ({ onCheckin }) => {
           <FullscreenNav onCheckin={onCheckin} />
           <BannerKV />
           <Event />
+          <JoinStore />
           <Howto /></>}
       <Location onCheckin={onCheckin} />
       <Scoreboard />
