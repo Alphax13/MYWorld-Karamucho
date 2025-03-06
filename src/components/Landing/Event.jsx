@@ -34,12 +34,12 @@ const Event = () => {
 
       {/* รูป My Box Set */}
       <div className="w-full flex justify-center mt-6">
-        <img src="images/cupon.png" alt="MY BOX SET" className="w-[90%] max-w-sm lg:w-[50%] max-w-lg" />
+        <img src="images/cupon.png" alt="MY BOX SET" className="w-[90%] max-w-sm lg:w-[50%]" />
       </div>
 
       {/* ปุ่ม คลิกเลย */}
       <motion.button 
-        className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 rounded-lg border border-[#28B7E1] shadow-md mt-6 text-lg lg:text-2xl font-bold w-[80%] max-w-xs lg:w-[40%] max-w-md"
+        className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 rounded-lg border border-[#28B7E1] shadow-md mt-6 text-lg lg:text-2xl font-bold w-[80%] max-w-xs lg:w-[40%]"
         initial={{ y: 0 }}
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
