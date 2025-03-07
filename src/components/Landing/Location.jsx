@@ -114,7 +114,7 @@ const Location = ({ onCheckin }) => {
         <img src="images/LogoMymap.png" alt="Logo" className="w-30 lg:w-80" />
       </div>
 
-      <div className="text-center px-2 w-[80%] mb-auto block gap-2 -mt-6 lg:mt-60">
+      <div className="text-center px-2 w-[100%] mb-auto block gap-2 -mt-6 lg:mt-60">
         <h2 className="text-white font-bold text-lg lg:text-3kx">
           {customerinfo ?
             <p>เลือกร้านที่คุณต้องการ</p>
