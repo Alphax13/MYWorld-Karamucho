@@ -110,7 +110,7 @@ const Location = ({ onCheckin }) => {
 
       <img src="images/ripper2.png" className="w-full block lg:hidden" />
 
-      <div className="logo-container mt-10 pb-2 justify-center block lg:hidden">
+      <div className="logo-container pb-2 justify-center block lg:hidden">
         <img src="images/LogoMymap.png" alt="Logo" className="w-30 lg:w-80" />
       </div>
 

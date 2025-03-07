@@ -45,9 +45,10 @@ const JoinStore = () => {
         สามารถแลกได้ที่ <span className="text-[#28B7E1] font-bold text-xl lg:text-3xl">11 ร้านหมูกะทะ</span> ที่ร่วมรายการ
       </p>
 
-      {/* ปุ่ม คลิกเลย */}
       <motion.button 
-        className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 rounded-lg border border-[#28B7E1] shadow-md text-lg lg:text-2xl font-bold w-[80%] max-w-xs lg:w-[40%]"
+        className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 
+                  rounded-[50px] border border-[#28B7E1] shadow-md text-2xl lg:text-2xl 
+                  font-bold w-[80%] max-w-xs lg:w-[40%]"
         initial={{ y: 0 }}
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
