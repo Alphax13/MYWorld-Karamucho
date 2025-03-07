@@ -105,7 +105,7 @@ const Howto = () => {
                     <IoArrowBackCircleOutline size={40} />
                   </motion.button>
                   <p
-                    className="text-black text-2xl font-bold text-center flex-1"
+                    className="text-black text-xl font-bold text-center flex-1"
                     dangerouslySetInnerHTML={{ __html: images[currentIndex].text.replace(/\n/g, "<br/>") }}
                   ></p>
                   <motion.button 
