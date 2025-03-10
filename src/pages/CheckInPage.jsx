@@ -18,7 +18,7 @@ export default function CheckInPage() {
   const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
 
   useEffect(() => {
-    document.title = "Check in - MyMap ปิ้ง";
+    document.title = "Check in";
   }, []);
 
   useEffect(() => {
