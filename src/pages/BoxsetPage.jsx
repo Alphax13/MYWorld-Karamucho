@@ -17,7 +17,7 @@ const BoxsetPage = () => {
   const branchdata = useSelector((state) => state.user.getbranchrestaurantData);
 
   useEffect(() => {
-    document.title = "MyBox Set - MyMap ปิ้ง";
+    document.title = "My Box Set";
   }, []);
 
   useEffect(() => {

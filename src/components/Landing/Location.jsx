@@ -39,10 +39,10 @@ const Location = ({ onCheckin }) => {
     { id: 5, name: "Everyday Mokata", top: { pc: "40%", mobile: "42%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
     { id: 6, name: "เอาถ่านหมูกะทะ", top: { pc: "40%", mobile: "33%" }, left: { pc: "43%", mobile: "42%" }, image: "images/pin3.png" },
     { id: 7, name: "ทวีโชค", top: { pc: "60%", mobile: "52%" }, left: { pc: "30%", mobile: "18%" }, image: "images/pin5.png" },
-    { id: 8, name: "71 หมูกระทะ", top: { pc: "50%", mobile: "53%" }, left: { pc: "78%", mobile: "75%" }, image: "images/pin8.png" },
+    { id: 8, name: "71 หมูกระทะ", top: { pc: "50%", mobile: "53%" }, left: { pc: "78%", mobile: "74%" }, image: "images/pin8.png" },
     { id: 9, name: "Bar Mookrata", top: { pc: "42%", mobile: "55%" }, left: { pc: "66%", mobile: "55%" }, image: "images/pin10.png" },
-    { id: 10, name: "อารยาหมูกระทะ", top: { pc: "75%", mobile: "44%" }, left: { pc: "84%", mobile: "90%" }, image: "images/pin7.png" },
-    { id: 11, name: "วาสนาหมูกะทะ", top: { pc: "30%", mobile: "35%" }, left: { pc: "50%", mobile: "83%" }, image: "images/pin11.png" },
+    { id: 10, name: "อารยาหมูกระทะ", top: { pc: "75%", mobile: "45%" }, left: { pc: "84%", mobile: "82%" }, image: "images/pin7.png" },
+    { id: 11, name: "วาสนาหมูกะทะ", top: { pc: "33%", mobile: "35%" }, left: { pc: "50%", mobile: "83%" }, image: "images/pin11.png" },
     // { id: 10, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
   ];
 
@@ -143,20 +143,51 @@ const Location = ({ onCheckin }) => {
       </div>
 
       <div className="absolute top-30 left-0 w-full h-full z-20">
-        {mappedLocations.map((loc) => (
-          <div
-            key={loc.id}
-            className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2"
+  {mappedLocations.map((loc) => (
+    <div
+      key={loc.id}
+      className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-2/3 flex flex-col items-center"
+      style={{
+        top: isMobile ? loc.top.mobile : loc.top.pc,
+        left: isMobile ? loc.left.mobile : loc.left.pc,
+      }}
+      onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
+    >
+      {/* SVG สำหรับข้อความโค้ง (ขนาดปรับตามอุปกรณ์) */}
+      <svg width={isMobile ? "100" : "190"} height="30">
+        <defs>
+          <path
+            id={`curvePath-${loc.id}`}
+            d={isMobile ? "M 20,40 A 40,10 0 0,1 100,25" : "M 20,40 A 70,20 0 0,1 190,45"}
+            fill="transparent"
+          />
+        </defs>
+        <text width={isMobile ? "100" : "150"}>
+          <textPath
+            href={`#curvePath-${loc.id}`}
+            startOffset="50%"
+            textAnchor="middle"
+            className="font-bold text-[10px] md:text-sm lg:text-xl"
             style={{
-              top: isMobile ? loc.top.mobile : loc.top.pc,
-              left: isMobile ? loc.left.mobile : loc.left.pc,
+              fill: "white", // ตัวอักษรสีขาว
+              stroke: "black", // ขอบสีดำ
+              strokeWidth: "2px", // ความหนาของขอบ
+              paintOrder: "stroke fill", // ทำให้ขอบอยู่ใต้ตัวอักษร
             }}
-            onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
           >
-            <img src={loc.image} alt={loc.name} className="w-12 sm:w-12 xl:w-20" />
-          </div>
-        ))}
-      </div>
+            {loc.name}
+          </textPath>
+        </text>
+      </svg>
+
+      {/* รูป pin */}
+      <img src={loc.image} alt={loc.name} className="w-10 sm:w-12 xl:w-16" />
+    </div>
+  ))}
+</div>
+
+
+
       {/* Check-in Button */}
       {!customerinfo && (
         <motion.img
