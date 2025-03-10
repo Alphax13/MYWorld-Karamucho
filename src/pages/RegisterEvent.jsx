@@ -104,7 +104,7 @@ function RegisterEvent() {
   };
 
   useEffect(() => {
-    document.title = "Register- MyMap ปิ้ง";
+    document.title = "Register";
   }, []);
 
   return (<>
