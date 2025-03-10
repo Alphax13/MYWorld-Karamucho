@@ -91,12 +91,12 @@ function RegisterEvent() {
           // Show modal with the message "Already register phone number"
           setModalMessage("ท่านได้ลงทะเบียนไปแล้ว");
           setModalVisible(true);
-         setTimeout(() => navigate(location.state?.from || -1), 2000); // Redirect to the previous page after 2 seconds
+         setTimeout(() => navigate(location.state?.from || '//'), 2000); // Redirect to the previous page after 2 seconds
         } else if (response?.payload) {
           // Show modal with success message
           setModalMessage("ลงทะเบียนสำเร็จ");
           setModalVisible(true);
-         setTimeout(() => navigate(location.state?.from || -1), 2000); // Redirect to the previous page after 2 seconds
+         setTimeout(() => navigate(location.state?.from || '//'), 2000); // Redirect to the previous page after 2 seconds
         } else {
           setModalMessage("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
           setModalVisible(true);
