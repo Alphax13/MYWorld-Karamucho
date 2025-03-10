@@ -16,16 +16,16 @@ const FullscreenNav = ({onCheckin}) => {
         <div className={`wrapper ${isActive ? "active" : ""}`} onClick={() => setIsActive(false)}>
             <ul>
             <li>
-                <a href="https://myworld-virtual-store.com">Virtual</a>
+                <a href="https://myworld-virtual-store.com" target="_blank">Virtual</a>
             </li>
             <li>
                 <a href="#" onClick={() => onCheckin(true)}>สมัครสมาชิก</a>
             </li>
             <li>
-                <a  onClick={()=>navigate("/point")}>COINS สะสม</a>
+                <a href="#" onClick={()=>navigate("/point")}>COINS สะสม</a>
             </li>
             <li>
-                <a href="#">MY LIMITED ITEMS</a>
+                <a href="https://shop.line.me/@myworld" target="_blank">MY LIMITED ITEMS</a>
             </li>
             <li>
                 <a href="#">Feedback</a>
@@ -50,7 +50,7 @@ const FullscreenNav = ({onCheckin}) => {
                 </svg>
             </a>
 
-            <a href="https://www.instagram.com/_myworldshop_/" target="_blank">
+            <a href="https://www.instagram.com/myworld.creator/" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="24" height="24">
                 <path
                     d="M27.53,10.73H12.73A2.23,2.23,0,0,0,10.5,13v14.8A2.23,2.23,0,0,0,12.73,30h14.8a2.23,2.23,0,0,0,2.23-2.23V13A2.23,2.23,0,0,0,27.53,10.73Zm-3,13.86a6,6,0,1,1,1.75-4.23A6,6,0,0,1,24.52,24.59Zm2.85-10.08a1.37,1.37,0,1,1,1.37-1.37A1.37,1.37,0,0,1,27.37,14.51Z"
