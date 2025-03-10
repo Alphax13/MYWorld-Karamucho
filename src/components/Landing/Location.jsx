@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { getrestaurant, leaderboard } from "../../common/userSlice.js/userSlice";
 import "./style.css";
 
-const Location = ({ onCheckin }) => {
+const Location = ({ onCheckin, getprofile }) => {
   const dispatch = useDispatch();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
@@ -174,6 +174,7 @@ const Location = ({ onCheckin }) => {
               strokeWidth: "2px", // ความหนาของขอบ
               paintOrder: "stroke fill", // ทำให้ขอบอยู่ใต้ตัวอักษร
             }}
+<<<<<<< HEAD
           >
             {loc.name}
           </textPath>
@@ -188,11 +189,28 @@ const Location = ({ onCheckin }) => {
 
 
 
+=======
+            onClick={() => {
+              if (profile && !customerinfo) {
+                getprofile();
+              } else if (profile && customerinfo) {
+                handleClick(loc);
+              } else {
+                onCheckin(true);
+              }
+            }}
+          >
+            <img src={loc.image} alt={loc.name} className="w-12 sm:w-12 xl:w-20" />
+          </div>
+        ))}
+
+      </div>
+>>>>>>> 57c3dfc9d404a81225ca89f6a307cd617082ebc3
       {/* Check-in Button */}
       {!customerinfo && (
         <motion.img
           src="images/btncheckin.png"
-          onClick={() => onCheckin(true)} //navigate("/RegisterEvent")
+          onClick={() => profile ? getprofile() : customerinfo ? handleClick(loc) : onCheckin(true)} //navigate("/RegisterEvent") onCheckin(true)
           className="cursor-pointer mt-auto pb-0 w-50 lg:w-[200px] xl:w-[250px] z-20"
           alt="Go to Check-in"
           initial={{ y: 0 }}

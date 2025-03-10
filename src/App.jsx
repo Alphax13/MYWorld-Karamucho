@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
@@ -14,20 +14,24 @@ import { loginWithLine, getuser, setCustomerInfo } from "./common/userSlice.js/u
 
 function App() {
   const dispatch = useDispatch();
+ 
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [isCheckinActive, setIsCheckinActive] = useState(false);
+  
 
   const handleCheckin = () => {
-    setIsCheckinActive(!isCheckinActive);
     dispatch(loginWithLine());
+  };
+
+
+  const handleGetprofile =()=>{
+    dispatch(getuser({ profile }));
   };
 
   console.log(customerinfo)
 
   useEffect(() => {
     const storedProfile = localStorage.getItem("profile");
-    const storedCustomerInfo = localStorage.getItem("customerinfo");
-
     if (storedProfile) {
       try {
         const parsedProfile = JSON.parse(storedProfile);
@@ -36,11 +40,7 @@ function App() {
         console.error("Failed to parse profile from localStorage:", error);
       }
     }
-
-    if (isCheckinActive) {
-      dispatch(loginWithLine());
-    }
-  }, [dispatch, isCheckinActive, customerinfo]);
+  }, [dispatch]);
 
   useEffect(() => {
     // ตรวจสอบว่า GTM ถูกโหลดหรือยัง
@@ -52,23 +52,17 @@ function App() {
     }
   }, [location]);
 
-  // useEffect(()=>{
-  //   if (profile && !customerinfo) {
-  //     dispatch(getuser({ profile }));
-  //   }
-  // },[dispatch , profile ,customerinfo])
+  useEffect(() => {
+    if (profile) {
+      dispatch(getuser({ profile }));
+    }
+  }, [dispatch])
 
-  // useEffect(() => {
-  //   const userAgent = navigator.userAgent.toLowerCase();
-  //   if (userAgent.includes("line")) {
-  //     dispatch(loginWithLine());
-  //   }
-  // }, [dispatch]);
 
   return (
     <Router basename="/My-map">
       <Routes>
-        <Route path="/" element={(customerinfo) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :<Home onCheckin={handleCheckin} />} /> {/*(customerinfo ) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :  */}
+        <Route path="/" element={(customerinfo) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> : <Home onCheckin={handleCheckin} getprofile={handleGetprofile} />} /> {/*(customerinfo ) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :  */}
         <Route path="/point" element={<PonitPage />} />
         <Route path="/boxset" element={<BoxsetPage />} />
         <Route path="/privilege/:id" element={<PrivilegePage />} />

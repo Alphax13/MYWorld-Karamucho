@@ -35,20 +35,20 @@ const ProductCard = () => {
           <div
             key={product.id}
             className={`flex items-center rounded-lg shadow-lg relative overflow-hidden 
-                       bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center ${isDisabled ? 'bg-gray-400 cursor-not-allowed' : ''}`}
+                       bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center ${isDisabled ? 'bg-gray-400 cursor-not-allowed' : ''}`}
             onClick={() => {
               if (!isDisabled) {
                 navigate("/boxset", { state: { coupon_id: product?.coupon_id } });
               }
             }}
           >
-            <div className="flex justify-center items-center flex-[20%]">
+            {/* <div className="flex justify-center items-center flex-[20%]">
               <img src="images/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
-            </div>
+            </div> */}
 
-            <div className="flex justify-center items-center flex-[20%]">
+            <div className="flex justify-center items-center flex-[45%]">
               <img
-                src={!product.image_url ? product.image_url : "images/mock.png"}
+                src={!product.image_url ? product.image_url : "images/promotioncard.png"}
                 alt={product.name}
                 className="h-28 object-contain"
               />
