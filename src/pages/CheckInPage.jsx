@@ -12,7 +12,7 @@ export default function CheckInPage() {
   const [selectedStore, setSelectedStore] = useState(""); // Default is empty string
   const [branches, setBranches] = useState([]);
   const [selectedBranch, setSelectedBranch] = useState("");
-  const [storeImg, setStoreImg] = useState("www.google.com");
+  const [storeImg, setStoreImg] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const branchdata = useSelector((state) => state.user.getbranchrestaurantData);
   const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
@@ -36,48 +36,45 @@ export default function CheckInPage() {
     }
   }, [location.state?.id, getrestaurantData]);
 
-
   useEffect(() => {
     if (selectedStore && getrestaurantData.length > 0) {
       const selectedRestaurant = getrestaurantData.find(
         (store) => store.name === selectedStore
       );
       if (selectedRestaurant) {
-        setStoreImg(selectedRestaurant?.image_url || "");
-        dispatch(getbranchrestaurant({ restaurant_id: selectedRestaurant?.restaurant_id }));
+        setStoreImg(selectedRestaurant.image_url || ""); // ใช้ค่าจาก API
+        dispatch(getbranchrestaurant({ restaurant_id: selectedRestaurant.restaurant_id }));
       }
     }
   }, [selectedStore, dispatch, getrestaurantData]);
 
   const handleCheckin = async () => {
+    const selectedRestaurant = getrestaurantData.find(store => store.name === selectedStore);
+    const selectedBranchData = branchdata.find(branch => branch.name === selectedBranch);
+  
     const checkinData = {
       customer_id: customerinfo?.customer_id,
-      restaurant_id: getrestaurantData.find(store => store.name === selectedStore)?.restaurant_id,
-      branch_id: branchdata.find((branch) => branch.name === selectedBranch)?.branch_id,
-      image_url: "", //storeImg
+      restaurant_id: selectedRestaurant?.restaurant_id,
+      branch_id: selectedBranchData?.branch_id,
+      image_url: storeImg, // ส่งรูปไปด้วย
+      store: selectedStore,
+      branch: selectedBranch,
     };
-
+  
     console.log(checkinData);
-
-    // try {
-    //   const response = await dispatch(checkin(checkinData));
-    //   console.log(response);
-    //   if (response.payload === 'success') {
-        navigate("/checkin-photo", { state: checkinData });
-    //   } else {
-    //     setErrorMessage('ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว');
-    //   }
-    // } catch (error) {
-    //   setErrorMessage("เกิดข้อผิดพลาดในการเช็คอิน กรุณาลองใหม่อีกครั้ง");
-    // }
+  
+    navigate("/checkin-photo", { state: checkinData });
   };
+  
+  
+  
 
   return (
     <div className="checkin-container p-5 flex flex-col items-center">
       <img src="images/top.png" alt="Top Banner" className="fixed-top" />
 
       <div className="branch-box p-6 mt-10 z-100">
-        <div className="logo-container">
+        <div className="logo-container2">
           <img src="images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
 

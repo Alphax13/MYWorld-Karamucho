@@ -11,7 +11,7 @@ const CheckinPhoto = () => {
   const dispatch = useDispatch();
   const location = useLocation(); 
   const navigate = useNavigate(); 
-  const { store, branch, img } = location.state || {}; 
+  const { store, branch, image_url } = location.state || {};
   const [selectedImage, setSelectedImage] = useState(null); 
   const [selectedImage2, setSelectedImage2] = useState(null); 
   const [modalConfirm, setModalConfirm] = useState(false); // Modal ยืนยัน
@@ -31,6 +31,7 @@ const CheckinPhoto = () => {
       alert("กรุณาเลือกไฟล์ภาพเท่านั้น");
     }
   };
+  
 
   console.log(location.state.store)
 
@@ -90,7 +91,7 @@ const CheckinPhoto = () => {
       <img src="images/top.png" alt="Top Banner" className="fixed-top" />
 
       <div className="branch-box z-10">
-        <div className="logo-container">
+        <div className="logo-container2">
           <img src="images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
         
@@ -101,11 +102,12 @@ const CheckinPhoto = () => {
           <h2 className="text-center text-base font-semibold flex-1">รายละเอียด</h2>
         </div>
 
-        {/* แสดงภาพที่ได้รับจาก state */}
-        {img && <img src={img} alt={`${store} ${branch}`} className="w-[50%]" />}
+         {/* แสดงภาพร้านจาก API */}
+      {image_url && <img src={image_url} alt={`${store} ${branch}`} className="w-[50%] rounded-lg shadow-md" />}
 
-        <p className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">{store} {branch}</p>
-
+<p className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">
+  {store} - {branch}
+</p>
         {/* ส่วนสำหรับการอัปโหลดรูปภาพ */}
         <div className="flex flex-col items-center m-4 bg-[#28B7E1]/10 w-[85%]">
           <label htmlFor="doc" className="flex items-center rounded-lg border border-[#28B7E1] border-dashed cursor-pointer w-full">

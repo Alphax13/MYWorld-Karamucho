@@ -17,7 +17,14 @@
     padding: 5px;
     border-radius: 50%;
   }
-  
+    .logo-container2 {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    border-radius: 50%;
+  }
   .logo {
     width: 150px;
     height: auto;

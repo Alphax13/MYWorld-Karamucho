@@ -36,7 +36,7 @@ const ProfileCard = () => {
           <h1 className="text-xl font-semibold">{userName}</h1>
           <div className="flex items-center text-lg my-2">
             <img src="images/icon/coin.svg" alt="Coins" className="w-6 h-6 mr-2" />
-            <span className="text-gray-700">Point: {points}</span>
+            <span className="text-gray-700">Coins: {points}</span>
           </div>
           <div className="flex items-center text-lg my-2">
             <img src="images/icon/game.svg" alt="Coins" className="w-6 h-6 mr-2" />
