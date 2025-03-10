@@ -32,6 +32,8 @@ const CheckinPhoto = () => {
     }
   };
 
+  console.log(location.state.store)
+
   const handleCheckin = () => {
     setModalConfirm(true); // เปิด Modal ยืนยัน Check-in
   };

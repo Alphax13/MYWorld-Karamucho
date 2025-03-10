@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkinHis, getrestaurant } from "../../common/userSlice.js/userSlice";
+import { checkinHis, getrestaurant , getuser } from "../../common/userSlice.js/userSlice";
 import "./CheckPoint.css";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar";
 
 export default function CheckPoint() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const pointData = useSelector((state) => state.user.checkinHisesData);
   const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
-  
+
   const [selectedStore, setSelectedStore] = useState(""); // ร้านเริ่มต้น
-  const [selectedBranch, setselectedBranch] = useState("");
+  const [selectedBranch, setselectedBranch] = useState(""); // ช่องค้นหาสาขา
 
   useEffect(() => {
     document.title = "MyCheckPoint- MyMap ปิ้ง";
@@ -21,16 +24,32 @@ export default function CheckPoint() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (customerinfo?.customer_id) {
-      dispatch(checkinHis({ customerid: customerinfo.customer_id }));
+    if (!customerinfo) {
+      dispatch(getuser({ profile }));
+    } else if (!customerinfo?.first_name) {
+      navigate('/RegisterEvent', { state: { from: '/CheckPoint' } });
     }
-  }, [dispatch, customerinfo]);
+    if (customerinfo?.customer_id) {
+      dispatch(checkinHis({ customerid: customerinfo?.customer_id }));
+    }
+  }, [dispatch, customerinfo, profile]);
 
   // ดึงรายชื่อร้านจาก API
   const storeList = getrestaurantData.map((store) => store.name);
 
+  // กรองข้อมูล pointData ตามร้านที่เลือก
+  const filteredByStore = selectedStore
+    ? pointData.filter((loc) => loc.restaurant.name === selectedStore)
+    : pointData;  // ถ้าไม่ได้เลือกร้าน, แสดงทั้งหมด
+
+  // กรองข้อมูล pointData ตามชื่อสาขา (selectedBranch)
+  const filteredPointData = selectedBranch
+    ? filteredByStore.filter((loc) => loc.restaurant_branch.name.toLowerCase().includes(selectedBranch.toLowerCase()))
+    : filteredByStore;  // ถ้าไม่ได้พิมพ์ชื่อสาขา, แสดงร้านที่เลือกทั้งหมด
+
   return (
     <div className="checkin-page flex flex-col items-center">
+      <div className="-mb-15 w-full"><Navbar/></div>
       <img src="images/top.png" alt="Top Banner" className="fixed-top" />
       <div className="flex flex-col items-center p-6 pb-0">
         {/* โลโก้ */}
@@ -44,7 +63,7 @@ export default function CheckPoint() {
             onChange={(e) => setSelectedStore(e.target.value)}
             value={selectedStore}
           >
-            <option value="">เลือกชื่อร้าน</option>
+            <option value="">ทั้งหมด</option>
             {storeList.map((store) => (
               <option key={store} value={store}>
                 {store}
@@ -65,7 +84,7 @@ export default function CheckPoint() {
       <div className="road relative ">
         <div className="px-10 mb-25 -mt-4">
           {/* จุดเช็คอิน */}
-          {pointData.map((loc, index) => (
+          {filteredPointData.map((loc, index) => (
             <div
               key={loc.id}
               className={`relative flex items-center w-60 h-14.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
@@ -83,7 +102,7 @@ export default function CheckPoint() {
             </div>
           ))}
 
-          {pointData.length === 0 && (
+          {filteredPointData.length === 0 && (
             <div className="text-gray-500 text-center mt-6">ไม่พบสาขา</div>
           )}
         </div>

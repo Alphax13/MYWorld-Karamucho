@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { getrestaurant, leaderboard } from "../../common/userSlice.js/userSlice";
 import "./style.css";
 
-const Location = ({ onCheckin }) => {
+const Location = ({ onCheckin, getprofile }) => {
   const dispatch = useDispatch();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
@@ -147,17 +147,26 @@ const Location = ({ onCheckin }) => {
               top: isMobile ? loc.top.mobile : loc.top.pc,
               left: isMobile ? loc.left.mobile : loc.left.pc,
             }}
-            onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
+            onClick={() => {
+              if (profile && !customerinfo) {
+                getprofile();
+              } else if (profile && customerinfo) {
+                handleClick(loc);
+              } else {
+                onCheckin(true);
+              }
+            }}
           >
             <img src={loc.image} alt={loc.name} className="w-12 sm:w-12 xl:w-20" />
           </div>
         ))}
+
       </div>
       {/* Check-in Button */}
       {!customerinfo && (
         <motion.img
           src="images/btncheckin.png"
-          onClick={() => onCheckin(true)} //navigate("/RegisterEvent")
+          onClick={() => profile ? getprofile() : customerinfo ? handleClick(loc) : onCheckin(true)} //navigate("/RegisterEvent") onCheckin(true)
           className="cursor-pointer mt-auto pb-0 w-50 lg:w-[200px] xl:w-[250px] z-20"
           alt="Go to Check-in"
           initial={{ y: 0 }}

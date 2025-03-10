@@ -7,9 +7,9 @@ import Redeem from "../components/Redeem";
 import Banner from "../components/Banner";
 import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
-import { loginWithLine } from "../common/userSlice.js/userSlice";
 import { useNavigate } from "react-router-dom";
 import RegisterEvent from "./RegisterEvent";
+import { getuser , loginWithLine } from "../common/userSlice.js/userSlice";
 
 const PonitPage = () => {
   const dispatch = useDispatch();
@@ -31,13 +31,16 @@ const PonitPage = () => {
   },[customerinfo])
 
   useEffect(() => {
-    if (!profile) {
-      dispatch(loginWithLine());
-      navigate("//");
-      } else if(profile && !customerinfo) {
-        dispatch(loginWithLine());
+      if (!profile){
+        dispatch(loginWithLine())
+      }else if (!customerinfo) {
+        dispatch(getuser({ profile }));
+      }else if (!customerinfo?.first_name){
+        navigate('/RegisterEvent', { state: { from: '/point' } });
       }
-    }, [dispatch, customerinfo , profile]);
+    }, [dispatch, customerinfo, profile]);
+
+    console.log(customerinfo)
 
   return (
     <div className="min-h-screen m-0">
@@ -59,4 +62,3 @@ const PonitPage = () => {
 };
 
 export default PonitPage;
-``

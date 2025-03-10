@@ -1,25 +1,34 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { allCoupon } from "../common/userSlice.js/userSlice";
+import { allCoupon , getuser } from "../common/userSlice.js/userSlice";
 import Navbar from "../components/Navbar";
 import { IoChevronBack } from "react-icons/io5";
 
 const CouponHistory = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const allCouponData = useSelector((state) => state.user.allCouponsData);
 
   useEffect(() => {
-    if (customerinfo) {
-      dispatch(allCoupon({ customerid: customerinfo?.customer_id }));
-    }
-  }, [dispatch, customerinfo]);
+        if(!profile){
+          navigate('/point');
+        }
+        if (!customerinfo) {
+          dispatch(getuser({ profile }));
+        }else if (!customerinfo?.first_name){
+          navigate('/RegisterEvent', { state: { from: '/coupon-history' } });
+        }
+        if (customerinfo) {
+          dispatch(allCoupon({ customerid: customerinfo?.customer_id }));
+        }
+      }, [dispatch, customerinfo, profile]);
 
     useEffect(() => {
       document.title = "MyCouponHistory - MyMap ปิ้ง";
     }, []);
+    console.log(profile ,customerinfo)
 
   // ฟังก์ชันที่ใช้ในการนับถอยหลัง
   const countdownTimer = (expireTime) => {
@@ -110,7 +119,7 @@ const CouponHistory = () => {
               <div
                 key={coupon.id}
                 className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                         bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
+                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
                 onClick={() => coupon.is_used === true || isExpired ? '' : handleCouponClick(coupon)} // เมื่อคลิกคูปอง
               >
                 {(coupon.is_used === true || isExpired) && (
@@ -119,8 +128,8 @@ const CouponHistory = () => {
                   </div>
                 )}
 
-                <div className="flex justify-center items-center flex-[20%]">
-                  <img src="images/mock.png" alt={coupon.title} className="h-28 object-contain" />
+                <div className="flex justify-center items-center flex-[50%]">
+                  <img src="images/promotioncard.png" alt={coupon.title} className="h-28 object-contain" />
                 </div>
 
                 <div className="flex-[90%] pl-4 leading-[1.5]">

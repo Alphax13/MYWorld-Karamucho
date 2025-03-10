@@ -98,7 +98,7 @@ const RedeemHistory = () => {
               <div
                 key={coupon.id}
                 className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                         bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
+                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
                 onClick={() => coupon.is_used === true || isExpired ? '' : handleCouponClick(coupon)} // เมื่อคลิกคูปอง
               >
                 {(coupon.is_used === true || isExpired) && (
@@ -107,11 +107,11 @@ const RedeemHistory = () => {
                   </div>
                 )}
 
-                <div className="flex justify-center items-center flex-[20%]">
+                {/* <div className="flex justify-center items-center flex-[20%]">
                   <img src="images/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
-                </div>
-                <div className="flex justify-center items-center flex-[20%]">
-                  <img src="images/mock.png" alt={coupon.title} className="h-28 object-contain" />
+                </div> */}
+                <div className="flex justify-center items-center flex-[45%]">
+                  <img src="images/promotioncard.png" alt={coupon.title} className="h-28 object-contain" />
                 </div>
 
                 <div className="flex-[80%] pl-4 leading-[1.5]">

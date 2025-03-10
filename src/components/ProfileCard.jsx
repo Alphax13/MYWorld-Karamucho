@@ -1,12 +1,24 @@
 import React,{ useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getuser } from "../common/userSlice.js/userSlice";
 
 const ProfileCard = () => {
+  const dispatch = useDispatch();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [profileImage, setProfileImage] = useState("");
-  const [userName, setUserName] = useState(customerinfo?.name || "");
-  const [points, setPoints] = useState(customerinfo?.point || 0);
+  const [userName, setUserName] = useState(customerinfo?.name ?? "");
+  const [points, setPoints] = useState(customerinfo?.point ?? 0);
   const [gamePoints, setGamePoints] = useState(customerinfo?.game_point || 0);
+
+  useEffect(()=>{
+    if(!customerinfo){
+      dispatch(getuser(profile))
+    }else if(customerinfo){
+      setUserName(customerinfo?.name)
+      setPoints(customerinfo?.point)
+      setGamePoints(customerinfo?.game_point)
+    }
+  },[dispatch,customerinfo,profile])
 
   useEffect(() => {
     setProfileImage("https://placehold.co/400");

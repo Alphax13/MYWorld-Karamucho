@@ -9,10 +9,44 @@ import Scoreboard from "../components/Landing/Scorebroad";
 import ProductSlider from "../components/Landing/ProductSlider";
 import MobileMenu from "../components/Landing/MobileMenu";
 import JoinStore from "../components/Landing/joinstore";
+import { useNavigate, useLocation } from "react-router-dom"
+import { loginWithLine } from "../common/userSlice.js/userSlice";
 
-const Home = ({ onCheckin }) => {
+const Home = ({ onCheckin ,getprofile}) => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
+  const [checkpage, setCheckpage] = useState(null);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    // ดึง rawCheck จาก URL
+    let rawCheck = params.get("page");
+    
+    // ถ้าใน URL ไม่มี ให้ลองดึงจาก localStorage
+    if (!rawCheck) {
+      rawCheck = localStorage.getItem("rawCheck");
+    }
+  
+    // ตรวจสอบว่า rawCheck และ profile ถูกตั้งค่าหรือยัง
+    if (rawCheck && !customerinfo) {
+      localStorage.setItem("rawCheck", rawCheck);
+      dispatch(loginWithLine());
+    } else if (rawCheck && customerinfo) {
+      setCheckpage(rawCheck);
+      console.log("ไปหน้า", rawCheck);
+      navigate(`/${rawCheck}`);
+    }
+  }, [location.search, profile, dispatch, navigate]);
+
+  useEffect(() => {
+    if (profile) {
+      // ลบ rawCheck จาก localStorage หลังจากล็อกอินสำเร็จ
+      localStorage.removeItem("rawCheck");
+    }
+  }, [profile]);  // เมื่อ profile ถูกตั้งค่า, ลบ rawCheck
+  
   useEffect(() => {
     document.title = "Home - MyMap ปิ้ง";
   }, []);
@@ -28,11 +62,11 @@ const Home = ({ onCheckin }) => {
           <FullscreenNav onCheckin={onCheckin} />
           <BannerKV />
           <Event />
-          <JoinStore />
-          <Howto /></>}
-      <Location onCheckin={onCheckin} />
+          <JoinStore onCheckin={onCheckin}/>
+          <Howto onCheckin={onCheckin}/></>}
+      <Location onCheckin={onCheckin} getprofile={getprofile} />
       <Scoreboard />
-      <MobileMenu />
+      <MobileMenu onCheckin={onCheckin}/>
       {!customerinfo && <>
         <ProductSlider />
       </>}

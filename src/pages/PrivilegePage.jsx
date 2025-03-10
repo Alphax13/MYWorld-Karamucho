@@ -100,7 +100,7 @@ const PrivilegePage = () => {
 
       <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-6 flex justify-center items-center">
         <div className="shadow-md w-50 text-center border border-black m-4">
-          <img src={'../images/mock.png'} alt={product?.selectedStore?.label} className="w-48 mx-auto" />
+          <img src={'../images/promotioncard.png'} alt={product?.selectedStore?.label} className="w-48 mx-auto" />
           <div className="bg-white m-0 p-1">
             <h2 className="text-xl font-bold text-gray-800 mt-3">{product?.selectedStore?.label}</h2>
             <p className="text-sm">{product?.selectedStore?.label}</p>

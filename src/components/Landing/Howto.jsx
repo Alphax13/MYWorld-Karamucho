@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { IoArrowBackCircleOutline, IoArrowForwardCircleOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import "./style.css";
 
-const Howto = () => {
+const Howto = (onCheckin) => {
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
@@ -138,7 +140,7 @@ const Howto = () => {
           {/* ปุ่ม Check ไปหน้า /point */}
           <motion.img
             src="images/check.png"
-            onClick={() => navigate("/point")}
+            onClick={() => profile ? navigate("/coupon-history"): onCheckin(true)}
             className="cursor-pointer mx-auto pb-10 flex flex-col items-center w-60 lg:w-[200px] xl:w-[350px]"
             alt="Go to Point"
             whileHover={{ scale: 1.05 }}

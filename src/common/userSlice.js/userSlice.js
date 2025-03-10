@@ -3,12 +3,12 @@ import axios from "axios";
 import liff from "@line/liff";
 
 //for use
-const liffID = `2002643017-R1nmr6gV`;
+//const liffID = `2002643017-R1nmr6gV`;
 //for Dev
-//const liffID = `2002643017-BVvlLdjG`;
+const liffID = `2002643017-BVvlLdjG`;
 
 //BaseUrl Api use
-const baseUrl =`https://games.myworld-store.com/api`;
+const baseUrl = `https://games.myworld-store.com/api`;
 //BaseUrl Api dev
 //const baseUrl = `https://games.myworld-store.com/api-dev`;
 
@@ -45,38 +45,136 @@ function mobileCheck() {
     return false;
 }
 
+// export const loginWithLine = createAsyncThunk(
+//     "user/loginWithLine",
+//     async (_, { rejectWithValue, dispatch }) => {
+//       try {
+//         const urlParams = new URLSearchParams(window.location.search);
+//         const redirected = urlParams.get("redirected");
+//         let rawCheck = urlParams.get("page");
+  
+//         let check = rawCheck;
+//         if (rawCheck && rawCheck.includes("?")) {
+//           const [checkValue] = rawCheck.split("?");
+//           check = checkValue;
+//         }
+  
+//         if (mobileCheck() && !redirected) {
+//           let redirectUrl = `line://app/${liffID}?redirected=true`;
+//           if (check) {
+//             redirectUrl += `&page=${check}`;
+//           }
+//           window.location.href = redirectUrl;
+//           return;
+//         }
+  
+//         await liff.init({ liffId: `${liffID}` });
+  
+//         if (!liff.isLoggedIn()) {
+//           const currentUrl = window.location.href;
+//           liff.login({ redirectUri: currentUrl });
+//           return;
+//         }
+  
+//         const profile = await liff.getProfile();
+//         console.log("Profile retrieved:", profile);
+  
+//         return profile;
+//       } catch (error) {
+//         console.error("Login error:", error);
+//         return rejectWithValue(error.message || "Failed to login with LINE");
+//       }
+//     }
+//   );
+
 export const loginWithLine = createAsyncThunk(
     "user/loginWithLine",
     async (_, { rejectWithValue, dispatch }) => {
-        try {
-            const urlParams = new URLSearchParams(window.location.search);
-            const redirected = urlParams.get("redirected");
-
-            if (mobileCheck() && !redirected) {
-                let redirectUrl = `line://app/${liffID}?redirected=true`;
-                window.location.href = redirectUrl;
-                return;
-            }
-
-            await liff.init({ liffId: `${liffID}` });
-            if (!liff.isLoggedIn()) {
-                liff.login();
-                return;
-            }
-
-            const profile = await liff.getProfile();
-            console.log("Profile retrieved:", profile);
-
-            dispatch(getuser({ profile }))
-
-            return profile;
-
-        } catch (error) {
-            console.error("Login error:", error);
-            return rejectWithValue(error.message || "Failed to login with LINE");
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirected = urlParams.get("redirected");
+        let rawCheck = urlParams.get("page");
+  
+        // เก็บค่า rawCheck ลง localStorage ถ้ามี
+        if (rawCheck) {
+          localStorage.setItem("rawCheck", rawCheck);
         }
+  
+        let check = rawCheck;
+        if (rawCheck && rawCheck.includes("?")) {
+          const [checkValue] = rawCheck.split("?");
+          check = checkValue;
+        }
+  
+        if (mobileCheck() && !redirected) {
+          let redirectUrl = `line://app/${liffID}?redirected=true`;
+          if (check) {
+            redirectUrl += `&page=${check}`;
+          }
+          window.location.href = redirectUrl;
+          return;
+        }
+  
+        await liff.init({ liffId: `${liffID}` });
+  
+        if (!liff.isLoggedIn()) {
+          // สร้าง redirectUri ให้มี query param page ด้วย
+          const currentUrl = new URL(window.location.href);
+          if (rawCheck) {
+            currentUrl.searchParams.set("page", rawCheck);
+          }
+          liff.login({ redirectUri: currentUrl.toString() });
+          return;
+        }
+  
+        const profile = await liff.getProfile();
+        console.log("Profile retrieved:", profile);
+  
+        dispatch(getuser({ profile, check }));
+  
+        return profile;
+      } catch (error) {
+        console.error("Login error:", error);
+        return rejectWithValue(error.message || "Failed to login with LINE");
+      }
     }
-);
+  );
+  
+  
+
+// export const loginWithLine = createAsyncThunk("user/loginWithLine", async (_, { rejectWithValue, dispatch }) => {
+//   try {
+//     await liff.init({
+//       liffId: liffID,
+//       withLoginOnExternalBrowser: true,
+//     });
+//     await liff.ready;
+
+//     // ตรวจสอบว่าอยู่ใน LINE Client หรือไม่
+//     if (!liff.isInClient() && !liff.isLoggedIn()) {
+//       console.log("User is not logged in. Redirecting to login...");
+
+//       const urlParams = new URLSearchParams(window.location.search);
+//       const page = urlParams.get("page") || "/";
+
+//       // login ไปที่ LINE พร้อมกับ redirectUri
+//       liff.login({
+//         redirectUri: `${LiffUrl}${window.location.search}`
+//       });
+//     }
+
+//     // ถ้าผู้ใช้ได้เข้าสู่ระบบแล้ว
+//     if (liff.isLoggedIn()) {
+//       const profile = await liff.getProfile();
+//       dispatch(getuser({ profile }));
+//       return profile;
+//     }
+//   } catch (error) {
+//     console.log("Error initializing LIFF:", error);
+//     return rejectWithValue("Error initializing LIFF");
+//   }
+// });
+
 
 export const getuser = createAsyncThunk(
     'user/getuserData',
@@ -137,7 +235,7 @@ export const checkin = createAsyncThunk(
         try {
             const response = await axios.post(checkinUrl, formdata,
                 {
-                    headers: {'Authorization':`${api_key}`},
+                    headers: { 'Authorization': `${api_key}` },
                 }
             );
             return response.data;
@@ -154,7 +252,7 @@ export const upload = createAsyncThunk(
             const response = await axios.post(uploadUrl, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // ใช้ Content-Type สำหรับการอัปโหลดไฟล์
-                    'Authorization':`${api_key}`
+                    'Authorization': `${api_key}`
                 },
             });
             return response.data; // ส่งข้อมูลที่ได้กลับมา
@@ -171,7 +269,7 @@ export const Redeemcoupon = createAsyncThunk(
             const response = await axios.post(RedeemcouponUrl, formData, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization':`${api_key}`
+                    'Authorization': `${api_key}`
                 },
             });
             return response.data; // ส่งข้อมูลที่ได้กลับมา
@@ -188,7 +286,7 @@ export const usecoupon = createAsyncThunk(
             const response = await axios.post(usecouponUrl, id, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization':`${api_key}`
+                    'Authorization': `${api_key}`
                 },
             });
             return response.data; // ส่งข้อมูลที่ได้กลับมา
@@ -210,7 +308,7 @@ export const leaderboard = createAsyncThunk('user/leaderboards', async (_, { rej
 export const checkinHis = createAsyncThunk('user/checkinHises', async ({ customerid }, { rejectWithValue }) => {
     try {
         const response = await axios.get(checkinHisUrl(customerid), {
-            headers: {'Authorization':`${api_key}`}
+            headers: { 'Authorization': `${api_key}` }
         });
         return response.data;
     } catch (error) {
@@ -221,7 +319,7 @@ export const checkinHis = createAsyncThunk('user/checkinHises', async ({ custome
 export const allCoupon = createAsyncThunk('user/allCoupons', async ({ customerid }, { rejectWithValue }) => {
     try {
         const response = await axios.get(allCouponUrl(customerid), {
-            headers: {'Authorization':`${api_key}`}
+            headers: { 'Authorization': `${api_key}` }
         });
         return response.data;
     } catch (error) {
@@ -232,7 +330,7 @@ export const allCoupon = createAsyncThunk('user/allCoupons', async ({ customerid
 export const allCouponshow = createAsyncThunk('user/allCouponshows', async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get(couponUrl, {
-            headers: {'Authorization':`${api_key}`}
+            headers: { 'Authorization': `${api_key}` }
         });
         return response.data;
     } catch (error) {
@@ -245,7 +343,7 @@ export const updateinfo = createAsyncThunk('user/updateinfos', async (formData, 
         const response = await axios.put(updateinfoURL, formData, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization':`${api_key}`
+                'Authorization': `${api_key}`
             }
         });
         return response.data;
