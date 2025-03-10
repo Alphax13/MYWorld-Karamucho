@@ -27,11 +27,15 @@ const FullscreenNav = ({ onCheckin }) => {
                             <a href="#" onClick={() => navigate("/point")}>COINS สะสม</a>
                         </li>
                         <li>
-                            <a href="https://shop.line.me/@myworld" target="_blank">MY LIMITED ITEMS</a>
+                            <a href="#" onClick={() => navigate("/CheckPoint")}>Check-in</a>
                         </li>
                         <li>
-                            <a href="#">Feedback</a>
+                            <a href="#" onClick={() => navigate("/coupon-history")}>คูปอง</a>
                         </li>
+                        <li>
+                            <a href="https://shop.line.me/@myworld" target="_blank">MY LIMITED ITEMS</a>
+                        </li>
+
                         <li class="social-wrap-header">stay connected with us on</li>
 
 
