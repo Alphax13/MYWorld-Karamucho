@@ -44,7 +44,7 @@ const JoinStore = ({onCheckin}) => {
     <div className="flex flex-col items-center justify-start pt-10 px-4 lg:px-12 py-4 gap-8">
       {/* หัวข้อหลัก */}
       <p className="text-gray-800 font-semibold text-center text-sm lg:text-xl">
-        สามารถแลกได้ที่ <span className="text-[#28B7E1] font-bold text-xl lg:text-3xl">11 ร้านหมูกะทะ</span> ที่ร่วมรายการ
+        สามารถแลกได้ที่ <span className="text-[#28B7E1] font-bold text-xl lg:text-3xl">ร้านหมูกระทะ 11 ร้าน</span> ที่ร่วมรายการ
       </p>
 
       <motion.button 
@@ -116,15 +116,6 @@ const JoinStore = ({onCheckin}) => {
               </div>
             )}
           </div>
-
-          {/* ปุ่ม Check ไปหน้า /point */}
-          <motion.img
-            src="images/check.png"
-            onClick={() => profile ? navigate("/coupon-history") : onCheckin(true)}
-            className="cursor-pointer mx-auto flex flex-col items-center pt-10 w-60 lg:w-[200px] xl:w-[350px] hover:scale-105 transition"
-            alt="Go to Point"
-            whileHover={{ scale: 1.05 }}
-          />
         </div>
       </div>
     </div>

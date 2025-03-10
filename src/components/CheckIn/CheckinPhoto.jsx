@@ -19,7 +19,7 @@ const CheckinPhoto = () => {
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
 
   useEffect(() => {
-    document.title = "Checkin";
+    document.title = "Checkin Photo";
   }, []);
 
   const handleImageChange = (e) => {

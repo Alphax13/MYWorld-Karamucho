@@ -19,7 +19,7 @@ const PonitPage = () => {
   const [showregister , setshowregister] = useState(false)
 
   useEffect(() => {
-    document.title = "MyPoint - MyMap ปิ้ง";
+    document.title = "Point";
   }, []);
 
   useEffect(() => {
