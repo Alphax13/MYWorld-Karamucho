@@ -67,17 +67,21 @@ const Location = ({ onCheckin }) => {
   };
 
   return (
-    <section
-      className="relative flex flex-col items-center justify-between w-full"
-      style={{
-        backgroundImage: isMobile ? "url('images/sectionMB.png')" : "url('images/sectionPC.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
-        position: 'relative',
-      }}
-    >
+      <section
+        className="relative flex flex-col items-center justify-between w-full"
+        style={{
+          backgroundImage: isMobile
+            ? "url('images/sectionMB.png')"
+            : customerinfo
+            ? "url('images/sectionPC_customer.png')"  // เปลี่ยนเป็นรูปที่ต้องการเมื่อมี customerinfo
+            : "url('images/sectionPC.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          minHeight: "100vh",
+          position: 'relative',
+        }}
+      >
 
       {customerinfo &&
         <>
@@ -114,17 +118,17 @@ const Location = ({ onCheckin }) => {
         <img src="images/LogoMymap.png" alt="Logo" className="w-30 lg:w-80" />
       </div>
 
-      <div className="text-center px-2 w-[100%] mb-auto block gap-2 -mt-6 lg:mt-60">
-        <h2 className="text-white font-bold text-lg lg:text-3kx">
+      <div className="text-center px-2 w-[100%] mb-auto block gap-2 -mt-6 lg:mt-40">
+        <h2 className="text-white font-bold text-lg lg:text-3xl lg:pb-3">
           {customerinfo ?
             <p>เลือกร้านที่คุณต้องการ</p>
             :
-            <p className="lg:hidden">เชคพ้อยท์ร้านหมูกะทะ <span className="text-white italic text-3xl font-extrabold drop-shadow-[4px_2px_0px_black]">100 คนแรก</span>
+            <p className="lg:hidden">เชคพ้อยท์ร้านหมูกะทะ <span className="text-white italic text-3xl font-extrabold drop-shadow-[4px_2px_0px_black] lg:hidden">100 คนแรก</span>
             </p>}
         </h2>
         {!customerinfo && (
-          <div className="flex justify-center">
-            <img src="images/infu.png" className="w-full max-w-[80%] lg:max-w-[20%] mx-auto lg:hidden" />
+          <div className="flex justify-center lg:hidden">
+            <img src="images/infu.png" className="w-full max-w-[80%] lg:max-w-[20%] mx-auto " />
           </div>
         )}
         {!customerinfo && (
@@ -133,8 +137,8 @@ const Location = ({ onCheckin }) => {
           </div>
         )}
 
-        <div className="text-black font-bold text-2xl lg:text-3xl">
-          {customerinfo ? <span className="text-white text-3xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span> : <h1></h1>}
+        <div className="text-black font-bold text-2xl ">
+          {customerinfo ? <span className="text-white text-3xl lg:text-5xl font-extrabold">'ล่าแต้ม MY MAP ปิ้ง'</span> : <h1></h1>}
         </div>
       </div>
 
