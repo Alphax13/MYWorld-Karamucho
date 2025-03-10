@@ -174,7 +174,6 @@ const Location = ({ onCheckin, getprofile }) => {
               strokeWidth: "2px", // ความหนาของขอบ
               paintOrder: "stroke fill", // ทำให้ขอบอยู่ใต้ตัวอักษร
             }}
-<<<<<<< HEAD
           >
             {loc.name}
           </textPath>
@@ -189,23 +188,6 @@ const Location = ({ onCheckin, getprofile }) => {
 
 
 
-=======
-            onClick={() => {
-              if (profile && !customerinfo) {
-                getprofile();
-              } else if (profile && customerinfo) {
-                handleClick(loc);
-              } else {
-                onCheckin(true);
-              }
-            }}
-          >
-            <img src={loc.image} alt={loc.name} className="w-12 sm:w-12 xl:w-20" />
-          </div>
-        ))}
-
-      </div>
->>>>>>> 57c3dfc9d404a81225ca89f6a307cd617082ebc3
       {/* Check-in Button */}
       {!customerinfo && (
         <motion.img
