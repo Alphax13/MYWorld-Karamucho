@@ -11,7 +11,7 @@
   }
   .logo-container {
     position: absolute;
-    top: -50px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     padding: 5px;

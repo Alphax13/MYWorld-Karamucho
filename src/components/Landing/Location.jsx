@@ -158,7 +158,7 @@ const Location = ({ onCheckin, getprofile }) => {
         <defs>
           <path
             id={`curvePath-${loc.id}`}
-            d={isMobile ? "M 20,40 A 40,10 0 0,1 100,25" : "M 20,40 A 70,20 0 0,1 190,45"}
+            d={isMobile ? "M 20,40 A 40,10 0 0,1 100,25" : "M 10,40 A 70,20 0 0,1 190,45"}
             fill="transparent"
           />
         </defs>
