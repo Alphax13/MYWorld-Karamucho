@@ -69,18 +69,14 @@ const BoxCard = ({ selectedStore, selectedBranch, couponId }) => {
   };
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-4">
       {selectedStore && selectedBranch ? (
         <div
           className="flex items-center rounded-lg shadow-lg relative overflow-hidden bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
         >
           <div className="flex justify-center items-center flex-[20%]">
-            <img src="images/logo.png" alt="Logo" className="h-10 w-10 object-contain" />
-          </div>
-
-          <div className="flex justify-center items-center flex-[20%]">
             <img
-              src={selectedStore?.image_url ? selectedStore?.image_url : 'images/mock.png'}
+              src={selectedStore?.image_url ? selectedStore?.image_url : 'images/iconboxset.png'}
               alt={selectedStore?.label}
               className="h-28 object-contain"
             />
