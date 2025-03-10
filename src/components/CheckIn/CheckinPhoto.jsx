@@ -19,7 +19,7 @@ const CheckinPhoto = () => {
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
 
   useEffect(() => {
-    document.title = "Check in - MyMap ปิ้ง";
+    document.title = "Checkin";
   }, []);
 
   const handleImageChange = (e) => {

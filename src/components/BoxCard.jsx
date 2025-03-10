@@ -69,7 +69,7 @@ const BoxCard = ({ selectedStore, selectedBranch, couponId }) => {
   };
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-4">
       {selectedStore && selectedBranch ? (
         <div
           className="grid grid-cols-2 items-center rounded-lg shadow-lg relative overflow-hidden bg-[url('images/pattern.png')] bg-cover bg-no-repeat bg-center"
