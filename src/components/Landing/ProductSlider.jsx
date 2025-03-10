@@ -62,7 +62,9 @@ const ProductSlider = () => {
                 </div>
                 <div className="card-bottom">
                     <div className="cart-icon">
-                    <img src="images/cart-button.png" alt="Cart" />
+                      <a href="https://shop.line.me/@myworld">
+                        < img src="images/cart-button.png" alt="Cart" />
+                      </a>
                     </div>
                 </div>
                 </div>
