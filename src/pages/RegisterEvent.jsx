@@ -64,8 +64,8 @@ function RegisterEvent() {
       valid = false;
     }
 
-    if (!formData.email) {
-      newErrors.email = "กรุณากรอกอีเมล";
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "กรุณากรอกอีเมลให้ถูกต้อง";
       valid = false;
     }
 
@@ -188,12 +188,9 @@ function RegisterEvent() {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  อีเมล
-                </label>
+                <label className="block text-sm font-medium text-gray-700">อีเมล</label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -204,21 +201,19 @@ function RegisterEvent() {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                  เบอร์โทรศัพท์
-                </label>
+                <label className="block text-sm font-medium text-gray-700">เบอร์โทรศัพท์</label>
                 <input
-                  type="text"
-                  id="phone"
+                  type="tel"
                   name="phone"
                   value={formData.phone}
-                  maxLength={10}
+                  pattern="[0-9]{10}"
                   onChange={(e) => {
                     const value = e.target.value;
                     if (/^[0-9]*$/.test(value)) {
                       setFormData({ ...formData, phone: value });
                     }
                   }}
+                  inputMode="numeric"
                   className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                   required
                 />

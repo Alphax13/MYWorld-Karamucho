@@ -111,10 +111,6 @@ const PrivilegePage = () => {
 
       <div className="p-6 text-left">
         <p className="text-black text-2xl">{product?.selectedStore?.label}</p>
-        <p className="text-black text-lg">รายละเอียด</p>
-        <span className="text-left text-gray-500 text-sm">
-          Lorem ipsum dolor sit amet consectetur. Rutrum ullamcorper integer ultrices quam pellentesque etiam dignissim tristique suscipit.
-        </span>
       </div>
 
       {/* ✅ แสดงโค้ด Redeem หรือ ปุ่มรับสิทธิ์ */}
