@@ -3,9 +3,9 @@ import axios from "axios";
 import liff from "@line/liff";
 
 //for use
-//const liffID = `2002643017-R1nmr6gV`;
+const liffID = `2002643017-R1nmr6gV`;
 //for Dev
-const liffID = `2002643017-BVvlLdjG`;
+//const liffID = `2002643017-BVvlLdjG`;
 
 //BaseUrl Api use
 const baseUrl = `https://games.myworld-store.com/api`;

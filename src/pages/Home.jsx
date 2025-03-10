@@ -42,10 +42,9 @@ const Home = ({ onCheckin ,getprofile}) => {
 
   useEffect(() => {
     if (profile) {
-      // ลบ rawCheck จาก localStorage หลังจากล็อกอินสำเร็จ
       localStorage.removeItem("rawCheck");
     }
-  }, [profile]);  // เมื่อ profile ถูกตั้งค่า, ลบ rawCheck
+  }, [profile]);
   
   useEffect(() => {
     document.title = "Home - MyMap ปิ้ง";
