@@ -116,15 +116,6 @@ const JoinStore = ({onCheckin}) => {
               </div>
             )}
           </div>
-
-          {/* ปุ่ม Check ไปหน้า /point */}
-          <motion.img
-            src="images/check.png"
-            onClick={() => profile ? navigate("/coupon-history") : onCheckin(true)}
-            className="cursor-pointer mx-auto flex flex-col items-center pt-10 w-60 lg:w-[200px] xl:w-[350px] hover:scale-105 transition"
-            alt="Go to Point"
-            whileHover={{ scale: 1.05 }}
-          />
         </div>
       </div>
     </div>
