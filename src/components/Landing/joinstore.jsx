@@ -13,8 +13,8 @@ const JoinStore = ({ onCheckin }) => {
 
   const images = [
     { src: "no1.png", text: "@Line“MY WORLD”", sub: "ค้นหาเพื่อนใน Line @myworld \nจากนั้นกดเพิ่มเพื่อนก่อนเข้าร่วมกิจกรรม" },
-    { src: "no2.png", text: "ลงทะเบียน", sub: "ทำการลงทะเบียน ”รับ 5,000 COINS” \nยืนยันตัวตนผ่าน LINE \nรอการตรวจสอบ 3-5 วินาที " },
-    { src: "no3.png", text: "Check-in รับสิทธิ์", sub: "ร่วมทำภารกิจ Check-inในเว็บครบ 5 จุด \nรับ Coinsเพื่อแลก MY BOX SET" },
+    { src: "no2.png", text: "รับ 5,000 COINS", sub: "คลิก รับ 5,000 COINS ยืนยันตัวตนผ่าน LINE \nรอตรวจสอบ 3-5 วินาที" },
+    { src: "no3.png", text: "ออกล่า “รับสิทธิ์เพิ่ม”", sub: "ออกล่า หมูกระทะ ร่วมทำภารกิจ Check-in \nครบ 5 จุด รับ COINS \nแลกส่วนลดพิเศษ 100 บาท" },
   ];
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const JoinStore = ({ onCheckin }) => {
         {/* Slider หรือ Grid */}
         <div className="slider-track flex justify-center items-center w-full">
           {isMobile ? (
-            <div className="cards flex flex-col items-center justify-center gap-4 w-[90%] max-w-lg pb-5">
+            <div className="cards flex flex-col items-center justify-center gap-2 w-[100%] max-w-lg pb-5">
               <motion.img
                 src={`images/${images[currentIndex].src}`}
                 alt="Coin Collect"
@@ -107,7 +107,7 @@ const JoinStore = ({ onCheckin }) => {
               </div>
 
               {/* คำอธิบายใต้ภาพ */}
-              <p className="text-black text-base lg:text-lg text-center w-[80%]">
+              <p className="text-black text-base lg:text-lg text-center w-[90%]">
                 {images[currentIndex].sub.split("\n").map((line, i) => (
                   <React.Fragment key={i}>
                     {line}
@@ -117,7 +117,7 @@ const JoinStore = ({ onCheckin }) => {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-5 w-full pb-5">
+            <div className="grid grid-cols-3 gap-2 w-full pb-5">
               {images.map((img, index) => (
                 <motion.div
                   className="cards flex flex-col items-center gap-5"
