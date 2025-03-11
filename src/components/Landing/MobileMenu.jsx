@@ -12,18 +12,29 @@ const MobileMenu = ({ onCheckin }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (page) => {
-    // Set active state based on selected page
     setActive(page);
-
-    // Navigate to the appropriate page based on profile and customerinfo
+  
     if (!profile) {
       onCheckin(true);
+      switch (page) {
+        case 1:
+          navigate(`?page=RegisterEvent`);
+          break;
+        case 2:
+          navigate(`?page=CheckPoint`);
+          break;
+        case 3:
+          navigate(`?page=coupon-history`);
+          break;
+        default:
+          break;
+      }
     } else if (customerinfo && (customerinfo.first_name === null || customerinfo.first_name === "")) {
       navigate("/RegisterEvent");
     } else {
       switch (page) {
         case 1:
-          navigate("/point");
+          navigate("/RegisterEvent");
           break;
         case 2:
           navigate("/CheckPoint");
@@ -39,12 +50,13 @@ const MobileMenu = ({ onCheckin }) => {
       }
     }
   };
+  
 
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg rounded-lg flex md:hidden z-100">
       <button
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 1 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
-        onClick={() => handleNavigate(1)} // Navigates to PointPage
+        onClick={() => handleNavigate(1)}
       >
         <span className="text-lg"><LuUserPen /></span>
         <span className="text-sm text-black font-bold">สมัครสมาชิก</span>
@@ -52,7 +64,7 @@ const MobileMenu = ({ onCheckin }) => {
 
       <button
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 2 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
-        onClick={() => handleNavigate(2)} // Navigates to CheckPoint
+        onClick={() => handleNavigate(2)}
       >
         <span className="text-lg"><GrMapLocation /></span>
         <span className="text-sm text-black font-bold">Check-in</span>
@@ -60,7 +72,7 @@ const MobileMenu = ({ onCheckin }) => {
 
       <button
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 3 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
-        onClick={() => handleNavigate(3)} // Navigates to CouponHistory
+        onClick={() => handleNavigate(3)}
       >
         <span className="text-lg"><RiCoupon3Line /></span>
         <span className="text-sm text-black font-bold">คูปอง</span>
@@ -68,7 +80,7 @@ const MobileMenu = ({ onCheckin }) => {
 
       <button
         className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 4 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
-        onClick={() => handleNavigate(4)} // Opens the external COINS link
+        onClick={() => handleNavigate(4)}
       >
         <span className="text-lg"><PiCoinsDuotone /></span>
         <span className="text-sm text-black font-bold">ล่า COINS</span>

@@ -5,7 +5,7 @@ import { IoArrowBackCircleOutline, IoArrowForwardCircleOutline } from "react-ico
 import { motion } from "framer-motion";
 import "./style.css";
 
-const Howto = (onCheckin) => {
+const Howto = ({onCheckin}) => {
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -140,7 +140,14 @@ const Howto = (onCheckin) => {
           {/* ปุ่ม Check ไปหน้า /point */}
           <motion.img
             src="images/check.png"
-            onClick={() => profile ? navigate("/coupon-history"): onCheckin(true)}
+            onClick={() => {
+              if(!profile){
+                onCheckin(true)
+                navigate("?page=coupon-history")
+              }else {
+                navigate("/coupon-history")
+              }
+            }}
             className="cursor-pointer mx-auto pb-10 flex flex-col items-center w-60 lg:w-[200px] xl:w-[350px]"
             alt="Go to Point"
             whileHover={{ scale: 1.05 }}

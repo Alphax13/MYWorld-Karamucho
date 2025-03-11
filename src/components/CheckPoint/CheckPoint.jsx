@@ -4,6 +4,7 @@ import { checkinHis, getrestaurant , getuser } from "../../common/userSlice.js/u
 import "./CheckPoint.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
+import MobileMenu from "../Landing/MobileMenu";
 
 export default function CheckPoint() {
   const dispatch = useDispatch();
@@ -106,6 +107,7 @@ export default function CheckPoint() {
             <div className="text-gray-500 text-center mt-6">ไม่พบสาขา</div>
           )}
         </div>
+        <MobileMenu />
       </div>
     </div>
   );

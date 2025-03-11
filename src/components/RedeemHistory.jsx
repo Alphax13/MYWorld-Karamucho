@@ -90,7 +90,7 @@ const RedeemHistory = () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 ">
       {allCouponData.length > 0 ? (
         allCouponData
-          .filter((coupon) => coupon.is_used === false || !isCouponExpired(coupon.expired_date))
+          .filter((coupon) => coupon.is_used === true || isCouponExpired(coupon.expired_date))
           .map((coupon) => {
             const isExpired = isCouponExpired(coupon.expired_date);
 

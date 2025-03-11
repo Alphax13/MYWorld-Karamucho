@@ -10,6 +10,7 @@ import RedeemHistory from "../components/RedeemHistory";
 import { useNavigate } from "react-router-dom";
 import RegisterEvent from "./RegisterEvent";
 import { getuser , loginWithLine } from "../common/userSlice.js/userSlice";
+import MobileMenu from "../components/Landing/MobileMenu";
 
 const PonitPage = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const PonitPage = () => {
           {activeMenuTab === "history" && <RedeemHistory />}
         </div>
         {!((activeMenuTab === "redeem") || (activeMenuTab === "history")) && <ProductCard />}
+        <MobileMenu />
       </div>
     </div>
   );

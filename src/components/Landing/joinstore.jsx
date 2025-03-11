@@ -55,7 +55,14 @@ const JoinStore = ({ onCheckin }) => {
           initial={{ y: 0 }}
           animate={{ y: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          onClick={() => profile ? navigate('/RegisterEvent') : onCheckin(true)}
+          onClick={() => {
+            if(!profile){
+              onCheckin(true);
+              navigate('?page=RegisterEvent');
+            }else{
+              navigate('/RegisterEvent');
+            }
+          }}
         >
           คลิกเลย
         </motion.button>

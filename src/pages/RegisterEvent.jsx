@@ -20,6 +20,11 @@ function RegisterEvent() {
       setFormData((prevFormData) => ({
         ...prevFormData,
         customer_id: customerinfo.customer_id || "",
+        phone: customerinfo.phone || "",
+        first_name: customerinfo.first_name || "",
+        last_name: customerinfo.last_name || "",
+        email: customerinfo.email || "",
+        birthdate: customerinfo.birthdate || "",
       }));
     }
   }, [dispatch, customerinfo, profile]);
