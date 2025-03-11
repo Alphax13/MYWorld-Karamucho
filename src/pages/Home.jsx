@@ -61,10 +61,15 @@ const Home = ({ onCheckin ,getprofile}) => {
           <FullscreenNav onCheckin={onCheckin} />
           <BannerKV />
           <Event />
+        </>
+        }
+      <Location onCheckin={onCheckin} getprofile={getprofile} />
+      {!customerinfo && 
+        <>
           <Howto onCheckin={onCheckin}/>
           <JoinStore onCheckin={onCheckin}/>
-          </>}
-      <Location onCheckin={onCheckin} getprofile={getprofile} />
+        </>
+      }
       <Scoreboard />
       <MobileMenu onCheckin={onCheckin}/>
       {!customerinfo && <>
