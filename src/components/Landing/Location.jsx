@@ -33,7 +33,7 @@ const Location = ({ onCheckin, getprofile }) => {
 
   const locations = [
     { id: 1, name: "Y.O.U หมูกระทะ", top: { pc: "65%", mobile: "62%" }, left: { pc: "75%", mobile: "70%" }, image: "images/pin9.png" },
-    { id: 2, name: "ม๋วนใจ๋ หมูกะทะ", top: { pc: "75%", mobile: "60%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
+    { id: 2, name: "ม๋วนใจ๋ หมูกะทะ", top: { pc: "70%", mobile: "60%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
     { id: 3, name: "หมูกะทะ มหานคร", top: { pc: "60%", mobile: "44%" }, left: { pc: "45%", mobile: "48%" }, image: "images/pin4.png" },
     { id: 4, name: "Your Camp", top: { pc: "53%", mobile: "30%" }, left: { pc: "38%", mobile: "15%" }, image: "images/pin1.png" },
     { id: 5, name: "Everyday Mokata", top: { pc: "40%", mobile: "42%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
@@ -41,7 +41,7 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 7, name: "ทวีโชค", top: { pc: "60%", mobile: "52%" }, left: { pc: "30%", mobile: "18%" }, image: "images/pin5.png" },
     { id: 8, name: "71 หมูกระทะ", top: { pc: "50%", mobile: "53%" }, left: { pc: "78%", mobile: "74%" }, image: "images/pin8.png" },
     { id: 9, name: "Bar Mookrata", top: { pc: "42%", mobile: "55%" }, left: { pc: "66%", mobile: "55%" }, image: "images/pin10.png" },
-    { id: 10, name: "อารยาหมูกระทะ", top: { pc: "75%", mobile: "45%" }, left: { pc: "84%", mobile: "82%" }, image: "images/pin7.png" },
+    { id: 10, name: "อารยาหมูกระทะ", top: { pc: "70%", mobile: "45%" }, left: { pc: "84%", mobile: "82%" }, image: "images/pin7.png" },
     { id: 11, name: "วาสนาหมูกะทะ", top: { pc: "33%", mobile: "35%" }, left: { pc: "50%", mobile: "83%" }, image: "images/pin11.png" },
     // { id: 10, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
   ];
