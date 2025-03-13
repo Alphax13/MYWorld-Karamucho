@@ -63,6 +63,7 @@ const Home = ({ onCheckin ,getprofile}) => {
           <Event />
         </>
         }
+        
       <Location onCheckin={onCheckin} getprofile={getprofile} />
       {!customerinfo && 
         <>
@@ -70,7 +71,9 @@ const Home = ({ onCheckin ,getprofile}) => {
           <JoinStore onCheckin={onCheckin}/>
         </>
       }
+
       <Scoreboard />
+
       <MobileMenu onCheckin={onCheckin}/>
       {!customerinfo && <>
         <ProductSlider />

@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
-const navigate = useNavigate();
 
 const Event = () => {
+  const navigate = useNavigate();
   return (
     <div 
       className="event w-full flex flex-col items-center justify-center relative px-4 lg:px-4 py-4 gap-4 pb-10"

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getrestaurant, leaderboard } from "../../common/userSlice.js/userSlice";
 import "./style.css";
+import { IoGiftSharp } from "react-icons/io5";
 
 const Location = ({ onCheckin, getprofile }) => {
   const dispatch = useDispatch();
@@ -67,30 +68,51 @@ const Location = ({ onCheckin, getprofile }) => {
   };
 
   return (
-      <section
-        className="relative flex flex-col items-center justify-between w-full"
-        style={{
-          backgroundImage: isMobile
-            ? "url('images/sectionMB.png')"
-            : customerinfo
+    <section
+      className="relative flex flex-col items-center justify-between w-full"
+      style={{
+        backgroundImage: isMobile
+          ? "url('images/sectionMB.png')"
+          : customerinfo
             ? "url('images/sectionPC_customer.png')"  // เปลี่ยนเป็นรูปที่ต้องการเมื่อมี customerinfo
             : "url('images/sectionPC.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-          minHeight: "100vh",
-          position: 'relative',
-        }}
-      >
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+      }}
+    >
+      <img src="images/ripper2.png" className="w-full absolute top-0 block lg:hidden" />
+      {customerinfo &&
+        <>
+          <div className="sticky top-0 flex justify-between w-full items-center px-6 py-5 pt-5 z-21">
+            <img
+              src="images/logo.png"
+              alt="Left Logo"
+              className="h-12 w-auto cursor-pointer"
+              onClick={() => window.location.reload()}
+            />
+
+            <div className="flex flex-col items-center">
+              <button
+                className="w-[60px] h-[60px] border border-[#28B7E1] rounded-lg shadow-lg bg-white text-gray-900 flex items-center justify-center"
+                onClick={() => navigate("/coupon-history")}
+              >
+                <IoGiftSharp className="text-3xl" />
+              </button>
+              <span className="text-sm font-semibold mt-2 text-black">คูปองของฉัน</span>
+            </div>
+          </div>
+        </>
+      }
 
       {customerinfo &&
         <>
           {/* แสดงข้อมูล Leaderboard ของลูกค้า */}
           {leaderInfo ? (
-            <div className="sticky top-0 left-0 right-0 bg-white p-2 w-full shadow-md shadow-black z-10">
+            <div className="sticky top-0 left-0 right-0 bg-white p-2 w-full shadow-md shadow-black z-21">
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  {/* เช็คและแสดงอันดับที่พร้อมไอคอน */}
                   <div className="border-r-1 pr-2">
                     {customerRank < 3 ? (<div className="flex gap-2">
                       อันดับที่ : <img src={icons[customerRank + 1]} alt={`อันดับที่ ${customerRank + 1}`} className="w-6 h-6 mr-2" />
@@ -112,7 +134,7 @@ const Location = ({ onCheckin, getprofile }) => {
         </>
       }
 
-      <img src="images/ripper2.png" className="w-full block lg:hidden" />
+      
 
       <div className="logo-container pb-2 justify-center block lg:hidden">
         <img src="images/LogoMymap.png" alt="Logo" className="w-30 lg:w-80" />
@@ -143,48 +165,48 @@ const Location = ({ onCheckin, getprofile }) => {
       </div>
 
       <div className="absolute top-30 left-0 w-full h-full z-20">
-  {mappedLocations.map((loc) => (
-    <div
-      key={loc.id}
-      className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-2/3 flex flex-col items-center"
-      style={{
-        top: isMobile ? loc.top.mobile : loc.top.pc,
-        left: isMobile ? loc.left.mobile : loc.left.pc,
-      }}
-      onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
-    >
-      {/* SVG สำหรับข้อความโค้ง (ขนาดปรับตามอุปกรณ์) */}
-      <svg width={isMobile ? "100" : "190"} height="30">
-        <defs>
-          <path
-            id={`curvePath-${loc.id}`}
-            d={isMobile ? "M 20,40 A 40,10 0 0,1 100,25" : "M 10,40 A 70,20 0 0,1 190,45"}
-            fill="transparent"
-          />
-        </defs>
-        <text width={isMobile ? "100" : "150"}>
-          <textPath
-            href={`#curvePath-${loc.id}`}
-            startOffset="50%"
-            textAnchor="middle"
-            className="font-bold text-[10px] md:text-sm lg:text-xl"
+        {mappedLocations.map((loc) => (
+          <div
+            key={loc.id}
+            className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-2/3 flex flex-col items-center"
             style={{
-              fill: "white", // ตัวอักษรสีขาว
-              stroke: "black", // ขอบสีดำ
-              strokeWidth: "2px", // ความหนาของขอบ
-              paintOrder: "stroke fill", // ทำให้ขอบอยู่ใต้ตัวอักษร
+              top: isMobile ? loc.top.mobile : loc.top.pc,
+              left: isMobile ? loc.left.mobile : loc.left.pc,
             }}
+            onClick={() => (customerinfo ? handleClick(loc) : onCheckin(true))}
           >
-            {loc.name}
-          </textPath>
-        </text>
-      </svg>
+            {/* SVG สำหรับข้อความโค้ง (ขนาดปรับตามอุปกรณ์) */}
+            <svg width={isMobile ? "100" : "190"} height="30">
+              <defs>
+                <path
+                  id={`curvePath-${loc.id}`}
+                  d={isMobile ? "M 20,40 A 40,10 0 0,1 100,25" : "M 10,40 A 70,20 0 0,1 190,45"}
+                  fill="transparent"
+                />
+              </defs>
+              <text width={isMobile ? "100" : "150"}>
+                <textPath
+                  href={`#curvePath-${loc.id}`}
+                  startOffset="50%"
+                  textAnchor="middle"
+                  className="font-bold text-[10px] md:text-sm lg:text-xl"
+                  style={{
+                    fill: "white", // ตัวอักษรสีขาว
+                    stroke: "black", // ขอบสีดำ
+                    strokeWidth: "2px", // ความหนาของขอบ
+                    paintOrder: "stroke fill", // ทำให้ขอบอยู่ใต้ตัวอักษร
+                  }}
+                >
+                  {loc.name}
+                </textPath>
+              </text>
+            </svg>
 
-      {/* รูป pin */}
-      <img src={loc.image} alt={loc.name} className="w-10 sm:w-12 xl:w-16" />
-    </div>
-  ))}
-</div>
+            {/* รูป pin */}
+            <img src={loc.image} alt={loc.name} className="w-10 sm:w-12 xl:w-16" />
+          </div>
+        ))}
+      </div>
 
 
 

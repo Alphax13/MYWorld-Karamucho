@@ -96,12 +96,12 @@ function RegisterEvent() {
           // Show modal with the message "Already register phone number"
           setModalMessage("ท่านได้ลงทะเบียนไปแล้ว");
           setModalVisible(true);
-         setTimeout(() => navigate(location.state?.from || '//'), 2000); // Redirect to the previous page after 2 seconds
+        //  setTimeout(() => navigate(location.state?.from || '//'), 2000);
         } else if (response?.payload) {
           // Show modal with success message
           setModalMessage("ลงทะเบียนสำเร็จ");
           setModalVisible(true);
-         setTimeout(() => navigate(location.state?.from || '//'), 2000); // Redirect to the previous page after 2 seconds
+        //  setTimeout(() => navigate(location.state?.from || '//'), 2000);
         } else {
           setModalMessage("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
           setModalVisible(true);
@@ -147,9 +147,24 @@ function RegisterEvent() {
         {/* Modal */}
         {modalVisible && (
           <div className="modal-overlay fixed inset-0 bg-gray-500/50 flex items-center justify-center z-61">
-            <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5 max-w-md border-b-[3px] grid justify-center items-center gap-2 border-[#28B7E1]">
+            <div className="modal-content bg-white py-6 px-9 rounded-lg shadow-lg w-4/5 max-w-md border-b-[3px] grid text-center gap-2 border-[#28B7E1]">
               <div className="mx-auto">{iconsuccess}</div>
-              <h2 className="text-center text-xl font-semibold mb-4">{modalMessage}</h2>
+              <p className="text-center">{modalMessage}</p>
+              <p className="text-center">ไปล่าแต้มรับ</p>
+              <div className="flex justify-center">
+                <p className="text-center text-xl font-semibold">ส่วน</p>
+                <p className="text-center text-xl font-semibold text-[#BD2A30]">ลด 100 บาท</p>
+              </div>
+              <button 
+                className="text-center my-1 p-3 w-full rounded-3xl bg-sky-500 shadow-md hover:bg-sky-700 text-white font-bold text-2xl" 
+                onClick={() => {
+                  window.open("https://myworld-virtual-store.com/", "_blank", "noopener noreferrer");
+                  navigate('//');
+                  }}
+              >
+                คลิกเลย
+              </button>
+              <h2 className="text-center" onClick={()=> navigate(location.state?.from || '//')}>ปิดหน้าต่าง</h2>
             </div>
           </div>
         )}
