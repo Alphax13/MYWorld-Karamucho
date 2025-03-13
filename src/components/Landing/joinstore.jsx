@@ -44,10 +44,12 @@ const JoinStore = ({ onCheckin }) => {
     >
       <div className="flex flex-col items-center justify-start pt-10 px-4 lg:px-12 lg:pb-50 py-4 gap-8">
         {/* หัวข้อหลัก */}
-        <p className="text-gray-800 font-semibold text-center text-sm lg:text-xl">
-          สามารถแลกได้ที่ <span className="text-[#28B7E1] font-bold text-xl lg:text-3xl">ร้านหมูกระทะ 11 ร้าน</span> ที่ร่วมรายการ
+        <p className="text-gray-800 font-semibold text-center text-base lg:text-xl lg:pb-20">
+          ออกล่า MY MEAT BOX SET
+          <span className="text-[#28B7E1] font-bold text-xl lg:text-3xl block">
+          รับส่วนลดพิเศษ  100 บาท
+          </span>
         </p>
-
 
 
         {/* Slider หรือ Grid */}
