@@ -5,11 +5,12 @@ const fadeIn = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
+const navigate = useNavigate();
 
 const Event = () => {
   return (
     <div 
-      className="event w-full flex flex-col items-center justify-center relative px-4 lg:px-4 py-4"
+      className="event w-full flex flex-col items-center justify-center relative px-4 lg:px-4 py-4 gap-4 pb-10"
       style={{
         backgroundImage: "url('images/bg-paper.png')",
         backgroundSize: "cover",
@@ -54,6 +55,25 @@ const Event = () => {
       >
         <img src="images/cupon.png" alt="MY BOX SET" className="w-[100%]  lg:w-[40%]" />
       </motion.div>
+      
+      <motion.button
+          className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 
+                      rounded-[50px] border border-[#28B7E1] shadow-md text-2xl lg:text-2xl 
+                      font-bold w-[80%] max-w-xs lg:w-[40%]"
+          initial={{ y: 0 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          onClick={() => {
+            if(!profile){
+              onCheckin(true);
+              navigate('?page=RegisterEvent');
+            }else{
+              navigate('/RegisterEvent');
+            }
+          }}
+        >
+          คลิกเลย
+        </motion.button>
     </div>
   );
 };
