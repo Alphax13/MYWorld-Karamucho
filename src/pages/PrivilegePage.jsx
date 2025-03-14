@@ -98,23 +98,23 @@ const PrivilegePage = () => {
         <h2 className="text-center text-base font-semibold flex-1">รายละเอียดคูปอง</h2>
       </div>
 
-      <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-6 flex justify-center items-center">
+      <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-4 flex justify-center items-center">
         <div className="shadow-md w-50 text-center border border-black m-4">
           <img src={'../images/promotioncard.png'} alt={product?.selectedStore?.label} className="w-48 mx-auto" />
           <div className="bg-white m-0 p-1">
-            <h2 className="text-xl font-bold text-gray-800 mt-3">{product?.selectedStore?.label}</h2>
+            <h2 className="text-xl font-bold text-gray-800 mt-2">{product?.selectedStore?.label}</h2>
             <p className="text-sm">{product?.selectedStore?.label}</p>
             <p className="text-xs mt-2">ปกติราคา {product.price} บาท</p>
           </div>
         </div>
       </div>
 
-      <div className="p-6 text-left">
+      <div className="p-2 text-left">
         <p className="text-black text-2xl">{product?.selectedStore?.label}</p>
       </div>
 
       {/* ✅ แสดงโค้ด Redeem หรือ ปุ่มรับสิทธิ์ */}
-      <div className="p-6 text-center">
+      <div className="p-4 text-center">
         {redeemed ? (
           <div className="relative p-2">
             {/* ✅ ลายน้ำ "ใช้สิทธิ์แล้ว" (แสดงทับรหัส Redeem) */}
@@ -142,7 +142,7 @@ const PrivilegePage = () => {
               </button>
             )}
 
-            <p className="text-sm text-gray-500 mt-3">
+            <p className="text-sm text-gray-500 mt-2">
               แนะนำให้กดรับสิทธิ์เมื่ออยู่ที่ร้านแล้ว เพื่อป้องกันไม่ให้เสียสิทธิ์
               สามารถดูคูปองได้ที่เมนู{" "}
               <span className="text-blue-500 font-semibold cursor-pointer">คูปองของฉัน</span>
@@ -168,7 +168,7 @@ const PrivilegePage = () => {
       {/* ✅ Modal ยืนยันสิทธิ์ */}
       {showModal && (
         <div className="fixed inset-0 bg-black/25 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
+          <div className="bg-white p-4 rounded-lg shadow-lg w-80 text-center">
             <h2 className="text-lg font-bold text-black">ยืนยันรับสิทธิ์หรือไม่ ?</h2>
             <p className="text-sm text-gray-500 mt-2">
               แนะนำให้กดรับสิทธิ์เมื่ออยู่ที่ร้านแล้ว เพื่อป้องกันไม่ให้เสียสิทธิ์
