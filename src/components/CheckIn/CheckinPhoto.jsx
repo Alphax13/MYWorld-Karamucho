@@ -1,5 +1,5 @@
-import React, { useState , useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; 
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { upload, checkin } from '../../common/userSlice.js/userSlice';
 import { IoChevronBack } from "react-icons/io5";
@@ -9,11 +9,11 @@ import moment from "moment"; // วันที่และเวลา
 
 const CheckinPhoto = () => {
   const dispatch = useDispatch();
-  const location = useLocation(); 
-  const navigate = useNavigate(); 
+  const location = useLocation();
+  const navigate = useNavigate();
   const { store, branch, image_url } = location.state || {};
-  const [selectedImage, setSelectedImage] = useState(null); 
-  const [selectedImage2, setSelectedImage2] = useState(null); 
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage2, setSelectedImage2] = useState(null);
   const [modalConfirm, setModalConfirm] = useState(false); // Modal ยืนยัน
   const [modalSuccess, setModalSuccess] = useState(false); // Modal แสดงผล Check-in
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
@@ -23,15 +23,15 @@ const CheckinPhoto = () => {
   }, []);
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; 
-    if (file && file.type.startsWith('image/')) { 
-      setSelectedImage(URL.createObjectURL(file)); 
-      setSelectedImage2(file); 
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      setSelectedImage(URL.createObjectURL(file));
+      setSelectedImage2(file);
     } else {
       alert("กรุณาเลือกไฟล์ภาพเท่านั้น");
     }
   };
-  
+
 
   console.log(location.state.store)
 
@@ -56,16 +56,16 @@ const CheckinPhoto = () => {
         // Dispatch checkin action
         console.log(updatedLocationState)
         const checkinResponse = await dispatch(checkin(updatedLocationState));
-        
+
         // Handle success or error from checkin
         if (checkinResponse.error) {
           if (checkinResponse.error.message === "You already check in") {
             setErrorMessage("ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว");
-            setModalConfirm(false); 
+            setModalConfirm(false);
             setModalSuccess(false);
           } else {
             setErrorMessage("ท่านได้เช็คอินร้านหรือสาขานี้ไปแล้ว");
-            setModalConfirm(false); 
+            setModalConfirm(false);
             setModalSuccess(false);
           }
         } else {
@@ -79,12 +79,12 @@ const CheckinPhoto = () => {
   };
 
   const handleCloseModal = () => {
-    setModalConfirm(false); 
+    setModalConfirm(false);
     setModalSuccess(false);
-    navigate('/checkpoint'); 
+    navigate('/checkpoint');
   };
 
-  const currentDate = moment().format("DD MMM YYYY เวลา HH:mm น."); 
+  const currentDate = moment().format("DD MMM YYYY เวลา HH:mm น.");
 
   return (
     <div className="checkin-container p-6 flex flex-col items-center">
@@ -94,7 +94,7 @@ const CheckinPhoto = () => {
         <div className="logo-container2">
           <img src="images/LogoMymap.png" alt="Logo" className="logo" />
         </div>
-        
+
         <div className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">
           <button onClick={() => navigate(-1)} className="flex items-center text-black">
             <IoChevronBack className="text-xl" />
@@ -102,12 +102,12 @@ const CheckinPhoto = () => {
           <h2 className="text-center text-base font-semibold flex-1">รายละเอียด</h2>
         </div>
 
-         {/* แสดงภาพร้านจาก API */}
-      {image_url && <img src={image_url} alt={`${store} ${branch}`} className="w-[50%] rounded-lg shadow-md" />}
+        {/* แสดงภาพร้านจาก API */}
+        {image_url && <img src={image_url} alt={`${store} ${branch}`} className="w-[50%] my-3 rounded-lg shadow-md" />}
 
-<p className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">
-  {store} - {branch}
-</p>
+        <p className="bg-gray-300 w-full flex items-center justify-between px-4 py-2 shadow-md">
+          {store} - {branch}
+        </p>
         {/* ส่วนสำหรับการอัปโหลดรูปภาพ */}
         <div className="flex flex-col items-center m-4 bg-[#28B7E1]/10 w-[85%]">
           <label htmlFor="doc" className="flex items-center rounded-lg border border-[#28B7E1] border-dashed cursor-pointer w-full">
@@ -120,12 +120,12 @@ const CheckinPhoto = () => {
             {selectedImage && (
               <img src={selectedImage} alt="Selected Preview" className="w-[100%] h-50 object-cover rounded-md" />
             )}
-            <input 
-              type="file" 
-              id="doc" 
-              name="doc" 
-              accept="image/*" 
-              hidden 
+            <input
+              type="file"
+              id="doc"
+              name="doc"
+              accept="image/*"
+              hidden
               onChange={handleImageChange}
             />
           </label>
@@ -135,9 +135,9 @@ const CheckinPhoto = () => {
           <div className="text-red-500 text-sm mb-2">{errorMessage}</div>
         )}
 
-        <button 
+        <button
           className="checkin-button w-full mb-5 bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-4 py-2 rounded-lg border border-[#28B7E1] shadow-md hover:from-[#003D4C] hover:to-[#008BB0] transition duration-300"
-          onClick={handleCheckin} 
+          onClick={handleCheckin}
         >
           Check-in
         </button>
@@ -151,7 +151,7 @@ const CheckinPhoto = () => {
             <div className="flex justify-between mb-4">
               <button
                 className="bg-white border border-black px-4 py-2 rounded-lg w-30 font-bold"
-                onClick={handleCloseModal} 
+                onClick={handleCloseModal}
               >
                 ยกเลิก
               </button>
