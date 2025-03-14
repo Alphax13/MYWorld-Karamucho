@@ -48,31 +48,28 @@ const Event = () => {
 
       {/* รูป My Box Set */}
       <motion.div 
-  className="w-full flex justify-center mt-6"
-  variants={fadeIn} 
-  initial="hidden" 
-  whileInView="visible" 
-  viewport={{ once: true }}
->
-<motion.img 
-    src="images/cupon2.png" 
-    alt="MY BOX SET" 
-    className="w-[90%] lg:w-[40%]" 
-    animate={{
-      y: [0, -10, 0],
-      x: [-5, 5, -5],
-      rotate: [-5, 5, -5], 
-    }}
-    transition={{
-      repeat: Infinity,
-      duration: 3, 
-      ease: "easeInOut",
-    }}
-  />
-</motion.div>
-
-       
-
+        className="w-full flex justify-center mt-6"
+        variants={fadeIn} 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true }}
+      >
+      <motion.img 
+          src="images/cupon2.png" 
+          alt="MY BOX SET" 
+          className="w-[90%] lg:w-[40%]" 
+          animate={{
+            y: [0, -10, 0],
+            x: [-5, 5, -5],
+            rotate: [-5, 5, -5], 
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 3, 
+            ease: "easeInOut",
+          }}
+        />
+      </motion.div>
 
       <motion.button
           className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 

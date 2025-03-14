@@ -55,29 +55,29 @@ const BoxsetPage = () => {
         <ProfileCard />
 
         {/* Banner */}
-        <div className="w-full flex justify-center mb-2 cursor-pointer p-4">
+        <div className="w-full flex justify-center cursor-pointer px-4">
           <img
             src="images/Boxset.png"
             alt="Boxset Banner"
-            className="w-full max-w-5xl rounded-lg shadow-md"
+            className="w-full max-w-5xl"
           />
         </div>
 
         {/* Dropdown เลือกโซน */}
-        <div className="w-full max-w-md mx-auto p-4">
+        <div className="w-full max-w-md mx-auto px-4 pt-2">
 
           <Select
             options={getStoreOptionsByZone(selectedZone?.value)} // Get store options based on selected zone
             value={selectedStore}
             onChange={setSelectedStore}
             placeholder="เลือกร้าน"
-            className="text-black mb-4"
+            className="text-black mb-2"
             styles={{
               control: (base) => ({
                 ...base,
                 border: "1px solid #28B7E1",
                 borderRadius: "6px",
-                padding: "8px",
+                padding: "4px",
                 fontSize: "16px",
                 color: "#333",
                 boxShadow: "none",
@@ -101,7 +101,7 @@ const BoxsetPage = () => {
                   ...base,
                   border: "1px solid #28B7E1",
                   borderRadius: "6px",
-                  padding: "8px",
+                  padding: "4px",
                   fontSize: "16px",
                   color: "#333",
                   boxShadow: "none",
