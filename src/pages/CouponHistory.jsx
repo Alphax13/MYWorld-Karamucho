@@ -139,7 +139,7 @@ const CouponHistory = () => {
                   <p className="text-black text-sm">{coupon.coupon?.detail}</p>
                   <p className="text-black text-sm">ร้าน: {coupon.restaurant?.name}</p>
                   <p className="text-gray-500 text-sm">แลกเมื่อ: {formatDateToThai(coupon.created_at)}</p>
-                  <p className="text-gray-500 text-sm">เหลือราคา 100 บาท</p> 
+                  <p className="text-gray-500 text-sm">ส่วนลด 100 บาท</p> 
                   <span className="text-red-500 font-bold text-sm">
                     {/* แสดงข้อความตามสถานะของคูปอง */}
                     {coupon.is_used === true

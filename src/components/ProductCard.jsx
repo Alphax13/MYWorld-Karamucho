@@ -59,7 +59,7 @@ const ProductCard = () => {
             <div className="flex-[65%] pl-4">
               <h2 className="text-lg font-bold text-black">{product.name}</h2>
               <p className="text-black text-xs">รับ My MEAT BOX SET  หมูกะทะ ฟรี 1 ชิ้น</p>
-              <p className="text-black text-xs">เหลือราคา 100 บาท</p>
+              <p className="text-black text-xs">ส่วนลด 100 บาท</p>
             </div>
           </div>
         );
