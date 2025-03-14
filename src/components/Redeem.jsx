@@ -104,7 +104,7 @@ const redeem = () => {
                 <div
                   key={coupon.id}
                   className="relative flex items-center rounded-lg shadow-lg overflow-hidden 
-                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center  p-4"
+                         bg-[url('/images/pattern.png')] bg-cover bg-no-repeat bg-center  p-2"
                   onClick={() => coupon.is_used === true || isExpired ? '' : handleCouponClick(coupon)} // เมื่อคลิกคูปอง
                 >
                   {(coupon.is_used === true || isExpired) && (
@@ -112,16 +112,18 @@ const redeem = () => {
                       {/* <span className="text-white font-bold">หมดอายุหรือยังไม่ได้ใช้</span> */}
                     </div>
                   )}
-                  <div className="flex justify-center items-center flex-[45%]">
+                  <div className="flex justify-center items-center flex-[30%]">
                     <img src="images/promotioncard.png" alt={coupon.title} className="h-28 object-contain" />
                   </div>
 
-                  <div className="flex-[80%] pl-4 leading-[1.5]">
+                  <div className="h-20 border-l border-black"></div>
+
+                  <div className="flex-[70%] pl-4 leading-[1.5]">
                     <h2 className="text-base font-bold text-black">{coupon.coupon?.name}</h2>
                     <p className="text-black text-sm">{coupon.coupon?.detail}</p>
                     <p className="text-black text-sm">ร้าน: {coupon.restaurant?.name}</p>
                     <p className="text-gray-500 text-sm">แลกเมื่อ: {formatDateToThai(coupon.created_at)}</p> {/* แปลงเวลาเป็นเวลาของไทย */}
-                    <span className="text-black font-bold text-xs">
+                    <span className="text-red-500 font-bold text-xs">
                       {coupon.is_used === true
                         ? `ใช้สิทธิ์แล้ว ${coupon.redeem_code}`
                         : isExpired

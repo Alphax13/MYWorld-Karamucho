@@ -128,16 +128,19 @@ const CouponHistory = () => {
                   </div>
                 )}
 
-                <div className="flex justify-center items-center flex-[50%]">
+                <div className="flex justify-center items-center flex-[30%]">
                   <img src="images/promotioncard.png" alt={coupon.title} className="h-28 object-contain" />
                 </div>
+
+                <div className="h-20 border-l border-black"></div>
 
                 <div className="flex-[90%] pl-4 leading-[1.5]">
                   <h2 className="text-base font-bold text-black">{coupon.coupon?.name}</h2>
                   <p className="text-black text-sm">{coupon.coupon?.detail}</p>
                   <p className="text-black text-sm">ร้าน: {coupon.restaurant?.name}</p>
-                  <p className="text-gray-500 text-sm">แลกเมื่อ: {formatDateToThai(coupon.created_at)}</p> {/* แปลงเวลาเป็นเวลาของไทย */}
-                  <span className="text-black font-bold text-sm">
+                  <p className="text-gray-500 text-sm">แลกเมื่อ: {formatDateToThai(coupon.created_at)}</p>
+                  <p className="text-gray-500 text-sm">เหลือราคา 100 บาท</p> 
+                  <span className="text-red-500 font-bold text-sm">
                     {/* แสดงข้อความตามสถานะของคูปอง */}
                     {coupon.is_used === true
                       ? `ใช้สิทธิ์แล้ว ${coupon.redeem_code}`
