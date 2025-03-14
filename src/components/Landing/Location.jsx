@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { getrestaurant, leaderboard } from "../../common/userSlice.js/userSlice";
+import { getrestaurant, leaderboard , checkinHis } from "../../common/userSlice.js/userSlice";
 import "./style.css";
 import { IoGiftSharp } from "react-icons/io5";
 
@@ -10,6 +10,7 @@ const Location = ({ onCheckin, getprofile }) => {
   const dispatch = useDispatch();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
+  const pointData = useSelector((state) => state.user.checkinHisesData);
   const leaderData = useSelector((state) => state.user.leaderboardsData);
   const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
 
@@ -18,7 +19,10 @@ const Location = ({ onCheckin, getprofile }) => {
   useEffect(() => {
     dispatch(getrestaurant())
     dispatch(leaderboard());
-  }, [dispatch])
+     if (customerinfo?.customer_id) {
+          dispatch(checkinHis({ customerid: customerinfo?.customer_id }));
+        }
+  }, [dispatch ,customerinfo])
 
   useEffect(() => {
     const handleResize = () => {
