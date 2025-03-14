@@ -99,18 +99,15 @@ const PrivilegePage = () => {
       </div>
 
       <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-4 flex justify-center items-center">
-        <div className="shadow-md w-50 text-center border border-black m-4">
-          <img src={'../images/promotioncard.png'} alt={product?.selectedStore?.label} className="w-48 mx-auto" />
-          <div className="bg-white m-0 p-1">
-            <h2 className="text-xl font-bold text-gray-800 mt-2">{product?.selectedStore?.label}</h2>
-            <p className="text-sm">{product?.selectedStore?.label}</p>
-            <p className="text-xs mt-2">ปกติราคา {product.price} บาท</p>
-          </div>
+        <div className="w-full text-center">
+          <img src={'../images/cupon2.png'} alt={product?.selectedStore?.label} className="w-60 mx-auto" />
         </div>
       </div>
 
       <div className="p-2 text-left">
-        <p className="text-black text-2xl">{product?.selectedStore?.label}</p>
+        <p className="text-black text-2xl font-bold">{product?.selectedStore?.label}</p>
+        <p className="text-black text-base font-bold">รายละเอียดคูปอง</p>
+        <p className="text-black text-xs">การแลกสิทธิ์คูปอง “MY MEAT BOX SET” สามารถใช้ได้ที่ร้านและสาขาที่เข้าร่วมรายการเท่านั้น และเงื่อนไขการแลกคูปองต้องเป็นไปตามที่บริษัทกำหนดเท่านั้น</p>
       </div>
 
       {/* ✅ แสดงโค้ด Redeem หรือ ปุ่มรับสิทธิ์ */}
