@@ -25,7 +25,7 @@ const ProfileCard = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-xl p-2 w-[90%] md:w-[80%] max-w-5xl  m-5 mt-1 z-10">
+    <div className="bg-white rounded-lg shadow-xl p-2 w-[90%] md:w-[80%] max-w-5xl  m-4 mt-1 z-10">
       <div className="bg-white flex items-center">
 
         <div className="flex-[30%] flex justify-center">
@@ -34,11 +34,11 @@ const ProfileCard = () => {
 
         <div className="flex-[70%]">
           <h1 className="text-xl font-semibold">{userName}</h1>
-          <div className="flex items-center text-lg my-2">
+          <div className="flex items-center text-lg">
             <img src="images/icon/coin.svg" alt="Coins" className="w-6 h-6 mr-2" />
             <span className="text-gray-700">Coins: {points}</span>
           </div>
-          <div className="flex items-center text-lg my-2">
+          <div className="flex items-center text-lg">
             <img src="images/icon/game.svg" alt="Coins" className="w-6 h-6 mr-2" />
             <span className="text-gray-700">Game point: {gamePoints}</span>
           </div>
