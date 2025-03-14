@@ -65,14 +65,13 @@ const Home = ({ onCheckin ,getprofile}) => {
         }
         
       <Location onCheckin={onCheckin} getprofile={getprofile} />
+      <Scoreboard />
       {!customerinfo && 
         <>
           <Howto onCheckin={onCheckin}/>
           <JoinStore onCheckin={onCheckin}/>
         </>
       }
-
-      <Scoreboard />
 
       <MobileMenu onCheckin={onCheckin}/>
       {!customerinfo && <>
