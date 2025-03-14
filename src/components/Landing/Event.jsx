@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import "./style.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"; // Import Redux hook
+import "./style.css";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 50 },
@@ -9,8 +10,35 @@ const fadeIn = {
 
 const Event = () => {
   const navigate = useNavigate();
+
+  // ดึงค่าจาก Redux store
+  const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
+
+  const handleClick = () => {
+    console.log("Profile:", profile);
+    console.log("Customer Info:", customerinfo);
+
+    if (isLoading) {
+      console.log("กำลังโหลดข้อมูล...");
+      return;
+    }
+
+    if (error) {
+      console.log("เกิดข้อผิดพลาด:", error);
+      return;
+    }
+
+    if (!profile) {
+      // ถ้ายังไม่มี profile ให้พาไปหน้า RegisterEvent
+      navigate("?page=RegisterEvent");
+    } else {
+      // ถ้ามี profile แล้วให้พาไป RegisterEvent โดยตรง
+      navigate("/RegisterEvent");
+    }
+  };
+
   return (
-    <div 
+    <div
       className="event w-full flex flex-col items-center justify-center relative px-4 lg:px-4 py-4 gap-4 pb-10"
       style={{
         backgroundImage: "url('images/bg-paper.png')",
@@ -19,23 +47,21 @@ const Event = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* หัวข้อหลัก */}
-      <motion.div 
+      <motion.div
         className="w-full flex justify-center mb-5 mt-5"
-        variants={fadeIn} 
-        initial="hidden" 
-        whileInView="visible" 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
       >
         <img src="images/textevent.png" alt="Event" className="w-[100%] lg:w-[40%]" />
       </motion.div>
 
-      {/* กล่องข้อมูล COINS */}
-      <motion.div 
+      <motion.div
         className="w-full flex flex-row items-center justify-center text-center gap-2 lg:gap-6"
-        variants={fadeIn} 
-        initial="hidden" 
-        whileInView="visible" 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
       >
         <p className="text-black font-semibold text-lg lg:text-3xl whitespace-nowrap">
@@ -46,49 +72,41 @@ const Event = () => {
         </div>
       </motion.div>
 
-      {/* รูป My Box Set */}
-      <motion.div 
+      <motion.div
         className="w-full flex justify-center mt-6"
-        variants={fadeIn} 
-        initial="hidden" 
-        whileInView="visible" 
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
       >
-      <motion.img 
-          src="images/cupon2.png" 
-          alt="MY BOX SET" 
-          className="w-[90%] lg:w-[40%]" 
+        <motion.img
+          src="images/cupon2.png"
+          alt="MY BOX SET"
+          className="w-[90%] lg:w-[40%]"
           animate={{
             y: [0, -10, 0],
             x: [-5, 5, -5],
-            rotate: [-5, 5, -5], 
+            rotate: [-5, 5, -5],
           }}
           transition={{
             repeat: Infinity,
-            duration: 3, 
+            duration: 3,
             ease: "easeInOut",
           }}
         />
       </motion.div>
 
       <motion.button
-          className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 
-                      rounded-[50px] border border-[#28B7E1] shadow-md text-2xl lg:text-2xl 
-                      font-bold w-[60%] max-w-xs lg:w-[40%]"
-          initial={{ y: 0 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          onClick={() => {
-            if(!profile){
-              onCheckin(true);
-              navigate('?page=RegisterEvent');
-            }else{
-              navigate('/RegisterEvent');
-            }
-          }}
-        >
-          คลิกเลย
-        </motion.button>
+        className="bg-gradient-to-r from-[#004A5D] to-[#009BC3] text-white px-10 py-3 
+                  rounded-[50px] border border-[#28B7E1] shadow-md text-2xl lg:text-2xl 
+                  font-bold w-[60%] max-w-xs lg:w-[40%]"
+        initial={{ y: 0 }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+        onClick={handleClick}
+      >
+        คลิกเลย
+      </motion.button>
     </div>
   );
 };
