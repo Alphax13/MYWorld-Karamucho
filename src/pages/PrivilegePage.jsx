@@ -98,14 +98,14 @@ const PrivilegePage = () => {
         <h2 className="text-center text-base font-semibold flex-1">รายละเอียดคูปอง</h2>
       </div>
 
-      <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-4 flex justify-center items-center">
+      <div className="bg-[url('/images/paper2.png')] bg-cover bg-no-repeat p-4 pb-2 flex justify-center items-center">
         <div className="w-full text-center">
           <img src={'../images/cupon2.png'} alt={product?.selectedStore?.label} className="w-60 mx-auto" />
         </div>
       </div>
 
       <div className="p-2 text-left">
-        <p className="text-black text-2xl font-bold">{product?.selectedStore?.label}</p>
+        <p className="text-black text-2xl font-bold pb-2">{product?.selectedStore?.label}</p>
         <p className="text-black text-base font-bold">รายละเอียดคูปอง</p>
         <p className="text-black text-xs">การแลกสิทธิ์คูปอง “MY MEAT BOX SET” สามารถใช้ได้ที่ร้านและสาขาที่เข้าร่วมรายการเท่านั้น และเงื่อนไขการแลกคูปองต้องเป็นไปตามที่บริษัทกำหนดเท่านั้น</p>
       </div>
