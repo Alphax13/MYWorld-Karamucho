@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getbranchrestaurant, checkin, getrestaurant } from "../common/userSlice.js/userSlice";
+import { getbranchrestaurant, checkinHis, getrestaurant, getuser } from "../common/userSlice.js/userSlice";
 import "./Checkin.css";
 
 export default function CheckInPage() {
@@ -14,6 +14,7 @@ export default function CheckInPage() {
   const [selectedBranch, setSelectedBranch] = useState("");
   const [storeImg, setStoreImg] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const pointData = useSelector((state) => state.user.checkinHisesData);
   const branchdata = useSelector((state) => state.user.getbranchrestaurantData);
   const getrestaurantData = useSelector((state) => state.user.getrestaurantData);
 
@@ -23,7 +24,13 @@ export default function CheckInPage() {
 
   useEffect(() => {
     dispatch(getrestaurant());
-  }, [dispatch]);
+    if (profile && !customerinfo) {
+      dispatch(getuser({ profile }))
+    }
+    if (customerinfo?.customer_id) {
+      dispatch(checkinHis({ customerid: customerinfo?.customer_id }));
+    }
+  }, [dispatch, customerinfo, profile]);
 
   useEffect(() => {
     if (location.state?.id) {
@@ -51,7 +58,7 @@ export default function CheckInPage() {
   const handleCheckin = async () => {
     const selectedRestaurant = getrestaurantData.find(store => store.name === selectedStore);
     const selectedBranchData = branchdata.find(branch => branch.name === selectedBranch);
-  
+
     const checkinData = {
       customer_id: customerinfo?.customer_id,
       restaurant_id: selectedRestaurant?.restaurant_id,
@@ -60,14 +67,11 @@ export default function CheckInPage() {
       store: selectedStore,
       branch: selectedBranch,
     };
-  
+
     console.log(checkinData);
-  
+
     navigate("/checkin-photo", { state: checkinData });
   };
-  
-  
-  
 
   return (
     <div className="checkin-container p-5 flex flex-col items-center">
@@ -109,16 +113,20 @@ export default function CheckInPage() {
           >
             <option value="">เลือกเขต</option>
             {branchdata.length > 0 ? (
-              branchdata.map((branch, index) => (
-                <option key={index} value={branch.name}>
-                  {branch.name}
-                </option>
-              ))
+              // กรองออกสาขาที่ตรงกับชื่อสาขาที่เคยเช็คอิน
+              branchdata
+                .filter(branch => branch.name !== pointData[0]?.restaurant_branch?.name)
+                .map((branch, index) => (
+                  <option key={index} value={branch.name}>
+                    {branch.name}
+                  </option>
+                ))
             ) : (
               <option disabled>ไม่มีข้อมูลสาขา</option>
             )}
           </select>
         )}
+
 
         {errorMessage && (
           <div className="error-message text-red-600 mb-4">
