@@ -2,8 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import liff from "@line/liff";
 
+
+//Endpoint liff My-map
 //for use
 const liffID = `2002643017-R1nmr6gV`;
+
+//Endpoint liff present 
+//for use2
+//const liffID = `2002643017-n2xJovjP`;
+
 //for Dev
 //const liffID = `2002643017-BVvlLdjG`;
 

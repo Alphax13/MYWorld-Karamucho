@@ -170,7 +170,7 @@ function RegisterEvent() {
         )}
 
         <div className="modal-overlay fixed inset-0 bg-gray-500/50 flex items-center justify-center z-60">
-          <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5 max-w-md border-b-[3px] border-[#28B7E1]">
+          <div className="modal-content h-[60%] overflow-auto bg-white p-6 rounded-lg shadow-lg w-4/5 max-w-md border-b-[3px] border-[#28B7E1]">
             <h2 className="text-center text-xl font-semibold mb-4">
               ลงทะเบียนครั้งแรก รับเลย <br /> 5,000 Coins 🎉
             </h2>

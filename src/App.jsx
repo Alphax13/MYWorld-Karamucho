@@ -58,9 +58,9 @@ function App() {
     }
   }, [dispatch])
 
-
+ //present , My-map
   return (
-    <Router basename="/My-map">
+    <Router basename="/My-map"> 
       <Routes>
         <Route path="/" element={(customerinfo) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> : <Home onCheckin={handleCheckin} getprofile={handleGetprofile} />} /> {/*(customerinfo ) && (customerinfo?.phone === null || customerinfo?.phone === "") ? <RegisterEvent /> :  */}
         <Route path="/point" element={<PonitPage />} />
