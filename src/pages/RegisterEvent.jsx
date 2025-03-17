@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateinfo } from "../common/userSlice.js/userSlice";
-import { useNavigate , useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getuser } from "../common/userSlice.js/userSlice";
 
 function RegisterEvent() {
@@ -96,12 +96,12 @@ function RegisterEvent() {
           // Show modal with the message "Already register phone number"
           setModalMessage("ท่านได้ลงทะเบียนไปแล้ว");
           setModalVisible(true);
-        //  setTimeout(() => navigate(location.state?.from || '//'), 2000);
+          //  setTimeout(() => navigate(location.state?.from || '//'), 2000);
         } else if (response?.payload) {
           // Show modal with success message
           setModalMessage("ลงทะเบียนสำเร็จ");
           setModalVisible(true);
-        //  setTimeout(() => navigate(location.state?.from || '//'), 2000);
+          //  setTimeout(() => navigate(location.state?.from || '//'), 2000);
         } else {
           setModalMessage("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
           setModalVisible(true);
@@ -127,22 +127,14 @@ function RegisterEvent() {
   }, []);
 
   const iconsuccess = <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.998 53.998C36.3632 53.998 42.4677 51.4695 46.9686 46.9686C51.4695 42.4677 53.998 36.3632 53.998 29.998C53.998 23.6329 51.4695 17.5284 46.9686 13.0275C42.4677 8.52661 36.3632 5.99805 29.998 5.99805C23.6329 5.99805 17.5284 8.52661 13.0275 13.0275C8.52661 17.5284 5.99805 23.6329 5.99805 29.998C5.99805 36.3632 8.52661 42.4677 13.0275 46.9686C17.5284 51.4695 23.6329 53.998 29.998 53.998ZM41.119 26.119C41.6655 25.5532 41.9679 24.7954 41.9611 24.0088C41.9542 23.2223 41.6387 22.4698 41.0825 21.9136C40.5263 21.3574 39.7738 21.0419 38.9873 21.035C38.2007 21.0282 37.4429 21.3306 36.877 21.877L26.998 31.756L23.119 27.877C22.5532 27.3306 21.7954 27.0282 21.0088 27.035C20.2223 27.0419 19.4698 27.3574 18.9136 27.9136C18.3574 28.4698 18.0419 29.2223 18.035 30.0088C18.0282 30.7954 18.3306 31.5532 18.877 32.119L24.877 38.119C25.4396 38.6815 26.2026 38.9974 26.998 38.9974C27.7935 38.9974 28.5565 38.6815 29.119 38.119L41.119 26.119Z" fill="#05B917"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M29.998 53.998C36.3632 53.998 42.4677 51.4695 46.9686 46.9686C51.4695 42.4677 53.998 36.3632 53.998 29.998C53.998 23.6329 51.4695 17.5284 46.9686 13.0275C42.4677 8.52661 36.3632 5.99805 29.998 5.99805C23.6329 5.99805 17.5284 8.52661 13.0275 13.0275C8.52661 17.5284 5.99805 23.6329 5.99805 29.998C5.99805 36.3632 8.52661 42.4677 13.0275 46.9686C17.5284 51.4695 23.6329 53.998 29.998 53.998ZM41.119 26.119C41.6655 25.5532 41.9679 24.7954 41.9611 24.0088C41.9542 23.2223 41.6387 22.4698 41.0825 21.9136C40.5263 21.3574 39.7738 21.0419 38.9873 21.035C38.2007 21.0282 37.4429 21.3306 36.877 21.877L26.998 31.756L23.119 27.877C22.5532 27.3306 21.7954 27.0282 21.0088 27.035C20.2223 27.0419 19.4698 27.3574 18.9136 27.9136C18.3574 28.4698 18.0419 29.2223 18.035 30.0088C18.0282 30.7954 18.3306 31.5532 18.877 32.119L24.877 38.119C25.4396 38.6815 26.2026 38.9974 26.998 38.9974C27.7935 38.9974 28.5565 38.6815 29.119 38.119L41.119 26.119Z" fill="#05B917" />
   </svg>
-  ;
+    ;
 
   return (
     <>
-      <div className="min-h-screen m-0">
-        <div className="w-full relative">
-          <div className="absolute top-0 w-full max-h-[100%] md:max-h-[100px] lg:max-h-[150px] overflow-hidden">
-            <img src="images/ripped.png" alt="Effect" className="w-full object-bottom" />
-          </div>
+      <div className="h-[100vh]">
 
-          <div className="relative flex justify-between items-center px-6 py-5 pt-10">
-            <img src="images/logo.png" alt="Left Logo" className="h-12 w-auto cursor-pointer z-[65]" />
-          </div>
-        </div>
 
         {/* Modal */}
         {modalVisible && (
@@ -155,22 +147,30 @@ function RegisterEvent() {
                 <p className="text-center text-xl font-semibold">ส่วน</p>
                 <p className="text-center text-xl font-semibold text-[#BD2A30]">ลด 100 บาท</p>
               </div>
-              <button 
-                className="text-center my-1 p-3 w-full rounded-3xl bg-sky-500 shadow-md hover:bg-sky-700 text-white font-bold text-2xl" 
+              <button
+                className="text-center my-1 p-3 w-full rounded-3xl bg-sky-500 shadow-md hover:bg-sky-700 text-white font-bold text-2xl"
                 onClick={() => {
                   window.open("https://myworld-virtual-store.com/", "_blank", "noopener noreferrer");
                   navigate('//');
-                  }}
+                }}
               >
                 คลิกเลย
               </button>
-              <h2 className="text-center" onClick={()=> navigate(location.state?.from || '//')}>ปิดหน้าต่าง</h2>
+              <h2 className="text-center" onClick={() => navigate(location.state?.from || '//')}>ปิดหน้าต่าง</h2>
             </div>
           </div>
         )}
 
-        <div className="modal-overlay fixed inset-0 bg-gray-500/50 flex items-center justify-center z-60">
-          <div className="modal-content h-[60%] overflow-auto bg-white p-6 rounded-lg shadow-lg w-4/5 max-w-md border-b-[3px] border-[#28B7E1]">
+        <div className="grid w-full h-[100vh] z-60">
+
+          <div className="w-full relative">
+
+            <div className=" bg-[url(images/ripped.png)] bg-bottom flex justify-between items-center px-6 py-5 pt-10">
+              <img src="images/logo.png" alt="Left Logo" className="h-12 w-auto cursor-pointer z-[65]" />
+            </div>
+          </div>
+
+          <div className="modal-content mx-auto bg-white p-6 rounded-lg h-fit shadow-2xl w-4/5 max-w-md border-b-[3px] border border-gray-300 border-b-[#28B7E1]">
             <h2 className="text-center text-xl font-semibold mb-4">
               ลงทะเบียนครั้งแรก รับเลย <br /> 5,000 Coins 🎉
             </h2>
