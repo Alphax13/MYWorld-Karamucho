@@ -48,7 +48,9 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 9, name: "Bar Mookrata", top: { pc: "42%", mobile: "55%" }, left: { pc: "66%", mobile: "55%" }, image: "images/pin10.png" },
     { id: 10, name: "อารยาหมูกระทะ", top: { pc: "70%", mobile: "45%" }, left: { pc: "84%", mobile: "82%" }, image: "images/pin7.png" },
     { id: 11, name: "วาสนาหมูกระทะ", top: { pc: "33%", mobile: "35%" }, left: { pc: "50%", mobile: "83%" }, image: "images/pin11.png" },
-    // { id: 10, name: "อาริยา หมูกระทะ", top: { pc: "35%", mobile: "38%" }, left: { pc: "65%", mobile: "85%" }, image: "images/pin7.png" },
+    { id: 12, name: "เจริญพร หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "70%", mobile: "70%" }, image: "images/pin12.png" },
+    { id: 13, name: "พลาญชัย บาร์บีคิว", top: { pc: "30%", mobile: "38%" }, left: { pc: "60%", mobile: "65%" }, image: "images/14.png" },
+    { id: 14, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "75%", mobile: "45%" }, left: { pc: "55%", mobile: "20%" }, image: "images/13.png" },
   ];
 
   // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
