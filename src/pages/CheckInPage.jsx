@@ -94,7 +94,9 @@ export default function CheckInPage() {
           }}
         >
           <option value="">เลือกชื่อร้าน</option>
-          {getrestaurantData.map((store, index) => (
+          {getrestaurantData
+            // .filter(store => store.name !== '71 หมูกระทะ')
+            .map((store, index) => (
             <option key={index} value={store.name}>
               {store.name}
             </option>
@@ -115,7 +117,7 @@ export default function CheckInPage() {
             {branchdata.length > 0 ? (
               // กรองออกสาขาที่ตรงกับชื่อสาขาที่เคยเช็คอิน
               branchdata
-                .filter(branch => branch.name !== pointData[0]?.restaurant_branch?.name)
+                .filter(branch => branch.name !== pointData[0]?.restaurant_branch?.name || '71 หมูกระทะ')
                 .map((branch, index) => (
                   <option key={index} value={branch.name}>
                     {branch.name}

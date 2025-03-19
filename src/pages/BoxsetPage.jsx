@@ -5,7 +5,7 @@ import Select from "react-select";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getrestaurant, getbranchrestaurant } from "../common/userSlice.js/userSlice";
+import { getrestaurant, getbranchrestaurant , getuser , loginWithLine  } from "../common/userSlice.js/userSlice";
 
 const BoxsetPage = () => {
   const navigate = useNavigate();
@@ -24,7 +24,16 @@ const BoxsetPage = () => {
     dispatch(getrestaurant()); // Fetch restaurant data on component mount
   }, [dispatch]);
 
-  
+  useEffect(() => {
+    if (!profile){
+      dispatch(loginWithLine())
+    }else if (!customerinfo) {
+      dispatch(getuser({ profile }));
+    }else if (!customerinfo?.first_name){
+      navigate('/RegisterEvent', { state: { from: '/point' } });
+    }
+  }, [dispatch, customerinfo, profile]);
+
   const [selectedZone, setSelectedZone] = useState(null);
   const [selectedStore, setSelectedStore] = useState(null);
   const [selectedBranch, setSelectedBranch] = useState(null);
@@ -34,6 +43,7 @@ const BoxsetPage = () => {
   const getStoreOptionsByZone = (zone) => {
     if (!restaurantData || !restaurantData.length) return [];
     return restaurantData
+      .filter(restaurant => restaurant.name !== '71 หมูกระทะ')
       .map((restaurant) => ({
         value: restaurant.restaurant_id,
         label: restaurant.name,
@@ -89,8 +99,8 @@ const BoxsetPage = () => {
           {selectedStore && branchdata && branchdata.length > 0 && (
             <Select
               options={branchdata.map((branch) => ({
-                value: branch.branch_id, // ใช้ branch_id เป็น value
-                label: branch.name,      // ใช้ name เป็น label
+                value: branch.branch_id,
+                label: branch.name,
               }))}
               value={selectedBranch}  // กำหนด value ให้ตรงกับ selectedBranch
               onChange={(selectedOption) => setSelectedBranch(selectedOption)}  // เมื่อเลือก item ให้ตั้งค่า selectedBranch
