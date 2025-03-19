@@ -44,7 +44,7 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 5, name: "Everyday Mokata", top: { pc: "40%", mobile: "42%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
     { id: 6, name: "เอาถ่านหมูกระทะ", top: { pc: "40%", mobile: "33%" }, left: { pc: "43%", mobile: "42%" }, image: "images/pin3.png" },
     { id: 7, name: "ทวีโชค", top: { pc: "60%", mobile: "52%" }, left: { pc: "30%", mobile: "18%" }, image: "images/pin5.png" },
-    { id: 8, name: "71 หมูกระทะ", top: { pc: "50%", mobile: "53%" }, left: { pc: "78%", mobile: "74%" }, image: "images/pin8.png" },
+    { id: 8, name: "71 หมูกระทะ", top: { pc: "50%", mobile: "52%" }, left: { pc: "78%", mobile: "70%" }, image: "images/pin8.png" },
     { id: 9, name: "Bar Mookrata", top: { pc: "42%", mobile: "55%" }, left: { pc: "66%", mobile: "55%" }, image: "images/pin10.png" },
     { id: 10, name: "อารยาหมูกระทะ", top: { pc: "70%", mobile: "45%" }, left: { pc: "84%", mobile: "82%" }, image: "images/pin7.png" },
     { id: 11, name: "วาสนาหมูกระทะ", top: { pc: "33%", mobile: "35%" }, left: { pc: "50%", mobile: "83%" }, image: "images/pin11.png" },
