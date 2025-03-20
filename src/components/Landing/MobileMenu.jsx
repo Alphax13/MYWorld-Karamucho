@@ -4,6 +4,7 @@ import { LuUserPen } from "react-icons/lu";
 import { GrMapLocation } from "react-icons/gr";
 import { RiCoupon3Line } from "react-icons/ri";
 import { PiCoinsDuotone } from "react-icons/pi";
+import { RiMapPinTimeLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 const MobileMenu = ({ onCheckin }) => {
@@ -26,6 +27,9 @@ const MobileMenu = ({ onCheckin }) => {
         case 3:
           navigate(`?page=coupon-history`);
           break;
+        case 5:
+          navigate(`?page=CheckPoint`);
+          break;
         default:
           break;
       }
@@ -37,13 +41,16 @@ const MobileMenu = ({ onCheckin }) => {
           navigate("/RegisterEvent");
           break;
         case 2:
-          navigate("/CheckPoint");
+          navigate("/checkin");
           break;
         case 3:
           navigate("/coupon-history");
           break;
         case 4:
           window.open("https://myworld-virtual-store.com/", "_blank", "noopener noreferrer");
+          break;
+        case 5:
+          navigate("/CheckPoint");
           break;
         default:
           break;
@@ -84,6 +91,13 @@ const MobileMenu = ({ onCheckin }) => {
       >
         <span className="text-lg"><PiCoinsDuotone /></span>
         <span className="text-sm text-black font-bold">ล่า COINS</span>
+      </button>
+      <button
+        className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 4 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
+        onClick={() => handleNavigate(5)}
+      >
+        <span className="text-lg"><RiMapPinTimeLine /></span>
+        <span className="text-sm text-black font-bold">ประวัติเช็คอิน</span>
       </button>
     </div>
   );
