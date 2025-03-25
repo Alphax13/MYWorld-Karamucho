@@ -50,7 +50,7 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 11, name: "วาสนาหมูกระทะ", top: { pc: "33%", mobile: "40%" }, left: { pc: "50%", mobile: "85%" }, image: "images/pin11.png" },
     { id: 12, name: "เจริญพร หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin12.png" },
     { id: 13, name: "พลาญชัย บาร์บีคิว", top: { pc: "30%", mobile: "38%" }, left: { pc: "60%", mobile: "65%" }, image: "images/14.png" },
-    { id: 14, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "75%", mobile: "70%" }, left: { pc: "55%", mobile: "15%" }, image: "images/13.png" },
+    { id: 14, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "33%", mobile: "70%" }, left: { pc: "55%", mobile: "15%" }, image: "images/13.png" },
   ];
 
   // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
