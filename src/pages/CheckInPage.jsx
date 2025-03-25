@@ -117,7 +117,7 @@ export default function CheckInPage() {
             {branchdata.length > 0 ? (
               // กรองออกสาขาที่ตรงกับชื่อสาขาที่เคยเช็คอิน
               branchdata
-                .filter(branch => branch.name !== pointData[0]?.restaurant_branch?.name || '71 หมูกระทะ')
+                .filter(branch => branch.name !== pointData[0]?.restaurant_branch?.name)
                 .map((branch, index) => (
                   <option key={index} value={branch.name}>
                     {branch.name}

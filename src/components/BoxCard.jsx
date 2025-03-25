@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getrestaurant, Redeemcoupon } from "../common/userSlice.js/userSlice";
+import { getrestaurant, Redeemcoupon ,getuser } from "../common/userSlice.js/userSlice";
 
 const BoxCard = ({ selectedStore, selectedBranch, couponId }) => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const BoxCard = ({ selectedStore, selectedBranch, couponId }) => {
           selectedStore,
         };
 
-        // นำข้อมูลไปที่หน้า /privilege
+        dispatch(getuser({profile}));
         navigate(`/privilege/${selectedStore?.value}`, { state: redeemData });
         setShowModal(false); // ปิด Modal หลังจากการแลกรางวัลสำเร็จ
       } else {

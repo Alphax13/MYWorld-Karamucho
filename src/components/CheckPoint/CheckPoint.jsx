@@ -88,7 +88,7 @@ export default function CheckPoint() {
           {filteredPointData.map((loc, index) => (
             <div
               key={loc.id}
-              className={`relative flex items-center w-60 h-14.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
+              className={`relative flex items-center w-65 h-14.5 my-8 rounded-full border-2 shadow-md transition-all cursor-pointer 
                 ${loc.status === 'approved' ? "bg-green-200 border-green-500" : loc.status === 'rejected' ? "bg-red-200 border-red-500" : "bg-white border-gray-300"} 
                 ${index % 2 === 0 ? "ml-0 flex-row" : "ml-auto flex-row-reverse"}`}
             >
@@ -96,9 +96,9 @@ export default function CheckPoint() {
               <div className={`w-14 h-14 rounded-full border-4 overflow-hidden flex-shrink-0 ${loc.status === 'approved' ? "border-green-500" : "border-gray-300"}`}>
                 <img src={loc.restaurant.image_url} alt="ร้าน" className="w-full h-full object-cover" />
               </div>
-              <div className="mx-2 text-left">
+              <div className="mx-2 text-left grid gap-1">
                 <div className="text-lg font-bold -mb-1.5">{loc.restaurant.name}</div>
-                <div className="text-base text-gray-600">สาขา {loc.restaurant_branch.name}</div>
+                <div className="text-base text-[12px] text-gray-600">สาขา {loc.restaurant_branch.name}</div>
               </div>
             </div>
           ))}

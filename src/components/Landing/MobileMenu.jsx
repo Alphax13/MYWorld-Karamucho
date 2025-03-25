@@ -25,7 +25,7 @@ const MobileMenu = ({ onCheckin }) => {
           navigate(`?page=CheckPoint`);
           break;
         case 3:
-          navigate(`?page=coupon-history`);
+          navigate(`?page=point`);
           break;
         case 5:
           navigate(`?page=CheckPoint`);
@@ -44,7 +44,7 @@ const MobileMenu = ({ onCheckin }) => {
           navigate("/checkin");
           break;
         case 3:
-          navigate("/coupon-history");
+          navigate("/point");
           break;
         case 4:
           window.open("https://myworld-virtual-store.com/", "_blank", "noopener noreferrer");
@@ -66,7 +66,7 @@ const MobileMenu = ({ onCheckin }) => {
         onClick={() => handleNavigate(1)}
       >
         <span className="text-lg"><LuUserPen /></span>
-        <span className="text-sm text-black font-bold">สมัครสมาชิก</span>
+        <span className="text-[13px] text-black font-bold">สมัครสมาชิก</span>
       </button>
 
       <button
@@ -74,7 +74,7 @@ const MobileMenu = ({ onCheckin }) => {
         onClick={() => handleNavigate(2)}
       >
         <span className="text-lg"><GrMapLocation /></span>
-        <span className="text-sm text-black font-bold">Check-in</span>
+        <span className="text-[13px] text-black font-bold">Check-in</span>
       </button>
 
       <button
@@ -82,7 +82,7 @@ const MobileMenu = ({ onCheckin }) => {
         onClick={() => handleNavigate(3)}
       >
         <span className="text-lg"><RiCoupon3Line /></span>
-        <span className="text-sm text-black font-bold">คูปอง</span>
+        <span className="text-[13px] text-black font-bold">คูปอง</span>
       </button>
 
       <button
@@ -90,14 +90,14 @@ const MobileMenu = ({ onCheckin }) => {
         onClick={() => handleNavigate(4)}
       >
         <span className="text-lg"><PiCoinsDuotone /></span>
-        <span className="text-sm text-black font-bold">ล่า COINS</span>
+        <span className="text-[13px] text-black font-bold">ล่า COINS</span>
       </button>
       <button
-        className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 4 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
+        className={`flex flex-col items-center justify-center rounded-lg border-2 border-[#28B7E1] py-3 flex-1 ${active === 5 ? "bg-[#28B7E1] text-white font-bold" : "text-[#28B7E1]"}`}
         onClick={() => handleNavigate(5)}
       >
         <span className="text-lg"><RiMapPinTimeLine /></span>
-        <span className="text-sm text-black font-bold">ประวัติเช็คอิน</span>
+        <span className="text-[13px] text-black font-bold">ประวัติ <br/> Check-in</span>
       </button>
     </div>
   );

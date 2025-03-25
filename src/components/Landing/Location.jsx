@@ -41,16 +41,17 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 2, name: "ม๋วนใจ๋ หมูกระทะ", top: { pc: "70%", mobile: "60%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
     { id: 3, name: "หมูกระทะ มหานคร", top: { pc: "60%", mobile: "44%" }, left: { pc: "45%", mobile: "48%" }, image: "images/pin4.png" },
     { id: 4, name: "Your Camp", top: { pc: "53%", mobile: "30%" }, left: { pc: "38%", mobile: "15%" }, image: "images/pin1.png" },
-    { id: 5, name: "Everyday Mokata", top: { pc: "40%", mobile: "42%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
+    { id: 5, name: "Everyday Mokata", top: { pc: "45%", mobile: "38%" }, left: { pc: "25%", mobile: "20%" }, image: "images/pin2.png" },
     { id: 6, name: "เอาถ่านหมูกระทะ", top: { pc: "40%", mobile: "33%" }, left: { pc: "43%", mobile: "42%" }, image: "images/pin3.png" },
     { id: 7, name: "ทวีโชค", top: { pc: "60%", mobile: "52%" }, left: { pc: "30%", mobile: "18%" }, image: "images/pin5.png" },
     { id: 8, name: "71 หมูกระทะ", top: { pc: "50%", mobile: "52%" }, left: { pc: "78%", mobile: "70%" }, image: "images/pin8.png" },
     { id: 9, name: "Bar Mookrata", top: { pc: "42%", mobile: "55%" }, left: { pc: "66%", mobile: "55%" }, image: "images/pin10.png" },
     { id: 10, name: "อารยาหมูกระทะ", top: { pc: "70%", mobile: "45%" }, left: { pc: "84%", mobile: "82%" }, image: "images/pin7.png" },
     { id: 11, name: "วาสนาหมูกระทะ", top: { pc: "33%", mobile: "35%" }, left: { pc: "50%", mobile: "83%" }, image: "images/pin11.png" },
-    { id: 12, name: "เจริญพร หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "70%", mobile: "70%" }, image: "images/pin12.png" },
-    { id: 13, name: "พลาญชัย บาร์บีคิว", top: { pc: "30%", mobile: "38%" }, left: { pc: "60%", mobile: "65%" }, image: "images/14.png" },
-    { id: 14, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "75%", mobile: "45%" }, left: { pc: "55%", mobile: "20%" }, image: "images/13.png" },
+    { id: 12, name: "ตุ๊ต๊ะ หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "70%", mobile: "70%" }, image: "images/pin12.png" },
+    { id: 13, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "30%", mobile: "38%" }, left: { pc: "60%", mobile: "56%" }, image: "images/pin14.png" },
+    { id: 14, name: "พลาญชัย บาร์บีคิว", top: { pc: "75%", mobile: "44%" }, left: { pc: "55%", mobile: "12%" }, image: "images/pin13.png" },
+    { id: 15, name: "เจริญพร หมูกระทะแคมป์ปิ้ง", top: { pc: "48%", mobile: "48%" }, left: { pc: "34%", mobile: "34%" }, image: "images/pin15.png" },
   ];
 
   // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
