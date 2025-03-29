@@ -116,7 +116,7 @@ const PrivilegePage = () => {
           <div className="relative p-2">
             {/* ✅ ลายน้ำ "ใช้สิทธิ์แล้ว" (แสดงทับรหัส Redeem) */}
             {isUsed && (
-              <div className="absolute inset-0 flex items-center justify-center bg-red-500/50 text-red-500 font-bold text-xl h-20 -rotate-15 backdrop-blur-xs z-20">
+              <div className="absolute inset-0 flex items-center justify-center bg-red-500/20 text-red-500 font-bold text-xl h-20 -rotate-15 backdrop-blur-5xl z-20">
                 ใช้สิทธิ์แล้ว
               </div>
             )}
