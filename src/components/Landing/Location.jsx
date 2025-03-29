@@ -51,10 +51,10 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 12, name: "ตุ๊ต๊ะ หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "70%", mobile: "70%" }, image: "images/pin12.png" },
     { id: 13, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "40%", mobile: "55%" }, left: { pc: "55%", mobile: "15%" }, image: "images/pin13.png" },
     { id: 14, name: "พลาญชัย บาร์บีคิว", top: { pc: "35%", mobile: "38%" }, left: { pc: "60%", mobile: "60%" }, image: "images/pin14.png" },
-    { id: 15, name: "เจริญพร หมูกระทะแคมป์ปิ้ง", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin15.png" },
-    { id: 16, name: "มาลีเลิฟเวิลด์ หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin16.png" },
-    { id: 17, name: "Beach Camp Mookata", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin17.png" },
-    { id: 18, name: "จ่าอู หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin18.png" },
+    { id: 15, name: "เจริญพร หมูกระทะแคมป์ปิ้ง", top: { pc: "50%", mobile: "48%" }, left: { pc: "60%", mobile: "65%" }, image: "images/pin15.png" },
+    { id: 16, name: "มาลีเลิฟเวิลด์ หมูกระทะ", top: { pc: "70%", mobile: "53%" }, left: { pc: "50%", mobile: "85%" }, image: "images/pin16.png" },
+    { id: 17, name: "Beach Camp Mookata", top: { pc: "63%", mobile: "45%" }, left: { pc: "20%", mobile: "30%" }, image: "images/pin17.png" },
+    { id: 18, name: "จ่าอู หมูกระทะ", top: { pc: "65%", mobile: "52%" }, left: { pc: "60%", mobile: "48%" }, image: "images/pin18.png" },
   ];
 
   // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
