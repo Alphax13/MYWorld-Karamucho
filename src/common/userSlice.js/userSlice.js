@@ -5,14 +5,14 @@ import liff from "@line/liff";
 
 //Endpoint liff My-map
 //for use
-const liffID = `2002643017-R1nmr6gV`;
+//const liffID = `2002643017-R1nmr6gV`;
 
 //Endpoint liff present 
 //for use2
 //const liffID = `2002643017-n2xJovjP`;
 
 //for Dev
-//const liffID = `2002643017-BVvlLdjG`;
+const liffID = `2002643017-BVvlLdjG`;
 
 //BaseUrl Api use
 const baseUrl = `https://games.myworld-store.com/api`;
