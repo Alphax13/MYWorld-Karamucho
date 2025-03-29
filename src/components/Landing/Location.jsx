@@ -52,6 +52,7 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 13, name: "หญิงใหญ่ หมูกระทะ", top: { pc: "33%", mobile: "70%" }, left: { pc: "55%", mobile: "15%" }, image: "images/pin14.png" },
     { id: 14, name: "พลาญชัย บาร์บีคิว", top: { pc: "30%", mobile: "38%" }, left: { pc: "60%", mobile: "65%" }, image: "images/pin13.png" },
     { id: 15, name: "เจริญพร หมูกระทะแคมป์ปิ้ง", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin15.png" },
+    { id: 16, name: "มาลีเลิฟเวิลด์ หมูกระทะ", top: { pc: "63%", mobile: "40%" }, left: { pc: "60%", mobile: "70%" }, image: "images/pin16.png" },
   ];
 
   // แปลงข้อมูล getrestaurantData มาใช้แสดงตามตำแหน่งที่กำหนด
