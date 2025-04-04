@@ -7,14 +7,16 @@ import Redeem from "../components/Redeem";
 import Banner from "../components/Banner";
 import ProductCard from "../components/ProductCard";
 import RedeemHistory from "../components/RedeemHistory";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation } from "react-router-dom";
 import RegisterEvent from "./RegisterEvent";
 import { getuser , loginWithLine } from "../common/userSlice.js/userSlice";
 import MobileMenu from "../components/Landing/MobileMenu";
+import Pointoldpage from "./Pointoldpage";
 
 const PonitPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { profile, customerinfo, isLoading, error } = useSelector((state) => state.user);
   const [activeMenuTab, setActiveMenuTab] = useState("checkin"); // ใช้กับ MenuTabs
   const [showregister , setshowregister] = useState(false)
@@ -24,7 +26,7 @@ const PonitPage = () => {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // ทำให้หน้าอยู่บนสุดเสมอเมื่อเข้า
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(()=>{
@@ -36,8 +38,8 @@ const PonitPage = () => {
         dispatch(loginWithLine())
       }else if (!customerinfo) {
         dispatch(getuser({ profile }));
-      }else if (!customerinfo?.first_name){
-        navigate('/RegisterEvent', { state: { from: '/point' } });
+      }else if (customerinfo && (!customerinfo?.phone || !customerinfo?.first_name)){
+        navigate('/RegisterEvent', { state: { from: 'point' } });
       }
     }, [dispatch, customerinfo, profile]);
 
@@ -52,11 +54,14 @@ const PonitPage = () => {
         <MenuTabs activeTab={activeMenuTab} setActiveTab={setActiveMenuTab} />
         <div className="w-full max-w-5xl">
           {/* MenuTabs */}
-          {activeMenuTab === "checkin" && <Banner />}
+          {activeMenuTab === "checkin" && <><Pointoldpage/> <Banner /> </>}
           {activeMenuTab === "redeem" && <Redeem />}
           {activeMenuTab === "history" && <RedeemHistory />}
         </div>
-        {!((activeMenuTab === "redeem") || (activeMenuTab === "history")) && <ProductCard />}
+        {!((activeMenuTab === "redeem") || (activeMenuTab === "history")) && <>
+          <ProductCard />
+          {/* <Pointoldpage/> */}
+        </>}
         <MobileMenu />
       </div>
     </div>

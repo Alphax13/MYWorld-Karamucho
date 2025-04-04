@@ -22,13 +22,19 @@ function App() {
   const handleCheckin = () => {
     dispatch(loginWithLine());
   };
-
+  
+ useEffect(()=>{
+  if(customerinfo === 'success')
+  {
+    dispatch(getuser({ profile }));
+  }
+ },[dispatch , customerinfo , profile])
 
   const handleGetprofile =()=>{
     dispatch(getuser({ profile }));
   };
 
-  console.log(customerinfo)
+  console.log('app.js',customerinfo)
 
   useEffect(() => {
     const storedProfile = localStorage.getItem("profile");

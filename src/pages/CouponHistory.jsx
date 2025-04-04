@@ -18,7 +18,7 @@ const CouponHistory = () => {
         if (!customerinfo) {
           dispatch(getuser({ profile }));
         }else if (!customerinfo?.first_name){
-          navigate('/RegisterEvent', { state: { from: '/coupon-history' } });
+          navigate('/RegisterEvent', { state: { from: 'coupon-history' } });
         }
         if (customerinfo) {
           dispatch(allCoupon({ customerid: customerinfo?.customer_id }));

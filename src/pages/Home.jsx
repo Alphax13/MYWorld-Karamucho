@@ -21,10 +21,8 @@ const Home = ({ onCheckin ,getprofile}) => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    // ดึง rawCheck จาก URL
     let rawCheck = params.get("page");
     
-    // ถ้าใน URL ไม่มี ให้ลองดึงจาก localStorage
     if (!rawCheck) {
       rawCheck = localStorage.getItem("rawCheck");
     }

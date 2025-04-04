@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LuUserPen } from "react-icons/lu";
 import { GrMapLocation } from "react-icons/gr";
@@ -6,8 +6,10 @@ import { RiCoupon3Line } from "react-icons/ri";
 import { PiCoinsDuotone } from "react-icons/pi";
 import { RiMapPinTimeLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { loginWithLine , getuser } from "../../common/userSlice.js/userSlice";
 
 const MobileMenu = ({ onCheckin }) => {
+  const dispatch = useDispatch();
   const { profile, customerinfo } = useSelector((state) => state.user);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ const MobileMenu = ({ onCheckin }) => {
         default:
           break;
       }
-    } else if (customerinfo && (customerinfo.first_name === null || customerinfo.first_name === "")) {
+    } else if (customerinfo && (!customerinfo?.phone || !customerinfo?.first_name)) {
       navigate("/RegisterEvent");
     } else {
       switch (page) {
@@ -47,7 +49,7 @@ const MobileMenu = ({ onCheckin }) => {
           navigate("/point");
           break;
         case 4:
-          window.open("https://myworld-virtual-store.com/", "_blank", "noopener noreferrer");
+          window.location.href = "https://myworld-virtual-store.com/";
           break;
         case 5:
           navigate("/CheckPoint");
