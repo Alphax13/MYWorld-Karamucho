@@ -25,11 +25,11 @@ const ProfileCard = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-xl p-2 w-[90%] md:w-[80%] max-w-5xl  m-2 mt-1 z-10">
+    <div className="bg-white rounded-lg shadow-xl p-2 w-[90%] md:w-[80%] max-w-5xl  m-2 -mt-6 z-10">
       <div className="bg-white flex items-center">
 
         <div className="flex-[30%] flex justify-center">
-          <img className="rounded-full h-[70px] w-[70px] border-2 border-blue-500" src={customerinfo?.picture ? customerinfo?.picture : 'https://placehold.co/400'} alt="Profile" />
+          <img className="rounded-full h-[60px] w-[60px] border-2 border-blue-500" src={customerinfo?.picture ? customerinfo?.picture : 'https://placehold.co/400'} alt="Profile" />
         </div>
 
         <div className="flex-[70%]">

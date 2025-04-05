@@ -52,16 +52,18 @@ const PonitPage = () => {
         {/* Profile + MenuTabs */}
         <ProfileCard />
         <MenuTabs activeTab={activeMenuTab} setActiveTab={setActiveMenuTab} />
-        <div className="w-full max-w-5xl">
-          {/* MenuTabs */}
-          {activeMenuTab === "checkin" && <><Pointoldpage/> <Banner /> </>}
-          {activeMenuTab === "redeem" && <Redeem />}
-          {activeMenuTab === "history" && <RedeemHistory />}
+        <div className="overflow-auto h-[60vh] mb-10">
+          <div className="w-full max-w-5xl">
+            {/* MenuTabs */}
+            {activeMenuTab === "checkin" && <><Pointoldpage/> <Banner /> </>}
+            {activeMenuTab === "redeem" && <Redeem />}
+            {activeMenuTab === "history" && <RedeemHistory />}
+          </div>
+          {!((activeMenuTab === "redeem") || (activeMenuTab === "history")) && <>
+            <ProductCard />
+            {/* <Pointoldpage/> */}
+          </>}
         </div>
-        {!((activeMenuTab === "redeem") || (activeMenuTab === "history")) && <>
-          <ProductCard />
-          {/* <Pointoldpage/> */}
-        </>}
         <MobileMenu />
       </div>
     </div>

@@ -14,7 +14,7 @@ const MenuTabs = ({ activeTab, setActiveTab }) => {
         <div key={item.id} className="flex flex-col items-center">
           <button
             onClick={() => setActiveTab(item.id)}
-            className={`flex items-center justify-center w-[60px] h-[60px] rounded-lg shadow-lg transition-all 
+            className={`flex items-center justify-center w-[45px] h-[45px] rounded-lg shadow-lg transition-all 
             ${activeTab === item.id ? "bg-[#28B7E1] text-white shadow-md" : "bg-white border border-[#28B7E1] text-[#28B7E1]"}`}
           >
             <div className={`text-3xl transition-all 
