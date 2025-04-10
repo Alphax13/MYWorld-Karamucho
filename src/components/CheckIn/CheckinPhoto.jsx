@@ -81,7 +81,15 @@ const CheckinPhoto = () => {
   const handleCloseModal = () => {
     setModalConfirm(false);
     setModalSuccess(false);
-    navigate('/checkpoint');
+    navigate('/CheckPoint');
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
+  const handleCloseModal2 = () => {
+    setModalConfirm(false);
+    setModalSuccess(false);
+    navigate('/point');
     setTimeout(() => {
       window.location.reload();
     }, 100);
@@ -178,14 +186,22 @@ const CheckinPhoto = () => {
                 <FaLocationDot className="text-5xl text-white" />
               </div>
             </div>
-            <h2 className="text-center text-xl font-semibold mb-2">Check-in แล้ว</h2>
-            <p className="text-center mb-4">{currentDate}</p>
-            <p className="text-center text-gray-600">{store} {branch}</p>
+            <h2 className="text-center mb-2">ไปล่าแต้มรับ</h2>
+            <div className="flex justify-center mb-1">
+              <p className="text-center text-xl font-semibold">ส่วน</p>
+              <p className="text-center text-xl font-semibold text-[#BD2A30]">ลด 100 บาท</p>
+            </div>
             <button
-              className="bg-gray-300 px-4 py-2 rounded-lg w-full mt-4"
+              className="text-center my-1 p-3 w-full rounded-3xl bg-sky-500 shadow-md hover:bg-sky-700 text-white font-bold text-2xl"
+              onClick={handleCloseModal2}
+            >
+              คลิกเลย
+            </button>
+            <button
+              className="px-4 py-2 rounded-lg w-full"
               onClick={handleCloseModal}
             >
-              Close
+              ปิดหน้าต่าง
             </button>
           </div>
         </div>
