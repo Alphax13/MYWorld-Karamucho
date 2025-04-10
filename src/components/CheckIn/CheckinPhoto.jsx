@@ -82,6 +82,9 @@ const CheckinPhoto = () => {
     setModalConfirm(false);
     setModalSuccess(false);
     navigate('/checkpoint');
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
 
   const currentDate = moment().format("DD MMM YYYY เวลา HH:mm น.");

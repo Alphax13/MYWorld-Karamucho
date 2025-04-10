@@ -384,6 +384,9 @@ const userSlice = createSlice({
         setCustomerInfo: (state, action) => {
             state.profile = action.payload;
         },
+        clearCustomerInfo: (state) => {
+            state.customerinfo = null;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -455,6 +458,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { setCustomerInfo, resetState } = userSlice.actions;
+export const { setCustomerInfo, resetState, clearCustomerInfo } = userSlice.actions;
 
 export default userSlice.reducer;

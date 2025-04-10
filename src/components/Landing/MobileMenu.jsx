@@ -13,6 +13,7 @@ const MobileMenu = ({ onCheckin }) => {
   const { profile, customerinfo } = useSelector((state) => state.user);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
+  const [pendingPage, setPendingPage] = useState(null);
 
   const handleNavigate = (page) => {
     setActive(page);
@@ -35,7 +36,10 @@ const MobileMenu = ({ onCheckin }) => {
         default:
           break;
       }
-    } else if (customerinfo && (!customerinfo?.phone || !customerinfo?.first_name)) {
+    } else if (profile && !customerinfo) {
+      dispatch(getuser({profile}))
+      setPendingPage(page);
+    } else if (!customerinfo?.phone || !customerinfo?.first_name) {
       navigate("/RegisterEvent");
     } else {
       switch (page) {
@@ -59,6 +63,39 @@ const MobileMenu = ({ onCheckin }) => {
       }
     }
   };
+
+  useEffect(() => {
+    // ถ้าเพิ่งได้ customerinfo มา (ไม่เป็น null) และมี pendingPage
+    if (customerinfo && pendingPage !== null) {
+      // เช็คว่ากรอกข้อมูลส่วนตัวใน customerinfo ครบไหม
+      if (!customerinfo.phone || !customerinfo.first_name) {
+        navigate("/RegisterEvent");
+      } else {
+        // ถ้าข้อมูลพร้อม ก็ไปหน้าเดิมที่ค้างไว้อย่างถูกต้อง
+        switch (pendingPage) {
+          case 1:
+            navigate("/RegisterEvent");
+            break;
+          case 2:
+            navigate("/checkin");
+            break;
+          case 3:
+            navigate("/point");
+            break;
+          case 4:
+            window.location.href = "https://myworld-virtual-store.com/";
+            break;
+          case 5:
+            navigate("/CheckPoint");
+            break;
+          default:
+            break;
+        }
+      }
+      // ใช้เสร็จแล้วเคลียร์ให้เป็น null
+      setPendingPage(null);
+    }
+  }, [customerinfo, pendingPage, navigate]);
   
 
   return (

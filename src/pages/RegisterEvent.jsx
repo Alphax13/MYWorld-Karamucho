@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateinfo } from "../common/userSlice.js/userSlice";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getuser , loginWithLine } from "../common/userSlice.js/userSlice";
+import { getuser , loginWithLine , clearCustomerInfo} from "../common/userSlice.js/userSlice";
 
 function RegisterEvent() {
   const dispatch = useDispatch();
@@ -138,6 +138,14 @@ function RegisterEvent() {
     });
   };
 
+  const handleClose = () => {
+    // dispatch(clearCustomerInfo());
+    navigate("//");
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
+
   
   const iconsuccess = <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M29.998 53.998C36.3632 53.998 42.4677 51.4695 46.9686 46.9686C51.4695 42.4677 53.998 36.3632 53.998 29.998C53.998 23.6329 51.4695 17.5284 46.9686 13.0275C42.4677 8.52661 36.3632 5.99805 29.998 5.99805C23.6329 5.99805 17.5284 8.52661 13.0275 13.0275C8.52661 17.5284 5.99805 23.6329 5.99805 29.998C5.99805 36.3632 8.52661 42.4677 13.0275 46.9686C17.5284 51.4695 23.6329 53.998 29.998 53.998ZM41.119 26.119C41.6655 25.5532 41.9679 24.7954 41.9611 24.0088C41.9542 23.2223 41.6387 22.4698 41.0825 21.9136C40.5263 21.3574 39.7738 21.0419 38.9873 21.035C38.2007 21.0282 37.4429 21.3306 36.877 21.877L26.998 31.756L23.119 27.877C22.5532 27.3306 21.7954 27.0282 21.0088 27.035C20.2223 27.0419 19.4698 27.3574 18.9136 27.9136C18.3574 28.4698 18.0419 29.2223 18.035 30.0088C18.0282 30.7954 18.3306 31.5532 18.877 32.119L24.877 38.119C25.4396 38.6815 26.2026 38.9974 26.998 38.9974C27.7935 38.9974 28.5565 38.6815 29.119 38.119L41.119 26.119Z" fill="#05B917" />
@@ -172,7 +180,7 @@ function RegisterEvent() {
               >
                 คลิกเลย
               </button>
-              <h2 className="text-center" onClick={() => navigate(location.state?.from === undefined ? '//' : `/${location.state?.from}`)}>ปิดหน้าต่าง</h2>
+              <h2 className="text-center" onClick={() => location.state?.from === undefined ? handleClose()  : navigate(`/${location.state?.from}`)}>ปิดหน้าต่าง</h2>
             </div>
           </div>
         )}
