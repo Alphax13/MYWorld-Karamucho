@@ -10,20 +10,15 @@ const ProfileCard = () => {
   const [points, setPoints] = useState(0);
   const [gamePoints, setGamePoints] = useState(0);
 
-  useEffect(() => {
-    if (!customerinfo && profile) {
-      dispatch(getuser(profile));
-    }
-  }, [customerinfo, profile, dispatch]);
-
-  // 2) ถ้าได้ customerinfo แล้ว => อัปเดต state ภายใน component
-  useEffect(() => {
-    if (customerinfo) {
+  useEffect(()=>{
+    if(!customerinfo){
+      dispatch(getuser(profile))
+    }else if(customerinfo){
       setUserName(customerinfo.name || "");
       setPoints(customerinfo.point || 0);
       setGamePoints(customerinfo.game_point || 0);
     }
-  }, [customerinfo]);
+  },[dispatch , customerinfo , profile])
 
   useEffect(() => {
     setProfileImage("https://placehold.co/400");
