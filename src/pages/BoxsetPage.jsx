@@ -43,7 +43,7 @@ const BoxsetPage = () => {
   const getStoreOptionsByZone = (zone) => {
     if (!restaurantData || !restaurantData.length) return [];
     return restaurantData
-      .filter(restaurant => restaurant.name !== '71 หมูกระทะ')
+      .filter(restaurant => restaurant.name !== '71 หมูกระทะ' && restaurant.name !== "Your Camp" && restaurant.name !== "Beach Camp Mookata")
       .map((restaurant) => ({
         value: restaurant.restaurant_id,
         label: restaurant.name,

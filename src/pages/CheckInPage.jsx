@@ -95,7 +95,7 @@ export default function CheckInPage() {
         >
           <option value="">เลือกชื่อร้าน</option>
           {getrestaurantData
-            // .filter(store => store.name !== '71 หมูกระทะ')
+            // .filter(store => store.name !== "Your Camp" && store.name != "Beach Camp Mookata")
             .map((store, index) => (
             <option key={index} value={store.name}>
               {store.name}
