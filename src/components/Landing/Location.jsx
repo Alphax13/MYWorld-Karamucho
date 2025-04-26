@@ -40,7 +40,7 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 1, name: "Y.O.U หมูกระทะ", top: { pc: "65%", mobile: "55%" }, left: { pc: "75%", mobile: "70%" }, image: "images/pin9.png" },
     { id: 2, name: "ม๋วนใจ๋ หมูกระทะ", top: { pc: "70%", mobile: "58%" }, left: { pc: "35%", mobile: "32%" }, image: "images/pin6.png" },
     { id: 3, name: "หมูกระทะ มหานคร", top: { pc: "60%", mobile: "44%" }, left: { pc: "45%", mobile: "48%" }, image: "images/pin4.png" },
-    // { id: 4, name: "Your Camp", top: { pc: "53%", mobile: "30%" }, left: { pc: "38%", mobile: "15%" }, image: "images/pin1.png" },
+    { id: 4, name: "Your Camp", top: { pc: "53%", mobile: "30%" }, left: { pc: "38%", mobile: "15%" }, image: "images/pin1.png" },
     { id: 5, name: "Everyday Mokata", top: { pc: "45%", mobile: "38%" }, left: { pc: "15%", mobile: "20%" }, image: "images/pin2.png" },
     { id: 6, name: "เอาถ่านหมูกระทะ", top: { pc: "40%", mobile: "33%" }, left: { pc: "43%", mobile: "42%" }, image: "images/pin3.png" },
     { id: 7, name: "ทวีโชค", top: { pc: "60%", mobile: "47%" }, left: { pc: "30%", mobile: "18%" }, image: "images/pin5.png" },
@@ -53,7 +53,7 @@ const Location = ({ onCheckin, getprofile }) => {
     { id: 14, name: "พลาญชัย บาร์บีคิว", top: { pc: "35%", mobile: "38%" }, left: { pc: "60%", mobile: "60%" }, image: "images/pin14.png" },
     { id: 15, name: "เจริญพร หมูกระทะแคมป์ปิ้ง", top: { pc: "50%", mobile: "48%" }, left: { pc: "60%", mobile: "65%" }, image: "images/pin15.png" },
     { id: 16, name: "มาลีเลิฟเวิลด์ หมูกระทะ", top: { pc: "70%", mobile: "53%" }, left: { pc: "50%", mobile: "85%" }, image: "images/pin16.png" },
-    // { id: 17, name: "Beach Camp Mookata", top: { pc: "63%", mobile: "45%" }, left: { pc: "20%", mobile: "30%" }, image: "images/pin17.png" },
+    { id: 17, name: "Beach Camp Mookata", top: { pc: "63%", mobile: "45%" }, left: { pc: "20%", mobile: "30%" }, image: "images/pin17.png" },
     { id: 18, name: "จ่าอู หมูกระทะ", top: { pc: "65%", mobile: "52%" }, left: { pc: "60%", mobile: "48%" }, image: "images/pin18.png" },
   ];
 
