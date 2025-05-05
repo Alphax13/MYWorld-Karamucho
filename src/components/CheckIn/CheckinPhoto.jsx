@@ -17,6 +17,7 @@ const CheckinPhoto = () => {
   const [modalConfirm, setModalConfirm] = useState(false); // Modal ยืนยัน
   const [modalSuccess, setModalSuccess] = useState(false); // Modal แสดงผล Check-in
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     document.title = "Checkin Photo";
@@ -40,6 +41,7 @@ const CheckinPhoto = () => {
   };
 
   const handleConfirmCheckin = async () => {
+    setIsSubmitting(true);
     const formData = new FormData();
     formData.append('file', selectedImage2);
 
@@ -75,6 +77,8 @@ const CheckinPhoto = () => {
       }
     } catch (error) {
       setErrorMessage("เกิดข้อผิดพลาดในการอัปโหลดหรือเช็คอิน");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -159,6 +163,7 @@ const CheckinPhoto = () => {
         <div className="modal-overlay fixed inset-0 bg-gray-500/50 bg-opacity-50 flex items-center justify-center z-60">
           <div className="modal-content bg-white p-6 rounded-lg shadow-lg w-4/5 max-w-md">
             <h2 className="text-center text-xl font-semibold mb-4">ยืนยัน Check-in ใช่หรือไม่ ?</h2>
+            {isSubmitting && <p className='mx-auto text-center mb-2 text-red-400'>กรุณารอสักครู่ระบบกำลังตรวจสอบ</p>}
             <div className="flex justify-between mb-4">
               <button
                 className="bg-white border border-black px-4 py-2 rounded-lg w-30 font-bold"
@@ -169,8 +174,9 @@ const CheckinPhoto = () => {
               <button
                 className="bg-[#28B7E1] text-white px-4 py-2 rounded-lg w-30 font-bold"
                 onClick={handleConfirmCheckin}
+                disabled={isSubmitting}
               >
-                ยืนยัน
+                {isSubmitting ? "กำลังบันทึก..." : "ยืนยัน"}
               </button>
             </div>
           </div>
