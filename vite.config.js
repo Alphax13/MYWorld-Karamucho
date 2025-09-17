@@ -9,5 +9,5 @@ export default defineConfig(({ command }) => ({
     react(),
     basicSsl()
   ],
-  base: '/My-map/', // '/' ตอน dev, '/My-map/' '/present/' ตอน build 
+  base: '/MYWorld&Karamucho/', // '/' ตอน dev, '/My-map/' '/present/' ตอน build 
 }))

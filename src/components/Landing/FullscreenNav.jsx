@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
-const FullscreenNav = ({ onCheckin }) => {
-    const { profile, customerinfo } = useSelector((state) => state.user);
+const FullscreenNav = () => {
     const [isActive, setIsActive] = useState(false);
-    const navigate = useNavigate();
 
     return (
         <div className="nav">
@@ -19,25 +15,25 @@ const FullscreenNav = ({ onCheckin }) => {
                             <a href="https://myworld-virtual-store.com" target="_blank">Virtual</a>
                         </li>
                         <li>
-                            <a href="#" onClick={() => !profile ? onCheckin(true) : navigate("/RegisterEvent")}>สมัครสมาชิก</a>
+                            <a href="#" onClick={() => console.log('สมัครสมาชิก')}>สมัครสมาชิก</a>
                         </li>
                         <li>
-                            <a href="#" onClick={() => navigate("/point")}>COINS สะสม</a>
+                            <a href="#" onClick={() => console.log('COINS สะสม')}>COINS สะสม</a>
                         </li>
                         <li>
-                            <a href="#" onClick={() => navigate("/CheckPoint")}>Check-in</a>
+                            <a href="#" onClick={() => console.log('Check-in')}>Check-in</a>
                         </li>
                         <li>
-                            <a href="#" onClick={() => navigate("/coupon-history")}>คูปอง</a>
+                            <a href="#" onClick={() => console.log('คูปอง')}>คูปอง</a>
                         </li>
                         <li>
                             <a href="https://shop.line.me/@myworld" target="_blank">MY LIMITED ITEMS</a>
                         </li>
 
-                        <li class="social-wrap-header">stay connected with us on</li>
+                        <li className="social-wrap-header">stay connected with us on</li>
 
 
-                        <li class="socials">
+                        <li className="socials">
                             <a href="https://www.facebook.com/myworldstore.th" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="24" height="24">
                                     <path

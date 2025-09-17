@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { LuUserPen } from "react-icons/lu";
 import { GrMapLocation } from "react-icons/gr";
 import { RiCoupon3Line } from "react-icons/ri";
 import { PiCoinsDuotone } from "react-icons/pi";
 import { RiMapPinTimeLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import { loginWithLine , getuser } from "../../common/userSlice.js/userSlice";
 
-const MobileMenu = ({ onCheckin }) => {
-  const dispatch = useDispatch();
-  const { profile, customerinfo } = useSelector((state) => state.user);
+const MobileMenu = () => {
   const [active, setActive] = useState(0);
-  const navigate = useNavigate();
-  const [pendingPage, setPendingPage] = useState(null);
 
   const handleNavigate = (page) => {
     setActive(page);
+    console.log(`Navigate to page: ${page}`);
   
     if (!profile) {
       onCheckin(true);

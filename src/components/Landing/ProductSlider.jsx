@@ -18,39 +18,30 @@ const ProductSlider = () => {
   };
 
   const products = [
-    { img: "Product/01.png", name: "MY Cleanest Hands", price: "39 THB" },
-    { img: "Product/02.png", name: "MY Frosty Tumbler", price: "390 THB" },
-    { img: "Product/03.png", name: "MY MONOGRAM T-SHIRT", price: "390 THB" },
-    { img: "Product/04.png", name: "MY BONNIE HOODIE", price: "1,290 THB" },
-    { img: "Product/05.png", name: "MY BONNIE HOODIE light blue", price: "1,290 THB" },
-    { img: "Product/06.png", name: "MY CASETY I-PHONE 15 PRO #01", price: "790 THB" },
-    { img: "Product/07.png", name: "MY CASETY I-PHONE 15 PRO #02", price: "790 THB" },
-    { img: "Product/08.png", name: "MY CASETY I-PAD (Pro 11) INCH #01", price: "1,290 THB" },
-    { img: "Product/09.png", name: "MY CASETY I-PAD (Pro 11) INCH #02", price: "1,290 THB" },
-    { img: "Product/10.png", name: "Collab (XL) แก้วเก็บความเย็น", price: "490 THB" },
+    { img: "Product/1.png", name: "MY Snack Cup (MY World x คารามูโจ้ Collection)", price: "129 THB" },
+    { img: "Product/2.png", name: "MY Frosty Tumbler (MY World x คารามูโจ้ Collection) (Pre-Order)", price: "109 THB" },
+    { img: "Product/3.png", name: "MY Karamucho Bag (MY World x คารามูโจ้ Collection) ", price: "109 THB" },
   ];
 
   return (
-    <section className="product">
-      <div className="rules2">
+    <section className="product ">
+      <div className="rules2 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 lg:px-8 py-8 gap-4">
         <div className="product-img">
           <a href="https://www.myworld-store.com/" target="_blank" rel="myworld">
             <img src="images/presenter.png" alt="Presenter" />
           </a>
         </div>
-        <div className="intro-text">
+        <div className="intro-text ">
           <img src="images/Collection.png" alt="Collection" className="collection-img" />
           <h2 className="text-left text-base sm:text-xl md:text-xl lg:text-xl">
-            วัยรุ่น MY เป็นได้ง่ายๆ แค่ช้อปสินค้า My World Collection สุดคูล<br />
-            มีสไตล์แบบไม่เหมือนใคร ไอเทมใหม่ที่สายสร้างสรรค์<br />
-            และนักสะสมไม่ควรพลาด
+            ลิมิเต็ดอิดิชั่นที่สร้างมาเพื่อแฟนตัวจริงของความมันส์! การรวมพลังครั้งนี้ไม่ใช่แค่ของสะสม แต่คือสัญลักษณ์ของการคอนเนคทุกไอเดีย สนุก เผ็ด มันส์ ในแบบที่เป็นคุณ รีบจับจองก่อนจะกลายเป็น Rare Item!
           </h2>
           <div className="w-full border-b-2 border-gray-300 mt-10"></div>
         </div>
       </div>
 
       <div className="all-product">
-        <IoArrowBackCircleOutline className="slide-btn left" onClick={slideLeft} />
+        <IoArrowBackCircleOutline className="slide-btn left hidden" onClick={slideLeft} />
         
         <div className="slider-track2" ref={sliderRef}>
             {products.map((product, index) => (
@@ -70,7 +61,7 @@ const ProductSlider = () => {
                 </div>
             ))}
             </div>
-        <IoArrowForwardCircleOutline className="slide-btn right" onClick={slideRight} />
+        <IoArrowForwardCircleOutline className="slide-btn right hidden" onClick={slideRight} />
       </div>
 
       <div className="pd-btn">
@@ -80,7 +71,7 @@ const ProductSlider = () => {
       </div>
 
       <div className="footer">
-        <h1>2024 MY WORLD #ALWAYS CONNECTED</h1>
+        <h1 className="text-[#24B6E0]">2024 MY WORLD #ALWAYS CONNECTED</h1>
       </div>
     </section>
   );
