@@ -75,7 +75,7 @@ const Event = () => {
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center mb-4">
-            <img src="images/evtext.webp" alt="MY World" className="h-68 mr-2" />
+            <img src="images/evtext.webp" alt="MY World" className="h-68 mt-5" />
           </div>
         </div>
 
@@ -87,7 +87,7 @@ const Event = () => {
           <p></p>
           
           {/* Campaign rounds */}
-          <div className="space-y-2 text-lg bg-white p-2 rounded-xs text-black font-bold">
+          <div className="space-y-2 text-lg bg-white p-4 rounded-xs text-black font-bold">
             <div><span className="text-black font-bold">	รอบคัดเลือก 1:</span> วันพุธที่ 15 ตุลาคม 2568 ต่อ ติด ผี ที่กรุงเทพฯ จำนวน 5 คู่</div>
             <div><span className="text-black font-bold">	รอบคัดเลือก 2:</span> วันศุกร์ที่ 17 ตุลาคม 2568 ต่อ ติด ผี ที่ชลบุรี จำนวน 5 คู่</div>
             <div><span className="text-black font-bold">	รอบคัดเลือก 3:</span> วันพุธที่ 22 ตุลาคม 2568 ต่อ ติด ผี ที่เชียงใหม่ จำนวน 5 คู่</div>
@@ -103,15 +103,25 @@ const Event = () => {
           </p>
         </div>
 
-         <div className="mb-6">
+         <div className="mb-6 relative">
           <div className="flex items-center mb-4">
-            <img src="images/bttext.webp" alt="MY World" className="w-full mr-2" />
+            {/* Desktop image */}
+            <img src="images/bttext.webp" alt="MY World" className="w-full hidden md:block" />
+            {/* Mobile image - you can change the src to your mobile image */}
+            <img src="images/bttext2.webp" alt="MY World" className="w-full block z-10 md:hidden" />
           </div>
         </div>
               
        
       </motion.div>
+      
       </div>
+      
+      {/* Mobile background image at bottom - overlapping and edge to edge */}
+      <div className="block md:hidden absolute bottom-0 left-0 right-0 w-full -mt-16">
+        <img src="images/Cover2.png" alt="Background" className="w-full h-auto" />
+      </div>
+      
     </div>
   );
 };
