@@ -23,22 +23,22 @@ const ProductSlider = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-black to-gray-900 text-white py-10">
+    <section className="relative bg-gradient-to-b from-black via-gray-900 to-gray-700 text-white py-10">
       {/* Top Background Image */}
-      <div className="absolute top-0 left-0 w-full h-32 z-0">
+      <div className="absolute top-0 left-0 w-full h-full z-0">
         <img 
-          src="images/top.png" 
+          src="images/sm1.png" 
           alt="Top Background" 
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-contain object-bottom"
         />
       </div>
 
       {/* Bottom Background Image */}
-      <div className="absolute bottom-0 left-0 w-full h-32 z-0">
+      <div className="absolute top-0 left-0 w-full h-full z-0">
         <img 
-          src="images/bottom.png" 
+          src="images/sm2.png" 
           alt="Bottom Background" 
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-contain object-bottom opacity-50"
         />
       </div>
 
@@ -59,24 +59,10 @@ const ProductSlider = () => {
 
       {/* Product Slider Section */}
       <div className="relative mt-12 z-10">
-        {/* Desktop Navigation Buttons */}
-        <button 
-          className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-all duration-300"
-          onClick={slideLeft}
-        >
-          <IoArrowBackCircleOutline className="w-8 h-8 text-white" />
-        </button>
-        
-        <button 
-          className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-all duration-300"
-          onClick={slideRight}
-        >
-          <IoArrowForwardCircleOutline className="w-8 h-8 text-white" />
-        </button>
 
         {/* Desktop Slider Container */}
         <div 
-          className="hidden md:flex overflow-x-auto gap-4 px-8 py-4 scroll-smooth scrollbar-hide snap-x snap-mandatory"
+          className="hidden md:flex md:justify-center overflow-x-auto gap-4 px-8 py-4 scroll-smooth scrollbar-hide snap-x snap-mandatory"
           ref={sliderRef}
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
@@ -112,25 +98,25 @@ const ProductSlider = () => {
           {products.map((product, index) => (
             <div 
               key={index} 
-              className="w-full p-6 shadow-lg"
+              className="w-full bg-black backdrop-blur-sm rounded-xl overflow-hidden shadow-lg"
             >
               <img 
                 src={product.img} 
                 alt={product.name} 
-                className="w-full h-64 object-cover rounded-lg"
+                className="w-full h-64 object-cover"
               />
-              <div className="space-y-4 bg-black p-4">
+              <div className="p-4 space-y-4">
                 <h3 className="text-lg font-semibold text-white leading-tight">
                   {product.name}
                 </h3>
-                <p className="text-xl font-bold text-sky-300">
-                  {product.price}
-                </p>
-              </div>
-              <div className="mt-6 flex justify-center">
-                <a href="https://shop.line.me/@myworld" className="inline-block">
-                  <img src="images/cart-button.png" alt="Cart" className="w-14 h-14 hover:scale-110 transition-transform duration-300" />
-                </a>
+                <div className="flex justify-between items-center">
+                  <p className="text-xl font-bold text-sky-300">
+                    {product.price}
+                  </p>
+                  <a href="https://shop.line.me/@myworld" className="inline-block">
+                    <img src="images/cart-button.png" alt="Cart" className="w-12 h-12 hover:scale-110 transition-transform duration-300" />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -138,15 +124,17 @@ const ProductSlider = () => {
       </div>
 
       {/* CTA Button */}
-      <div className="relative z-10 flex justify-center mt-12">
-        <button className="bg-transparent border-2 border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+      <div className="relative z-10 flex justify-center mt-12 mb-15">
+        <button className="bg-transparent border-2 border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white px-8 py-3 rounded-xs font-semibold text-lg transition-all duration-300 transform hover:scale-105">
           <a href="https://shop.line.me/@myworld">ดูสินค้าทันที</a>
         </button>
       </div>
-
+      <div className="flex justify-center mt-4 relative z-10">
+        <div className="border-b-2 border-gray-300 w-full max-w-80 mx-auto"></div>
+      </div>
       {/* Footer */}
       <div className="relative z-10 text-center mt-8">
-        <h1 className="text-sky-400 text-lg md:text-xl font-bold">2024 MY WORLD #ALWAYS CONNECTED</h1>
+        <h1 className="text-sky-400 text-lg md:text-xl">2024 MY WORLD #ALWAYS CONNECTED</h1>
       </div>
     </section>
   );

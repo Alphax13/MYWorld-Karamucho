@@ -30,6 +30,11 @@ const FullscreenNav = () => {
 
     return (
         <div className="nav">
+            {/* Logo ฝั่งซ้าย */}
+            <div className="nav-logo">
+                <img src="images/logo.png" alt="MY World Logo" />
+            </div>
+            
             <div className="fullscreen-nav">
                 <div className={`wrapper ${isActive ? "active" : ""}`} onClick={handleCloseNav}>
                     <ul>
@@ -37,16 +42,10 @@ const FullscreenNav = () => {
                             <a href="https://myworld-virtual-store.com" target="_blank">Virtual</a>
                         </li>
                         <li>
-                            <a href="#" onClick={() => console.log('สมัครสมาชิก')}>สมัครสมาชิก</a>
+                            <a href="https://myworld-virtual-store.com/present" target="_blank">สมัครสมาชิก</a>
                         </li>
                         <li>
-                            <a href="#" onClick={() => console.log('COINS สะสม')}>COINS สะสม</a>
-                        </li>
-                        <li>
-                            <a href="#" onClick={() => console.log('Check-in')}>Check-in</a>
-                        </li>
-                        <li>
-                            <a href="#" onClick={() => console.log('คูปอง')}>คูปอง</a>
+                            <a href="https://myworld-virtual-store.com/coin">COINS สะสม</a>
                         </li>
                         <li>
                             <a href="https://shop.line.me/@myworld" target="_blank">MY LIMITED ITEMS</a>
