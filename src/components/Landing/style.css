@@ -584,9 +584,7 @@
 
 /* Mobile Responsive Improvements */
 @media (max-width: 768px) {
-  .bg-black {
-    padding-bottom: 1rem;
-  }
+  
   
   .mobile-pagination-dot {
     width: 6px;

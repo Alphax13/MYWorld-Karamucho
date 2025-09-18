@@ -17,7 +17,6 @@ const Home = () => {
       <BannerKV />
       <Event />
       <Join />
-      <RoadshowSchedule />
       <ProductSlider />
     </div>
   );

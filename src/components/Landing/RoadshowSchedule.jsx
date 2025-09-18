@@ -3,7 +3,7 @@ import React from 'react';
 const RoadshowSchedule = () => {
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden -mt-10">
       {/* Desktop Background */}
       <div className="absolute inset-0 hidden md:block">
         <img 
@@ -54,7 +54,7 @@ const RoadshowSchedule = () => {
           <div className="hidden lg:flex lg:order-2 items-center justify-center">
             <div className="w-full text-center lg:text-left">
               <div className="flex items-center justify-center lg:justify-start">
-                <img src="images/pin.png" alt="MY World" className="w-[60%] max-w-sm lg:max-w-md h-auto" />
+                <img src="images/pin.png" alt="MY World" className="w-[0%] max-w-sm lg:max-w-md h-auto" />
               </div>
             </div>
           </div>

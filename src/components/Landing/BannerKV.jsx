@@ -58,16 +58,18 @@ const BannerKV = () => {
             </div>
             
             {/* Join button */}
-            <button 
-              className="bg-black border-2 border-[#24B6E0] font-base text-white font-bold py-3 px-18 rounded-xs transition-all duration-300 text-lg shadow-lg hover:shadow-[0_0_20px_#24B6E0] hover:border-[#00D4FF] hover:text-[#00D4FF]"
+            <a 
+              href="https://www.tiktok.com/@myworld.creator?lang=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-black border-2 border-[#24B6E0] font-base text-white font-bold py-3 px-18 rounded-xs transition-all duration-300 text-lg shadow-lg hover:shadow-[0_0_20px_#24B6E0] hover:border-[#00D4FF] hover:text-[#00D4FF] hover:scale-105"
               style={{
                 boxShadow: "0 0 15px rgba(36, 182, 224, 0.5), inset 0 0 15px rgba(36, 182, 224, 0.1)",
                 textShadow: "0 0 50px rgba(36, 182, 224, 0.8)"
               }}
-              onClick={() => console.log("Join button clicked")}
             >
               ร่วมกิจกรรม
-            </button>
+            </a>
           </div>
         </div>
       </div>

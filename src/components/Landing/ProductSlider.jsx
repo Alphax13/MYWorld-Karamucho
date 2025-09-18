@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { IoArrowBackCircleOutline, IoArrowForwardCircleOutline } from "react-icons/io5";
 
 const ProductSlider = () => {
@@ -24,38 +25,99 @@ const ProductSlider = () => {
 
   return (
     <section className="relative bg-gradient-to-b from-black via-gray-900 to-gray-700 text-white py-10">
-      {/* Top Background Image */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-        <img 
-          src="images/sm1.png" 
-          alt="Top Background" 
-          className="w-full h-full object-contain object-bottom"
-        />
-      </div>
-
       {/* Bottom Background Image */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <img 
           src="images/sm2.png" 
           alt="Bottom Background" 
-          className="w-full h-full object-contain object-bottom opacity-50"
+          className="w-full h-full object-cover object-bottom opacity-50"
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center px-4 lg:px-8 py-4 gap-6">
-        <div className="flex-shrink-0">
-          <a href="https://www.myworld-store.com/" target="_blank" rel="myworld">
-            <img src="images/presenter.png" alt="Presenter" className="w-full h-auto max-w-sm" />
-          </a>
+      {/* Presenter Image - Edge to Edge */}
+      <motion.div 
+        className="relative z-10 w-full"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        {/* Presenter Image with Motion */}
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-4 lg:px-8 py-4 gap-8">
+          {/* Left Column - Presenter Image */}
+          <motion.div className="flex-1 flex justify-center lg:justify-start">
+            <motion.a 
+              href="https://www.myworld-store.com/" 
+              target="_blank" 
+              rel="myworld"
+              className="relative z-10 block"
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.img 
+                src="images/presenter.png" 
+                alt="Presenter" 
+                className="w-full h-auto relative z-10 max-w-lg mx-auto" 
+                initial={{ scale: 0.95, opacity: 0 }}
+                whileInView={{ 
+                  scale: 1, 
+                  opacity: 1,
+                  transition: { 
+                    duration: 1.0, 
+                    delay: 0.2,
+                    ease: "easeOut" 
+                  }
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+                animate={{ 
+                  y: [0, -5, 0],
+                  transition: { 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }
+                }}
+              />
+            </motion.a>
+          </motion.div>
+
+          {/* Right Column - Content Section */}
+          <motion.div 
+            className="flex-1 text-center lg:text-left"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.img 
+              src="images/Collection.png" 
+              alt="Collection" 
+              className="w-full max-w-md mx-auto lg:mx-0 mb-4"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.h2 
+              className="text-base sm:text-lg md:text-xl lg:text-xl leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              ลิมิเต็ดอิดิชั่นที่สร้างมาเพื่อแฟนตัวจริงของความมันส์! การรวมพลังครั้งนี้ไม่ใช่แค่ของสะสม แต่คือสัญลักษณ์ของการคอนเนคทุกไอเดีย สนุก เผ็ด มันส์ ในแบบที่เป็นคุณ รีบจับจองก่อนจะกลายเป็น Rare Item!
+            </motion.h2>
+            <motion.div 
+              className="w-full border-b-2 border-gray-300 mt-6"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              viewport={{ once: true }}
+            ></motion.div>
+          </motion.div>
         </div>
-        <div className="flex-1 text-center md:text-left">
-          <img src="images/Collection.png" alt="Collection" className="w-full max-w-md mx-auto md:mx-0 mb-4" />
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-xl leading-relaxed">
-            ลิมิเต็ดอิดิชั่นที่สร้างมาเพื่อแฟนตัวจริงของความมันส์! การรวมพลังครั้งนี้ไม่ใช่แค่ของสะสม แต่คือสัญลักษณ์ของการคอนเนคทุกไอเดีย สนุก เผ็ด มันส์ ในแบบที่เป็นคุณ รีบจับจองก่อนจะกลายเป็น Rare Item!
-          </h2>
-          <div className="w-full border-b-2 border-gray-300 mt-6"></div>
-        </div>
-      </div>
+      </motion.div>
 
       {/* Product Slider Section */}
       <div className="relative mt-12 z-10">
@@ -98,7 +160,7 @@ const ProductSlider = () => {
           {products.map((product, index) => (
             <div 
               key={index} 
-              className="w-full bg-black backdrop-blur-sm rounded-xl overflow-hidden shadow-lg"
+              className="w-full bg-black backdrop-blur-sm overflow-hidden shadow-lg"
             >
               <img 
                 src={product.img} 
