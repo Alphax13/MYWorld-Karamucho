@@ -1,24 +1,6 @@
 import React from 'react';
 
 const RoadshowSchedule = () => {
-  const scheduleData = [
-    {
-      date: 'วันที่ 15 ตุลาคม 2568',
-      location: 'ถิ่น ติ่ง ที่ ศึกษาเทพ จันทบุรี 5 ชั้น'
-    },
-    {
-      date: 'วันที่ 17 ตุลาคม 2568', 
-      location: 'ถิ่น ติ่ง ที่ ศึกษาเทพ จันทบุรี 5 ชั้น'
-    },
-    {
-      date: 'วันที่ 22 ตุลาคม 2568',
-      location: 'ถิ่น ติ่ง ที่ ศึกษาเทพ จันทบุรี 5 ชั้น'
-    },
-    {
-      date: 'วันที่ 24 ตุลาคม 2568',
-      location: 'ถิ่น ติ่ง ที่ ศึกษาเทพ จันทบุรี 5 ชั้น'
-    }
-  ];
 
   return (
     <div className="max-h-screen relative overflow-hidden">
@@ -46,7 +28,7 @@ const RoadshowSchedule = () => {
         {/* Desktop Version - Image + Text */}
         <div className="hidden md:flex justify-center flex-shrink-0 mb-8 gap-4">
           <img src="images/arrow.png" alt="Arrow" className="w-20 h-20" />
-          <h2 className="text-3xl md:text-4xl font-bold bg-[#241E20] text-white px-6 py-3 rounded-lg drop-shadow-lg flex items-center gap-3">
+          <h2 className="text-3xl md:text-4xl font-bold bg-[#241E20] text-white px-6 py-3 rounded-lg  flex items-center gap-3">
             ตารางกิจกรรม Roadshow
           </h2>
         </div>
@@ -63,7 +45,7 @@ const RoadshowSchedule = () => {
               <img 
                 src="images/map.png" 
                 alt="Thailand Map with Roadshow Locations" 
-                className="w-full h-auto max-h-[75vh] object-contain rounded-lg shadow-lg"
+                className="w-full h-auto max-h-[75vh] object-contain rounded-lg"
               />
             </div>
           </div>
