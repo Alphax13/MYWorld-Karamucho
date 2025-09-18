@@ -31,7 +31,7 @@ const Event = () => {
       </div>
       
       {/* Main content container with max-w-7xl */}
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-4 lg:px-8 py-8 gap-1">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-6 lg:px-8 py-8 gap-1">
       {/* Left side - Mobile phone mockup */}
       <motion.div
         className="flex-1 flex justify-center lg:justify-center"
@@ -87,7 +87,7 @@ const Event = () => {
           <p></p>
           
           {/* Campaign rounds */}
-          <div className="space-y-2 text-lg bg-white p-4 rounded-xs text-black font-bold">
+          <div className="space-y-2 text-base bg-white p-4 rounded-xs text-black font-bold">
             <div><span className="text-black font-bold">	รอบคัดเลือก 1:</span> วันพุธที่ 15 ตุลาคม 2568 ต่อ ติด ผี ที่กรุงเทพฯ จำนวน 5 คู่</div>
             <div><span className="text-black font-bold">	รอบคัดเลือก 2:</span> วันศุกร์ที่ 17 ตุลาคม 2568 ต่อ ติด ผี ที่ชลบุรี จำนวน 5 คู่</div>
             <div><span className="text-black font-bold">	รอบคัดเลือก 3:</span> วันพุธที่ 22 ตุลาคม 2568 ต่อ ติด ผี ที่เชียงใหม่ จำนวน 5 คู่</div>

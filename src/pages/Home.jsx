@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import FullscreenNav from "../components/Landing/FullscreenNav";
 import BannerKV from "../components/Landing/BannerKV";
+import Join from "../components/Landing/join";
 import Event from "../components/Landing/Event";
+import RoadshowSchedule from "../components/Landing/RoadshowSchedule";
 import ProductSlider from "../components/Landing/ProductSlider";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Home - MyMap ปิ้ง";
+    document.title = "Home - MY WORLD x คารามูโจ้";
   }, []);
 
   return (
@@ -14,6 +16,8 @@ const Home = () => {
       <FullscreenNav />
       <BannerKV />
       <Event />
+      <Join />
+      <RoadshowSchedule />
       <ProductSlider />
     </div>
   );

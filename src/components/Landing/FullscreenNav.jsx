@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -6,10 +6,32 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 const FullscreenNav = () => {
     const [isActive, setIsActive] = useState(false);
 
+    // จัดการ body class เมื่อเปิด/ปิด nav
+    useEffect(() => {
+        if (isActive) {
+            document.body.classList.add('nav-open');
+        } else {
+            document.body.classList.remove('nav-open');
+        }
+
+        // Cleanup เมื่อ component unmount
+        return () => {
+            document.body.classList.remove('nav-open');
+        };
+    }, [isActive]);
+
+    const handleToggleNav = () => {
+        setIsActive(!isActive);
+    };
+
+    const handleCloseNav = () => {
+        setIsActive(false);
+    };
+
     return (
         <div className="nav">
             <div className="fullscreen-nav">
-                <div className={`wrapper ${isActive ? "active" : ""}`} onClick={() => setIsActive(false)}>
+                <div className={`wrapper ${isActive ? "active" : ""}`} onClick={handleCloseNav}>
                     <ul>
                         <li>
                             <a href="https://myworld-virtual-store.com" target="_blank">Virtual</a>
