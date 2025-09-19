@@ -749,7 +749,6 @@ const Join = () => {
                         </div>
                       </div>
                     </div>
-
                     {/* Desktop - Left-Right Layout */}
                     <div className="hidden md:grid md:grid-cols-2 md:gap-8 mb-8">
                       {/* Left Column - Special Reward */}
