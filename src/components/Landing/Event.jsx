@@ -134,8 +134,8 @@ const Event = () => {
           <motion.img 
             src="images/evtext.png" 
             alt="MY World" 
-            className="w-full h-auto mt-5" 
-            whileHover={{ scale: 1.05 }}
+            className="w-full h-auto mt-5 max-w-4xl mx-auto md:max-h-[300px] lg:max-h-[350px] object-contain" 
+            whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           />
         </motion.div>
@@ -160,7 +160,7 @@ const Event = () => {
           
           {/* Campaign rounds */}
           <motion.div 
-            className="space-y-2 text-base rounded-xs text-black font-bold"
+            className="space-y-2 text-base rounded-xs text-black font-bold relative z-20"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -169,9 +169,9 @@ const Event = () => {
             transition={{ duration: 0.3 }}
           >
            <img 
-                src="images/mapttha.png" 
+                src="images/mapp.png" 
                 alt="Thailand Map with Roadshow Locations" 
-                className="w-full h-auto max-h-auto md:max-h-[60vh] lg:max-h-[65vh] object-contain rounded-lg"
+                className="w-full h-auto max-h-auto md:max-h-[60vh] lg:max-h-[65vh] object-contain rounded-lg relative z-30"
               />
           </motion.div>
         </motion.div>
@@ -184,16 +184,6 @@ const Event = () => {
           transition={{ delay: 0.8, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <motion.p 
-            className="text-white text-lg mb-2 max-w-2xl relative z-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.0, duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-           โดยในกิจกรรมทั้ง 4 รอบ จะถูกคัดเลือกมาจากการโพสต์คลิปคาถา ต่อ ติด ผี ในแบบ ของตัวเอง ผ่านช่องทาง TikTok ตามกติกาที่กำหนด 
-           เลือกจังหวัดที่อยากจะไป และสะดวกในการเดินทางไปร่วมงานพร้อมคู่ดูโอ้ในวันเวลาและสถานที่ที่เลือกไว้ และ<span className="font-bold">ผู้ชนะจากกิจกรรมทั้ง 4 รอบจะต้องไป Final Mission</span>
-          </motion.p>
         </motion.div>
 
          <motion.div 
@@ -203,13 +193,13 @@ const Event = () => {
            transition={{ delay: 1.2, duration: 0.6 }}
            viewport={{ once: true }}
          >
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             {/* Desktop image */}
             <motion.img 
               src="images/bttext.webp" 
               alt="MY World" 
-              className="w-full hidden md:block" 
-              whileHover={{ scale: 1.05, rotateZ: 1 }}
+              className="w-full hidden md:block max-w-5xl mx-auto md:max-h-[400px] lg:max-h-[450px] object-contain" 
+              whileHover={{ scale: 1.02, rotateZ: 1 }}
               transition={{ duration: 0.3 }}
             />
             {/* Mobile image - you can change the src to your mobile image */}
@@ -251,7 +241,7 @@ const Event = () => {
 
         {/* Mobile background image - positioned within main container */}
         <motion.div 
-          className="block md:hidden absolute bottom-0 left-0 right-0 w-full -mt-16 z-0 pointer-events-none"
+          className="block md:hidden absolute bottom-0 left-0 right-0 w-full -mt-16 z-5 pointer-events-none"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, delay: 0.5 }}

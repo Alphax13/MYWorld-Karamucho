@@ -169,7 +169,7 @@ const Join = () => {
           </motion.div>
           {/* Mobile Version */}
           <motion.div 
-            className="block md:hidden"
+            className="hidden"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
@@ -393,13 +393,56 @@ const Join = () => {
 
           {/* Mobile View - Show 1 column with slider */}
           <motion.div 
-            className="lg:hidden w-full px-1"
+            className="lg:hidden w-full px-1 relative"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="relative w-full overflow-hidden">
+            {/* Mobile Header - Inside mobile container */}
+            <motion.div 
+              className="mb-6 relative z-20"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <motion.div 
+                className="block md:hidden"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <StepHeader 
+                  imageSrc="images/rune.png"
+                  altText="วิธีการใช้งาน"
+                  className="hover-glow"
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Background image for mobile */}
+            <div className="absolute inset-0 -mx-1 pointer-events-none">
+              <motion.div 
+                className="absolute inset-0 w-full h-full"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                viewport={{ once: true }}
+                animate={{ 
+                  scale: [1, 1.01, 1],
+                  opacity: [0.2, 0.3, 0.2]
+                }}
+                style={{
+                  backgroundImage: "url('images/cover4.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  zIndex: 0
+                }}
+              />
+            </div>
+
+            <div className="relative w-full overflow-hidden -mt-10 z-10">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -446,7 +489,7 @@ const Join = () => {
 
             {/* Mobile Navigation with Arrows and Dots in same row */}
             <motion.div 
-              className="flex items-center justify-center space-x-3 mt-4 mb-4"
+              className="flex items-center justify-center space-x-3 mt-4 mb-4 relative z-30"
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
@@ -456,7 +499,7 @@ const Join = () => {
               {/* Left Arrow for Mobile */}
               <motion.button 
                 onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
-                className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl flex-shrink-0"
+                className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl flex-shrink-0 relative z-30"
                 style={{
                   boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)',
                 }}
@@ -507,7 +550,7 @@ const Join = () => {
               {/* Right Arrow for Mobile */}
               <motion.button 
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
-                className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl flex-shrink-0"
+                className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl flex-shrink-0 relative z-30"
                 style={{
                   boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)',
                 }}
@@ -532,7 +575,7 @@ const Join = () => {
 
             {/* Mobile Action Buttons */}
             <motion.div 
-              className="flex flex-col space-y-5 mt-6 px-8"
+              className="flex flex-col space-y-5 mt-6 pb-6 px-8 relative z-10"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
