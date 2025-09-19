@@ -611,7 +611,7 @@ const Join = () => {
                     (ผ่าน FB & TikTok: MY WORLD)
                   </p>
 
-                  <p className="text-white font-bold text-2xl text-center leading-relaxed px-2 transform -rotate-3 mt-15">
+                  <p className="text-white font-bold text-2xl text-center leading-relaxed px-2 transform -rotate-3 mt-10">
                     ยืนยันสิทธิ์ภายใน
                   </p>
                   <p className="text-[#E50101] font-bold text-2xl text-center leading-relaxed px-2 transform shadow-2xl -rotate-3">
@@ -688,7 +688,7 @@ const Join = () => {
                           />
                         </div>
                         
-                        <p className="text-white font-semibold text-lg text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-8">
+                        <p className="text-white font-semibold text-lg text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
                           MY WORLD X คารามูโจ้ <br/>Tumbler 50 รางวัล
                         </p>
                       </div>

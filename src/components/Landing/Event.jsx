@@ -268,20 +268,120 @@ const Event = () => {
           </motion.button>
         </motion.div>
 
+        {/* Mobile background image - positioned within main container */}
+        <motion.div 
+          className="block md:hidden absolute bottom-0 left-0 right-0 w-full -mt-16 z-0 pointer-events-none"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.0, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.img 
+            src="images/cover3.png" 
+            alt="Background" 
+            className="w-full h-auto opacity-70" 
+            animate={{ scale: [1, 1.02, 1] }}
+            transition={{ 
+              duration: 8, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          />
         </motion.div>
+
       </motion.div>
       
       </div>
 
-      {/* Separate TikTok Video Section */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 relative z-10">
-        <motion.div
-          className="flex justify-center w-full"
-          variants={phoneAnimation}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+      {/* Separate TikTok Video Section with Black Background */}
+      <div 
+        className="w-full bg-black relative py-16"
+        style={{
+          backgroundColor: "#000000"
+        }}
+      >
+        {/* Background overlay image */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute top-0 left-0 w-full"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ 
+              opacity: 0.3, 
+              y: 0,
+              rotate: [0, 0.5, 0, -0.5, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 1.5 },
+              y: { duration: 1.5 },
+              rotate: { 
+                duration: 8, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }
+            }}
+          >
+            <motion.img 
+              src="images/Background.png" 
+              alt="Background overlay" 
+              className="w-full h-auto opacity-20" 
+              animate={{ 
+                scale: [1, 1.02, 1],
+                y: [0, -5, 0] 
+              }}
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            />
+          </motion.div>
+
+          {/* Mobile background image - positioned within TikTok section */}
+          <motion.div 
+            className="block md:hidden absolute top-0 right-0 w-full"
+            initial={{ opacity: 0, x: 50, y: -50 }}
+            animate={{ 
+              opacity: 0.8, 
+              x: 0, 
+              y: 0,
+              rotate: [0, 1, 0, -1, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 1.5 },
+              x: { duration: 1.5 },
+              y: { duration: 1.5 },
+              rotate: { 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }
+            }}
+          >
+            <motion.img 
+              src="images/yai3.png" 
+              alt="Mobile Background" 
+              className="w-full h-auto opacity-80" 
+              animate={{ 
+                scale: [1, 1.02, 1],
+                y: [0, -10, 0] 
+              }}
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            />
+          </motion.div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <motion.div
+            className="flex justify-center w-full"
+            variants={phoneAnimation}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
           <div className="relative">
             {/* Phone frame */}
             <motion.div 
@@ -391,28 +491,8 @@ const Event = () => {
             </motion.div>
           </div>
         </motion.div>
+        </div>
       </div>
-      
-      {/* Mobile background image at bottom - overlapping and edge to edge */}
-      <motion.div 
-        className="block md:hidden absolute bottom-0 left-0 right-0 w-full -mt-16 z-0"
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.0, delay: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <motion.img 
-          src="images/cover3.png" 
-          alt="Background" 
-          className="w-full h-auto opacity-70" 
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-        />
-      </motion.div>
       
     </div>
   );
