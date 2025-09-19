@@ -132,128 +132,11 @@ const Event = () => {
       </div>
       
       {/* Main content container with max-w-7xl */}
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center px-6 lg:px-8 py-8 pb-32 gap-1 relative z-10">
-      {/* Left side - Mobile phone mockup */}
+      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center px-6 lg:px-8 py-8 pb-32 gap-1 relative z-10">
+      
+      {/* Campaign details - Now on top */}
       <motion.div
-        className="flex-1 flex justify-center lg:justify-center"
-        variants={phoneAnimation}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className="relative">
-          {/* Phone frame */}
-          <motion.div 
-            className="rounded-xl"
-            whileHover={{ y: -10 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="rounded-xl w-80 h-[700px] relative overflow-hidden shadow-2xl shadow-cyan-400/20">
-              {/* TikTok iframe */}
-              <div className="absolute inset-0 rounded-xl overflow-hidden">
-                <iframe
-                  key={currentVideo}
-                  src={`https://www.tiktok.com/embed/v2/${tiktokVideos[currentVideo]}`}
-                  className="w-full h-full border-0"
-                  allow="encrypted-media; autoplay"
-                  title={`TikTok video ${currentVideo + 1}`}
-                  style={{ 
-                    borderRadius: '2px'
-                  }}
-                  frameBorder="0"
-                  scrolling="no"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            
-            {/* Navigation Controls */}
-            <motion.div 
-              className="flex items-center justify-center space-x-4 mt-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.6 }}
-            >
-              {/* Left Arrow */}
-              <motion.button
-                onClick={prevVideo}
-                className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl"
-                style={{
-                  boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)',
-                }}
-                aria-label="Previous video"
-                whileHover={{ 
-                  scale: 1.1,
-                  boxShadow: '0 0 30px rgba(34, 211, 238, 0.6), inset 0 0 30px rgba(34, 211, 238, 0.2)',
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.svg 
-                  className="w-6 h-6" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: -2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                </motion.svg>
-              </motion.button>
-
-              {/* Pagination Dots */}
-              <div className="flex items-center space-x-2">
-                {tiktokVideos.map((_, index) => (
-                  <motion.button
-                    key={index}
-                    onClick={() => setCurrentVideo(index)}
-                    className={`transition-all duration-300 ${
-                      index === currentVideo
-                        ? 'w-8 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50'
-                        : 'w-3 h-3 bg-gray-400 rounded-full hover:bg-gray-300'
-                    }`}
-                    aria-label={`Go to video ${index + 1}`}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.2 + index * 0.1 }}
-                  />
-                ))}
-              </div>
-
-              {/* Right Arrow */}
-              <motion.button
-                onClick={nextVideo}
-                className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl"
-                style={{
-                  boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)',
-                }}
-                aria-label="Next video"
-                whileHover={{ 
-                  scale: 1.1,
-                  boxShadow: '0 0 30px rgba(34, 211, 238, 0.6), inset 0 0 30px rgba(34, 211, 238, 0.2)',
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.svg 
-                  className="w-6 h-6" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  whileHover={{ x: 2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </motion.svg>
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Right side - Campaign details */}
-      <motion.div
-        className="flex-1 text-white"
+        className="w-full text-white"
         variants={slideInRight}
         initial="hidden"
         whileInView="visible"
@@ -359,9 +242,9 @@ const Event = () => {
           </div>
         </motion.div>
 
-        {/* Join Activity Button - Only on Mobile */}
+        {/* Join Activity Button */}
         <motion.div 
-          className="md:hidden mt-2 flex justify-center"
+          className="mt-2 flex justify-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6 }}
@@ -384,10 +267,130 @@ const Event = () => {
             ร่วมกิจกรรม
           </motion.button>
         </motion.div>
-              
-       
+
+        </motion.div>
       </motion.div>
       
+      </div>
+
+      {/* Separate TikTok Video Section */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 relative z-10">
+        <motion.div
+          className="flex justify-center w-full"
+          variants={phoneAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className="relative">
+            {/* Phone frame */}
+            <motion.div 
+              className="rounded-xl"
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="rounded-xl w-80 h-[700px] relative overflow-hidden shadow-2xl shadow-cyan-400/20">
+                {/* TikTok iframe */}
+                <div className="absolute inset-0 rounded-xl overflow-hidden">
+                  <iframe
+                    key={currentVideo}
+                    src={`https://www.tiktok.com/embed/v2/${tiktokVideos[currentVideo]}`}
+                    className="w-full h-full border-0"
+                    allow="encrypted-media; autoplay"
+                    title={`TikTok video ${currentVideo + 1}`}
+                    style={{ 
+                      borderRadius: '2px'
+                    }}
+                    frameBorder="0"
+                    scrolling="no"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              
+              {/* Navigation Controls */}
+              <motion.div 
+                className="flex items-center justify-center space-x-4 mt-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
+              >
+                {/* Left Arrow */}
+                <motion.button
+                  onClick={prevVideo}
+                  className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl"
+                  style={{
+                    boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)',
+                  }}
+                  aria-label="Previous video"
+                  whileHover={{ 
+                    scale: 1.1,
+                    boxShadow: '0 0 30px rgba(34, 211, 238, 0.6), inset 0 0 30px rgba(34, 211, 238, 0.2)',
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.svg 
+                    className="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    whileHover={{ x: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                  </motion.svg>
+                </motion.button>
+
+                {/* Pagination Dots */}
+                <div className="flex items-center space-x-2">
+                  {tiktokVideos.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => setCurrentVideo(index)}
+                      className={`transition-all duration-300 ${
+                        index === currentVideo
+                          ? 'w-8 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50'
+                          : 'w-3 h-3 bg-gray-400 rounded-full hover:bg-gray-300'
+                      }`}
+                      aria-label={`Go to video ${index + 1}`}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 1.2 + index * 0.1 }}
+                    />
+                  ))}
+                </div>
+
+                {/* Right Arrow */}
+                <motion.button
+                  onClick={nextVideo}
+                  className="w-12 h-12 rounded-full bg-black border-2 border-cyan-400 text-cyan-400 hover:border-cyan-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-300/50 hover:shadow-xl"
+                  style={{
+                    boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)',
+                  }}
+                  aria-label="Next video"
+                  whileHover={{ 
+                    scale: 1.1,
+                    boxShadow: '0 0 30px rgba(34, 211, 238, 0.6), inset 0 0 30px rgba(34, 211, 238, 0.2)',
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.svg 
+                    className="w-6 h-6" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    whileHover={{ x: 2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </motion.svg>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
       
       {/* Mobile background image at bottom - overlapping and edge to edge */}

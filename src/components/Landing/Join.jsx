@@ -138,7 +138,7 @@ const Join = () => {
             transition={{ duration: 0.3 }}
           >
             <StepHeader 
-              imageSrc="images/join2.png"
+              imageSrc="images/rune.png"
               altText="วิธีการใช้งาน"
               className="hover-glow"
             />
