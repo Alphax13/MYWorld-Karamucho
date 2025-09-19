@@ -155,7 +155,7 @@ const Event = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             viewport={{ once: true }}
           >
-          กิจกรรม MY World x คารามูโจ้ DUO LEVEL UP ลุยภารกิจ ต่อ ติด ผี จะจัดหาผู้ที่จะไปทำภารกิจอัพเวลเพื่อต่อติดผีที่สถานที่ต่างๆ กับ EPIC TIME คือ
+          กิจกรรม MY World x คารามูโจ้ DUO LEVEL UP ลุยภารกิจ ต่อ ติด ผี จะจัดหาผู้ที่จะไปทำ<br/>ภารกิจอัพเวลเพื่อต่อติดผีที่สถานที่ต่างๆ กับ EPIC TIME คือ
           </motion.p>
           
           {/* Campaign rounds */}

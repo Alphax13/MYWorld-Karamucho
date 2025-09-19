@@ -136,7 +136,7 @@ const ProductSlider = () => {
               <img 
                 src={product.img} 
                 alt={product.name} 
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-80 object-contain rounded-lg mb-4"
               />
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-white line-clamp-2 leading-tight">
@@ -165,7 +165,7 @@ const ProductSlider = () => {
               <img 
                 src={product.img} 
                 alt={product.name} 
-                className="w-full h-64 object-cover"
+                className="w-full h-88 object-contain"
               />
               <div className="p-4 space-y-4">
                 <h3 className="text-lg font-semibold text-white leading-tight">

@@ -130,7 +130,6 @@ const Join = () => {
     { id: 6, image: "images/w6.png", title: "Step 6" },
     { id: 7, image: "images/w7.png", title: "Step 7" },
     { id: 8, image: "images/w8.png", title: "Step 8" },
-    { id: 9, image: "images/w9.png", title: "Step 9" },
   ];
 
   // Group slides for desktop (3 columns)
@@ -673,6 +672,11 @@ const Join = () => {
                 />
                 
                 <div className="relative z-10 p-4 mx-2 md:mx-4">
+                  <img 
+                    src="images/texttime2.png" 
+                    alt="รายละเอียดกิจกรรม" 
+                    className="w-full h-auto object-contain mx-auto hover-scale hover-glow"
+                  />
                   <p className="text-white leading-relaxed px-2 -mt-5 text-center font-extrabold text-2xl transform -rotate-3">ระยะเวลาส่งคลิป</p>
                   <img 
                     src="images/date.png" 
