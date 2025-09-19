@@ -43,7 +43,7 @@ const RoadshowSchedule = () => {
           <div className="relative lg:order-1 flex items-center justify-center">
             <div className="relative w-full max-w-lg mx-auto">
               <img 
-                src="images/map.png" 
+                src="images/mapttha.png"
                 alt="Thailand Map with Roadshow Locations" 
                 className="w-full h-auto max-h-auto md:max-h-[60vh] lg:max-h-[65vh] object-contain rounded-lg"
               />

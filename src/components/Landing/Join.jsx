@@ -68,9 +68,46 @@ const scaleHover = {
   transition: { duration: 0.3 }
 };
 
+const slideToggle = {
+  hidden: {
+    opacity: 0,
+    height: 0,
+    marginTop: 0,
+    marginBottom: 0,
+    overflow: 'hidden',
+    transition: {
+      duration: 0.8,
+      ease: [0.4, 0.0, 0.2, 1]
+    }
+  },
+  visible: {
+    opacity: 1,
+    height: 'auto',
+    marginTop: '1.5rem',
+    marginBottom: '1.5rem',
+    overflow: 'visible',
+    transition: {
+      duration: 0.8,
+      ease: [0.4, 0.0, 0.2, 1]
+    }
+  }
+};
+
 const Join = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentDesktopSlide, setCurrentDesktopSlide] = useState(0);
+  const [isTimeContentVisible, setIsTimeContentVisible] = useState(false);
+  const [isPrizeContentVisible, setIsPrizeContentVisible] = useState(false);
+
+  // Toggle time content visibility
+  const toggleTimeContent = () => {
+    setIsTimeContentVisible(!isTimeContentVisible);
+  };
+
+  // Toggle prize content visibility
+  const togglePrizeContent = () => {
+    setIsPrizeContentVisible(!isPrizeContentVisible);
+  };
 
   // Scroll to section function
   const scrollToSection = (className) => {
@@ -294,39 +331,63 @@ const Join = () => {
               transition={{ delay: 1.0 }}
             >
               <motion.button
-                onClick={() => scrollToSection('TextTimeSection')}
-                className="bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300"
+                onClick={toggleTimeContent}
+                className={`bg-gradient-to-r font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 ${
+                  isTimeContentVisible 
+                    ? 'from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
+                    : 'from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
+                }`}
                 style={{
-                  boxShadow: '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
-                  textShadow: '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
+                  boxShadow: isTimeContentVisible 
+                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
+                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
+                  textShadow: isTimeContentVisible 
+                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
+                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
                 }}
                 variants={staggerItem}
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: '0 0 40px rgba(125, 212, 237, 0.8), 0 0 55px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
-                  textShadow: '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
+                  boxShadow: isTimeContentVisible
+                    ? '0 0 40px rgba(255, 107, 107, 0.8), 0 0 55px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
+                    : '0 0 40px rgba(125, 212, 237, 0.8), 0 0 55px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
+                  textShadow: isTimeContentVisible
+                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
+                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                ระยะเวลาร่วมกิจกรรม
+                {isTimeContentVisible ? 'ระยะเวลาร่วมกิจกรรม' : 'ระยะเวลาร่วมกิจกรรม'}
               </motion.button>
 
               <motion.button
-                onClick={() => scrollToSection('animate-fadeInRight')}
-                className="bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300"
+                onClick={togglePrizeContent}
+                className={`bg-gradient-to-r font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 ${
+                  isPrizeContentVisible 
+                    ? 'from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
+                    : 'from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
+                }`}
                 style={{
-                  boxShadow: '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
-                  textShadow: '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
+                  boxShadow: isPrizeContentVisible 
+                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
+                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
+                  textShadow: isPrizeContentVisible 
+                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
+                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
                 }}
                 variants={staggerItem}
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: '0 0 40px rgba(125, 212, 237, 0.8), 0 0 55px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
-                  textShadow: '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
+                  boxShadow: isPrizeContentVisible
+                    ? '0 0 40px rgba(255, 107, 107, 0.8), 0 0 55px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
+                    : '0 0 40px rgba(125, 212, 237, 0.8), 0 0 55px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
+                  textShadow: isPrizeContentVisible
+                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
+                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                รายละเอียดของรางวัล
+                {isPrizeContentVisible ? 'รายละเอียดของรางวัล' : 'รายละเอียดของรางวัล'}
               </motion.button>
             </motion.div>
           </div>
@@ -480,39 +541,63 @@ const Join = () => {
               transition={{ delay: 0.6 }}
             >
               <motion.button
-                onClick={() => scrollToSection('TextTimeSection')}
-                className="bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white font-bold py-3 px-4 rounded-full text-base shadow-lg transition-all duration-300"
+                onClick={toggleTimeContent}
+                className={`font-bold py-3 px-4 rounded-full text-base shadow-lg transition-all duration-300 ${
+                  isTimeContentVisible 
+                    ? 'bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
+                    : 'bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
+                }`}
                 style={{
-                  boxShadow: '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
-                  textShadow: '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
+                  boxShadow: isTimeContentVisible 
+                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
+                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
+                  textShadow: isTimeContentVisible 
+                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
+                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
                 }}
                 variants={staggerItem}
                 whileHover={{ 
                   scale: 1.02,
-                  boxShadow: '0 0 35px rgba(125, 212, 237, 0.8), 0 0 45px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
-                  textShadow: '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
+                  boxShadow: isTimeContentVisible
+                    ? '0 0 35px rgba(255, 107, 107, 0.8), 0 0 45px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
+                    : '0 0 35px rgba(125, 212, 237, 0.8), 0 0 45px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
+                  textShadow: isTimeContentVisible
+                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
+                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                ระยะเวลาร่วมกิจกรรม
+                {isTimeContentVisible ? 'ระยะเวลาร่วมกิจกรรม' : ' ระยะเวลาร่วมกิจกรรม'}
               </motion.button>
 
               <motion.button
-                onClick={() => scrollToSection('animate-fadeInRight')}
-                className="bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white font-bold py-3 px-4 rounded-full text-base shadow-lg transition-all duration-300"
+                onClick={togglePrizeContent}
+                className={`font-bold py-3 px-4 rounded-full text-base shadow-lg transition-all duration-300 ${
+                  isPrizeContentVisible 
+                    ? 'bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
+                    : 'bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
+                }`}
                 style={{
-                  boxShadow: '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
-                  textShadow: '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
+                  boxShadow: isPrizeContentVisible 
+                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
+                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
+                  textShadow: isPrizeContentVisible 
+                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
+                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
                 }}
                 variants={staggerItem}
                 whileHover={{ 
                   scale: 1.02,
-                  boxShadow: '0 0 35px rgba(125, 212, 237, 0.8), 0 0 45px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
-                  textShadow: '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
+                  boxShadow: isPrizeContentVisible
+                    ? '0 0 35px rgba(255, 107, 107, 0.8), 0 0 45px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
+                    : '0 0 35px rgba(125, 212, 237, 0.8), 0 0 45px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
+                  textShadow: isPrizeContentVisible
+                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
+                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                รายละเอียดของรางวัล
+                {isPrizeContentVisible ? 'รายละเอียดของรางวัล' : 'รายละเอียดของรางวัล'}
               </motion.button>
             </motion.div>
           </motion.div>
@@ -520,54 +605,49 @@ const Join = () => {
 
         {/* Second Title Section */}
         <motion.div 
-          className="pt-6 md:pt-8 TextTimeSection"
-          variants={fadeInUp}
+          className="TextTimeSection"
+          variants={slideToggle}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ delay: 0.6 }}
+          animate={isTimeContentVisible ? "visible" : "hidden"}
         >
-          {/* Desktop Version */}
           <motion.div 
-            className="hidden md:block"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
+            className="pt-6 md:pt-8"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: 0.6 }}
           >
-            <StepHeader 
-              imageSrc="images/texttime.png"
-              altText="ระบบจองออนไลน์"
-              className="hover-glow"
-            />
+            {/* Desktop Version */}
+            <motion.div 
+              className="hidden md:block"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <StepHeader 
+                imageSrc="images/texttime.png"
+                altText="ระบบจองออนไลน์"
+                className="hover-glow"
+              />
+            </motion.div>
+            {/* Mobile Version */}
           </motion.div>
-          {/* Mobile Version */}
-          <motion.div 
-            className="block md:hidden"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            <StepHeader 
-              imageSrc="images/texttime2.png"
-              altText=""
-              className="hover-glow"
-            />
-          </motion.div>
-        </motion.div>
 
-        {/* Information Text Section */}
-        <motion.div 
-          className="max-w-6xl mx-auto md:px-4  md:pb-8"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ delay: 0.8 }}
-        >
+          {/* Information Text Section */}
+          <motion.div 
+            className="max-w-6xl mx-auto md:px-4  md:pb-8"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: 0.8 }}
+          >
           <div className="TextSection">
             {/* Desktop Version - Show Text */}
-            <p className="hidden md:block text-white text-lg leading-relaxed mb-6 animate-fadeInLeft px-2">
+            <p className="hidden md:block text-white text-lg leading-relaxed mb-4 animate-fadeInLeft px-2">
              กิจกรรมสร้างสรรค์คาถา ต่อ ติด ผี สามารถร่วมสนุกได้ตั้งแต่ วันที่ <span className="font-bold">20 กันยายน - 3 ตุลาคม 2568</span>
             และ<span className="font-bold">ประกาศผลผู้มีสิทธิ์ร่วมกิจกรรมลุยภารกิจ ต่อ ติด ผี วันที่ 8 ตุลาคม 2568 ผ่านช่องทาง Facebook: MY WORLD และ TikTok: MY WORLD </span>
-             โดยผู้มีสิทธิ์ร่วมกิจกรรมจะต้องยืนยันสิทธิ์การเข้าร่วมผ่านช่องทาง inbox ของ Facebook หรือ TikTok ภายใน 17.00 น. ของวันที่ 10 ตุลาคม 2568
+             ผู้มีสิทธิ์ร่วมกิจกรรมจะต้องยืนยันสิทธิ์การเข้าร่วมผ่านช่องทาง inbox ของ Facebook หรือ TikTok ภายใน 17.00 น. ของวันที่ 10 ตุลาคม 2568
             </p>
             
             {/* Mobile Version - Show Image */}
@@ -622,7 +702,26 @@ const Join = () => {
                   </p>
                 </div>
             </div>
-            
+          </div>
+        </motion.div>
+        </motion.div>
+
+        {/* Prize Details Section */}
+        <motion.div 
+          className="PrizeDetailsSection"
+          variants={slideToggle}
+          initial="hidden"
+          animate={isPrizeContentVisible ? "visible" : "hidden"}
+        >
+          <motion.div 
+            className="pt-6 md:pt-8"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="max-w-6xl mx-auto md:px-4 md:pb-8">
             <div className="border-gray-700 pt-4 md:pt-6">
               {/* 2 Column Layout */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
@@ -653,7 +752,7 @@ const Join = () => {
                     </div>
 
                     {/* Award Image Section */}
-                    <div className="mb-6">
+                    <div className="mb-4">
                       <img 
                         src="images/award.png" 
                         alt="รายละเอียดของรางวัล" 
@@ -676,7 +775,7 @@ const Join = () => {
                         <p className="text-[#E50101] font-bold text-3xl text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-2">
                           Special Reward
                         </p>
-                        <p className="text-[#E50101] font-semibold text-lg text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-6">
+                        <p className="text-[#E50101] font-semibold text-lg text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
                           ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ
                         </p>
                         
@@ -715,8 +814,8 @@ const Join = () => {
                           }}
                         />
                         
-                        <div className="relative z-10 p-6 mx-2">
-                          <div className="text-center space-y-4 mb-6">
+                        <div className="relative z-10 p-4 mx-2">
+                          <div className="text-center space-y-4 mb-4">
                             <p className="text-white font-semibold text-2xl leading-relaxed px-2 transform shadow-2xl -rotate-3">
                               ผู้ชนะทั้ง 4 รอบ
                             </p>
@@ -728,7 +827,7 @@ const Join = () => {
                             </p>
                           </div>
 
-                          <div className="text-center mb-6">
+                          <div className="text-center mb-4">
                             <p className="text-white text-base leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
                               กับ
                             </p>
@@ -757,7 +856,7 @@ const Join = () => {
                           <p className="text-[#E50101] font-bold text-2xl text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-2">
                             Special Reward
                           </p>
-                          <p className="text-[#E50101] font-semibold text-base text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-6">
+                          <p className="text-[#E50101] font-semibold text-base text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
                             ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ
                           </p>
                           
@@ -837,6 +936,7 @@ const Join = () => {
               </div>
             </div>
           </div>
+        </motion.div>
         </motion.div>
       </div>
     </motion.div>
