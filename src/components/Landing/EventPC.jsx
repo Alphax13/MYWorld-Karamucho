@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import "./style.css";
+import videoSrc from "../../assets/MY X Karamucho Motion.mp4";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 50 },
@@ -57,7 +58,7 @@ const EventPC = () => {
                 <img 
                   src="images/duo.png" 
                   alt="MY WORLD x คารามูโจ้ DUO LEVEL UP" 
-                  className="w-[70%] h-auto max-w-lg mx-auto object-contain"
+                  className="w-[80%] h-auto max-w-lg object-contain -ml-20"
                 />
               </div>
             </div>
@@ -107,13 +108,16 @@ const EventPC = () => {
                     {/* Game characters in background */}
                     <div className="absolute inset-0">
                       <video 
-                        src="public/MY X Karamucho Motion.mp4" 
+                        src={videoSrc}
                         autoPlay
                         loop
                         muted
                         playsInline
                         className="w-full h-full object-cover opacity-80"
-                      />
+                        onError={(e) => console.log('Video error:', e)}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                   </div>
                 </div>

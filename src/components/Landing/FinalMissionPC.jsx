@@ -16,6 +16,17 @@ const slideInRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
+const floatingAnimation = {
+  animate: {
+    y: [0, -40, 0],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
+
 const FinalMissionPC = () => {
   return (
     <div className="hidden md:block w-full relative bg-black py-16">
@@ -49,7 +60,7 @@ const FinalMissionPC = () => {
               <img 
                 src="images/final.png" 
                 alt="Final Mission Details" 
-                className="w-full h-auto max-w-lg mx-auto object-contain"
+                className="w-full h-auto max-w-2xl mx-auto object-contain"
               />
             </div>
             
@@ -61,6 +72,8 @@ const FinalMissionPC = () => {
             >
               <motion.button
                 className="mt-8 bg-black hover:bg-cyan-400 text-white font-bold py-4 px-8 text-lg shadow-lg shadow-cyan-500/50 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 border border-cyan-400 glow-blue"
+                variants={floatingAnimation}
+                animate="animate"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
@@ -84,7 +97,7 @@ const FinalMissionPC = () => {
               <img 
                 src="images/80k.png" 
                 alt="Prize Information" 
-                className="w-[500px] h-auto max-w-2xl mx-auto object-contain"
+                className="w-[600px] h-auto max-w-3xl mx-auto object-contain"
               />
             </div>
           </motion.div>

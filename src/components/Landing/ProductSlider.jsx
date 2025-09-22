@@ -131,25 +131,25 @@ const ProductSlider = () => {
           {products.map((product, index) => (
             <div 
               key={index} 
-              className="flex-shrink-0 w-64 bg-white/10 backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 snap-start"
+              className="flex-shrink-0 w-80 bg-black backdrop-blur-sm  hover:shadow-xl transition-all duration-300 snap-start"
             >
               <img 
                 src={product.img} 
                 alt={product.name} 
-                className="w-full h-80 object-contain rounded-lg mb-4"
+                className="w-full h-80 object-contain mb-4"
               />
-              <div className="space-y-3">
+              <div className="space-y-3 p-4">
                 <h3 className="text-sm font-semibold text-white line-clamp-2 leading-tight">
                   {product.name}
                 </h3>
-                <p className="text-lg font-bold text-sky-300">
-                  {product.price}
-                </p>
-              </div>
-              <div className="mt-4 flex justify-center">
-                <a href="https://shop.line.me/@myworld" className="inline-block">
-                  <img src="images/cart-button.png" alt="Cart" className="w-12 h-12 hover:scale-110 transition-transform duration-300" />
-                </a>
+                <div className="flex justify-between items-center">
+                  <p className="text-lg font-bold text-sky-300">
+                    {product.price}
+                  </p>
+                  <a href="https://shop.line.me/@myworld" className="inline-block">
+                    <img src="images/cart-button.png" alt="Cart" className="w-12 h-12 hover:scale-110 transition-transform duration-300" />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
