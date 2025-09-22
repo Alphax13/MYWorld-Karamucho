@@ -8,7 +8,6 @@ html {
 body{
   font-family: 'Anuphan', sans-serif;
   margin: 0;
-  background-image: url(..//images/paper.png);
   line-height: 1.4;
   z-index: -20;
   overflow-x: hidden;
@@ -20,7 +19,6 @@ body{
 }
 
 .landing{
-  background-image: url(..//images/paper2.png);
   background-size: cover;
   background-repeat: no-repeat;
 }

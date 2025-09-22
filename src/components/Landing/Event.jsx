@@ -66,7 +66,7 @@ const Event = () => {
 
   return (
     <div
-      className="event w-full relative"
+      className="event w-full relative md:hidden"
       style={{
         backgroundImage: "url('images/Background.png')",
         backgroundSize: "cover",

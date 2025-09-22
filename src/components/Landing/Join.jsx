@@ -320,75 +320,7 @@ const Join = () => {
               ))}
             </motion.div>
 
-            {/* Desktop Action Buttons */}
-            <motion.div 
-              className="flex justify-center space-x-8 mt-8"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 1.0 }}
-            >
-              <motion.button
-                onClick={toggleTimeContent}
-                className={`bg-gradient-to-r font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 ${
-                  isTimeContentVisible 
-                    ? 'from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
-                    : 'from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
-                }`}
-                style={{
-                  boxShadow: isTimeContentVisible 
-                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
-                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
-                  textShadow: isTimeContentVisible 
-                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
-                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
-                }}
-                variants={staggerItem}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: isTimeContentVisible
-                    ? '0 0 40px rgba(255, 107, 107, 0.8), 0 0 55px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
-                    : '0 0 40px rgba(125, 212, 237, 0.8), 0 0 55px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
-                  textShadow: isTimeContentVisible
-                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
-                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {isTimeContentVisible ? 'ระยะเวลาร่วมกิจกรรม' : 'ระยะเวลาร่วมกิจกรรม'}
-              </motion.button>
 
-              <motion.button
-                onClick={togglePrizeContent}
-                className={`bg-gradient-to-r font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 ${
-                  isPrizeContentVisible 
-                    ? 'from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
-                    : 'from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
-                }`}
-                style={{
-                  boxShadow: isPrizeContentVisible 
-                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
-                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
-                  textShadow: isPrizeContentVisible 
-                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
-                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
-                }}
-                variants={staggerItem}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: isPrizeContentVisible
-                    ? '0 0 40px rgba(255, 107, 107, 0.8), 0 0 55px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
-                    : '0 0 40px rgba(125, 212, 237, 0.8), 0 0 55px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
-                  textShadow: isPrizeContentVisible
-                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
-                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {isPrizeContentVisible ? 'รายละเอียดของรางวัล' : 'รายละเอียดของรางวัล'}
-              </motion.button>
-            </motion.div>
           </div>
 
           {/* Mobile View - Show 1 column with slider */}

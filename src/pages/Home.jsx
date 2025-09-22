@@ -3,6 +3,8 @@ import FullscreenNav from "../components/Landing/FullscreenNav";
 import BannerKV from "../components/Landing/BannerKV";
 import Join from "../components/Landing/join";
 import Event from "../components/Landing/Event";
+import EventPC from "../components/Landing/EventPC";
+import CampaignDetailsPC from "../components/Landing/CampaignDetailsPC";
 import RoadshowSchedule from "../components/Landing/RoadshowSchedule";
 import ProductSlider from "../components/Landing/ProductSlider";
 
@@ -16,7 +18,10 @@ const Home = () => {
       <FullscreenNav />
       <BannerKV />
       <Event />
+      <EventPC />
       <Join />
+      <CampaignDetailsPC />
+      <RoadshowSchedule/>
       <ProductSlider />
     </div>
   );
