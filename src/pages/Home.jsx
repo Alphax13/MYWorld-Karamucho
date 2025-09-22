@@ -5,7 +5,7 @@ import Join from "../components/Landing/join";
 import Event from "../components/Landing/Event";
 import EventPC from "../components/Landing/EventPC";
 import CampaignDetailsPC from "../components/Landing/CampaignDetailsPC";
-import RoadshowSchedule from "../components/Landing/RoadshowSchedule";
+import FinalMissionPC from "../components/Landing/FinalMissionPC";
 import ProductSlider from "../components/Landing/ProductSlider";
 
 const Home = () => {
@@ -19,9 +19,8 @@ const Home = () => {
       <BannerKV />
       <Event />
       <EventPC />
+      <FinalMissionPC />
       <Join />
-      <CampaignDetailsPC />
-      <RoadshowSchedule/>
       <ProductSlider />
     </div>
   );

@@ -157,15 +157,17 @@ const Join = () => {
         >
           {/* Desktop Version */}
           <motion.div 
-            className="hidden md:block"
+            className="hidden md:block text-left"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            <StepHeader 
-              imageSrc="images/join.png"
-              altText="วิธีการใช้งาน"
-              className="hover-glow"
-            />
+            <div className="flex justify-start">
+              <StepHeader 
+                imageSrc="images/rune.png"
+                altText="วิธีการใช้งาน"
+                className="hover-glow"
+              />
+            </div>
           </motion.div>
           {/* Mobile Version */}
           <motion.div 
@@ -318,6 +320,76 @@ const Join = () => {
                   <div className="dot-inner"></div>
                 </motion.button>
               ))}
+            </motion.div>
+
+            {/* Desktop Action Buttons */}
+            <motion.div 
+              className="flex flex-row justify-center space-x-8 mt-8 relative z-10"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ delay: 1.0 }}
+            >
+              <motion.button
+                onClick={toggleTimeContent}
+                className={`font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 ${
+                  isTimeContentVisible 
+                    ? 'bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
+                    : 'bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
+                }`}
+                style={{
+                  boxShadow: isTimeContentVisible 
+                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
+                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
+                  textShadow: isTimeContentVisible 
+                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
+                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
+                }}
+                variants={staggerItem}
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: isTimeContentVisible
+                    ? '0 0 35px rgba(255, 107, 107, 0.8), 0 0 45px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
+                    : '0 0 35px rgba(125, 212, 237, 0.8), 0 0 45px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
+                  textShadow: isTimeContentVisible
+                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
+                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                ระยะเวลาร่วมกิจกรรม
+              </motion.button>
+
+              <motion.button
+                onClick={togglePrizeContent}
+                className={`font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 ${
+                  isPrizeContentVisible 
+                    ? 'bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] hover:from-[#FF7979] hover:to-[#FD79A8] text-white' 
+                    : 'bg-gradient-to-r from-[#7DD4ED] to-[#1A94B7] hover:from-[#8DDDF0] hover:to-[#2BA3C7] text-white'
+                }`}
+                style={{
+                  boxShadow: isPrizeContentVisible 
+                    ? '0 0 25px rgba(255, 107, 107, 0.6), 0 0 35px rgba(255, 142, 83, 0.4), inset 0 0 20px rgba(255, 107, 107, 0.2)'
+                    : '0 0 25px rgba(125, 212, 237, 0.6), 0 0 35px rgba(26, 148, 183, 0.4), inset 0 0 20px rgba(125, 212, 237, 0.2)',
+                  textShadow: isPrizeContentVisible 
+                    ? '0 0 10px rgba(255, 107, 107, 0.9), 0 0 20px rgba(255, 107, 107, 0.7), 0 0 30px rgba(255, 107, 107, 0.5)'
+                    : '0 0 10px rgba(125, 212, 237, 0.9), 0 0 20px rgba(125, 212, 237, 0.7), 0 0 30px rgba(125, 212, 237, 0.5)',
+                }}
+                variants={staggerItem}
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: isPrizeContentVisible
+                    ? '0 0 35px rgba(255, 107, 107, 0.8), 0 0 45px rgba(255, 142, 83, 0.6), inset 0 0 25px rgba(255, 107, 107, 0.3)'
+                    : '0 0 35px rgba(125, 212, 237, 0.8), 0 0 45px rgba(26, 148, 183, 0.6), inset 0 0 25px rgba(125, 212, 237, 0.3)',
+                  textShadow: isPrizeContentVisible
+                    ? '0 0 15px rgba(255, 107, 107, 1), 0 0 25px rgba(255, 107, 107, 0.8), 0 0 35px rgba(255, 107, 107, 0.6), 0 0 45px rgba(255, 107, 107, 0.4)'
+                    : '0 0 15px rgba(125, 212, 237, 1), 0 0 25px rgba(125, 212, 237, 0.8), 0 0 35px rgba(125, 212, 237, 0.6), 0 0 45px rgba(125, 212, 237, 0.4)',
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                รายละเอียดของรางวัล
+              </motion.button>
             </motion.div>
 
 
@@ -704,21 +776,80 @@ const Join = () => {
             <div className="border-gray-700 pt-4 md:pt-6">
               {/* 2 Column Layout */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
-                {/* Left Column - Image */}
-                <div className="hidden md:flex justify-center animate-fadeInLeft animate-delay-200 order-2 md:order-1">
-                  <img 
-                    src="images/winner.png" 
-                    alt="เงื่อนไขการจอง" 
-                    className="w-full h-auto object-contain max-w-xs md:max-w-sm hover-scale hover-glow"
-                  />
+                {/* Left Column - Winner Image & Campaign Info */}
+                <div className="animate-fadeInLeft animate-delay-200 order-2 md:order-1 px-2 md:px-4">
+                  {/* Winner Image */}
+                  <div className="hidden md:flex justify-center mb-8">
+                    <img 
+                      src="images/winner.png" 
+                      alt="ผู้ชนะ" 
+                      className="w-full h-auto object-contain max-w-sm hover-scale hover-glow"
+                    />
+                  </div>
+
+                  {/* Campaign Timeline for Desktop */}
+                  <div className="hidden md:block mb-8">
+                    <h3 className="text-white font-bold text-2xl mb-6 text-center">
+                      กิจกรรมสร้างสรรค์คาถา
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="text-center">
+                        <p className="text-white text-lg leading-relaxed">
+                          <span className="font-bold text-[#7DD4ED]">ระยะเวลาส่ง:</span><br/>
+                          20 กันยายน - 3 ตุลาคม 2568
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-white text-lg leading-relaxed">
+                          <span className="font-bold text-[#24B6E0]">ประกาศผล:</span><br/>
+                          8 ตุลาคม 2568
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-white text-lg leading-relaxed">
+                          <span className="font-bold text-[#FF6B6B]">ยืนยันสิทธิ์:</span><br/>
+                          ภายใน 10 ตุลาคม 2568 เวลา 17.00 น.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Special Reward for Desktop */}
+                  <div className="hidden md:block">
+                    <div className="text-center">
+                      <h3 className="text-[#E50101] font-bold text-2xl mb-2">
+                        Special Reward
+                      </h3>
+                      <p className="text-[#E50101] font-semibold text-lg mb-6">
+                        ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ
+                      </p>
+                      
+                      <div className="mb-6">
+                        <img 
+                          src="images/tumbler.png" 
+                          alt="รายละเอียดของรางวัล" 
+                          className="w-3/4 h-auto object-contain mx-auto hover-scale hover-glow"
+                        />
+                      </div>
+                      
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg leading-relaxed">
+                          MY WORLD X คารามูโจ้<br/>
+                          <span className="text-[#7DD4ED] font-bold">Tumbler 50 รางวัล</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
-                {/* Right Column - Text */}
-                <div className="animate-fadeInRight animate-delay-300 order-1 md:order-2 px-2 md:px-6">
+                {/* Right Column - Prize Details */}
+                <div className="animate-fadeInRight animate-delay-300 order-1 md:order-2 px-2 md:px-4 transform md:-rotate-1">
                     {/* Desktop Version - Show Text Header */}
-                    <h1 className="hidden md:block text-3xl font-semibold text-white text-center bg-[#241E20] p-4 mb-8 rounded-lg hover-scale">
-                      รายละเอียด <span className="text-[#24B6E0]">ของรางวัล</span>
-                    </h1>
+                    <div className="hidden md:block mb-8">
+                      <h1 className="text-4xl font-bold text-white text-center mb-4 transform rotate-1">
+                        รายละเอียด<span className="text-[#24B6E0]">ของรางวัล</span>
+                      </h1>
+                    </div>
                     
                     {/* Mobile Version - Show Images */}
                     <div className="block md:hidden mb-3 text-center">
@@ -731,7 +862,16 @@ const Join = () => {
                     </div>
 
                     {/* Award Image Section */}
-                    <div className="mb-4">
+                    <div className="mb-6 hidden md:block text-center">
+                      <img 
+                        src="images/award.png" 
+                        alt="รายละเอียดของรางวัล" 
+                        className="w-full h-auto object-contain mx-auto hover-scale hover-glow max-w-sm transform rotate-1"
+                      />
+                    </div>
+
+                    {/* Mobile Award Image */}
+                    <div className="mb-4 block md:hidden">
                       <img 
                         src="images/award.png" 
                         alt="รายละเอียดของรางวัล" 
@@ -742,7 +882,13 @@ const Join = () => {
 
                     {/* Note Text */}
                     <div className="mb-8">
-                      <p className="text-white text-base md:text-lg text-center max-w-xl mx-auto p-3 bg-black/30 ">
+                      <div className="hidden md:block text-center transform -rotate-1">
+                        <p className="text-white text-lg leading-relaxed">
+                          <span className="text-[#FF6B6B] font-semibold">หมายเหตุ:</span> ผู้ที่ได้รับการคัดเลือกจะต้องพาคู่ดูโอ้ของตนไปร่วมกิจกรรมด้วย 
+                          <span className="font-bold text-[#7DD4ED]"> (รอบ 1-4 จังหวัดละ 5 คู่)</span>
+                        </p>
+                      </div>
+                      <p className="block md:hidden text-white text-base text-center max-w-xl mx-auto p-3 bg-black/30">
                         *ผู้ที่ได้รับการคัดเลือกจะต้องพาคู่ดูโอ้ของตนไปร่วมกิจกรรมด้วย (รอบ 1-4 จังหวัดละ 5 คู่)
                       </p>
                     </div>
@@ -827,87 +973,34 @@ const Join = () => {
                         </div>
                       </div>
                     </div>
-                    {/* Desktop - Left-Right Layout */}
-                    <div className="hidden md:grid md:grid-cols-2 md:gap-8 mb-8">
-                      {/* Left Column - Special Reward */}
-                      <div className="md:order-1">
-                        <div className="bg-black/40 p-4">
-                          <p className="text-[#E50101] font-bold text-2xl text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-2">
-                            Special Reward
-                          </p>
-                          <p className="text-[#E50101] font-semibold text-base text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
-                            ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ
-                          </p>
-                          
-                          <div className="mb-4">
-                            <img 
-                              src="images/tumbler.png" 
-                              alt="รายละเอียดของรางวัล" 
-                              className="w-2/3 h-auto object-contain mx-auto hover-scale hover-glow"
-                            />
-                          </div>
-                          
-                          <p className="text-white font-semibold text-base text-center leading-relaxed px-2 transform shadow-2xl -rotate-3">
-                            MY WORLD X คารามูโจ้ <br/>Tumbler 50 รางวัล
-                          </p>
-                        </div>
-                      </div>
+                    {/* Winners Section for Desktop */}
+                    <div className="hidden md:block">
+                      <div className="text-center h-full transform rotate-1">
+                        <h3 className="text-white font-bold text-2xl mb-2">
+                          ผู้ชนะทั้ง 4 รอบ
+                        </h3>
+                        <p className="text-white font-semibold text-lg mb-2">
+                          จะได้รางวัลคู่ละ <span className="text-[#FFD700] font-bold">20,000 บาท</span>
+                        </p>
+                        <p className="text-gray-300 text-base mb-6">
+                          แล้วไปลุยกันต่อ
+                        </p>
 
-                      {/* Right Column - Winners Section */}
-                      <div className="md:order-2">
-                        <div className="relative overflow-hidden rounded-lg h-full ">
-                          {/* Background image */}
-                          <motion.div 
-                            className="absolute inset-0 w-full h-full lg:hidden"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2, duration: 1.2, ease: "easeInOut" }}
-                            viewport={{ once: true }}
-                            animate={{ 
-                              scale: [1, 1.005, 1],
-                              opacity: [0.2, 0.3, 0.2]
-                            }}
-                            style={{
-                              backgroundImage: "url('images/sm3.png')",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center center",
-                              backgroundRepeat: "no-repeat",
-                              zIndex: 1
-                            }}
+                        <p className="text-white text-lg mb-4 font-semibold">
+                          กับ
+                        </p>
+                        
+                        <div className="space-y-4">
+                          <img 
+                            src="images/final.png" 
+                            alt="รายละเอียดของรางวัล" 
+                            className="w-[70%] h-auto object-contain mx-auto hover-scale hover-glow"
                           />
-                          
-                          <div className="relative z-10 p-4 h-full flex flex-col justify-center">
-                            <div className="text-center space-y-3 mb-4">
-                              <p className="text-white font-semibold text-xl leading-relaxed px-2 transform shadow-2xl -rotate-3">
-                                ผู้ชนะทั้ง 4 รอบ
-                              </p>
-                              <p className="text-white font-semibold text-base leading-relaxed px-2 transform shadow-2xl -rotate-3">
-                                จะได้รางวัลคู่ละ 20,000 บาท
-                              </p>
-                              <p className="text-white text-sm leading-relaxed px-2 transform shadow-2xl -rotate-3">
-                                แล้วไปลุยกันต่อ
-                              </p>
-                            </div>
-
-                            <div className="text-center">
-                              <p className="text-white text-sm leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-3">
-                                กับ
-                              </p>
-                              
-                              <div className="space-y-3">
-                                <img 
-                                  src="images/final.png" 
-                                  alt="รายละเอียดของรางวัล" 
-                                  className="w-[60%] h-auto object-contain mx-auto hover-scale hover-glow relative z-10"
-                                />
-                                <img 
-                                  src="images/80k.png" 
-                                  alt="รายละเอียดของรางวัล" 
-                                  className="w-[80%] h-auto object-contain mx-auto hover-scale hover-glow relative z-10"
-                                />
-                              </div>
-                            </div>
-                          </div>
+                          <img 
+                            src="images/80k.png" 
+                            alt="รายละเอียดของรางวัล" 
+                            className="w-[90%] h-auto object-contain mx-auto hover-scale hover-glow"
+                          />
                         </div>
                       </div>
                     </div>
