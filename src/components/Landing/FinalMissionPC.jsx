@@ -29,7 +29,7 @@ const floatingAnimation = {
 
 const FinalMissionPC = () => {
   return (
-    <div className="hidden md:block w-full relative bg-black py-16">
+    <div className="hidden md:block w-full relative bg-black py-2">
       {/* Background with stars effect */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-30">

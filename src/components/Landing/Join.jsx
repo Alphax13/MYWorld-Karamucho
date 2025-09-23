@@ -140,16 +140,19 @@ const Join = () => {
 
   return (
     <motion.div 
-      className="bg-black py-6 pb-0 md:py-10"
+      className="bg-black py-6 pb-0 join-section relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.0 }}
       viewport={{ once: true }}
     >
+      {/* Custom border line - 70% width */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[70%] h-0.5 bg-white"></div>
+      
       <div className="max-w-7xl mx-auto md:px-4 py-2 md:py-4">
         {/* First Title Section */}
         <motion.div 
-          className="mb-4 md:mb-8"
+          className="mb-4 md:mb-2"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
