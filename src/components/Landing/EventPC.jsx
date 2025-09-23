@@ -44,20 +44,20 @@ const EventPC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-16">
         {/* Header - Top Left */}
         <motion.div
-          className="mb-0 -ml-25 -mt-20"
+          className="mb-0 -ml-25 -mt-15"
           variants={slideInLeft}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           <img 
-            src="images/duo.png" 
+            src="images/evtext.png" 
             alt="MY WORLD x คารามูโจ้ DUO LEVEL UP" 
             className="h-auto max-w-2xl object-contain"
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mb-4 -mt-25">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mb-4 -mt-5">
           
           {/* Left side - Campaign intro */}
           <motion.div

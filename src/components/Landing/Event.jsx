@@ -113,7 +113,7 @@ const Event = () => {
       </div>
       
       {/* Main content container with max-w-7xl */}
-      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center px-6 lg:px-8 py-8 pb-32 gap-1 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center px-6 lg:px-8 py-2 pb-32 gap-1 relative z-10">
       
       {/* Campaign details - Now on top */}
       <motion.div
@@ -134,7 +134,7 @@ const Event = () => {
           <motion.img 
             src="images/evtext.png" 
             alt="MY World" 
-            className="w-full h-auto mt-5 max-w-4xl mx-auto md:max-h-[300px] lg:max-h-[350px] object-contain" 
+            className="w-full h-auto max-w-4xl mx-auto md:max-h-[300px] lg:max-h-[350px] object-contain" 
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           />
@@ -149,13 +149,18 @@ const Event = () => {
           viewport={{ once: true }}
         >
           <motion.p 
-            className="text-gray-300 text-lg lg:text-lg mb-4 px-3 -mt-14"
+            className="text-gray-300 text-lg lg:text-lg mb-4 px-3 -mt-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
             viewport={{ once: true }}
           >
-          กิจกรรม MY World x คารามูโจ้ DUO LEVEL UP ลุยภารกิจ ต่อ ติด ผี จะจัดหาผู้ที่จะไปทำ<br/>ภารกิจอัพเวลเพื่อต่อติดผีที่สถานที่ต่างๆ กับ EPIC TIME คือ
+          กิจกรรม MY World x คารามูโจ้ DUO LEVEL UP ลุยภารกิจ ต่อ ติด ผี จะจัดหาผู้ที่จะไปทำภาระกิจอัพเวลเพื่อต่อติดผีที่สถานที่ต่างๆ กับ
+          <img 
+                  src="images/epic.png" 
+                  alt="EPIC TIME Logo" 
+                  className="inline-block w-10 h-auto align-middle ml-1"
+                />
           </motion.p>
           
           {/* Campaign rounds */}

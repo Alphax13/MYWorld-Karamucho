@@ -807,15 +807,22 @@ const Join = () => {
                     <div className="relative z-20 p-8 grid grid-cols-2 gap-8 items-center min-h-[500px]">
                       {/* Left Side - Special Reward */}
                       <div className="text-center space-y-6">
-                        {/* Red Banner */}
-                        <div className="bg-red-600 text-white px-4 py-2 rounded-lg transform -rotate-2 inline-block">
-                          <p className="text-lg font-bold">รางวัลผู้โชคเลือก 20 รางวัล</p>
-                          <p className="text-sm">เตรียมอุปกรณ์การกิน ติด ติด ผี</p>
+                        {/* PC Banner Image */}
+                        <div className="flex justify-start">
+                          <img 
+                            src="images/pc.png" 
+                            alt="รางวัลผู้โชคเลือก 20 รางวัล" 
+                            className="object-contain hover-scale hover-glow"
+                          />
                         </div>
                         
                         {/* Money Amount */}
                         <div className="text-center">
-                          <p className="text-yellow-400 text-4xl font-bold">ลุ้นยิงเงิน 100,000!!</p>
+                          <img 
+                            src="images/10k.png" 
+                            alt="รางวัลผู้โชคเลือก 20 รางวัล" 
+                            className="object-contain hover-scale hover-glow w-[65%] mx-auto rotate-3"
+                          />
                         </div>
                         
                         {/* Tumbler Images */}
@@ -823,51 +830,46 @@ const Join = () => {
                           <img 
                             src="images/tumbler.png" 
                             alt="Tumbler 1" 
-                            className="w-16 h-auto object-contain hover-scale hover-glow"
-                          />
-                          <img 
-                            src="images/tumbler.png" 
-                            alt="Tumbler 2" 
-                            className="w-16 h-auto object-contain hover-scale hover-glow"
-                          />
-                          <img 
-                            src="images/tumbler.png" 
-                            alt="Tumbler 3" 
-                            className="w-16 h-auto object-contain hover-scale hover-glow"
+                            className="w-82 h-auto object-contain hover-scale hover-glow"
                           />
                         </div>
                         
                         <div className="text-center">
-                          <p className="text-white text-lg">MY WORLD X คารามูโจ้ Tumbler</p>
+                          <p className="text-white text-lg font-bold">MY WORLD X คารามูโจ้ Tumbler</p>
                           <p className="text-white text-lg font-bold">50 รางวัล</p>
                         </div>
                         
                         {/* Special Reward Section */}
                         <div className="mt-8">
-                          <p className="text-red-500 text-2xl font-bold">Special Reward</p>
-                          <p className="text-red-400 text-lg">สำหรับผู้กิน แหกปากใครก็รอบ</p>
-                          <p className="text-white text-sm mt-2">*ผู้ที่ยอมรายนสียีงต่อเสาสนใจผลงานปูไส่นุ่นลูดิโอส้างในทังดีปูแล่ (รอบ 1-4 จังหวัดละ 5 คู่)</p>
+                          <p className="text-red-500 text-2xl font-bold">Special Reward <span className="text-red-500 text-base">ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ</span></p>
+                          
+                          <p className="text-white text-xs mt-2">*ผู้ที่ยอมรายนสียีงต่อเสาสนใจผลงานปูไส่นุ่นลูดิโอส้างในทังดีปูแล่ (รอบ 1-4 จังหวัดละ 5 คู่)</p>
                         </div>
                       </div>
                       
                       {/* Right Side - Final Mission */}
                       <div className="text-center space-y-6">
-                        <div className="text-center">
+                        <div className="text-center space-y-2">
                           <p className="text-white text-2xl font-bold">ผู้ชนะทั้ง 4 รอบ</p>
                           <p className="text-white text-lg">จะได้รางวัลคู่ละ 20,000 บาท</p>
                           <p className="text-gray-300 text-base">แล้วไปลุยกันต่อกัน</p>
                         </div>
                         
                         <div className="text-center">
-                          <p className="text-cyan-400 text-2xl font-bold">รอบ Final Mission</p>
-                          <p className="text-white text-lg">วันศุกร์ที่ 31 ตุลาคม 2568</p>
+                          <img 
+                            src="images/fanal2.png" 
+                            alt="รางวัลผู้โชคเลือก 20 รางวัล" 
+                            className="object-contain hover-scale hover-glow w-[65%] mx-auto rotate-3"
+                          />
                         </div>
                         
                         {/* Red Badge for Final Prize */}
-                        <div className="bg-red-600 text-white px-6 py-4 rounded-lg transform rotate-1 inline-block">
-                          <p className="text-lg font-bold">เพื่อชิงเงินรางวัล</p>
-                          <p className="text-4xl font-bold text-yellow-400">80,000</p>
-                          <p className="text-lg">บาท</p>
+                        <div className="px-6 py-4 rounded-lg transform rotate-1 inline-block -mt-10">
+                          <img 
+                            src="images/80k.png" 
+                            alt="รางวัลผู้โชคเลือก 20 รางวัล" 
+                            className="object-contain hover-scale hover-glow mx-auto rotate-3"
+                          />
                         </div>
                       </div>
                     </div>
