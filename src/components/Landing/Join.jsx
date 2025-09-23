@@ -778,126 +778,104 @@ const Join = () => {
             <div className="max-w-6xl mx-auto md:px-4 md:pb-8">
             <div className="border-gray-700 pt-4 md:pt-6">
               {/* 2 Column Layout */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
-                {/* Left Column - Winner Image & Campaign Info */}
-                <div className="animate-fadeInLeft animate-delay-200 order-2 md:order-1 px-2 md:px-4">
-                  {/* Winner Image */}
-                  <div className="hidden md:flex justify-center mb-8">
-                    <img 
-                      src="images/winner.png" 
-                      alt="ผู้ชนะ" 
-                      className="w-full h-auto object-contain max-w-sm hover-scale hover-glow"
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 md:gap-6 items-center">
+                
+                {/* Desktop Version - Show Single Image Layout like in the picture */}
+                <div className="hidden md:block animate-fadeInUp animate-delay-200 px-2 md:px-4">
+                  <div className="relative overflow-hidden rounded-2xl">
+                    {/* Background with dark overlay */}
+                    <motion.div 
+                      className="absolute inset-0 w-full h-full"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2, duration: 1.2, ease: "easeInOut" }}
+                      viewport={{ once: true }}
+                      animate={{ 
+                        scale: [1, 1.005, 1],
+                        opacity: [0.8, 0.9, 0.8]
+                      }}
+                      style={{
+                        backgroundImage: "url('images/sm3.png')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center center",
+                        backgroundRepeat: "no-repeat",
+                        zIndex: 1
+                      }}
                     />
-                  </div>
-
-                  {/* Campaign Timeline for Desktop */}
-                  <div className="hidden md:block mb-8">
-                    <h3 className="text-white font-bold text-2xl mb-6 text-center">
-                      กิจกรรมสร้างสรรค์คาถา
-                    </h3>
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <p className="text-white text-lg leading-relaxed">
-                          <span className="font-bold text-[#7DD4ED]">ระยะเวลาส่ง:</span><br/>
-                          20 กันยายน - 3 ตุลาคม 2568
-                        </p>
+                    <div className="absolute inset-0 bg-black/60 z-10"></div>
+                    
+                    <div className="relative z-20 p-8 grid grid-cols-2 gap-8 items-center min-h-[500px]">
+                      {/* Left Side - Special Reward */}
+                      <div className="text-center space-y-6">
+                        {/* Red Banner */}
+                        <div className="bg-red-600 text-white px-4 py-2 rounded-lg transform -rotate-2 inline-block">
+                          <p className="text-lg font-bold">รางวัลผู้โชคเลือก 20 รางวัล</p>
+                          <p className="text-sm">เตรียมอุปกรณ์การกิน ติด ติด ผี</p>
+                        </div>
+                        
+                        {/* Money Amount */}
+                        <div className="text-center">
+                          <p className="text-yellow-400 text-4xl font-bold">ลุ้นยิงเงิน 100,000!!</p>
+                        </div>
+                        
+                        {/* Tumbler Images */}
+                        <div className="flex justify-center space-x-2">
+                          <img 
+                            src="images/tumbler.png" 
+                            alt="Tumbler 1" 
+                            className="w-16 h-auto object-contain hover-scale hover-glow"
+                          />
+                          <img 
+                            src="images/tumbler.png" 
+                            alt="Tumbler 2" 
+                            className="w-16 h-auto object-contain hover-scale hover-glow"
+                          />
+                          <img 
+                            src="images/tumbler.png" 
+                            alt="Tumbler 3" 
+                            className="w-16 h-auto object-contain hover-scale hover-glow"
+                          />
+                        </div>
+                        
+                        <div className="text-center">
+                          <p className="text-white text-lg">MY WORLD X คารามูโจ้ Tumbler</p>
+                          <p className="text-white text-lg font-bold">50 รางวัล</p>
+                        </div>
+                        
+                        {/* Special Reward Section */}
+                        <div className="mt-8">
+                          <p className="text-red-500 text-2xl font-bold">Special Reward</p>
+                          <p className="text-red-400 text-lg">สำหรับผู้กิน แหกปากใครก็รอบ</p>
+                          <p className="text-white text-sm mt-2">*ผู้ที่ยอมรายนสียีงต่อเสาสนใจผลงานปูไส่นุ่นลูดิโอส้างในทังดีปูแล่ (รอบ 1-4 จังหวัดละ 5 คู่)</p>
+                        </div>
                       </div>
-                      <div className="text-center">
-                        <p className="text-white text-lg leading-relaxed">
-                          <span className="font-bold text-[#24B6E0]">ประกาศผล:</span><br/>
-                          8 ตุลาคม 2568
-                        </p>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-white text-lg leading-relaxed">
-                          <span className="font-bold text-[#FF6B6B]">ยืนยันสิทธิ์:</span><br/>
-                          ภายใน 10 ตุลาคม 2568 เวลา 17.00 น.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Special Reward for Desktop */}
-                  <div className="hidden md:block">
-                    <div className="text-center">
-                      <h3 className="text-[#E50101] font-bold text-2xl mb-2">
-                        Special Reward
-                      </h3>
-                      <p className="text-[#E50101] font-semibold text-lg mb-6">
-                        ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ
-                      </p>
                       
-                      <div className="mb-6">
-                        <img 
-                          src="images/tumbler.png" 
-                          alt="รายละเอียดของรางวัล" 
-                          className="w-3/4 h-auto object-contain mx-auto hover-scale hover-glow"
-                        />
-                      </div>
-                      
-                      <div className="text-center">
-                        <p className="text-white font-semibold text-lg leading-relaxed">
-                          MY WORLD X คารามูโจ้<br/>
-                          <span className="text-[#7DD4ED] font-bold">Tumbler 50 รางวัล</span>
-                        </p>
+                      {/* Right Side - Final Mission */}
+                      <div className="text-center space-y-6">
+                        <div className="text-center">
+                          <p className="text-white text-2xl font-bold">ผู้ชนะทั้ง 4 รอบ</p>
+                          <p className="text-white text-lg">จะได้รางวัลคู่ละ 20,000 บาท</p>
+                          <p className="text-gray-300 text-base">แล้วไปลุยกันต่อกัน</p>
+                        </div>
+                        
+                        <div className="text-center">
+                          <p className="text-cyan-400 text-2xl font-bold">รอบ Final Mission</p>
+                          <p className="text-white text-lg">วันศุกร์ที่ 31 ตุลาคม 2568</p>
+                        </div>
+                        
+                        {/* Red Badge for Final Prize */}
+                        <div className="bg-red-600 text-white px-6 py-4 rounded-lg transform rotate-1 inline-block">
+                          <p className="text-lg font-bold">เพื่อชิงเงินรางวัล</p>
+                          <p className="text-4xl font-bold text-yellow-400">80,000</p>
+                          <p className="text-lg">บาท</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Right Column - Prize Details */}
-                <div className="animate-fadeInRight animate-delay-300 order-1 md:order-2 px-2 md:px-4 transform md:-rotate-1">
-                    {/* Desktop Version - Show Text Header */}
-                    <div className="hidden md:block mb-8">
-                      <h1 className="text-4xl font-bold text-white text-center mb-4 transform rotate-1">
-                        รายละเอียด<span className="text-[#24B6E0]">ของรางวัล</span>
-                      </h1>
-                    </div>
-                    
-                    {/* Mobile Version - Show Images */}
-                    <div className="block md:hidden mb-3 text-center">
-                      {/* Detail Header Image for Mobile */}
-                      <img 
-                        src="images/detail.png" 
-                        alt="รายละเอียดของรางวัล" 
-                        className="w-full h-auto object-contain mx-auto hover-scale hover-glow"
-                      />
-                    </div>
-
-                    {/* Award Image Section */}
-                    <div className="mb-6 hidden md:block text-center">
-                      <img 
-                        src="images/award.png" 
-                        alt="รายละเอียดของรางวัล" 
-                        className="w-full h-auto object-contain mx-auto hover-scale hover-glow max-w-sm transform rotate-1"
-                      />
-                    </div>
-
-                    {/* Mobile Award Image */}
-                    <div className="mb-4 block md:hidden">
-                      <img 
-                        src="images/award.png" 
-                        alt="รายละเอียดของรางวัล" 
-                        className="w-full h-auto object-contain mx-auto md:ml-auto md:mr-0 hover-scale hover-glow"
-                        style={{ maxWidth: '90%', marginLeft: 'auto', marginRight: '0' }}
-                      />
-                    </div>
-
-                    {/* Note Text */}
-                    <div className="mb-8">
-                      <div className="hidden md:block text-center transform -rotate-1">
-                        <p className="text-white text-lg leading-relaxed">
-                          <span className="text-[#FF6B6B] font-semibold">หมายเหตุ:</span> ผู้ที่ได้รับการคัดเลือกจะต้องพาคู่ดูโอ้ของตนไปร่วมกิจกรรมด้วย 
-                          <span className="font-bold text-[#7DD4ED]"> (รอบ 1-4 จังหวัดละ 5 คู่)</span>
-                        </p>
-                      </div>
-                      <p className="block md:hidden text-white text-base text-center max-w-xl mx-auto p-3 bg-black/30">
-                        *ผู้ที่ได้รับการคัดเลือกจะต้องพาคู่ดูโอ้ของตนไปร่วมกิจกรรมด้วย (รอบ 1-4 จังหวัดละ 5 คู่)
-                      </p>
-                    </div>
-
-                    {/* Mobile - Vertical Layout */}
-                    <div className="block md:hidden">
+                {/* Mobile - Vertical Layout */}
+                <div className="block md:hidden">
                       {/* Special Reward Section - Mobile */}
                       <div className="mb-8">
                         <p className="text-[#E50101] font-bold text-3xl text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-2">
@@ -976,20 +954,68 @@ const Join = () => {
                         </div>
                       </div>
                     </div>
-                    {/* Winners Section for Desktop */}
-                    <div className="hidden md:block">
-                      <div className="text-center h-full transform rotate-1">
-                        <h3 className="text-white font-bold text-2xl mb-2">
+                
+                {/* Mobile - Vertical Layout */}
+                <div className="block md:hidden">
+                  {/* Special Reward Section - Mobile */}
+                  <div className="mb-8">
+                    <p className="text-[#E50101] font-bold text-3xl text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-2">
+                      Special Reward
+                    </p>
+                    <p className="text-[#E50101] font-semibold text-lg text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
+                      ผู้ไม่ถูกเลือก แต่ถูกใจกรรมการ
+                    </p>
+                    
+                    <div className="mb-4">
+                      <img 
+                        src="images/tumbler.png" 
+                        alt="รายละเอียดของรางวัล" 
+                        className="w-3/4 h-auto object-contain mx-auto hover-scale hover-glow"
+                      />
+                    </div>
+                    
+                    <p className="text-white font-semibold text-lg text-center leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
+                      MY WORLD X คารามูโจ้ <br/>Tumbler 50 รางวัล
+                    </p>
+                  </div>
+
+                  {/* Winners Section - Mobile */}
+                  <div className="relative overflow-hidden -mx-2 my-8">
+                    {/* Background image */}
+                    <motion.div 
+                      className="absolute inset-0 w-full h-full"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2, duration: 1.2, ease: "easeInOut" }}
+                      viewport={{ once: true }}
+                      animate={{ 
+                        scale: [1, 1.005, 1],
+                        opacity: [0.2, 0.3, 0.2]
+                      }}
+                      style={{
+                        backgroundImage: "url('images/sm3.png')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center center",
+                        backgroundRepeat: "no-repeat",
+                        zIndex: 1
+                      }}
+                    />
+                    
+                    <div className="relative z-10 p-4 mx-2">
+                      <div className="text-center space-y-4 mb-4">
+                        <p className="text-white font-semibold text-2xl leading-relaxed px-2 transform shadow-2xl -rotate-3">
                           ผู้ชนะทั้ง 4 รอบ
-                        </h3>
-                        <p className="text-white font-semibold text-lg mb-2">
-                          จะได้รางวัลคู่ละ <span className="text-[#FFD700] font-bold">20,000 บาท</span>
                         </p>
-                        <p className="text-gray-300 text-base mb-6">
+                        <p className="text-white font-semibold text-lg leading-relaxed px-2 transform shadow-2xl -rotate-3">
+                          จะได้รางวัลคู่ละ 20,000 บาท
+                        </p>
+                        <p className="text-white text-base leading-relaxed px-2 transform shadow-2xl -rotate-3">
                           แล้วไปลุยกันต่อ
                         </p>
+                      </div>
 
-                        <p className="text-white text-lg mb-4 font-semibold">
+                      <div className="text-center mb-4">
+                        <p className="text-white text-base leading-relaxed px-2 transform shadow-2xl -rotate-3 mb-4">
                           กับ
                         </p>
                         
@@ -997,21 +1023,22 @@ const Join = () => {
                           <img 
                             src="images/final.png" 
                             alt="รายละเอียดของรางวัล" 
-                            className="w-[70%] h-auto object-contain mx-auto hover-scale hover-glow"
+                            className="w-[60%] h-auto object-contain mx-auto hover-scale hover-glow relative z-10"
                           />
                           <img 
                             src="images/80k.png" 
                             alt="รายละเอียดของรางวัล" 
-                            className="w-[90%] h-auto object-contain mx-auto hover-scale hover-glow"
+                            className="w-[80%] h-auto object-contain mx-auto hover-scale hover-glow relative z-10"
                           />
                         </div>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </motion.div>
