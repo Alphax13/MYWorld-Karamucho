@@ -29,9 +29,9 @@ const FullscreenNav = () => {
     };
 
     return (
-        <div className="nav">
+        <div className="nav z-100">
             {/* Logo ฝั่งซ้าย */}
-            <div className="nav-logo">
+            <div className="nav-logo z-100">
                 <img src="images/logo.png" alt="MY World Logo" />
             </div>
             

@@ -917,3 +917,36 @@ button.neon-glow:hover {
   }
 }
 
+/* Desktop Navigation Fix - แสดง logo บน PC */
+@media (min-width: 769px) {
+  .nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+    background: transparent;
+  }
+
+  .nav-logo {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 1001 !important;
+    display: block !important;
+  }
+
+  .nav-logo img {
+    width: 80px !important;
+    display: block !important;
+  }
+
+  .menu-btn {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 1001 !important;
+  }
+}
+

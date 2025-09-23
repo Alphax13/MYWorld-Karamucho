@@ -71,7 +71,7 @@ const FinalMissionPC = () => {
               rel="noopener noreferrer"
             >
               <motion.button
-                className="mt-8 bg-black hover:bg-cyan-400 text-white font-bold py-4 px-8 text-lg shadow-lg shadow-cyan-500/50 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 border border-cyan-400 glow-blue"
+                className="mt-8 bg-black hover:bg-cyan-400 text-white font-bold py-4 px-12 text-lg shadow-lg shadow-cyan-500/50 transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/60 border border-cyan-400 glow-blue w-64"
                 variants={floatingAnimation}
                 animate="animate"
                 whileHover={{ scale: 1.05 }}
