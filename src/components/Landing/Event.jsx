@@ -149,17 +149,17 @@ const Event = () => {
           viewport={{ once: true }}
         >
           <motion.p 
-            className="text-gray-300 text-lg lg:text-lg mb-4 px-3 -mt-6"
+            className="text-gray-300 text-lg lg:text-lg mb-4 px-1 -mt-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
             viewport={{ once: true }}
           >
-          กิจกรรม MY World x คารามูโจ้ DUO LEVEL UP ลุยภารกิจ ต่อ ติด ผี จะจัดหาผู้ที่จะไปทำภาระกิจอัพเวลเพื่อต่อติดผีที่สถานที่ต่างๆ กับ
+          กิจกรรม MY World x คารามูโจ้ DUO LEVEL UP ลุยภารกิจ ต่อ ติด ผี จะจัดหาผู้ที่จะไปทำภารกิจ อัพเวลเพื่อต่อติดผีที่สถานที่ต่างๆ กับ
           <img 
                   src="images/epic.png" 
                   alt="EPIC TIME Logo" 
-                  className="inline-block w-10 h-auto align-middle ml-1"
+                  className="inline-block w-15 h-auto align-middle ml-1"
                 />
           </motion.p>
           

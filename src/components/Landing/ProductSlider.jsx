@@ -18,9 +18,9 @@ const ProductSlider = () => {
   };
 
   const products = [
-    { img: "Product/1.png", name: "MY Snack Cup (MY x Karamucho Collection)", price: "129 THB" },
+    { img: "Product/1.png", name: "MY Karamucho Bag (MY x Karamucho Collection)", price: "129 THB" },
     { img: "Product/2.png", name: "MY Frosty Tumbler (MY x Karamucho Collection) (Pre-Order)", price: "390 THB" },
-    { img: "Product/3.png", name: "MY Karamucho Bag (MY x Karamucho Collection)", price: "109 THB" },
+    { img: "Product/3.png", name: "MY Snack Cup (MY x Karamucho Collection)", price: "109 THB" },
   ];
 
   return (
@@ -47,8 +47,6 @@ const ProductSlider = () => {
           {/* Left Column - Presenter Image */}
           <motion.div className="flex-1 flex justify-center lg:justify-start">
             <motion.a 
-              href="https://www.myworld-store.com/" 
-              target="_blank" 
               rel="myworld"
               className="relative z-10 block"
               whileHover={{ 
@@ -131,18 +129,18 @@ const ProductSlider = () => {
           {products.map((product, index) => (
             <div 
               key={index} 
-              className="flex-shrink-0 w-80 bg-black backdrop-blur-sm  hover:shadow-xl transition-all duration-300 snap-start"
+              className="flex-shrink-0 w-80 bg-black backdrop-blur-sm hover:shadow-xl transition-all duration-300 snap-start flex flex-col"
             >
               <img 
                 src={product.img} 
                 alt={product.name} 
                 className="w-full h-80 object-contain mb-4"
               />
-              <div className="space-y-3 p-4">
-                <h3 className="text-sm font-semibold text-white line-clamp-2 leading-tight">
+              <div className="space-y-3 p-4 flex-1 flex flex-col justify-between">
+                <h3 className="text-sm font-semibold text-white line-clamp-2 leading-tight h-10 flex items-start">
                   {product.name}
                 </h3>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mt-auto">
                   <p className="text-lg font-bold text-sky-300">
                     {product.price}
                   </p>
@@ -160,18 +158,18 @@ const ProductSlider = () => {
           {products.map((product, index) => (
             <div 
               key={index} 
-              className="w-full bg-black backdrop-blur-sm overflow-hidden shadow-lg"
+              className="w-full bg-black backdrop-blur-sm overflow-hidden shadow-lg flex flex-col"
             >
               <img 
                 src={product.img} 
                 alt={product.name} 
                 className="w-full h-88 object-contain"
               />
-              <div className="p-4 space-y-4">
-                <h3 className="text-lg font-semibold text-white leading-tight">
+              <div className="p-4 space-y-4 flex-1 flex flex-col justify-between">
+                <h3 className="text-lg font-semibold text-white leading-tight min-h-[3.5rem] flex items-start">
                   {product.name}
                 </h3>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mt-auto">
                   <p className="text-xl font-bold text-sky-300">
                     {product.price}
                   </p>

@@ -140,7 +140,7 @@ const Join = () => {
 
   return (
     <motion.div 
-      className="bg-black py-6 pb-0 join-section relative"
+      className="bg-black py-6 pt-0 pb-0 join-section relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.0 }}
@@ -149,7 +149,7 @@ const Join = () => {
       {/* Custom border line - 70% width */}
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[70%] h-0.5 bg-white"></div>
       
-      <div className="max-w-7xl mx-auto md:px-4 py-2 md:py-4">
+      <div className="max-w-7xl mx-auto md:px-4 py-2 md:py-4 pt-0">
         {/* First Title Section */}
         <motion.div 
           className="mb-4 md:mb-2"
@@ -327,7 +327,7 @@ const Join = () => {
 
             {/* Desktop Action Buttons */}
             <motion.div 
-              className="flex flex-row justify-center space-x-8 mt-8 relative z-10"
+              className="flex flex-row justify-center space-x-8 mt-8 pb-12 relative z-10"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -582,7 +582,7 @@ const Join = () => {
 
             {/* Mobile Action Buttons */}
             <motion.div 
-              className="flex flex-col space-y-5 mt-6 pb-6 px-8 relative z-10"
+              className="flex flex-col space-y-5 mt-6 pb-12 px-8 relative z-10"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -768,7 +768,7 @@ const Join = () => {
           animate={isPrizeContentVisible ? "visible" : "hidden"}
         >
           <motion.div 
-            className="pt-6 md:pt-8"
+            className="pt-1 md:pt-2"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -776,7 +776,7 @@ const Join = () => {
             transition={{ delay: 0.6 }}
           >
             <div className="max-w-6xl mx-auto md:px-4 md:pb-8">
-            <div className="border-gray-700 pt-4 md:pt-6">
+            <div className="border-gray-700 pt-1 md:pt-2">
               {/* 2 Column Layout */}
               <div className="grid grid-cols-1 md:grid-cols-1 gap-4 md:gap-6 items-center">
                 
@@ -804,7 +804,10 @@ const Join = () => {
                     />
                     <div className="absolute inset-0 bg-black/60 z-10"></div>
                     
-                    <div className="relative z-20 p-8 grid grid-cols-2 gap-8 items-center min-h-[500px]">
+                    <div className="relative z-20 p-8 pt-0 grid grid-cols-2 gap-8 items-center min-h-[500px]">
+                      {/* Vertical Divider Line */}
+                      <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-white to-transparent transform -translate-x-1/2 opacity-30"></div>
+                      
                       {/* Left Side - Special Reward */}
                       <div className="text-center space-y-6">
                         {/* PC Banner Image */}

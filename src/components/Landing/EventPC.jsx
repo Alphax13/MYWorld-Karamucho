@@ -44,7 +44,7 @@ const EventPC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-16">
         {/* Header - Top Left */}
         <motion.div
-          className="mb-0 -ml-25 -mt-15"
+          className="mb-0 -ml-5 -mt-15"
           variants={slideInLeft}
           initial="hidden"
           whileInView="visible"
@@ -57,7 +57,7 @@ const EventPC = () => {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mb-4 -mt-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mb-4">
           
           {/* Left side - Campaign intro */}
           <motion.div
@@ -122,7 +122,7 @@ const EventPC = () => {
           <p className="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto text-center">
             โดยในกิจกรรมทั้ง 4 รอบ จะถูกคัดเลือกมาจากการโพสต์คลิปคาถา ต่อ ติด ผี ในแบบ ของตัวเอง ผ่านช่องทาง TikTok ตามกติกาที่กำหนด 
             เลือกจังหวัดที่อยากจะไป และสะดวกในการเดินทางไปร่วมงานพร้อมคู่ดูโอ้ในวันเวลาและสถานที่ที่เลือกไว้ 
-            และ <span className="font-bold text-white">ผู้ชนะจากกิจกรรมทั้ง 4 รอบจะต้องไป Final Mission</span>
+            และ <br/><span className="font-bold text-white">ผู้ชนะจากกิจกรรมทั้ง 4 รอบจะต้องไป Final Mission</span>
           </p>
         </motion.div>
       </div>

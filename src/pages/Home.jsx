@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="landing min-h-screen m-0">
+    <div className="landing min-h-screen m-0 bg-black">
       <FullscreenNav />
       <BannerKV />
       <Event />
