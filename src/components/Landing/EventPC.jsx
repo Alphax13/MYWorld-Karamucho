@@ -57,7 +57,7 @@ const EventPC = () => {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mb-4 -mt-25">
           
           {/* Left side - Campaign intro */}
           <motion.div

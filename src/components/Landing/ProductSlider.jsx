@@ -19,7 +19,7 @@ const ProductSlider = () => {
 
   const products = [
     { img: "Product/1.png", name: "MY Snack Cup (MY World x คารามูโจ้ Collection)", price: "129 THB" },
-    { img: "Product/2.png", name: "MY Frosty Tumbler (MY World x คารามูโจ้ Collection) (Pre-Order)", price: "109 THB" },
+    { img: "Product/2.png", name: "MY Frosty Tumbler (MY World x คารามูโจ้ Collection) (Pre-Order)", price: "390 THB" },
     { img: "Product/3.png", name: "MY Karamucho Bag (MY World x คารามูโจ้ Collection) ", price: "109 THB" },
   ];
 
