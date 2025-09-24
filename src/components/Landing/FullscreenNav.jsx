@@ -45,9 +45,6 @@ const FullscreenNav = () => {
                             <a href="https://myworld-virtual-store.com/present" target="_blank">สมัครสมาชิก</a>
                         </li>
                         <li>
-                            <a href="https://myworld-virtual-store.com/coin">COINS สะสม</a>
-                        </li>
-                        <li>
                             <a href="https://shop.line.me/@myworld" target="_blank">MY LIMITED ITEMS</a>
                         </li>
 
