@@ -18,10 +18,30 @@ const ProductSlider = () => {
   };
 
   const products = [
-    { img: "Product/1.png", name: "MY Karamucho Bag (MY x Karamucho Collection)", price: "129 THB" },
-    { img: "Product/2.png", name: "MY Frosty Tumbler (MY x Karamucho Collection) (Pre-Order)", price: "390 THB" },
-    { img: "Product/3.png", name: "MY Snack Cup (MY x Karamucho Collection)", price: "109 THB" },
-    { img: "Product/4.jpg", name: "ขนม คารามูโจ้ (  40 กรัม × 24 ซอง )", price: "456 THB" },
+    { 
+      img: "Product/1.png", 
+      name: "MY Karamucho Bag (MY x Karamucho Collection)", 
+      price: "129 THB",
+      link: "https://shop.line.me/@myworld/product/1007627975"
+    },
+    { 
+      img: "Product/2.png", 
+      name: "MY Frosty Tumbler (MY x Karamucho Collection) (Pre-Order)", 
+      price: "390 THB",
+      link: "https://shop.line.me/@myworld/product/1007622610"
+    },
+    { 
+      img: "Product/3.png", 
+      name: "MY Snack Cup (MY x Karamucho Collection)", 
+      price: "109 THB",
+      link: "https://shop.line.me/@myworld/product/1007628035"
+    },
+    { 
+      img: "Product/4.jpg", 
+      name: "ขนม คารามูโจ้ ( 40 กรัม × 24 ซอง )", 
+      price: "456 THB",
+      link: "https://shop.line.me/@myworld/product/1007697414"
+    },
   ];
 
   return (
@@ -145,7 +165,7 @@ const ProductSlider = () => {
                   <p className="text-lg font-bold text-sky-300">
                     {product.price}
                   </p>
-                  <a href="https://shop.line.me/@myworld" className="inline-block">
+                  <a href={product.link} className="inline-block" target="_blank" rel="noopener noreferrer">
                     <img src="images/cart-button.png" alt="Cart" className="w-12 h-12 hover:scale-110 transition-transform duration-300" />
                   </a>
                 </div>
@@ -174,7 +194,7 @@ const ProductSlider = () => {
                   <p className="text-xl font-bold text-sky-300">
                     {product.price}
                   </p>
-                  <a href="https://shop.line.me/@myworld" className="inline-block">
+                  <a href={product.link} className="inline-block" target="_blank" rel="noopener noreferrer">
                     <img src="images/cart-button.png" alt="Cart" className="w-12 h-12 hover:scale-110 transition-transform duration-300" />
                   </a>
                 </div>
