@@ -21,6 +21,7 @@ const ProductSlider = () => {
     { img: "Product/1.png", name: "MY Karamucho Bag (MY x Karamucho Collection)", price: "129 THB" },
     { img: "Product/2.png", name: "MY Frosty Tumbler (MY x Karamucho Collection) (Pre-Order)", price: "390 THB" },
     { img: "Product/3.png", name: "MY Snack Cup (MY x Karamucho Collection)", price: "109 THB" },
+    { img: "Product/4.jpg", name: "ขนม คารามูโจ้ (  40 กรัม × 24 ซอง )", price: "456 THB" },
   ];
 
   return (
